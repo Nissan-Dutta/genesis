@@ -57,6 +57,21 @@ uv run pytest             # unit and integration tests
 simulation). Without uv, `pip install -r requirements.txt && pip install -e .` works too; the requirements file is
 exported from the lock file.
 
+### Quick smoke demo (≤ 3 minutes, no download)
+
+Use the committed `results/` tables to rebuild the headline figure and paper numbers, then run the fast test suite.
+No `pgnoise download`, no ESM-2 weights, and no `pgnoise all`.
+
+```bash
+uv sync
+uv run pgnoise numbers    # refresh paper/numbers.tex and paper/numbers.md from results/summary.json
+uv run pgnoise figure     # rebuild results/figures/headline.png and headline.pdf
+uv run ruff check .
+uv run pytest -q          # unit tests + figure/numbers smoke; skips tests that need data/ or torch
+```
+
+CI runs the same `ruff check` and `pytest` path on every push and pull request.
+
 ## Reproducing each result
 
 Each command writes tables to `results/tables/`, figures to `results/figures/`, and its headline numbers to a
