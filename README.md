@@ -2,7 +2,7 @@
 
 This repo is a reproducible rank-uncertainty analysis of the
 [ProteinGym](https://github.com/OATML-Markslab/ProteinGym) zero-shot DMS-substitution leaderboard
-(97 models, 217 assays). It does seven things:
+(97 models, 217 assays). It does eight things:
 
 1. Downloads ProteinGym's public per-assay Spearman table and assay metadata. Files are pinned to
    one commit and checked against SHA-256 checksums.
@@ -18,7 +18,9 @@ This repo is a reproducible rank-uncertainty analysis of the
 5. Re-runs the rank analysis under ProteinGym's other metrics (AUC, MCC, NDCG, top-K recall) and
    under four alternative aggregation schemes.
 6. Computes power curves: how many assays it takes to detect a gain of 0.005 or 0.01 at the top.
-7. Writes tables and figures to `results/`.
+7. Re-scores five small assays with ESM-2 (8M–650M) on CPU, using ProteinGym's own masked-marginal
+   method, and checks the result against the leaderboard mutant by mutant.
+8. Writes tables and figures to `results/`.
 
 ## Quick start
 
@@ -33,11 +35,16 @@ uv run pgnoise robustness        # 5 metrics x 5 aggregation schemes           (
 uv run pgnoise power             # power curves and benchmark size needed      (~5 s)
 uv run pgnoise simulate          # coverage simulation, 5 scenarios x 1000 reps (~25 min on 4 cores)
 uv run pytest                    # unit + integration tests
+
+# optional: ESM-2 replication (CPU torch + fair-esm, ~3.4 GB of weights and data)
+uv sync --extra esm
+uv run pgnoise esm2              # 5 assays x 4 ESM-2 sizes                    (~5 min on 4 cores)
 ```
 
-`uv run pgnoise all` runs everything in order. To try the simulation quickly, use
+`uv run pgnoise all` runs everything in order except `esm2`. To try the simulation quickly, use
 `uv run pgnoise simulate --reps 50`. If you don't use uv, `pip install -r requirements.txt && pip install -e .`
-works too. The requirements file is exported from the lock file.
+works too. The requirements file is exported from the lock file. For the ESM-2 extra without uv, use
+`pip install -e ".[esm]" --extra-index-url https://download.pytorch.org/whl/cpu`.
 
 ## Data and version
 
@@ -158,15 +165,75 @@ legitimately take (`coverage`). `coverage_lenient` asks only that it contain at 
   (≈ 3,400 assays, 15.6× today; range 1,800–5,800). Today's benchmark detects about 0.020
   (range 0.015–0.027).
 
+## ESM-2 replication (`pgnoise esm2`)
+
+Do the leaderboard's per-assay numbers come out the same when the model is re-run independently?
+`pgnoise esm2` re-scores five small assays with ESM-2 on CPU and compares the result with the
+published values.
+
+**Inputs (all SHA-256 pinned in `esm2.py`).**
+- The ProteinGym v1.3 assay archive `DMS_ProteinGym_substitutions.zip` (43 MB, whole-file checksum).
+- ProteinGym's own per-mutant model scores for the five assays. These are pulled by HTTP range
+  requests from the 1.9 GB `zero_shot_substitutions_scores.zip`, about 7 MB in total.
+- The fair-esm checkpoints `esm2_t6_8M`, `t12_35M`, `t30_150M` and `t33_650M` (3.3 GB in total).
+
+Everything is stored under `data/esm2/`, which is git-ignored. Wild-type sequences and function
+groups come from the pinned `reference_files/DMS_substitutions.csv`.
+
+**Assays.** The shortest assay in each function group, all with at least 170 mutants:
+
+| DMS ID | Function | Length | Mutants |
+|---|---|---|---|
+| `TCRG1_MOUSE_Tsuboyama_2023_1E0L` | Stability | 37 | 1,058 (437 doubles) |
+| `ENVZ_ECOLI_Ghose_2023` | Activity | 60 | 1,121 |
+| `IF1_ECOLI_Kelsic_2016` | OrganismalFitness | 72 | 1,367 |
+| `GLPA_HUMAN_Elazar_2016` | Expression | 150 | 245 |
+| `B2L11_HUMAN_Dutta_2010_binding-Mcl-1` | Binding | 198 | 170 |
+
+**Scoring.** This matches `proteingym/baselines/esm/compute_fitness.py --scoring-strategy
+masked-marginals`, the setting in `scripts/scoring_DMS_zero_shot/scoring_ESM2_substitutions.sh`:
+- Mask one residue at a time and take log-softmax at the masked position.
+- Score a mutant as Σ over its mutations of [log p(mt) − log p(wt)], so doubles are additive.
+- Sequences over 1,022 residues use ProteinGym's `get_optimal_window`. None of these five assays
+  needs it, but the code supports it.
+
+ProteinGym's vendored `esm` package matches fair-esm 2.0.0 for ESM-2 (only import paths differ).
+Our only change is batching: we score 16 masked copies per forward pass, where ProteinGym scores
+one at a time. A test checks this against a verbatim port of ProteinGym's loop, windowing
+included. Wild-type marginals (one unmasked pass) are also computed as a sensitivity check.
+
+**Results** (4 cores, 4 min 30 s wall in total; the largest step is 650M on the 198-residue
+assay, 98 s):
+- **Agreement with the leaderboard.** All 20 assay × size Spearman values match the leaderboard
+  at 3 dp.
+- **Agreement with ProteinGym's own scores.** Our Spearman matches the one computed from
+  ProteinGym's per-mutant scores to within 2.4e-6. Per-mutant scores differ by at most 5e-5,
+  which is float32 noise from CPU versus GPU and batching.
+- **Scoring method.** Wild-type marginals move the Spearman by up to 0.133 (median 0.016). That
+  is as large as gaps at the top of the leaderboard.
+- **Multi-mutants.** On TCRG1, the pooled Spearman (0.769 at 650M) is higher than the
+  singles-only value (0.719) or the doubles-only value (0.543). The additive score gives doubles
+  about twice the penalty of singles, and doubles are measured as more destabilising, so pooling
+  rewards that.
+- **Model size.** 7 of the 20 steps up in size lower the Spearman. Only one drop is significant
+  under a paired mutant bootstrap: TCRG1 from 150M to 650M, −0.015, z = −2.8.
+- **Assay noise.** The mutant-bootstrap SE of a single assay's Spearman is 0.010–0.085.
+
+ESM-2 3B and 15B are left out because 3B alone needs 11 GB of fp32 weights, more than the
+roughly 5 GB of RAM free on the 16 GB VM used here. Mutants at the same position are correlated,
+so the iid mutant bootstrap understates the noise; a position-block bootstrap would be wider.
+
 ## Outputs
 
 - `results/summary.json`: headline numbers from every command.
 - `results/tables/`: reproduction, rank intervals, neighbour tests, top-gap power,
   leave-one-group-out, common-assay leaderboard, Protriever's missing assays, version drift, and
-  simulation summaries.
+  simulation summaries. `esm2_replication.csv`, `esm2_size_differences.csv` and
+  `esm2_scores/<DMS id>.csv` (per-mutant scores: ours with masked and wild-type marginals, and
+  ProteinGym's) come from `pgnoise esm2`.
 - `results/figures/`: `reproduction.png`, `rank_intervals_top40.png`, `pairwise_top20.png`,
   `leave_one_group_out.png`, `robustness_rank_heatmap.png`, `robustness_grid.png`,
-  `power_curves.png`, `sim_summary.png`, `sim_coverage_by_rank.png`.
+  `power_curves.png`, `sim_summary.png`, `sim_coverage_by_rank.png`, `esm2_replication.png`.
 
 ## Layout
 
@@ -181,6 +248,7 @@ src/pgnoise/
   power.py       power curves and required benchmark size
   analysis.py    real-data analyses
   simulate.py    calibrated generator, scenarios, coverage experiment
+  esm2.py        pinned assay/score/weight download, ESM-2 masked & wild-type marginals, comparison
   plots.py, cli.py
 tests/           unit tests on toy data, plus integration tests on the real files
 ```
