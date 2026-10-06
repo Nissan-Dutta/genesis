@@ -274,8 +274,8 @@ def esm2_replication(table: pd.DataFrame, path: Path) -> Path:
     ax.scatter([], [], color="black", marker="x", label="published")
     ax.set(xscale="log", xticks=x, xticklabels=sizes, xlabel="ESM-2 size",
            ylabel="Spearman  (±1.96 bootstrap SE over mutants)",
-           title="Within-assay sampling noise dwarfs replication error;\nscaling is not monotone")
+           title="Within-assay sampling noise dwarfs replication error;\nbigger is not reliably better")
     ax.minorticks_off()
-    ax.legend(fontsize=7, loc="lower right")
+    ax.legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=3)
     fig.tight_layout()
     return _save(fig, path)
