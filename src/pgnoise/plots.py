@@ -251,9 +251,9 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
     with plt.rc_context(HEADLINE_RC):
         fig = plt.figure(figsize=(3.55, 6.55))
         fig.subplots_adjust(left=0.06, right=0.98, top=0.86, bottom=0.11)
-        # Rank panel needs a wide left margin for full model names; power panel aligns on the right.
-        ax = fig.add_axes((0.40, 0.14, 0.58, 0.24))
+        # Council layout: (a) power / MDD on top; (b) supporting rank CIs (~7 models) below.
         bx = fig.add_axes((0.16, 0.50, 0.82, 0.34))
+        ax = fig.add_axes((0.40, 0.14, 0.58, 0.24))  # wide left margin for full model names
 
         grid = required.groupby("delta")["units_needed"]
         lo, med, hi = (grid.min() * assays_per_unit, grid.median() * assays_per_unit, grid.max() * assays_per_unit)
