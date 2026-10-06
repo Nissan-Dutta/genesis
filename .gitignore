@@ -11,3 +11,10 @@ data/
 
 # Large per-model simulation tables; summaries and figures are committed
 results/tables/sim_per_model_*.csv
+
+# LaTeX build artefacts (the compiled paper/technical-note.pdf is committed)
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
