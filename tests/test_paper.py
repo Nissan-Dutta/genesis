@@ -31,7 +31,7 @@ def test_macro_names_are_valid_latex(nums: list[paper.Number]) -> None:
 def test_markdown_note_quotes_every_number_used_in_the_latex_note(nums: list[paper.Number]) -> None:
     by_macro = {n.macro: n for n in nums}
     used = {m for m in re.findall(r"\\([A-Za-z]+)", (PAPER / "technical-note.tex").read_text()) if m in by_macro}
-    assert len(used) > 50
+    assert len(used) >= 40
     markdown = (PAPER / "technical-note.md").read_text()
     missing = {m: paper.markdown_value(by_macro[m]) for m in used if paper.markdown_value(by_macro[m]) not in markdown}
     assert not missing

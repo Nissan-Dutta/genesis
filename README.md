@@ -1,4 +1,10 @@
-# pgnoise: how much of ProteinGym's leaderboard is noise?
+# pgnoise: can ProteinGym scores support a model decision?
+
+Decisions about AI models in biology rest on evaluation scores. On the field's main public protein benchmark, the
+smallest gain the leaderboard can reliably detect at the top is about 0.015 (80% power), larger than the gap between
+the published #1 and #2 and comparable to the gap to #3. Which model ranks #1 also depends on which kinds of lab
+tests are counted—a design choice, not a property of the models. This repository asks how large an evaluation must be
+before its numbers can support a decision.
 
 [ProteinGym](https://github.com/OATML-Markslab/ProteinGym) ranks 97 zero-shot protein fitness models on 217 deep
 mutational scanning assays, but it reports no uncertainty for the ranks themselves. `pgnoise` reproduces the
@@ -13,10 +19,10 @@ a laptop from about 0.7 MB of pinned public CSVs.
 <p align="center"><img src="results/figures/headline.png" width="420"
 alt="Top-20 rank intervals with the possible-#1 set highlighted, and assays needed for 80% power versus true gain"></p>
 
-**(a)** 95% intervals for the rank of each top-20 model's benchmark aggregate (thick: marginal; thin: simultaneous).
-Orange models cannot be ruled out as #1; dashed lines mark the only two significant gaps between neighbours.
-**(b)** Assays needed to detect a true gain Δ over the current #1 with 80% power; today's 217 assays detect about
-0.020.
+**(a)** Assays needed for 80% power to detect a true gain Δ over the current #1 (band: #1 vs each of the next ten).
+Today's 217 assays support detecting about 0.020 Spearman at the median pair (about 0.015 for the tightest pair).
+**(b)** Supporting rank intervals for the top eight models (marginal thick, simultaneous thin); orange = not ruled
+out as #1.
 
 The two-page technical note is in [`paper/technical-note.pdf`](paper/technical-note.pdf), with a Markdown version
 in [`paper/technical-note.md`](paper/technical-note.md).
@@ -28,8 +34,12 @@ All numbers come from `results/summary.json`, using ProteinGym commit `144fe22` 
 - **Reproduction.** All 97 published averages and ranks match exactly, and so do the AUC, MCC, NDCG and top-K
   recall leaderboards. 91 of 97 published error bars match at 3 dp; the other 6 lie within 0.0002 of a rounding
   boundary and change with the bootstrap seed.
-- **#1 is a coin flip.** AIDO Protein-RAG and VenusREM differ by 0.00004, and each is #1 in about half of the
-  bootstrap replicates. The 95% set of possible #1s is {AIDO Protein-RAG, VenusREM, ProSST (K=4096)}.
+- **Power first.** At 80% power the smallest detectable gain at the top is about 0.015; the median pair needs about
+  0.020. Gaps among the leaders are often smaller than that.
+- **(A) Statistical uncertainty.** AIDO Protein-RAG and VenusREM differ by 0.00004; three models cannot be ruled out
+  as #1. Only 2/19 adjacent top-20 pairs differ significantly.
+- **(B) Assay mix (design).** On the 200 assays every model shares, VenusREM is #1 (not AIDO Protein-RAG on all 217);
+  dropping function groups also moves the leader. See `results/tables/shared_assay_rerank.csv`.
 - **Ranks are wide.** #4 has a marginal 95% rank interval of 1–13 and #10 of 6–28 (simultaneous: 1–18 and 6–42).
 - **Power.** Today's benchmark detects a gain of about 0.020 over #1 (0.015–0.027 across the next ten models).
   A gain of 0.01 needs about 850 assays (3.9× today), and a gain of 0.005 about 3,380 (15.6×).

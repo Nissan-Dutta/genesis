@@ -486,6 +486,43 @@
       "n_common_assays": 200,
       "n_common_units": 185,
       "top_on_common": "VenusREM",
+      "best_set_all_common": [
+        "ProSST (K=4096)",
+        "VenusREM",
+        "AIDO Protein-RAG (16B)"
+      ],
+      "published_top_k": 10,
+      "n_top10_common_assays": 200,
+      "n_top10_common_units": 185,
+      "top_on_top10_common": "VenusREM",
+      "best_set_top10_common": [
+        "ProSST (K=4096)",
+        "VenusREM",
+        "AIDO Protein-RAG (16B)"
+      ],
+      "shared_assay_summary": [
+        {
+          "subset": "published (all assays)",
+          "n_assays": 217,
+          "top1": "AIDO Protein-RAG (16B)",
+          "best_set": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=4096)",
+          "n_possible_1": 3
+        },
+        {
+          "subset": "all 200 assays scored by every model",
+          "n_assays": 200,
+          "top1": "VenusREM",
+          "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+          "n_possible_1": 3
+        },
+        {
+          "subset": "200 assays scored by published top 10",
+          "n_assays": 200,
+          "top1": "VenusREM",
+          "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+          "n_possible_1": 3
+        }
+      ],
       "missing_by_function": {
         "Activity": 4,
         "Binding": 0,
@@ -498,8 +535,8 @@
       "protriever_common": {
         "score": 0.47889712550607283,
         "rank": 8.0,
-        "score_common": 0.47889712550607283,
-        "rank_common": 10.0,
+        "score_all_common": 0.47889712550607283,
+        "rank_all_common": 10.0,
         "marg_lo_common": 5.0,
         "marg_hi_common": 21.0
       }

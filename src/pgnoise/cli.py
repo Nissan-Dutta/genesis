@@ -94,6 +94,7 @@ def cmd_ranks(args: argparse.Namespace) -> None:
 
     cov = analysis.assay_coverage(assays, units, ru, seed=args.seed + 1)
     cov["common_table"].to_csv(tables / "common_assay_leaderboard.csv", index_label="model")
+    cov["shared_assay_summary"].to_csv(tables / "shared_assay_rerank.csv", index=False)
     cov["missing_assays"].to_csv(tables / "protriever_missing_assays.csv")
 
     pd.set_option("display.width", 200)
@@ -106,7 +107,6 @@ def cmd_ranks(args: argparse.Namespace) -> None:
 
     pos = {m: i for i, m in enumerate(ru.index)}
     se_1_3 = float(ranks.pairwise_se(boot)[units.models.index(ru.index[0]), units.models.index(ru.index[2])])
-    prot = cov["common_table"].loc["Protriever"] if "Protriever" in cov["common_table"].index else None
     _update_summary(args.out, "ranks", {
         "n_boot": args.boot,
         "n_units": int(units.X.shape[0]),
@@ -129,13 +129,23 @@ def cmd_ranks(args: argparse.Namespace) -> None:
         "mdd_80_median_top10": float(power["mdd_80pct_power"].median()),
         "sig_threshold_median_top10": float(power["sig_threshold_1.96se"].median()),
         "logo_top": dict(zip(logo["dropped"], [s.split(" (")[0] for s in logo["#1"]])),
-        "coverage": {"incomplete": cov["incomplete"], "n_common_assays": cov["n_common_assays"],
-                     "n_common_units": cov["n_common_units"],
-                     "top_on_common": cov["common_table"]["rank_common"].idxmin(),
-                     "missing_by_function": cov["missing_by_function"].to_dict(),
-                     "others_mean_on_missing": cov["others_mean_on_missing"],
-                     "others_mean_on_common": cov["others_mean_on_common"],
-                     "protriever_common": None if prot is None else {k: float(v) for k, v in prot.items()}},
+        "coverage": {
+            "incomplete": cov["incomplete"],
+            "n_common_assays": cov["n_common_assays"],
+            "n_common_units": cov["n_common_units"],
+            "top_on_common": cov["top_on_common"],
+            "best_set_all_common": cov["best_set_all_common"],
+            "published_top_k": cov["published_top_k"],
+            "n_top10_common_assays": cov["n_top10_common_assays"],
+            "n_top10_common_units": cov["n_top10_common_units"],
+            "top_on_top10_common": cov["top_on_top10_common"],
+            "best_set_top10_common": cov["best_set_top10_common"],
+            "shared_assay_summary": cov["shared_assay_summary"].to_dict(orient="records"),
+            "missing_by_function": cov["missing_by_function"].to_dict(),
+            "others_mean_on_missing": cov["others_mean_on_missing"],
+            "others_mean_on_common": cov["others_mean_on_common"],
+            "protriever_common": cov["protriever_common"],
+        },
     })
 
 

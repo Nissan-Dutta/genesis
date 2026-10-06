@@ -177,29 +177,117 @@ def version_drift(summaries: dict[str, pd.DataFrame], reference: str) -> pd.Data
     return df
 
 
+def _leaderboard_on_assays(assays: AssayTable, mask: pd.Series, n_boot: int, seed: int) -> tuple[pd.Series, pd.Series, list[str]]:
+    """ProteinGym aggregate, ranks and 95% best-model set on a fixed assay subset."""
+    sub = AssayTable(assays.scores[mask], assays.meta[mask])
+    su = to_units(sub)
+    theta = proteingym_score(su.X, su.groups, su.n_groups)
+    boot = bootstrap_scores(su.X, su.groups, su.n_groups, n_boot, np.random.default_rng(seed))
+    ms = ranks.max_statistics(theta, boot)
+    best = ranks.best_confidence_set(theta, boot, ALPHA, ms)
+    models = su.models
+    return (
+        pd.Series(theta, index=models),
+        pd.Series(ranks.ranks_desc(theta), index=models),
+        [m for m, ok in zip(models, best, strict=True) if ok],
+    )
+
+
 def assay_coverage(assays: AssayTable, units: UnitTable, ru: pd.DataFrame, n_boot: int = 4000,
-                   seed: int = 2) -> dict:
-    """Which models skip assays, and what happens when everyone is scored on the common subset."""
+                   seed: int = 2, top_k: int = 10) -> dict:
+    """Which models skip assays, and ranks / possible-#1 sets on shared assay subsets."""
     n_scored = assays.scores.notna().sum()
     incomplete = n_scored[n_scored < len(assays.scores)]
     out: dict = {"n_assays": len(assays.scores),
                  "incomplete": {m: int(n) for m, n in incomplete.items()}}
-    common = assays.scores.notna().all(axis=1)
-    sub = AssayTable(assays.scores[common], assays.meta[common])
-    su = to_units(sub)
-    theta = proteingym_score(su.X, su.groups, su.n_groups)
-    boot = bootstrap_scores(su.X, su.groups, su.n_groups, n_boot, np.random.default_rng(seed))
-    ml, mu = ranks.pairwise_rank_ci(theta, boot, ALPHA, "marginal", stepdown=False)
-    common_df = pd.DataFrame({"score_common": theta, "rank_common": ranks.ranks_desc(theta),
-                              "marg_lo_common": ml, "marg_hi_common": mu}, index=su.models)
-    common_df = ru[["score", "rank"]].join(common_df).sort_values("rank")
-    out["n_common_assays"] = int(common.sum())
-    out["n_common_units"] = int(su.X.shape[0])
+    published_top = list(ru.index[:top_k])
+    common_all = assays.scores.notna().all(axis=1)
+    common_topk = assays.scores[published_top].notna().all(axis=1)
+
+    def _subset(name: str, mask: pd.Series, seed_off: int) -> dict:
+        score, rank, best = _leaderboard_on_assays(assays, mask, n_boot, seed + seed_off)
+        return {
+            "n_assays": int(mask.sum()),
+            "n_units": int(to_units(AssayTable(assays.scores[mask], assays.meta[mask])).X.shape[0]),
+            "top1": rank.idxmin(),
+            "best_set": best,
+            "score": score,
+            "rank": rank,
+        }
+
+    all_common = _subset("all_models", common_all, 0)
+    topk_common = _subset(f"top{top_k}", common_topk, 1)
+
+    common_df = pd.DataFrame(
+        {
+            "score": ru["score"],
+            "rank": ru["rank"],
+            "in_best_set": ru["in_best_set"],
+            "score_all_common": all_common["score"],
+            "rank_all_common": all_common["rank"],
+            "score_topk_common": topk_common["score"],
+            "rank_topk_common": topk_common["rank"],
+        },
+        index=ru.index,
+    )
+    common_df["in_best_set_all_common"] = common_df.index.isin(all_common["best_set"])
+    common_df["in_best_set_topk_common"] = common_df.index.isin(topk_common["best_set"])
+    common_df = common_df.sort_values("rank")
+
+    su_all = to_units(AssayTable(assays.scores[common_all], assays.meta[common_all]))
+    boot = bootstrap_scores(su_all.X, su_all.groups, su_all.n_groups, n_boot, np.random.default_rng(seed))
+    theta_all = proteingym_score(su_all.X, su_all.groups, su_all.n_groups)
+    ml, mu = ranks.pairwise_rank_ci(theta_all, boot, ALPHA, "marginal", stepdown=False)
+    common_df["marg_lo_all_common"] = pd.Series(ml, index=su_all.models)
+    common_df["marg_hi_all_common"] = pd.Series(mu, index=su_all.models)
+
+    out["n_common_assays"] = all_common["n_assays"]
+    out["n_common_units"] = all_common["n_units"]
+    out["top_on_common"] = all_common["top1"]
+    out["best_set_all_common"] = all_common["best_set"]
+    out[f"n_top{top_k}_common_assays"] = topk_common["n_assays"]
+    out[f"n_top{top_k}_common_units"] = topk_common["n_units"]
+    out[f"top_on_top{top_k}_common"] = topk_common["top1"]
+    out[f"best_set_top{top_k}_common"] = topk_common["best_set"]
+    out["published_top_k"] = top_k
     out["common_table"] = common_df
-    missing = assays.scores.index[~common]
+    out["shared_assay_summary"] = pd.DataFrame(
+        [
+            {
+                "subset": "published (all assays)",
+                "n_assays": len(assays.scores),
+                "top1": ru.index[0],
+                "best_set": "; ".join(ru.index[ru["in_best_set"]]),
+                "n_possible_1": int(ru["in_best_set"].sum()),
+            },
+            {
+                "subset": f"all {all_common['n_assays']} assays scored by every model",
+                "n_assays": all_common["n_assays"],
+                "top1": all_common["top1"],
+                "best_set": "; ".join(all_common["best_set"]),
+                "n_possible_1": len(all_common["best_set"]),
+            },
+            {
+                "subset": f"{topk_common['n_assays']} assays scored by published top {top_k}",
+                "n_assays": topk_common["n_assays"],
+                "top1": topk_common["top1"],
+                "best_set": "; ".join(topk_common["best_set"]),
+                "n_possible_1": len(topk_common["best_set"]),
+            },
+        ]
+    )
+    missing = assays.scores.index[~common_all]
     out["missing_assays"] = assays.meta.loc[missing, ["uniprot", "function", "n_mutants"]]
     others = [m for m in assays.models if m not in incomplete.index]
     out["others_mean_on_missing"] = float(assays.scores.loc[missing, others].mean().mean())
-    out["others_mean_on_common"] = float(assays.scores.loc[common, others].mean().mean())
+    out["others_mean_on_common"] = float(assays.scores.loc[common_all, others].mean().mean())
     out["missing_by_function"] = assays.meta.loc[missing, "function"].value_counts().reindex(FUNCTION_GROUPS, fill_value=0)
+    if "Protriever" in common_df.index:
+        prot = common_df.loc["Protriever"]
+        out["protriever_common"] = {k: float(prot[k]) for k in
+                                    ["score", "rank", "score_all_common", "rank_all_common"]}
+        out["protriever_common"]["marg_lo_common"] = float(prot["marg_lo_all_common"])
+        out["protriever_common"]["marg_hi_common"] = float(prot["marg_hi_all_common"])
+    else:
+        out["protriever_common"] = None
     return out

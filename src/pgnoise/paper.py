@@ -182,8 +182,21 @@ def _spec() -> list[tuple[str, str, Callable[[Summary], str]]]:
         ("othersOnMissing", "ranks.coverage.others_mean_on_missing", lambda s: _f(cov(s)["others_mean_on_missing"], 3)),
         ("othersOnCommon", "ranks.coverage.others_mean_on_common", lambda s: _f(cov(s)["others_mean_on_common"], 3)),
         ("protRank", "ranks.coverage.protriever_common.rank", lambda s: _int(cov(s)["protriever_common"]["rank"])),
-        ("protRankCommon", "ranks.coverage.protriever_common.rank_common",
-         lambda s: _int(cov(s)["protriever_common"]["rank_common"])),
+        ("protRankCommon", "ranks.coverage.protriever_common.rank_all_common",
+         lambda s: _int(cov(s)["protriever_common"]["rank_all_common"])),
+        ("mddAtTop", "power.mdd_now.min (headline MDD)", lambda s: _f(pw(s)["mdd_now"]["min"], 3)),
+        ("topPublished", "ranks.top", lambda s: _short(rk(s)["top"])),
+        ("topAllCommon", "ranks.coverage.top_on_common", lambda s: _short(cov(s)["top_on_common"])),
+        ("bestSetAllCommon", "ranks.coverage.best_set_all_common", lambda s: _names(cov(s)["best_set_all_common"])),
+        ("nTopTenCommonAssays", "ranks.coverage.n_top10_common_assays", lambda s: str(cov(s)["n_top10_common_assays"])),
+        ("topTopTenCommon", "ranks.coverage.top_on_top10_common", lambda s: _short(cov(s)["top_on_top10_common"])),
+        ("bestSetTopTenCommon", "ranks.coverage.best_set_top10_common", lambda s: _names(cov(s)["best_set_top10_common"])),
+        ("minMargWorst", "simulation.summary marginal_single_step min_model_coverage min over scenarios",
+         lambda s: _f(min(r["min_model_coverage"] for r in s["simulation"]["summary"]
+                        if r["method"] == "marginal_single_step"), 3)),
+        ("minSimulWorst", "simulation.summary simultaneous_stepdown min_model_coverage min over scenarios",
+         lambda s: _f(min(r["min_model_coverage"] for r in s["simulation"]["summary"]
+                        if r["method"] == "simultaneous_stepdown"), 3)),
         ("topOnCommon", "ranks.coverage.top_on_common", lambda s: _short(cov(s)["top_on_common"])),
         # simulation
         ("simReps", "simulation.n_reps", lambda s: _int(s["simulation"]["n_reps"])),

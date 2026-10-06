@@ -242,17 +242,17 @@ def _headline_label(model: str) -> str:
 
 
 def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame, required: pd.DataFrame,
-             n_units: int, n_assays: int, incomplete: dict[str, int], paths: list[Path], top: int = 20) -> list[Path]:
-    """Single-column summary figure: (a) top-``top`` rank intervals with the possible-#1 set highlighted,
-    (b) assays needed for 80% power against the current #1 as a function of the true gain."""
+             n_units: int, n_assays: int, incomplete: dict[str, int], paths: list[Path], top: int = 20,
+             rank_panel: int = 8) -> list[Path]:
+    """Single-column figure: (a) power / minimum detectable difference; (b) compact rank-interval support."""
     assays_per_unit = n_assays / n_units
-    d = ru.head(top)
+    d = ru.head(rank_panel)
     n_best = int(ru.in_best_set.sum())
-    sig = neighbours[neighbours.sig_holm & (neighbours.rank_hi < top)]
+    sig = neighbours[neighbours.sig_holm & (neighbours.rank_hi < rank_panel)]
     with plt.rc_context(HEADLINE_RC):
         fig = plt.figure(figsize=(3.45, 5.7))
-        ax = fig.add_axes((0.375, 0.435, 0.605, 0.52))
-        bx = fig.add_axes((0.165, 0.065, 0.79, 0.215))
+        bx = fig.add_axes((0.165, 0.38, 0.79, 0.56))
+        ax = fig.add_axes((0.375, 0.06, 0.605, 0.24))
 
         y = np.arange(len(d))
         for yi, (m, r) in zip(y, d.iterrows()):
@@ -286,11 +286,10 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         if incomplete:
             handles.append(plt.Line2D([], [], ls="", label="† scored on " + ", ".join(
                 f"{n}/{n_assays}" for n in incomplete.values()) + " assays"))
-        fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.39), ncol=3, frameon=False,
+        fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.355), ncol=3, frameon=False,
                    handlelength=1.5, columnspacing=1.0, labelspacing=0.35)
-        fig.text(0.012, 0.99, "a", fontweight="bold", fontsize=8, va="top")
-        fig.text(0.06, 0.99, f"Top {top} of {len(ru)}: {n_best} possible #1s; "
-                 f"{int(neighbours.sig_holm.sum())} of {len(neighbours)} neighbour gaps significant",
+        fig.text(0.012, 0.335, "b", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.06, 0.335, f"Supporting: top {rank_panel} rank CIs ({n_best} models not ruled out as #1)",
                  fontsize=7, va="top")
 
         grid = required.groupby("delta")["units_needed"]
@@ -300,11 +299,14 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         bx.axhline(n_assays, color=POSSIBLE_TOP1, lw=0.9, ls=(0, (3, 1.5)))
         bx.text(0.00208, n_assays * 0.86, f"ProteinGym today: {n_assays} assays", color=POSSIBLE_TOP1,
                 fontsize=6, va="top")
-        mdd = float(per_pair["mdd_now"].median())
-        bx.plot([mdd], [n_assays], "o", ms=3.2, color=POSSIBLE_TOP1, zorder=4)
-        bx.annotate(f"detectable today: Δ ≈ {mdd:.3f}", (mdd, n_assays), xytext=(0.0068, 62), fontsize=6,
-                    ha="left", va="bottom", arrowprops=dict(arrowstyle="-", lw=0.5, color="0.3",
-                                                            shrinkA=0, shrinkB=2))
+        mdd_med = float(per_pair["mdd_now"].median())
+        mdd_min = float(per_pair["mdd_now"].min())
+        bx.plot([mdd_med], [n_assays], "o", ms=3.2, color=POSSIBLE_TOP1, zorder=4)
+        bx.annotate(f"80% power today: Δ ≈ {mdd_med:.3f} (median pair)", (mdd_med, n_assays),
+                    xytext=(0.0068, 62), fontsize=6, ha="left", va="bottom",
+                    arrowprops=dict(arrowstyle="-", lw=0.5, color="0.3", shrinkA=0, shrinkB=2))
+        bx.axvline(mdd_min, color="0.45", lw=0.7, ls=(0, (2, 2)))
+        bx.text(mdd_min * 1.04, 55, f"best pair: {mdd_min:.3f}", fontsize=5.5, color="0.35", rotation=90, va="bottom")
         for delta in (0.005, 0.01):
             need = float(per_pair[f"assays_for_{delta}"].median())
             bx.plot([delta], [need], "o", ms=3.0, color="black", zorder=4)
@@ -319,8 +321,9 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         bx.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
         bx.legend(loc="upper right", frameon=False, borderaxespad=0.3)
         bx.grid(which="major", lw=0.4, alpha=0.35)
-        fig.text(0.012, 0.31, "b", fontweight="bold", fontsize=8, va="top")
-        fig.text(0.06, 0.31, "Power to detect a new #1 (two-sided paired test, α = 0.05)", fontsize=7, va="top")
+        fig.text(0.012, 0.99, "a", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.06, 0.99, "Does this gain support a decision? Assays for 80% power (paired test, α = 0.05)",
+                 fontsize=7, va="top")
         for path in paths:
             path.parent.mkdir(parents=True, exist_ok=True)
             fig.savefig(path, dpi=300, metadata={"CreationDate": None} if path.suffix == ".pdf" else None)
