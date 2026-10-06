@@ -455,6 +455,11 @@
       "VenusREM > ProSST (K=2048)",
       "S3F-MSA > S2F-MSA"
     ],
+    "neighbours_sig_z": {
+      "VenusREM > ProSST (K=2048)": 4.9492490157121365,
+      "S3F-MSA > S2F-MSA": 5.851756401341027
+    },
+    "gap_1_vs_2": 4.374053030298253e-05,
     "gap_1_vs_3": 0.011312518939394112,
     "se_1_vs_3": 0.006307418525796407,
     "mdd_80_median_top10": 0.01978988884870695,
@@ -472,6 +477,8 @@
         "Protriever": 200
       },
       "n_common_assays": 200,
+      "n_common_units": 185,
+      "top_on_common": "VenusREM",
       "missing_by_function": {
         "Activity": 4,
         "Binding": 0,

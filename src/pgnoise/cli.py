@@ -120,12 +120,17 @@ def cmd_ranks(args: argparse.Namespace) -> None:
         "neighbours_sig_uncorrected": int(nb["sig_uncorrected"].sum()),
         "neighbours_sig_holm": int(nb["sig_holm"].sum()),
         "neighbours_sig_pairs_uncorrected": [f"{a} > {b}" for a, b, s in zip(nb.model_hi, nb.model_lo, nb.sig_uncorrected) if s],
+        "neighbours_sig_z": {f"{a} > {b}": float(z) for a, b, z, s in zip(nb.model_hi, nb.model_lo, nb.z,
+                                                                           nb.sig_uncorrected) if s},
+        "gap_1_vs_2": float(ru["score"].iloc[0] - ru["score"].iloc[1]),
         "gap_1_vs_3": float(ru["score"].iloc[0] - ru["score"].iloc[2]),
         "se_1_vs_3": se_1_3,
         "mdd_80_median_top10": float(power["mdd_80pct_power"].median()),
         "sig_threshold_median_top10": float(power["sig_threshold_1.96se"].median()),
         "logo_top": dict(zip(logo["dropped"], [s.split(" (")[0] for s in logo["#1"]])),
         "coverage": {"incomplete": cov["incomplete"], "n_common_assays": cov["n_common_assays"],
+                     "n_common_units": cov["n_common_units"],
+                     "top_on_common": cov["common_table"]["rank_common"].idxmin(),
                      "missing_by_function": cov["missing_by_function"].to_dict(),
                      "others_mean_on_missing": cov["others_mean_on_missing"],
                      "others_mean_on_common": cov["others_mean_on_common"],
@@ -238,6 +243,19 @@ def cmd_simulate(args: argparse.Namespace) -> None:
     })
 
 
+def cmd_figure(args: argparse.Namespace) -> None:
+    tables, figs = args.out / "tables", args.out / "figures"
+    summary = json.loads((args.out / "summary.json").read_text())
+    ru = pd.read_csv(tables / "rank_intervals.csv", index_col="model")
+    paths = plots.headline(
+        ru, pd.read_csv(tables / "neighbour_tests_top20.csv"), pd.read_csv(tables / "power_per_pair.csv"),
+        pd.read_csv(tables / "power_required_units.csv"), n_units=summary["ranks"]["n_units"],
+        n_assays=summary["reproduction"]["n_assays"], incomplete=summary["ranks"]["coverage"]["incomplete"],
+        paths=[figs / "headline.png", figs / "headline.pdf"])
+    for path in paths:
+        print(path)
+
+
 def cmd_esm2(args: argparse.Namespace) -> None:
     # Imported here because torch and fair-esm are the optional `esm` extra; every other command runs without them.
     from . import esm2
@@ -324,6 +342,9 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--scenarios", nargs="*", choices=list(simulate.SCENARIOS))
     p.set_defaults(func=cmd_simulate)
 
+    p = sub.add_parser("figure", help="headline figure (top-20 rank intervals + power) from the tables in --out")
+    p.set_defaults(func=cmd_figure)
+
     p = sub.add_parser("esm2", help="score small assays with ESM-2 on CPU and compare with the leaderboard "
                                     "(needs `uv sync --extra esm`; not part of `all`)")
     p.add_argument("--sizes", nargs="*", default=["8M", "35M", "150M", "650M"],
@@ -336,7 +357,7 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--download-only", action="store_true")
     p.set_defaults(func=cmd_esm2)
 
-    p = sub.add_parser("all", help="download, reproduce, versions, ranks, robustness, power, simulate")
+    p = sub.add_parser("all", help="download, reproduce, versions, ranks, robustness, power, simulate, figure")
     p.add_argument("--reps", type=int, default=1000)
     p.add_argument("--jobs", type=int, default=4)
     p.set_defaults(func=None)
@@ -353,6 +374,7 @@ def main(argv: list[str] | None = None) -> None:
     cmd_robustness(argparse.Namespace(**vars(args), boot=4000, seed=11))
     cmd_power(argparse.Namespace(**vars(args), sims=4000, seed=5))
     cmd_simulate(argparse.Namespace(**{**vars(args), "boot": 1000, "seed": 2026, "scenarios": None}))
+    cmd_figure(args)
 
 
 if __name__ == "__main__":
