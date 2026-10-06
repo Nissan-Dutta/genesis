@@ -39,6 +39,29 @@ FILES: dict[str, tuple[str, str]] = {
     ),
 }
 
+METRICS = ["Spearman", "AUC", "MCC", "NDCG", "Top_recall"]
+
+_OTHER_METRIC_CHECKSUMS = {
+    "AUC": ("83683a894f4ef693ecd367144557c530f6a33f12f9ec6c176a4c19aaaaff3068",
+            "880f04503b28cb579cb2302c4b56c51505f87cce3f72807e40e2120dcc3ff24a"),
+    "MCC": ("5c1e48975e40a130d208a754bb68ea909abd43874120021b9f7aacba7025e6cd",
+            "a6d9b892a7b040f2c2dcccac049ab2e928a120135e86984b37b706da5ec504a0"),
+    "NDCG": ("b2debc91a6305fb183e930f2b8aeabf91f8d8b49351506d0fbf0cee6b2d22aae",
+             "bcac893d0e73a883ff0c3c6b44bb35583e770cd985e88c8367d023762302d253"),
+    "Top_recall": ("ab9cee646fbc8a92728bff83f1eefc5bf0097b07a12bbe64db9715403305d7de",
+                   "c08af40426a0300beb81c9b9fdba5dd2c2be4e3db64a3b80bc6f0c6733f5d913"),
+}
+for _metric, (_dms_sha, _summary_sha) in _OTHER_METRIC_CHECKSUMS.items():
+    _dir = f"benchmarks/DMS_zero_shot/substitutions/{_metric}"
+    FILES[f"dms_level_{_metric}"] = (f"{_dir}/DMS_substitutions_{_metric}_DMS_level.csv", _dms_sha)
+    FILES[f"summary_{_metric}"] = (f"{_dir}/Summary_performance_DMS_substitutions_{_metric}.csv", _summary_sha)
+
+
+def _metric_key(kind: str, metric: str) -> str:
+    if metric not in METRICS:
+        raise ValueError(f"unknown metric {metric!r}; expected one of {METRICS}")
+    return kind if metric == "Spearman" else f"{kind}_{metric}"
+
 DEFAULT_DATA_DIR = Path("data/raw")
 
 DMS_META_COLUMNS = [
@@ -110,8 +133,8 @@ class AssayTable:
         return list(self.scores.columns)
 
 
-def load_assays(data_dir: Path = DEFAULT_DATA_DIR) -> AssayTable:
-    df = pd.read_csv(path_for("dms_level", data_dir))
+def load_assays(data_dir: Path = DEFAULT_DATA_DIR, metric: str = "Spearman") -> AssayTable:
+    df = pd.read_csv(path_for(_metric_key("dms_level", metric), data_dir))
     ref = pd.read_csv(path_for("reference", data_dir)).set_index("DMS_id")
     df = df.set_index("DMS ID")
     models = [c for c in df.columns if c not in DMS_META_COLUMNS]
@@ -130,8 +153,8 @@ def load_assays(data_dir: Path = DEFAULT_DATA_DIR) -> AssayTable:
     return AssayTable(scores=df[models].astype(float), meta=meta)
 
 
-def load_summary(data_dir: Path = DEFAULT_DATA_DIR) -> pd.DataFrame:
-    return pd.read_csv(path_for("summary", data_dir)).set_index("Model_name")
+def load_summary(data_dir: Path = DEFAULT_DATA_DIR, metric: str = "Spearman") -> pd.DataFrame:
+    return pd.read_csv(path_for(_metric_key("summary", metric), data_dir)).set_index("Model_name")
 
 
 @dataclass(frozen=True)

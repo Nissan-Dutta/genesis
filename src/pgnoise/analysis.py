@@ -21,7 +21,7 @@ def _category_average(assays: AssayTable, column: str, categories: list[str]) ->
 
 
 def reproduce_leaderboard(
-    assays: AssayTable, summary: pd.DataFrame, n_boot: int = 10_000, seed: int = 0
+    assays: AssayTable, summary: pd.DataFrame, n_boot: int = 10_000, seed: int = 0, metric: str = "Spearman"
 ) -> pd.DataFrame:
     """Recompute every published summary column and line it up with ProteinGym's numbers."""
     units = to_units(assays)
@@ -35,7 +35,7 @@ def reproduce_leaderboard(
     taxa = _category_average(assays, "taxon", ["Human", "Eukaryote", "Prokaryote", "Virus"])
     taxa.columns = ["Taxa_Human", "Taxa_Other_Eukaryote", "Taxa_Prokaryote", "Taxa_Virus"]
 
-    ours = pd.DataFrame({"Average_Spearman": score, "Bootstrap_standard_error_Spearman": se}, index=units.models)
+    ours = pd.DataFrame({f"Average_{metric}": score, f"Bootstrap_standard_error_{metric}": se}, index=units.models)
     ours = ours.join(gm).join(msa).join(taxa)
     ours["rank"] = ranks.ranks_desc(score)
 

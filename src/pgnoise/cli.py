@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import analysis, data, plots, ranks, simulate
+from . import aggregation, analysis, data, plots, power, ranks, robustness, simulate
 
 
 def _update_summary(out: Path, section: str, values: dict) -> None:
@@ -132,6 +132,79 @@ def cmd_ranks(args: argparse.Namespace) -> None:
     })
 
 
+def cmd_robustness(args: argparse.Namespace) -> None:
+    tables, figs = args.out / "tables", args.out / "figures"
+    tables.mkdir(parents=True, exist_ok=True)
+    checks = []
+    for metric in data.METRICS:
+        rep = analysis.reproduce_leaderboard(data.load_assays(args.data_dir, metric),
+                                             data.load_summary(args.data_dir, metric), n_boot=2000, metric=metric)
+        r = analysis.reproduction_report(rep)
+        checks.append({"metric": metric, "average_exact": int(r.loc[f"Average_{metric}", "n_exact_3dp"]),
+                       "rank_exact": int(r.loc["rank", "n_exact_3dp"]), "n_models": int(r.loc["rank", "n_models"])})
+    assays = data.load_assays(args.data_dir)
+    published = pd.read_csv(data.path_for("uniprot_level", args.data_dir)).iloc[-1]
+    quirk = robustness.proteingym_uniprot_level_average(assays, pd.read_csv(data.path_for("reference", args.data_dir)))
+    clean = pd.Series(aggregation.point_scores(aggregation.make_design(assays), aggregation.SCHEMES["uniprot_weighted"]),
+                      index=assays.models)
+    cols = [c for c in published.index if c not in ("UniProt_ID", "MSA_Neff_L_category", "Taxon", "Selection Type")]
+    pub = published[cols].astype(float).to_numpy()
+    checks_df = pd.DataFrame(checks)
+    checks_df.to_csv(tables / "reproduction_other_metrics.csv", index=False)
+
+    long = robustness.robustness_grid(n_boot=args.boot, seed=args.seed, data_dir=args.data_dir)
+    long.to_csv(tables / "robustness_long.csv", index=False)
+    summary = robustness.summarise(long)
+    summary.to_csv(tables / "robustness_summary.csv", index=False)
+    combos = [(m, "proteingym") for m in data.METRICS] + [("Spearman", s) for s in aggregation.SCHEMES if s != "proteingym"]
+    plots.robustness_heatmap(long, figs / "robustness_rank_heatmap.png", combos)
+    plots.robustness_grid(summary, figs / "robustness_grid.png")
+    pd.set_option("display.width", 250)
+    print(checks_df.to_string(index=False))
+    print(summary.drop(columns=["top10", "best_set"]).to_string(index=False, float_format=lambda x: f"{x:.3f}"))
+    mean_based = summary[~summary.scheme.eq("median")]
+    _update_summary(args.out, "robustness", {
+        "n_boot": args.boot,
+        "reproduction_other_metrics": checks,
+        "uniprot_level_average_quirk": {
+            "published_matches_duplicated_merge": int((np.abs(np.round(quirk.to_numpy(), 3) - pub) < 1e-9).sum()),
+            "published_matches_equal_protein_weights": int((np.abs(np.round(clean.to_numpy(), 3) - pub) < 1e-9).sum()),
+            "max_abs_diff_vs_equal_weights": float(np.abs(quirk - clean).max()),
+        },
+        "possible_top1_union_mean_schemes": sorted({m for s in mean_based.best_set for m in s.split("; ")}),
+        "leaders": {f"{r.metric}/{r.scheme}": r.top1 for r in summary.itertuples()},
+        "summary": summary.to_dict(orient="records"),
+    })
+
+
+def cmd_power(args: argparse.Namespace) -> None:
+    units = data.to_units(data.load_assays(args.data_dir))
+    res = power.power_tables(units, n_sims=args.sims, seed=args.seed)
+    tables = args.out / "tables"
+    tables.mkdir(parents=True, exist_ok=True)
+    res["per_pair"].to_csv(tables / "power_per_pair.csv", index=False)
+    res["curves"].to_csv(tables / "power_curves.csv", index=False)
+    res["required"].to_csv(tables / "power_required_units.csv", index=False)
+    plots.power_curves(res["curves"], res["required"], int(units.X.shape[0]), args.out / "figures" / "power_curves.png")
+    print(res["per_pair"].to_string(index=False, float_format=lambda x: f"{x:.4g}"))
+    med = res["curves"][res["curves"].pair == "median"]
+    gap = (med.simulated_power - med.analytic_power).abs()
+    print("median pair:", res["median_pair"], "| size at delta=0:", res["size_at_delta0"],
+          "| max |sim - analytic| power:", round(float(gap.max()), 3))
+    pp = res["per_pair"]
+    _update_summary(args.out, "power", {
+        "median_pair": res["median_pair"],
+        "size_at_delta0": res["size_at_delta0"],
+        "max_abs_sim_minus_analytic": float(gap.max()),
+        **{f"units_for_{d}": {"median": float(pp[f"units_for_{d}"].median()), "min": float(pp[f"units_for_{d}"].min()),
+                              "max": float(pp[f"units_for_{d}"].max())} for d in (0.005, 0.01)},
+        **{f"assays_for_{d}_median": float(pp[f"assays_for_{d}"].median()) for d in (0.005, 0.01)},
+        "mdd_now": {"median": float(pp["mdd_now"].median()), "min": float(pp["mdd_now"].min()),
+                    "max": float(pp["mdd_now"].max())},
+        "per_pair": pp.to_dict(orient="records"),
+    })
+
+
 def cmd_simulate(args: argparse.Namespace) -> None:
     units = data.to_units(data.load_assays(args.data_dir))
     cal = simulate.calibrate(units)
@@ -187,6 +260,16 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--seed", type=int, default=1)
     p.set_defaults(func=cmd_ranks)
 
+    p = sub.add_parser("robustness", help="rank intervals under other metrics and aggregation schemes")
+    p.add_argument("--boot", type=int, default=4000)
+    p.add_argument("--seed", type=int, default=11)
+    p.set_defaults(func=cmd_robustness)
+
+    p = sub.add_parser("power", help="assays needed to detect gains at the top")
+    p.add_argument("--sims", type=int, default=4000)
+    p.add_argument("--seed", type=int, default=5)
+    p.set_defaults(func=cmd_power)
+
     p = sub.add_parser("simulate", help="coverage simulation with known true ranks")
     p.add_argument("--reps", type=int, default=1000)
     p.add_argument("--boot", type=int, default=1000)
@@ -195,7 +278,7 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--scenarios", nargs="*", choices=list(simulate.SCENARIOS))
     p.set_defaults(func=cmd_simulate)
 
-    p = sub.add_parser("all", help="download, reproduce, versions, ranks, simulate")
+    p = sub.add_parser("all", help="download, reproduce, versions, ranks, robustness, power, simulate")
     p.add_argument("--reps", type=int, default=1000)
     p.add_argument("--jobs", type=int, default=4)
     p.set_defaults(func=None)
@@ -209,6 +292,8 @@ def main(argv: list[str] | None = None) -> None:
     cmd_reproduce(argparse.Namespace(**vars(args), boot=10_000, seed=0))
     cmd_versions(args)
     cmd_ranks(argparse.Namespace(**vars(args), boot=10_000, seed=1))
+    cmd_robustness(argparse.Namespace(**vars(args), boot=4000, seed=11))
+    cmd_power(argparse.Namespace(**vars(args), sims=4000, seed=5))
     cmd_simulate(argparse.Namespace(**{**vars(args), "boot": 1000, "seed": 2026, "scenarios": None}))
 
 
