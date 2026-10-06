@@ -323,7 +323,7 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         fig.text(0.06, 0.31, "Power to detect a new #1 (two-sided paired test, α = 0.05)", fontsize=7, va="top")
         for path in paths:
             path.parent.mkdir(parents=True, exist_ok=True)
-            fig.savefig(path, dpi=300)
+            fig.savefig(path, dpi=300, metadata={"CreationDate": None} if path.suffix == ".pdf" else None)
         plt.close(fig)
     return paths
 
