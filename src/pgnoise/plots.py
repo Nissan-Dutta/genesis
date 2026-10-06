@@ -226,3 +226,56 @@ def power_curves(curves: pd.DataFrame, required: pd.DataFrame, current_units: in
            title="Benchmark size needed (grey: individual top-10 pairs)")
     ax.legend(fontsize=8)
     return _save(fig, path)
+
+
+ESM2_PARAMS = {"8M": 8e6, "35M": 35e6, "150M": 150e6, "650M": 650e6, "3B": 3e9, "15B": 15e9}
+
+
+def esm2_replication(table: pd.DataFrame, path: Path) -> Path:
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5.2))
+    assays = list(dict.fromkeys(table.assay))
+    colors = dict(zip(assays, plt.cm.tab10.colors))
+    sizes = list(dict.fromkeys(table["size"]))
+    markers = dict(zip(sizes, "osD^vP"))
+    short = {a: f"{a.split('_')[0]} ({table.loc[table.assay == a, 'function'].iloc[0]}, "
+                f"L={table.loc[table.assay == a, 'seq_len'].iloc[0]})" for a in assays}
+
+    ax = axes[0]
+    for r in table.itertuples():
+        c, m = colors[r.assay], markers[r.size]
+        ax.scatter(r.spearman_published, r.spearman_ours, color=c, marker=m, s=46, zorder=3)
+        ax.scatter(r.spearman_published, r.spearman_ours_wt_marginals, facecolors="none", edgecolors=c, marker=m,
+                   s=46, zorder=2)
+        ax.plot([r.spearman_published] * 2, [r.spearman_ours, r.spearman_ours_wt_marginals], color=c, lw=0.6,
+                alpha=0.5)
+    lo = min(table[["spearman_published", "spearman_ours", "spearman_ours_wt_marginals"]].min()) - 0.03
+    hi = max(table[["spearman_published", "spearman_ours", "spearman_ours_wt_marginals"]].max()) + 0.03
+    ax.plot([lo, hi], [lo, hi], color="black", lw=0.8, ls="--")
+    max_diff = float((table.spearman_ours - table.spearman_published).abs().max())
+    max_wt = float((table.spearman_ours_wt_marginals - table.spearman_published).abs().max())
+    ax.set(xlim=(lo, hi), ylim=(lo, hi), xlabel="Published ProteinGym Spearman (3 dp)", ylabel="Our Spearman (CPU)",
+           title=f"Masked marginals reproduce the leaderboard (max |Δ| = {max_diff:.4f});\n"
+                 f"wild-type marginals do not (max |Δ| = {max_wt:.3f})")
+    handles = [plt.Line2D([], [], color=colors[a], marker="o", ls="", label=short[a]) for a in assays]
+    handles += [plt.Line2D([], [], color="grey", marker=markers[s], ls="", label=f"ESM-2 {s}") for s in sizes]
+    handles += [plt.Line2D([], [], color="grey", marker="o", ls="", label="masked marginals (ProteinGym's method)"),
+                plt.Line2D([], [], markerfacecolor="none", markeredgecolor="grey", marker="o", ls="",
+                           label="wild-type marginals")]
+    ax.legend(handles=handles, fontsize=7, loc="upper left")
+
+    ax = axes[1]
+    x = np.array([ESM2_PARAMS[s] for s in sizes])
+    for k, a in enumerate(assays):
+        d = table[table.assay == a].set_index("size").loc[sizes]
+        jitter = x * (1 + 0.06 * (k - (len(assays) - 1) / 2))
+        ax.errorbar(jitter, d.spearman_ours, yerr=1.96 * d.spearman_boot_se, color=colors[a], marker="o", ms=4,
+                    lw=1.2, capsize=2, label=short[a])
+        ax.scatter(jitter, d.spearman_published, color="black", marker="x", s=22, zorder=4)
+    ax.scatter([], [], color="black", marker="x", label="published")
+    ax.set(xscale="log", xticks=x, xticklabels=sizes, xlabel="ESM-2 size",
+           ylabel="Spearman  (±1.96 bootstrap SE over mutants)",
+           title="Within-assay sampling noise dwarfs replication error;\nscaling is not monotone")
+    ax.minorticks_off()
+    ax.legend(fontsize=7, loc="lower right")
+    fig.tight_layout()
+    return _save(fig, path)

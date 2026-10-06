@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 
@@ -237,6 +238,51 @@ def cmd_simulate(args: argparse.Namespace) -> None:
     })
 
 
+def cmd_esm2(args: argparse.Namespace) -> None:
+    # Imported here because torch and fair-esm are the optional `esm` extra; every other command runs without them.
+    from . import esm2
+
+    esm2.download(args.data_dir, args.assays, args.sizes)
+    print(f"ESM-2 inputs verified under {esm2.esm2_dir(args.data_dir)}")
+    if args.download_only:
+        return
+    t0 = time.perf_counter()
+    res = esm2.replicate(args.data_dir, args.assays, args.sizes, batch_size=args.batch_size, threads=args.threads,
+                         n_boot=args.boot, seed=args.seed)
+    total_s = time.perf_counter() - t0
+    table = res["table"]
+    tables = args.out / "tables"
+    (tables / "esm2_scores").mkdir(parents=True, exist_ok=True)
+    table.to_csv(tables / "esm2_replication.csv", index=False)
+    for dms_id, frame in res["per_mutant"].items():
+        frame.to_csv(tables / "esm2_scores" / f"{dms_id}.csv", index=False, float_format="%.6g")
+    diffs = esm2.size_differences(res["per_mutant"], args.sizes, n_boot=args.boot, seed=args.seed)
+    diffs.to_csv(tables / "esm2_size_differences.csv", index=False)
+    plots.esm2_replication(table, args.out / "figures" / "esm2_replication.png")
+    pd.set_option("display.width", 250)
+    cols = ["size", "function", "seq_len", "n_mutants", "spearman_published", "spearman_ours",
+            "spearman_ours_wt_marginals", "per_mutant_max_abs_diff", "spearman_boot_se", "masked_marginals_s"]
+    print(table.set_index("assay")[cols].to_string(float_format=lambda x: f"{x:.4g}"))
+    print(diffs.to_string(index=False, float_format=lambda x: f"{x:.3f}"))
+    exact = int((np.round(table.spearman_ours, 3) == table.spearman_published).sum())
+    print(f"{exact}/{len(table)} assay x size Spearman values match the leaderboard at 3 dp; total {total_s:.0f}s")
+    _update_summary(args.out, "esm2", {
+        "proteingym_release": esm2.PROTEINGYM_RELEASE, "threads": args.threads or os.cpu_count(),
+        "batch_size": args.batch_size, "n_exact_3dp": exact, "n_compared": len(table),
+        "max_abs_spearman_diff_vs_published": float((table.spearman_ours - table.spearman_published).abs().max()),
+        "max_abs_spearman_diff_vs_proteingym_scores":
+            float((table.spearman_ours - table.spearman_proteingym_scores).abs().max()),
+        "max_per_mutant_abs_diff": float(table.per_mutant_max_abs_diff.max()),
+        "max_abs_wt_marginals_shift": float((table.spearman_ours_wt_marginals - table.spearman_ours).abs().max()),
+        "total_runtime_s": total_s,
+        "size_steps_negative": int((diffs.gain < 0).sum()),
+        "size_steps_negative_significant": int((diffs.z < -1.96).sum()),
+        "size_steps": len(diffs),
+        "rows": table.to_dict(orient="records"),
+        "size_differences": diffs.to_dict(orient="records"),
+    })
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="pgnoise", description="How much of ProteinGym's leaderboard is noise?")
     parser.add_argument("--data-dir", type=Path, default=data.DEFAULT_DATA_DIR)
@@ -277,6 +323,18 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--seed", type=int, default=2026)
     p.add_argument("--scenarios", nargs="*", choices=list(simulate.SCENARIOS))
     p.set_defaults(func=cmd_simulate)
+
+    p = sub.add_parser("esm2", help="score small assays with ESM-2 on CPU and compare with the leaderboard "
+                                    "(needs `uv sync --extra esm`; not part of `all`)")
+    p.add_argument("--sizes", nargs="*", default=["8M", "35M", "150M", "650M"],
+                   choices=["8M", "35M", "150M", "650M"])
+    p.add_argument("--assays", nargs="*", default=None, help="DMS IDs (default: the five pinned assays)")
+    p.add_argument("--batch-size", type=int, default=16, help="masked copies of the sequence per forward pass")
+    p.add_argument("--threads", type=int, default=None, help="torch CPU threads (default: all cores)")
+    p.add_argument("--boot", type=int, default=2000, help="mutant-level bootstrap reps for each Spearman's SE")
+    p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--download-only", action="store_true")
+    p.set_defaults(func=cmd_esm2)
 
     p = sub.add_parser("all", help="download, reproduce, versions, ranks, robustness, power, simulate")
     p.add_argument("--reps", type=int, default=1000)
