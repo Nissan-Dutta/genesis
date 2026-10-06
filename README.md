@@ -1,239 +1,151 @@
 # pgnoise: how much of ProteinGym's leaderboard is noise?
 
-This repo is a reproducible rank-uncertainty analysis of the
-[ProteinGym](https://github.com/OATML-Markslab/ProteinGym) zero-shot DMS-substitution leaderboard
-(97 models, 217 assays). It does eight things:
+[ProteinGym](https://github.com/OATML-Markslab/ProteinGym) ranks 97 zero-shot protein fitness models on 217 deep
+mutational scanning assays, but it reports no uncertainty for the ranks themselves. `pgnoise` reproduces the
+published leaderboard exactly and puts statistically valid 95% confidence intervals on every model's rank: marginal
+and simultaneous pairwise max-t intervals with a stratified bootstrap over proteins, checked by a coverage
+simulation with known true ranks. It then asks how many assays the benchmark would need to detect realistic gains,
+and how far the top ranks move with the metric, the aggregation and assay coverage. Three models cannot be ruled out
+as #1. Only 2 of the 19 adjacent pairs in the top 20 are statistically distinguishable. Detecting a 0.01 Spearman
+gain over the current leader with 80% power would take about 850 assays, 3.9× today's benchmark. Everything runs on
+a laptop from about 0.7 MB of pinned public CSVs.
 
-1. Downloads ProteinGym's public per-assay Spearman table and assay metadata. Files are pinned to
-   one commit and checked against SHA-256 checksums.
-2. Recomputes the published leaderboard averages, function/MSA/taxon breakdowns and bootstrap
-   error bars using ProteinGym's own aggregation scheme, and reports every mismatch.
-3. Puts 95% confidence intervals on every model's **rank**: naive bootstrap-percentile, marginal
-   and simultaneous pairwise max-t, each single-step and step-down. It also tests neighbouring
-   pairs in the top 20, gives a confidence set for the #1 model, the minimum detectable
-   difference at the top, a leave-one-function-group-out check of #1, and the effect of
-   Protriever's incomplete assay coverage.
-4. Runs a coverage simulation calibrated to the real data, with known true ranks. Scenarios
-   include exact ties and near ties.
-5. Re-runs the rank analysis under ProteinGym's other metrics (AUC, MCC, NDCG, top-K recall) and
-   under four alternative aggregation schemes.
-6. Computes power curves: how many assays it takes to detect a gain of 0.005 or 0.01 at the top.
-7. Re-scores five small assays with ESM-2 (8M–650M) on CPU, using ProteinGym's own masked-marginal
-   method, and checks the result against the leaderboard mutant by mutant.
-8. Writes tables and figures to `results/`.
+<p align="center"><img src="results/figures/headline.png" width="420"
+alt="Top-20 rank intervals with the possible-#1 set highlighted, and assays needed for 80% power versus true gain"></p>
 
-## Quick start
+**(a)** 95% intervals for the rank of each top-20 model's benchmark aggregate (thick: marginal; thin: simultaneous).
+Orange models cannot be ruled out as #1; dashed lines mark the only two significant gaps between neighbours.
+**(b)** Assays needed to detect a true gain Δ over the current #1 with 80% power; today's 217 assays detect about
+0.020.
+
+The two-page technical note is in [`paper/technical-note.pdf`](paper/technical-note.pdf), with a Markdown version
+in [`paper/technical-note.md`](paper/technical-note.md).
+
+## Key results
+
+All numbers come from `results/summary.json`, using ProteinGym commit `144fe22` with 10,000 bootstrap replicates.
+
+- **Reproduction.** All 97 published averages and ranks match exactly, and so do the AUC, MCC, NDCG and top-K
+  recall leaderboards. 91 of 97 published error bars match at 3 dp; the other 6 lie within 0.0002 of a rounding
+  boundary and change with the bootstrap seed.
+- **#1 is a coin flip.** AIDO Protein-RAG and VenusREM differ by 0.00004, and each is #1 in about half of the
+  bootstrap replicates. The 95% set of possible #1s is {AIDO Protein-RAG, VenusREM, ProSST (K=4096)}.
+- **Ranks are wide.** #4 has a marginal 95% rank interval of 1–13 and #10 of 6–28 (simultaneous: 1–18 and 6–42).
+- **Power.** Today's benchmark detects a gain of about 0.020 over #1 (0.015–0.027 across the next ten models).
+  A gain of 0.01 needs about 850 assays (3.9× today), and a gain of 0.005 about 3,380 (15.6×).
+- **Robustness.** Spearman, AUC and MCC agree on the possible-#1 set under four mean-based aggregations. NDCG puts
+  S3F-MSA first, and only 4 of the published top 10 stay in its top 10.
+- **Coverage.** Protriever is scored on 200 of 217 assays. The 17 it skips are harder for everyone else, and on the
+  common assays it falls from #8 to #10.
+- **Validity.** In 1,000 simulated leaderboards per scenario, the headline intervals keep worst-model coverage
+  at 0.973 or above, including under exact ties. Naive bootstrap-percentile rank intervals fall to 0.081.
+- **Replication.** Re-scoring five assays with ESM-2 (8M–650M) on CPU reproduces all 20 published Spearman values
+  at 3 dp.
+
+## Quickstart
 
 ```bash
-# needs uv (https://docs.astral.sh/uv/); Python 3.12 and all pinned dependencies come from uv.lock
+# needs uv (https://docs.astral.sh/uv/); Python 3.12 and every pinned dependency come from uv.lock
 uv sync
-uv run pgnoise download          # ~0.7 MB of CSVs into data/raw/ (git-ignored), checksums verified
-uv run pgnoise reproduce         # published averages and error bars vs ours   (~2 s)
-uv run pgnoise versions          # score drift between ProteinGym releases     (~2 s)
-uv run pgnoise ranks             # rank intervals and related analyses         (~15 s)
-uv run pgnoise robustness        # 5 metrics x 5 aggregation schemes           (~40 s)
-uv run pgnoise power             # power curves and benchmark size needed      (~5 s)
-uv run pgnoise simulate          # coverage simulation, 5 scenarios x 1000 reps (~25 min on 4 cores)
-uv run pytest                    # unit + integration tests
-
-# optional: ESM-2 replication (CPU torch + fair-esm, ~3.4 GB of weights and data)
-uv sync --extra esm
-uv run pgnoise esm2              # 5 assays x 4 ESM-2 sizes                    (~5 min on 4 cores)
+uv run pgnoise download   # ~0.7 MB of CSVs into data/raw/ (git-ignored); SHA-256 checksums verified
+uv run pgnoise ranks      # rank intervals, best-model set, neighbour tests, Protriever coverage (~15 s)
+uv run pgnoise figure     # the headline figure, from the tables in results/
+uv run pytest             # unit and integration tests
 ```
 
-`uv run pgnoise all` runs everything in order except `esm2`. To try the simulation quickly, use
-`uv run pgnoise simulate --reps 50`. If you don't use uv, `pip install -r requirements.txt && pip install -e .`
-works too. The requirements file is exported from the lock file. For the ESM-2 extra without uv, use
-`pip install -e ".[esm]" --extra-index-url https://download.pytorch.org/whl/cpu`.
+`uv run pgnoise all` runs every analysis except the ESM-2 replication (about 25 minutes on 4 cores, mostly the
+simulation). Without uv, `pip install -r requirements.txt && pip install -e .` works too; the requirements file is
+exported from the lock file.
+
+## Reproducing each result
+
+Each command writes tables to `results/tables/`, figures to `results/figures/`, and its headline numbers to a
+section of `results/summary.json`. `reproduce`, `ranks`, `robustness`, `power`, `simulate` and `esm2` read the files
+fetched by `pgnoise download`; `figure` and `numbers` need only the committed `results/`. Runtimes are for 4 cores.
+
+| Result | Command | Main outputs | Time |
+|---|---|---|---|
+| Published leaderboard and error bars, recomputed | `pgnoise reproduce` | `reproduction_full.csv`, `reproduction_report.csv`, `reproduction.png` | 2 s |
+| Score drift between ProteinGym releases | `pgnoise versions` | `version_drift.csv` | 2 s |
+| Rank intervals, possible #1s, neighbour tests, minimum detectable difference, leave-one-group-out, Protriever coverage | `pgnoise ranks` | `rank_intervals.csv`, `neighbour_tests_top20.csv`, `top_gap_power.csv`, `leave_one_group_out*.csv`, `common_assay_leaderboard.csv`, `protriever_missing_assays.csv`, `rank_intervals_top40.png`, `pairwise_top20.png`, `leave_one_group_out.png` | 15 s |
+| 5 metrics × 5 aggregation schemes | `pgnoise robustness` | `robustness_long.csv`, `robustness_summary.csv`, `reproduction_other_metrics.csv`, `robustness_rank_heatmap.png`, `robustness_grid.png` | 40 s |
+| Power curves and benchmark size needed | `pgnoise power` | `power_per_pair.csv`, `power_curves.csv`, `power_required_units.csv`, `power_curves.png` | 5 s |
+| Coverage simulation (5 scenarios × 1,000 leaderboards) | `pgnoise simulate` | `sim_summary.csv`, `sim_best_set.csv`, `sim_summary.png`, `sim_coverage_by_rank.png` | 25 min |
+| ESM-2 replication on 5 assays | `uv sync --extra esm`, then `pgnoise esm2` | `esm2_replication.csv`, `esm2_size_differences.csv`, `esm2_scores/`, `esm2_replication.png` | 5 min |
+| Headline figure | `pgnoise figure` | `headline.png`, `headline.pdf` | 2 s |
+| Numbers in the technical note | `pgnoise numbers` | `paper/numbers.tex`, `paper/numbers.md` | < 1 s |
+| Technical note PDF | `make -C paper` (needs pdflatex and bibtex) | `paper/technical-note.pdf` | 5 s |
+
+To try the simulation quickly, use `uv run pgnoise simulate --reps 50`. Seeds are fixed (re-running `pgnoise ranks`,
+for example, reproduces its committed tables exactly), and the figure and note PDFs are byte-reproducible.
+
+The ESM-2 extra installs CPU-only `torch==2.8.0` and `fair-esm==2.0.0`, then downloads about 3.4 GB of pinned
+inputs into `data/esm2/`. Without uv, use `pip install -e ".[esm]" --extra-index-url https://download.pytorch.org/whl/cpu`.
+
+**Number provenance.** `pgnoise numbers` turns `results/summary.json` into LaTeX macros (`paper/numbers.tex`) and a
+table that maps each macro to its JSON source (`paper/numbers.md`). The LaTeX note uses only these macros for
+results. `tests/test_paper.py` checks that both files are current and that the Markdown note quotes every value the
+LaTeX note uses.
 
 ## Data and version
 
-- Source: `OATML-Markslab/ProteinGym`, commit `144fe22` (2026-03-25). The per-assay file at this
-  commit is byte-identical to the June 2025 "Added Protriever" commit, so it is **release v1.3
-  plus the two later additions, AIDO Protein-RAG and Protriever**. That gives 97 models.
-- Files used: `DMS_substitutions_{Spearman,AUC,MCC,NDCG,Top_recall}_DMS_level.csv` (per-assay
-  scores, rounded to 3 dp, as ProteinGym itself aggregates) and `reference_files/DMS_substitutions.csv` (UniProt ID and
-  `coarse_selection_type`). The published `Summary_performance_...csv` is the reproduction target.
-- Version drift (`results/tables/version_drift.csv`, cf.
-  [ProteinGym issue #99](https://github.com/OATML-Markslab/ProteinGym/issues/99)): from v1.0 to
-  v1.1, published averages moved by up to 0.011 (ESM-1v) and by 0.158 for Wavenet. Since v1.2,
-  scores of existing models have not changed.
+- **Source.** `OATML-Markslab/ProteinGym`, commit `144fe22` (2026-03-25). The per-assay file at this commit is
+  byte-identical to the June 2025 "Added Protriever" commit, so the data are **release v1.3 plus two later
+  additions, AIDO Protein-RAG and Protriever**: 97 models.
+- **Files used.** The per-assay scores `DMS_substitutions_{Spearman,AUC,MCC,NDCG,Top_recall}_DMS_level.csv`, rounded
+  to 3 dp as ProteinGym itself aggregates them, and `reference_files/DMS_substitutions.csv` for each assay's UniProt
+  ID and `coarse_selection_type`. The published `Summary_performance_...csv` files are the reproduction targets.
+- **ESM-2 inputs.** The ProteinGym v1.3 assay archive and ProteinGym's own per-mutant scores, from
+  `marks.hms.harvard.edu/proteingym`, and the fair-esm checkpoints. All are SHA-256 pinned in `esm2.py`.
+- **Version drift** (`results/tables/version_drift.csv`; see
+  [ProteinGym issue #99](https://github.com/OATML-Markslab/ProteinGym/issues/99)). From v1.0 to v1.1, published
+  averages moved by up to 0.011 (ESM-1v), and by 0.158 for Wavenet. Since v1.2, scores of existing models have not
+  changed.
 
-## Methods
+## Methods in brief
 
-**ProteinGym's aggregation.** This replicates `proteingym/performance_DMS_benchmarks.py`. Per-assay
-Spearman values are averaged within (UniProt ID, coarse selection type) units, which gives 200
-units. The units are then averaged within each of 5 function groups (Activity, Binding,
-Expression, OrganismalFitness, Stability), and the headline score is the mean of the 5 group
-means. Missing scores are skipped at every level, as pandas does. The published error bar is the
-SD over 10,000 bootstrap replicates of each model's unit-level gap to #1, resampling units with
-replacement within each function group.
+**Aggregation.** This replicates `proteingym/performance_DMS_benchmarks.py`. Per-assay scores are averaged within
+200 (UniProt ID, function) units, then within 5 function groups, and the headline score is the mean of the 5 group
+means. Missing scores are skipped at every level.
 
-**Estimand.** Each interval targets the rank of a model's *benchmark aggregate*: ProteinGym's
-score in the limit of infinitely many proteins per function group. Rank is
-`1 + #{models with a strictly higher aggregate}`. This is **not** a prediction interval for a
-model's rank on a new assay, which is the target of Neuhof & Benjamini (2026, arXiv 2606.08679).
-Per-assay ranks vary far more than the rank of the aggregate.
+**Estimand.** Each interval targets the rank of a model's *benchmark aggregate*: its ProteinGym score in the limit
+of infinitely many proteins per function group. This is not a prediction interval for a model's rank on a new assay,
+which is the target of Neuhof & Benjamini (2026, arXiv:2606.08679).
 
-**Uncertainty.** All methods use the same stratified bootstrap over units as ProteinGym's error
-bars (10,000 replicates on real data, 1,000 inside the simulation).
+**Uncertainty.** All methods share ProteinGym's own bootstrap: units are resampled with replacement within function
+groups.
 
 | Method | Guarantee |
 |---|---|
-| Bootstrap percentile of ranks | none (known to fail near ties; Hall & Miller 2009) |
-| Pairwise max-t, marginal (Mogstad, Romano, Shaikh & Wilhelm 2024) | each model's interval covers its rank w.p. ≥ 95% |
-| Pairwise max-t, simultaneous | all intervals cover all ranks jointly w.p. ≥ 95% |
-| Step-down variants | same guarantees, tighter (Romano-Wolf); under-covers with exact ties in small strata |
-| Bootstrap-t step-down (`studentized.py`) | as above, each bootstrap replicate studentised with its own linearised SE |
-| Best-model set (one-sided max-t vs each model) | contains the true #1 w.p. ≥ 95% |
-| "Within 1.96 SE of #1" (how ProteinGym error bars are usually read) | none |
+| Bootstrap percentile of ranks | none; fails near ties (Hall & Miller 2009) |
+| Pairwise max-t, marginal (Mogstad, Romano, Shaikh & Wilhelm 2024) | each model's interval covers its rank with probability ≥ 95% |
+| Pairwise max-t, simultaneous | all intervals cover all ranks jointly with probability ≥ 95% |
+| Step-down variants (Romano–Wolf) | same guarantees and tighter, but under-cover with exact ties in small strata |
+| Bootstrap-t step-down (`studentized.py`) | as above, with each bootstrap replicate studentised by its own linearised SE |
+| Best-model set (one-sided max-t) | contains the true #1 with probability ≥ 95% |
+| "Within 1.96 SE of #1" (the usual reading of ProteinGym's error bars) | none |
 
-**Neighbour tests.** Paired bootstrap z-tests on the 19 adjacent pairs in the top 20, reported
-both uncorrected and with Holm correction. **MDD:** `(z_0.975 + z_0.8) × SE(gap)`, i.e. the true
-gap detectable with 80% power.
+The headline intervals are marginal single-step and simultaneous step-down.
 
-**Aggregation schemes** (`aggregation.py`). Every scheme uses the same stratified unit bootstrap,
-so only the estimand changes:
+**Power.** A new model is assumed to beat #1 by a true Δ, with paired per-unit differences as variable as those
+between #1 and each of the next 10 complete-coverage models, and new assays are assumed to arrive in today's
+function mix. Required units = `n0 × ((z_0.975 + z_0.8) × SE0 / Δ)²`. The formula is checked by resampling.
 
-| Scheme | Definition |
-|---|---|
-| `proteingym` | assays → (UniProt, function) units → 5 function groups → mean (the published one) |
-| `function_group_mean` | mean of the 5 function-group means of raw assays (no UniProt step) |
-| `uniprot_weighted` | every protein weighted equally, function groups ignored |
-| `flat_mean` | plain mean over 217 assays |
-| `median` | median over 217 assays; its bootstrap is rough because scores are rounded to 3 dp |
+**Simulation.** `X[u, m] = mu[g(u), m] + a[u] + eps[u, m]` on the real unit and group structure. The residuals are
+either resampled real rows or Gaussian with the empirical covariance. The scenarios are calibrated, Gaussian, exact
+ties, near ties and well separated. A tied model's interval counts as covering only if it contains every rank the
+model can take.
 
-A side note: the "Average" row of ProteinGym's published `Uniprot_level.csv` is *not* an
-equal-per-protein mean. It is reproduced exactly (97/97) only by replicating the script's
-non-deduplicated merge, which counts some proteins up to 4 times. It differs from equal weights
-by up to 0.024. The leaderboard itself does not use it.
+**Aggregation schemes** (`aggregation.py`). The schemes are ProteinGym's, the function-group mean, the
+UniProt-weighted mean, the flat mean over assays and the median. All use the same bootstrap, so only the estimand
+changes. The "Average" row of ProteinGym's `Uniprot_level.csv` is not an equal-per-protein mean: it is reproduced
+exactly only by replicating the script's non-deduplicated merge. The leaderboard itself does not use it.
 
-**Power** (`power.py`). A new model is assumed to beat the current #1 by a true Δ, with paired
-per-unit differences as variable as the real ones between #1 and each of the next 10
-complete-coverage models. Assays are assumed to arrive as new units with today's function mix.
-Required units = `n0 × ((z_0.975 + z_0.8) × SE0 / Δ)²`. The formula is checked by resampling the
-real paired differences, re-centred at Δ, at scaled benchmark sizes and running the same z-test.
-
-**Simulation.** `X[u, m] = mu[g(u), m] + a[u] + eps[u, m]` on the real unit/group structure. The
-96 complete-coverage models start from their observed group means. Unit effects are resampled
-from the real ones. Residuals are either resampled real residual rows (keeping cross-model
-correlation, heteroscedasticity and tails) or Gaussian with the exact within-group covariance.
-Scenarios: `calibrated`, `calibrated_gaussian`, `exact_ties` (top 5 tied, and ranks 20–29 tied),
-`near_ties` (top 5 spaced 0.002 apart, ranks 20–29 spaced 0.001), `separated` (true gaps × 3).
-With ties, an interval counts as covering only if it contains every rank the tied model could
-legitimately take (`coverage`). `coverage_lenient` asks only that it contain at least one such rank.
-
-## Headline results (pinned data, 10,000 bootstrap reps)
-
-- **Reproduction.** All 97 published averages and ranks match exactly, as do the MSA-depth and
-  taxon breakdowns. 4 of 485 function-group cells differ by 0.001: they are exact half-way values
-  (e.g. 0.3115), where floating-point summation order decides the rounding. 91 of 97 error bars
-  match at 3 dp. The other 6 lie within 0.0001 of a rounding boundary and flip between bootstrap
-  seeds.
-- **#1 is a coin flip.** AIDO Protein-RAG and VenusREM differ by 0.00004, and each is #1 in about
-  50% of bootstrap replicates. Dropping Activity or OrganismalFitness assays makes VenusREM #1.
-- **Models that cannot be ruled out as #1** (max-t, 95%): AIDO Protein-RAG, VenusREM, ProSST (K=4096).
-- **Top-20 neighbours.** Only 2 of 19 adjacent pairs differ significantly, with or without Holm
-  correction.
-- **Marginal 95% rank intervals.** #4 ProSST (K=4096) is ranks 1–13; #10 ProSST (K=512) is
-  ranks 6–28. Simultaneous intervals are 1–18 and 6–42.
-- **Power at the top.** #1 vs #3 gap = 0.011 with SE 0.006 (z = 1.8). The minimum detectable
-  difference against #1 (80% power) is 0.015–0.026 across the next ten models.
-- **Coverage.** Protriever is scored on 200/217 assays. Its 17 missing assays are harder (other
-  models average 0.379 on them vs 0.410 elsewhere). On the 200 common assays it falls from #8
-  to #10.
-- **Simulation** (1,000 synthetic leaderboards per scenario). Marginal single-step and both
-  simultaneous intervals reach ≥ 97% worst-model coverage in every scenario. Naive bootstrap
-  percentile intervals fall to 8% coverage for some exactly tied models, and to 0% joint
-  coverage. Marginal step-down under-covers with exact ties (worst model 91%), so it is not
-  used for headline numbers. Studentising it (bootstrap-t) lifts the exact-tie worst case to
-  94.0%. That is still just short of 95%, and it is no narrower than single-step (top-10 width
-  about 10 ranks for both), so single-step remains the headline. The simultaneous bootstrap-t
-  variant is valid but much wider (top-10 width 18–23 vs 14).
-
-- **Other metrics.** All published AUC, MCC, NDCG and top-K-recall averages and ranks also
-  reproduce exactly. AUC and MCC agree with Spearman: the possible-#1 set is always within
-  {AIDO, VenusREM, ProSST K=4096}. NDCG puts S3F-MSA first under every mean-based scheme
-  (possible #1: 4–6 models). Only 4 of the published top 10 stay in its top 10, and Kendall τ
-  against the published ranking is 0.65–0.70. Top-K recall cannot separate the top: 9–12
-  models remain possible #1s.
-- **Other aggregation schemes (Spearman).** #1 flips to VenusREM under the function-group mean
-  and the median. UniProt-weighted and flat means narrow the possible-#1 set to {AIDO,
-  VenusREM}. Medians widen it to 12.
-- **Power.** Detecting a 0.01 gain over #1 with 80% power needs about 780 units (≈ 850 assays,
-  3.9× today; range 450–1,460 units over the top-10 pairs). A 0.005 gain needs about 3,100 units
-  (≈ 3,400 assays, 15.6× today; range 1,800–5,800). Today's benchmark detects about 0.020
-  (range 0.015–0.027).
-
-## ESM-2 replication (`pgnoise esm2`)
-
-Do the leaderboard's per-assay numbers come out the same when the model is re-run independently?
-`pgnoise esm2` re-scores five small assays with ESM-2 on CPU and compares the result with the
-published values.
-
-**Inputs (all SHA-256 pinned in `esm2.py`).**
-- The ProteinGym v1.3 assay archive `DMS_ProteinGym_substitutions.zip` (43 MB, whole-file checksum).
-- ProteinGym's own per-mutant model scores for the five assays. These are pulled by HTTP range
-  requests from the 1.9 GB `zero_shot_substitutions_scores.zip`, about 7 MB in total.
-- The fair-esm checkpoints `esm2_t6_8M`, `t12_35M`, `t30_150M` and `t33_650M` (3.3 GB in total).
-
-Everything is stored under `data/esm2/`, which is git-ignored. Wild-type sequences and function
-groups come from the pinned `reference_files/DMS_substitutions.csv`.
-
-**Assays.** The shortest assay in each function group, all with at least 170 mutants:
-
-| DMS ID | Function | Length | Mutants |
-|---|---|---|---|
-| `TCRG1_MOUSE_Tsuboyama_2023_1E0L` | Stability | 37 | 1,058 (437 doubles) |
-| `ENVZ_ECOLI_Ghose_2023` | Activity | 60 | 1,121 |
-| `IF1_ECOLI_Kelsic_2016` | OrganismalFitness | 72 | 1,367 |
-| `GLPA_HUMAN_Elazar_2016` | Expression | 150 | 245 |
-| `B2L11_HUMAN_Dutta_2010_binding-Mcl-1` | Binding | 198 | 170 |
-
-**Scoring.** This matches `proteingym/baselines/esm/compute_fitness.py --scoring-strategy
-masked-marginals`, the setting in `scripts/scoring_DMS_zero_shot/scoring_ESM2_substitutions.sh`:
-- Mask one residue at a time and take log-softmax at the masked position.
-- Score a mutant as Σ over its mutations of [log p(mt) − log p(wt)], so doubles are additive.
-- Sequences over 1,022 residues use ProteinGym's `get_optimal_window`. None of these five assays
-  needs it, but the code supports it.
-
-ProteinGym's vendored `esm` package matches fair-esm 2.0.0 for ESM-2 (only import paths differ).
-Our only change is batching: we score 16 masked copies per forward pass, where ProteinGym scores
-one at a time. A test checks this against a verbatim port of ProteinGym's loop, windowing
-included. Wild-type marginals (one unmasked pass) are also computed as a sensitivity check.
-
-**Results** (4 cores, 4 min 30 s wall in total; the largest step is 650M on the 198-residue
-assay, 98 s):
-- **Agreement with the leaderboard.** All 20 assay × size Spearman values match the leaderboard
-  at 3 dp.
-- **Agreement with ProteinGym's own scores.** Our Spearman matches the one computed from
-  ProteinGym's per-mutant scores to within 2.4e-6. Per-mutant scores differ by at most 5e-5,
-  which is float32 noise from CPU versus GPU and batching.
-- **Scoring method.** Wild-type marginals move the Spearman by up to 0.133 (median 0.016). That
-  is as large as gaps at the top of the leaderboard.
-- **Multi-mutants.** On TCRG1, the pooled Spearman (0.769 at 650M) is higher than the
-  singles-only value (0.719) or the doubles-only value (0.543). The additive score gives doubles
-  about twice the penalty of singles, and doubles are measured as more destabilising, so pooling
-  rewards that.
-- **Model size.** 7 of the 20 steps up in size lower the Spearman. Only one drop is significant
-  under a paired mutant bootstrap: TCRG1 from 150M to 650M, −0.015, z = −2.8.
-- **Assay noise.** The mutant-bootstrap SE of a single assay's Spearman is 0.010–0.085.
-
-ESM-2 3B and 15B are left out because 3B alone needs 11 GB of fp32 weights, more than the
-roughly 5 GB of RAM free on the 16 GB VM used here. Mutants at the same position are correlated,
-so the iid mutant bootstrap understates the noise; a position-block bootstrap would be wider.
-
-## Outputs
-
-- `results/summary.json`: headline numbers from every command.
-- `results/tables/`: reproduction, rank intervals, neighbour tests, top-gap power,
-  leave-one-group-out, common-assay leaderboard, Protriever's missing assays, version drift, and
-  simulation summaries. `esm2_replication.csv`, `esm2_size_differences.csv` and
-  `esm2_scores/<DMS id>.csv` (per-mutant scores: ours with masked and wild-type marginals, and
-  ProteinGym's) come from `pgnoise esm2`.
-- `results/figures/`: `reproduction.png`, `rank_intervals_top40.png`, `pairwise_top20.png`,
-  `leave_one_group_out.png`, `robustness_rank_heatmap.png`, `robustness_grid.png`,
-  `power_curves.png`, `sim_summary.png`, `sim_coverage_by_rank.png`, `esm2_replication.png`.
+**ESM-2 replication** (`esm2.py`). The five shortest assays, one per function group with at least 170 mutants, are
+scored with ProteinGym's `masked-marginals` strategy: each residue is masked in turn, and multi-mutants are scored
+additively. Sequences longer than 1,022 residues would use ProteinGym's `get_optimal_window`. Batching is the only
+change from ProteinGym's loop, and a test checks it against a verbatim port of that loop. The full write-up is in
+the technical note.
 
 ## Layout
 
@@ -241,14 +153,40 @@ so the iid mutant bootstrap understates the noise; a position-block bootstrap wo
 src/pgnoise/
   data.py        download (pinned commit + checksums), loading, (UniProt, function) units
   stats.py       ProteinGym aggregation, stratified bootstrap, ProteinGym's gap-to-#1 SE
-  ranks.py       rank intervals, best-model set, neighbour tests, Holm, MDD
-  studentized.py bootstrap-t step-down rank intervals (linearised per-replicate SEs)
+  ranks.py       rank intervals, best-model set, neighbour tests, Holm, minimum detectable difference
+  studentized.py bootstrap-t step-down rank intervals
   aggregation.py alternative aggregation schemes under the same bootstrap
   robustness.py  metric x scheme grid
   power.py       power curves and required benchmark size
   analysis.py    real-data analyses
   simulate.py    calibrated generator, scenarios, coverage experiment
-  esm2.py        pinned assay/score/weight download, ESM-2 masked & wild-type marginals, comparison
+  esm2.py        pinned ESM-2 inputs, masked and wild-type marginals, comparison with the leaderboard
+  paper.py       numbers for the technical note, derived from results/summary.json
   plots.py, cli.py
+paper/           technical note (LaTeX + Markdown), bibliography, generated numbers, Makefile
+results/         summary.json, tables/, figures/
 tests/           unit tests on toy data, plus integration tests on the real files
 ```
+
+## Data licence and attribution
+
+This repository contains no raw ProteinGym data. `pgnoise download` fetches it from its source, into git-ignored
+`data/`. The committed `results/` contain values derived from ProteinGym, and the per-mutant files under
+`results/tables/esm2_scores/` include ProteinGym's own model scores and DMS measurements for five assays.
+
+- **ProteinGym** is released under the MIT licence: Copyright (c) 2023 OATML-Markslab, Pascal Notin, Aaron Kollasch,
+  Daniel Ritter, Lood van Niekerk. See the
+  [ProteinGym LICENSE](https://github.com/OATML-Markslab/ProteinGym/blob/main/LICENSE). If you use these results,
+  please cite ProteinGym:
+
+  > P. Notin, A. Kollasch, D. Ritter, L. van Niekerk, S. Paul, H. Spinner, N. Rollins, A. Shaw, R. Orenbuch,
+  > R. Weitzman, J. Frazer, M. Dias, D. Franceschi, Y. Gal and D. Marks. ProteinGym: Large-Scale Benchmarks for
+  > Protein Fitness Prediction and Design. *Advances in Neural Information Processing Systems 36*, 64331–64379, 2023.
+
+- **The DMS assays** were produced by the original studies listed in ProteinGym's
+  `reference_files/DMS_substitutions.csv`. Please cite them when using assay-level results; for example, the five
+  ESM-2 replication assays are by Tsuboyama et al. 2023, Ghose et al. 2023, Kelsic et al. 2016, Elazar et al. 2016
+  and Dutta et al. 2010.
+- **ESM-2** weights and the `fair-esm` package come from
+  [facebookresearch/esm](https://github.com/facebookresearch/esm), released under the MIT licence (Lin et al.,
+  *Science* 2023).
