@@ -2,9 +2,10 @@
 
 **Rank intervals, power and robustness for the zero-shot DMS substitution benchmark**
 
-Nissan Dutta. Technical note, draft of October 2026. The LaTeX version (`paper/technical-note.tex`) compiles to the
-2-page PDF. Every number below is generated from `results/summary.json`; [`numbers.md`](numbers.md) maps each one to
-its source.
+Nissan Dutta. Technical note, draft of October 2026. Code and data provenance:
+<https://cursor.com/codebase/nissandutta/genesis>.
+The LaTeX version (`paper/technical-note.tex`) compiles to the 2-page PDF. Every number below is generated from
+`results/summary.json`; [`numbers.md`](numbers.md) maps each one to its source.
 
 **Summary.** ProteinGym ranks 97 zero-shot models on 217 deep mutational scanning (DMS) assays. Treating its
 proteins as a sample and putting confidence intervals on ranks, we find that 3 models cannot be ruled out as #1,
