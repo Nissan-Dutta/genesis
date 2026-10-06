@@ -228,6 +228,106 @@ def power_curves(curves: pd.DataFrame, required: pd.DataFrame, current_units: in
     return _save(fig, path)
 
 
+HEADLINE_RC = {
+    "font.family": "DejaVu Sans", "font.size": 7, "axes.titlesize": 7.5, "axes.labelsize": 7,
+    "xtick.labelsize": 6.5, "ytick.labelsize": 6.5, "legend.fontsize": 6, "axes.linewidth": 0.6,
+    "xtick.major.width": 0.6, "ytick.major.width": 0.6, "xtick.major.size": 2.5, "ytick.major.size": 2.5,
+    "xtick.minor.size": 1.5, "ytick.minor.size": 1.5, "pdf.fonttype": 42, "ps.fonttype": 42,
+}
+POSSIBLE_TOP1, OTHER = "#D55E00", "#0072B2"
+
+
+def _headline_label(model: str) -> str:
+    return model.replace(" Protein-RAG (16B)", " Protein-RAG")
+
+
+def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame, required: pd.DataFrame,
+             n_units: int, n_assays: int, incomplete: dict[str, int], paths: list[Path], top: int = 20) -> list[Path]:
+    """Single-column summary figure: (a) top-``top`` rank intervals with the possible-#1 set highlighted,
+    (b) assays needed for 80% power against the current #1 as a function of the true gain."""
+    assays_per_unit = n_assays / n_units
+    d = ru.head(top)
+    n_best = int(ru.in_best_set.sum())
+    sig = neighbours[neighbours.sig_holm & (neighbours.rank_hi < top)]
+    with plt.rc_context(HEADLINE_RC):
+        fig = plt.figure(figsize=(3.45, 5.7))
+        ax = fig.add_axes((0.375, 0.435, 0.605, 0.52))
+        bx = fig.add_axes((0.165, 0.065, 0.79, 0.215))
+
+        y = np.arange(len(d))
+        for yi, (m, r) in zip(y, d.iterrows()):
+            c = POSSIBLE_TOP1 if r.in_best_set else OTHER
+            ax.hlines(yi, r.simul_lo - 0.4, r.simul_hi + 0.4, color=c, lw=1.0, alpha=0.4, capstyle="butt")
+            ax.hlines(yi, r.marg_lo - 0.4, r.marg_hi + 0.4, color=c, lw=3.4, capstyle="butt")
+            ax.plot(r["rank"], yi, "o", ms=2.6, mfc="white", mec="black", mew=0.6, zorder=3)
+        labels = [f"{int(r['rank'])}. {_headline_label(m)}{'†' if m in incomplete else ''}" for m, r in d.iterrows()]
+        ax.set_yticks(y, labels)
+        for tick, best in zip(ax.get_yticklabels(), d.in_best_set):
+            if best:
+                tick.set_color(POSSIBLE_TOP1)
+                tick.set_fontweight("bold")
+        x_max = int(d.simul_hi.max()) + 2
+        for r in sig.itertuples():
+            ax.axhline(r.rank_hi - 0.5, color="0.2", lw=0.5, ls=(0, (2, 2)))
+            ax.text(x_max - 0.5, r.rank_hi - 0.38, f"significant gap (z = {r.z:.1f})", ha="right", va="top",
+                    fontsize=5.5, color="0.2")
+        ax.set_xlim(0.3, x_max)
+        ax.set_ylim(len(d) - 0.4, -0.6)
+        ax.set_xticks([1] + list(range(5, x_max + 1, 5)))
+        ax.tick_params(axis="x", top=True, bottom=True, labeltop=False, labelbottom=True)
+        ax.tick_params(axis="y", length=0)
+        ax.set_xlabel("Rank of the benchmark aggregate (95% CI)", labelpad=2)
+        ax.grid(axis="x", lw=0.4, alpha=0.35)
+        handles = [plt.Line2D([], [], color=POSSIBLE_TOP1, lw=3.4, label="possible #1 (95%)"),
+                   plt.Line2D([], [], color=OTHER, lw=3.4, label="marginal CI"),
+                   plt.Line2D([], [], color=OTHER, lw=1.0, alpha=0.5, label="simultaneous CI"),
+                   plt.Line2D([], [], marker="o", ls="", ms=2.6, mfc="white", mec="black", mew=0.6,
+                              label="published rank")]
+        if incomplete:
+            handles.append(plt.Line2D([], [], ls="", label="† scored on " + ", ".join(
+                f"{n}/{n_assays}" for n in incomplete.values()) + " assays"))
+        fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.39), ncol=3, frameon=False,
+                   handlelength=1.5, columnspacing=1.0, labelspacing=0.35)
+        fig.text(0.012, 0.99, "a", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.06, 0.99, f"Top {top} of {len(ru)}: {n_best} possible #1s; "
+                 f"{int(neighbours.sig_holm.sum())} of {len(neighbours)} neighbour gaps significant",
+                 fontsize=7, va="top")
+
+        grid = required.groupby("delta")["units_needed"]
+        lo, med, hi = (grid.min() * assays_per_unit, grid.median() * assays_per_unit, grid.max() * assays_per_unit)
+        bx.fill_between(med.index, lo, hi, color="0.86", lw=0, label="range over #1 vs each of #2–#11")
+        bx.plot(med.index, med, color="black", lw=1.2, label="median pair")
+        bx.axhline(n_assays, color=POSSIBLE_TOP1, lw=0.9, ls=(0, (3, 1.5)))
+        bx.text(0.00208, n_assays * 0.86, f"ProteinGym today: {n_assays} assays", color=POSSIBLE_TOP1,
+                fontsize=6, va="top")
+        mdd = float(per_pair["mdd_now"].median())
+        bx.plot([mdd], [n_assays], "o", ms=3.2, color=POSSIBLE_TOP1, zorder=4)
+        bx.annotate(f"detectable today: Δ ≈ {mdd:.3f}", (mdd, n_assays), xytext=(0.0068, 62), fontsize=6,
+                    ha="left", va="bottom", arrowprops=dict(arrowstyle="-", lw=0.5, color="0.3",
+                                                            shrinkA=0, shrinkB=2))
+        for delta in (0.005, 0.01):
+            need = float(per_pair[f"assays_for_{delta}"].median())
+            bx.plot([delta], [need], "o", ms=3.0, color="black", zorder=4)
+            right = delta < 0.008
+            bx.annotate(f"Δ = {delta}: ≈ {50 * round(need / 50):,.0f} assays ({need / n_assays:.1f}× today)",
+                        (delta, need), xytext=(5, 2) if right else (-4, -3), textcoords="offset points",
+                        fontsize=6, ha="left" if right else "right", va="bottom" if right else "top")
+        bx.set(xscale="log", yscale="log", xlim=(0.002, 0.03), ylim=(45, 6e4),
+               xlabel="True gain Δ over the current #1 (Spearman)", ylabel="Assays for 80% power")
+        bx.set_xticks([0.002, 0.005, 0.01, 0.02, 0.03], ["0.002", "0.005", "0.01", "0.02", "0.03"])
+        bx.set_yticks([1e2, 1e3, 1e4], ["100", "1,000", "10,000"])
+        bx.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+        bx.legend(loc="upper right", frameon=False, borderaxespad=0.3)
+        bx.grid(which="major", lw=0.4, alpha=0.35)
+        fig.text(0.012, 0.31, "b", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.06, 0.31, "Power to detect a new #1 (two-sided paired test, α = 0.05)", fontsize=7, va="top")
+        for path in paths:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            fig.savefig(path, dpi=300)
+        plt.close(fig)
+    return paths
+
+
 ESM2_PARAMS = {"8M": 8e6, "35M": 35e6, "150M": 150e6, "650M": 650e6, "3B": 3e9, "15B": 15e9}
 
 
