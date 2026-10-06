@@ -249,10 +249,11 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
     d = ru.head(rank_panel)
     n_best = int(ru.in_best_set.sum())
     with plt.rc_context(HEADLINE_RC):
-        fig = plt.figure(figsize=(3.45, 6.15))
-        # Fixed vertical bands: (a) power, gutter, (b) ranks + in-panel legend — no shared fig.legend.
-        bx = fig.add_axes((0.14, 0.48, 0.84, 0.44))
-        ax = fig.add_axes((0.22, 0.17, 0.74, 0.22))
+        fig = plt.figure(figsize=(3.55, 6.55))
+        fig.subplots_adjust(left=0.06, right=0.98, top=0.86, bottom=0.11)
+        # Rank panel needs a wide left margin for full model names; power panel aligns on the right.
+        ax = fig.add_axes((0.40, 0.14, 0.58, 0.24))
+        bx = fig.add_axes((0.16, 0.50, 0.82, 0.34))
 
         grid = required.groupby("delta")["units_needed"]
         lo, med, hi = (grid.min() * assays_per_unit, grid.median() * assays_per_unit, grid.max() * assays_per_unit)
@@ -284,9 +285,10 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         power_handles, power_labels = bx.get_legend_handles_labels()
         bx.legend(power_handles + [today_line], power_labels + [today_line.get_label()],
                   loc="upper left", frameon=False, borderaxespad=0.2, fontsize=5.5)
-        fig.text(0.02, 0.935, "a", fontweight="bold", fontsize=8, va="top")
-        fig.text(0.07, 0.935, "Does this gain support a decision? (80% power, paired test, α = 0.05)",
-                 fontsize=7, va="top")
+        fig.text(0.06, 0.975, "a", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.11, 0.975,
+                 "Does this gain support a decision?\n(80% power, paired test, α = 0.05)",
+                 fontsize=6.8, va="top", linespacing=1.15)
 
         y = np.arange(len(d))
         for yi, (m, r) in zip(y, d.iterrows()):
@@ -296,7 +298,9 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
             ax.plot(r["rank"], yi, "o", ms=2.4, mfc="white", mec="black", mew=0.6, zorder=3)
         labels = [f"{int(r['rank'])}. {_headline_label(m)}{'†' if m in incomplete else ''}" for m, r in d.iterrows()]
         ax.set_yticks(y, labels, fontsize=6)
+        ax.tick_params(axis="y", length=0, pad=2, labelleft=True)
         for tick, best in zip(ax.get_yticklabels(), d.in_best_set):
+            tick.set_horizontalalignment("right")
             if best:
                 tick.set_color(POSSIBLE_TOP1)
                 tick.set_fontweight("bold")
@@ -304,7 +308,6 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         ax.set_xlim(0.3, x_max)
         ax.set_ylim(len(d) - 0.35, -0.45)
         ax.set_xticks([1, 5, 10, 15, 20] if x_max >= 20 else [1, 5, 10, 15])
-        ax.tick_params(axis="y", length=0, pad=1)
         ax.set_xlabel("Rank (95% CI)", labelpad=1, fontsize=6.5)
         ax.grid(axis="x", lw=0.35, alpha=0.35)
         rank_handles = [
@@ -315,13 +318,19 @@ def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame,
         ]
         ax.legend(handles=rank_handles, loc="upper center", bbox_to_anchor=(0.5, -0.38),
                   ncol=4, frameon=False, handlelength=1.2, columnspacing=0.8, fontsize=5.5)
-        fig.text(0.02, 0.415, "b", fontweight="bold", fontsize=8, va="top")
-        fig.text(0.07, 0.415, f"Supporting rank CIs (top {rank_panel}; {n_best} not ruled out as #1)",
+        fig.text(0.06, 0.405, "b", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.11, 0.405, f"Supporting rank CIs (top {rank_panel}; {n_best} not ruled out as #1)",
                  fontsize=7, va="top")
 
         for path in paths:
             path.parent.mkdir(parents=True, exist_ok=True)
-            fig.savefig(path, dpi=300, metadata={"CreationDate": None} if path.suffix == ".pdf" else None)
+            fig.savefig(
+                path,
+                dpi=300,
+                bbox_inches="tight",
+                pad_inches=0.14,
+                metadata={"CreationDate": None} if path.suffix == ".pdf" else None,
+            )
         plt.close(fig)
     return paths
 
