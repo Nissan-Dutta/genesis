@@ -2,7 +2,7 @@
 
 This repo is a reproducible rank-uncertainty analysis of the
 [ProteinGym](https://github.com/OATML-Markslab/ProteinGym) zero-shot DMS-substitution leaderboard
-(97 models, 217 assays, Spearman). It does five things:
+(97 models, 217 assays). It does seven things:
 
 1. Downloads ProteinGym's public per-assay Spearman table and assay metadata. Files are pinned to
    one commit and checked against SHA-256 checksums.
@@ -15,7 +15,10 @@ This repo is a reproducible rank-uncertainty analysis of the
    Protriever's incomplete assay coverage.
 4. Runs a coverage simulation calibrated to the real data, with known true ranks. Scenarios
    include exact ties and near ties.
-5. Writes tables and figures to `results/`.
+5. Re-runs the rank analysis under ProteinGym's other metrics (AUC, MCC, NDCG, top-K recall) and
+   under four alternative aggregation schemes.
+6. Computes power curves: how many assays it takes to detect a gain of 0.005 or 0.01 at the top.
+7. Writes tables and figures to `results/`.
 
 ## Quick start
 
@@ -26,7 +29,9 @@ uv run pgnoise download          # ~0.7 MB of CSVs into data/raw/ (git-ignored),
 uv run pgnoise reproduce         # published averages and error bars vs ours   (~2 s)
 uv run pgnoise versions          # score drift between ProteinGym releases     (~2 s)
 uv run pgnoise ranks             # rank intervals and related analyses         (~15 s)
-uv run pgnoise simulate          # coverage simulation, 5 scenarios x 1000 reps (~15-20 min on 4 cores)
+uv run pgnoise robustness        # 5 metrics x 5 aggregation schemes           (~40 s)
+uv run pgnoise power             # power curves and benchmark size needed      (~5 s)
+uv run pgnoise simulate          # coverage simulation, 5 scenarios x 1000 reps (~25 min on 4 cores)
 uv run pytest                    # unit + integration tests
 ```
 
@@ -39,8 +44,8 @@ works too. The requirements file is exported from the lock file.
 - Source: `OATML-Markslab/ProteinGym`, commit `144fe22` (2026-03-25). The per-assay file at this
   commit is byte-identical to the June 2025 "Added Protriever" commit, so it is **release v1.3
   plus the two later additions, AIDO Protein-RAG and Protriever**. That gives 97 models.
-- Files used: `DMS_substitutions_Spearman_DMS_level.csv` (per-assay Spearman, rounded to 3 dp, as
-  ProteinGym itself aggregates) and `reference_files/DMS_substitutions.csv` (UniProt ID and
+- Files used: `DMS_substitutions_{Spearman,AUC,MCC,NDCG,Top_recall}_DMS_level.csv` (per-assay
+  scores, rounded to 3 dp, as ProteinGym itself aggregates) and `reference_files/DMS_substitutions.csv` (UniProt ID and
   `coarse_selection_type`). The published `Summary_performance_...csv` is the reproduction target.
 - Version drift (`results/tables/version_drift.csv`, cf.
   [ProteinGym issue #99](https://github.com/OATML-Markslab/ProteinGym/issues/99)): from v1.0 to
@@ -71,13 +76,36 @@ bars (10,000 replicates on real data, 1,000 inside the simulation).
 | Bootstrap percentile of ranks | none (known to fail near ties; Hall & Miller 2009) |
 | Pairwise max-t, marginal (Mogstad, Romano, Shaikh & Wilhelm 2024) | each model's interval covers its rank w.p. ≥ 95% |
 | Pairwise max-t, simultaneous | all intervals cover all ranks jointly w.p. ≥ 95% |
-| Step-down variants | same guarantees, tighter (Romano-Wolf) |
+| Step-down variants | same guarantees, tighter (Romano-Wolf); under-covers with exact ties in small strata |
+| Bootstrap-t step-down (`studentized.py`) | as above, each bootstrap replicate studentised with its own linearised SE |
 | Best-model set (one-sided max-t vs each model) | contains the true #1 w.p. ≥ 95% |
 | "Within 1.96 SE of #1" (how ProteinGym error bars are usually read) | none |
 
 **Neighbour tests.** Paired bootstrap z-tests on the 19 adjacent pairs in the top 20, reported
 both uncorrected and with Holm correction. **MDD:** `(z_0.975 + z_0.8) × SE(gap)`, i.e. the true
 gap detectable with 80% power.
+
+**Aggregation schemes** (`aggregation.py`). Every scheme uses the same stratified unit bootstrap,
+so only the estimand changes:
+
+| Scheme | Definition |
+|---|---|
+| `proteingym` | assays → (UniProt, function) units → 5 function groups → mean (the published one) |
+| `function_group_mean` | mean of the 5 function-group means of raw assays (no UniProt step) |
+| `uniprot_weighted` | every protein weighted equally, function groups ignored |
+| `flat_mean` | plain mean over 217 assays |
+| `median` | median over 217 assays; its bootstrap is rough because scores are rounded to 3 dp |
+
+A side note: the "Average" row of ProteinGym's published `Uniprot_level.csv` is *not* an
+equal-per-protein mean. It is reproduced exactly (97/97) only by replicating the script's
+non-deduplicated merge, which counts some proteins up to 4 times. It differs from equal weights
+by up to 0.024. The leaderboard itself does not use it.
+
+**Power** (`power.py`). A new model is assumed to beat the current #1 by a true Δ, with paired
+per-unit differences as variable as the real ones between #1 and each of the next 10
+complete-coverage models. Assays are assumed to arrive as new units with today's function mix.
+Required units = `n0 × ((z_0.975 + z_0.8) × SE0 / Δ)²`. The formula is checked by resampling the
+real paired differences, re-centred at Δ, at scaled benchmark sizes and running the same z-test.
 
 **Simulation.** `X[u, m] = mu[g(u), m] + a[u] + eps[u, m]` on the real unit/group structure. The
 96 complete-coverage models start from their observed group means. Unit effects are resampled
@@ -111,7 +139,24 @@ legitimately take (`coverage`). `coverage_lenient` asks only that it contain at 
   simultaneous intervals reach ≥ 97% worst-model coverage in every scenario. Naive bootstrap
   percentile intervals fall to 8% coverage for some exactly tied models, and to 0% joint
   coverage. Marginal step-down under-covers with exact ties (worst model 91%), so it is not
-  used for headline numbers.
+  used for headline numbers. Studentising it (bootstrap-t) lifts the exact-tie worst case to
+  94.0%. That is still just short of 95%, and it is no narrower than single-step (top-10 width
+  about 10 ranks for both), so single-step remains the headline. The simultaneous bootstrap-t
+  variant is valid but much wider (top-10 width 18–23 vs 14).
+
+- **Other metrics.** All published AUC, MCC, NDCG and top-K-recall averages and ranks also
+  reproduce exactly. AUC and MCC agree with Spearman: the possible-#1 set is always within
+  {AIDO, VenusREM, ProSST K=4096}. NDCG puts S3F-MSA first under every mean-based scheme
+  (possible #1: 4–6 models). Only 4 of the published top 10 stay in its top 10, and Kendall τ
+  against the published ranking is 0.65–0.70. Top-K recall cannot separate the top: 9–12
+  models remain possible #1s.
+- **Other aggregation schemes (Spearman).** #1 flips to VenusREM under the function-group mean
+  and the median. UniProt-weighted and flat means narrow the possible-#1 set to {AIDO,
+  VenusREM}. Medians widen it to 12.
+- **Power.** Detecting a 0.01 gain over #1 with 80% power needs about 780 units (≈ 850 assays,
+  3.9× today; range 450–1,460 units over the top-10 pairs). A 0.005 gain needs about 3,100 units
+  (≈ 3,400 assays, 15.6× today; range 1,800–5,800). Today's benchmark detects about 0.020
+  (range 0.015–0.027).
 
 ## Outputs
 
@@ -120,7 +165,8 @@ legitimately take (`coverage`). `coverage_lenient` asks only that it contain at 
   leave-one-group-out, common-assay leaderboard, Protriever's missing assays, version drift, and
   simulation summaries.
 - `results/figures/`: `reproduction.png`, `rank_intervals_top40.png`, `pairwise_top20.png`,
-  `leave_one_group_out.png`, `sim_summary.png`, `sim_coverage_by_rank.png`.
+  `leave_one_group_out.png`, `robustness_rank_heatmap.png`, `robustness_grid.png`,
+  `power_curves.png`, `sim_summary.png`, `sim_coverage_by_rank.png`.
 
 ## Layout
 
@@ -129,6 +175,10 @@ src/pgnoise/
   data.py        download (pinned commit + checksums), loading, (UniProt, function) units
   stats.py       ProteinGym aggregation, stratified bootstrap, ProteinGym's gap-to-#1 SE
   ranks.py       rank intervals, best-model set, neighbour tests, Holm, MDD
+  studentized.py bootstrap-t step-down rank intervals (linearised per-replicate SEs)
+  aggregation.py alternative aggregation schemes under the same bootstrap
+  robustness.py  metric x scheme grid
+  power.py       power curves and required benchmark size
   analysis.py    real-data analyses
   simulate.py    calibrated generator, scenarios, coverage experiment
   plots.py, cli.py
