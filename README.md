@@ -88,6 +88,31 @@ Scenarios: `calibrated`, `calibrated_gaussian`, `exact_ties` (top 5 tied, and ra
 With ties, an interval counts as covering only if it contains every rank the tied model could
 legitimately take (`coverage`). `coverage_lenient` asks only that it contain at least one such rank.
 
+## Headline results (pinned data, 10,000 bootstrap reps)
+
+- **Reproduction.** All 97 published averages and ranks match exactly, as do the MSA-depth and
+  taxon breakdowns. 4 of 485 function-group cells differ by 0.001: they are exact half-way values
+  (e.g. 0.3115), where floating-point summation order decides the rounding. 91 of 97 error bars
+  match at 3 dp. The other 6 lie within 0.0001 of a rounding boundary and flip between bootstrap
+  seeds.
+- **#1 is a coin flip.** AIDO Protein-RAG and VenusREM differ by 0.00004, and each is #1 in about
+  50% of bootstrap replicates. Dropping Activity or OrganismalFitness assays makes VenusREM #1.
+- **Models that cannot be ruled out as #1** (max-t, 95%): AIDO Protein-RAG, VenusREM, ProSST (K=4096).
+- **Top-20 neighbours.** Only 2 of 19 adjacent pairs differ significantly, with or without Holm
+  correction.
+- **Marginal 95% rank intervals.** #4 ProSST (K=4096) is ranks 1–13; #10 ProSST (K=512) is
+  ranks 6–28. Simultaneous intervals are 1–18 and 6–42.
+- **Power at the top.** #1 vs #3 gap = 0.011 with SE 0.006 (z = 1.8). The minimum detectable
+  difference against #1 (80% power) is 0.015–0.026 across the next ten models.
+- **Coverage.** Protriever is scored on 200/217 assays. Its 17 missing assays are harder (other
+  models average 0.379 on them vs 0.410 elsewhere). On the 200 common assays it falls from #8
+  to #10.
+- **Simulation** (1,000 synthetic leaderboards per scenario). Marginal single-step and both
+  simultaneous intervals reach ≥ 97% worst-model coverage in every scenario. Naive bootstrap
+  percentile intervals fall to 8% coverage for some exactly tied models, and to 0% joint
+  coverage. Marginal step-down under-covers with exact ties (worst model 91%), so it is not
+  used for headline numbers.
+
 ## Outputs
 
 - `results/summary.json`: headline numbers from every command.
