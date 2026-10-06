@@ -156,6 +156,13 @@
   "ranks": {
     "n_boot": 10000,
     "n_units": 200,
+    "units_by_group": {
+      "Activity": 40,
+      "Binding": 12,
+      "Expression": 18,
+      "OrganismalFitness": 64,
+      "Stability": 66
+    },
     "top": "AIDO Protein-RAG (16B)",
     "intervals_by_rank": {
       "1": {

@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import aggregation, analysis, data, plots, power, ranks, robustness, simulate
+from . import aggregation, analysis, data, paper, plots, power, ranks, robustness, simulate
 
 
 def _update_summary(out: Path, section: str, values: dict) -> None:
@@ -110,6 +110,7 @@ def cmd_ranks(args: argparse.Namespace) -> None:
     _update_summary(args.out, "ranks", {
         "n_boot": args.boot,
         "n_units": int(units.X.shape[0]),
+        "units_by_group": dict(zip(units.group_names, np.bincount(units.groups, minlength=units.n_groups).tolist())),
         "top": ru.index[0],
         "intervals_by_rank": {int(pos[m]) + 1: {"model": m, **{c: int(ru.loc[m, c]) for c in
                               ["pct_lo", "pct_hi", "marg_lo", "marg_hi", "simul_lo", "simul_hi",
@@ -256,6 +257,11 @@ def cmd_figure(args: argparse.Namespace) -> None:
         print(path)
 
 
+def cmd_numbers(args: argparse.Namespace) -> None:
+    for path in paper.write(json.loads((args.out / "summary.json").read_text()), args.paper_dir):
+        print(path)
+
+
 def cmd_esm2(args: argparse.Namespace) -> None:
     # Imported here because torch and fair-esm are the optional `esm` extra; every other command runs without them.
     from . import esm2
@@ -344,6 +350,10 @@ def main(argv: list[str] | None = None) -> None:
 
     p = sub.add_parser("figure", help="headline figure (top-20 rank intervals + power) from the tables in --out")
     p.set_defaults(func=cmd_figure)
+
+    p = sub.add_parser("numbers", help="LaTeX macros and a provenance table for every number in the technical note")
+    p.add_argument("--paper-dir", type=Path, default=Path("paper"))
+    p.set_defaults(func=cmd_numbers)
 
     p = sub.add_parser("esm2", help="score small assays with ESM-2 on CPU and compare with the leaderboard "
                                     "(needs `uv sync --extra esm`; not part of `all`)")
