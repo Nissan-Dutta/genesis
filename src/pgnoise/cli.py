@@ -112,7 +112,7 @@ def cmd_ranks(args: argparse.Namespace) -> None:
         "top": ru.index[0],
         "intervals_by_rank": {int(pos[m]) + 1: {"model": m, **{c: int(ru.loc[m, c]) for c in
                               ["pct_lo", "pct_hi", "marg_lo", "marg_hi", "simul_lo", "simul_hi",
-                               "marg_single_lo", "marg_single_hi", "simul_single_lo", "simul_single_hi"]},
+                               "marg_stepdown_lo", "marg_stepdown_hi", "simul_single_lo", "simul_single_hi"]},
                               "p_rank1": float(ru.loc[m, "p_rank1"])} for m in ru.index[:20]},
         "best_set": list(ru.index[ru["in_best_set"]]),
         "naive_best_set": list(ru.index[ru["in_naive_best_set"]]),

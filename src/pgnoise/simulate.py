@@ -139,6 +139,8 @@ class RepResult:
     covered_lenient: dict[str, np.ndarray] = field(default_factory=dict)
     width: dict[str, np.ndarray] = field(default_factory=dict)
     best_covered: bool = False
+    best_any: bool = False
+    best_per_model: float = 0.0
     best_size: int = 0
     naive_best_covered: bool = False
     naive_best_size: int = 0
@@ -146,13 +148,13 @@ class RepResult:
 
 
 def one_rep(cal: Calibration, mu: np.ndarray, noise: str, n_boot: int, alpha: float,
-            rng: np.random.Generator) -> RepResult:
+            rng: np.random.Generator, correction: bool = False) -> RepResult:
     theta = true_scores(mu)
     rmin, rmax = true_rank_sets(theta)
     X, groups = generate(cal, mu, noise, rng)
     n_groups = mu.shape[0]
     est = proteingym_score(X, groups, n_groups)
-    boot = bootstrap_scores(X, groups, n_groups, n_boot, rng)
+    boot = bootstrap_scores(X, groups, n_groups, n_boot, rng, small_sample_correction=correction)
     ms = ranks.max_statistics(est, boot)
     intervals = {
         "percentile": ranks.percentile_rank_ci(boot, alpha),
@@ -170,6 +172,8 @@ def one_rep(cal: Calibration, mu: np.ndarray, noise: str, n_boot: int, alpha: fl
     best = ranks.best_confidence_set(est, boot, alpha, ms)
     naive = ranks.naive_best_set(est, boot, alpha)
     res.best_covered = bool(best[true_best].all())
+    res.best_any = bool(best[true_best].any())
+    res.best_per_model = float(best[true_best].mean())
     res.best_size = int(best.sum())
     res.naive_best_covered = bool(naive[true_best].all())
     res.naive_best_size = int(naive.sum())
@@ -179,12 +183,12 @@ def one_rep(cal: Calibration, mu: np.ndarray, noise: str, n_boot: int, alpha: fl
 
 
 def _rep_batch(cal: Calibration, mu: np.ndarray, noise: str, n_boot: int, alpha: float,
-               seeds: list[np.random.SeedSequence]) -> list[RepResult]:
-    return [one_rep(cal, mu, noise, n_boot, alpha, np.random.default_rng(s)) for s in seeds]
+               seeds: list[np.random.SeedSequence], correction: bool) -> list[RepResult]:
+    return [one_rep(cal, mu, noise, n_boot, alpha, np.random.default_rng(s), correction) for s in seeds]
 
 
 def run_scenario(cal: Calibration, scenario: Scenario, n_reps: int, n_boot: int = 1000,
-                 alpha: float = 0.05, seed: int = 0, n_jobs: int = 1) -> dict:
+                 alpha: float = 0.05, seed: int = 0, n_jobs: int = 1, correction: bool = False) -> dict:
     """Coverage, widths and best-set behaviour of every interval method over ``n_reps`` leaderboards.
 
     Each replicate gets its own spawned seed, so results do not depend on ``n_jobs``.
@@ -194,11 +198,11 @@ def run_scenario(cal: Calibration, scenario: Scenario, n_reps: int, n_boot: int 
     rmin, rmax = true_rank_sets(theta)
     seeds = np.random.SeedSequence(seed).spawn(n_reps)
     if n_jobs == 1:
-        reps = _rep_batch(cal, mu, scenario.noise, n_boot, alpha, seeds)
+        reps = _rep_batch(cal, mu, scenario.noise, n_boot, alpha, seeds, correction)
     else:
         batches = [seeds[i::n_jobs] for i in range(n_jobs)]
         with ProcessPoolExecutor(max_workers=n_jobs) as pool:
-            futures = [pool.submit(_rep_batch, cal, mu, scenario.noise, n_boot, alpha, b) for b in batches]
+            futures = [pool.submit(_rep_batch, cal, mu, scenario.noise, n_boot, alpha, b, correction) for b in batches]
             results = [f.result() for f in futures]
         reps = [None] * n_reps
         for i, batch in enumerate(results):
@@ -222,7 +226,10 @@ def run_scenario(cal: Calibration, scenario: Scenario, n_reps: int, n_boot: int 
         })
     best = {
         "scenario": scenario.name,
+        "n_true_best": int((rmin == 1).sum()),
         "best_set_coverage": np.mean([r.best_covered for r in reps]),
+        "best_set_any_true_best": np.mean([r.best_any for r in reps]),
+        "best_set_per_true_best": np.mean([r.best_per_model for r in reps]),
         "best_set_mean_size": np.mean([r.best_size for r in reps]),
         "naive_best_set_coverage": np.mean([r.naive_best_covered for r in reps]),
         "naive_best_set_mean_size": np.mean([r.naive_best_size for r in reps]),

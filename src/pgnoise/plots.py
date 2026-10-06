@@ -13,8 +13,8 @@ import pandas as pd  # noqa: E402
 
 METHOD_STYLE = {
     "percentile": ("Bootstrap percentile (naive)", "#d62728"),
-    "marginal_single_step": ("Pairwise max-t, marginal, single-step", "#9ecae1"),
-    "marginal_stepdown": ("Pairwise max-t, marginal, step-down", "#1f77b4"),
+    "marginal_single_step": ("Pairwise max-t, marginal, single-step", "#1f77b4"),
+    "marginal_stepdown": ("Pairwise max-t, marginal, step-down", "#9ecae1"),
     "simultaneous_single_step": ("Pairwise max-t, simultaneous, single-step", "#a1d99b"),
     "simultaneous_stepdown": ("Pairwise max-t, simultaneous, step-down", "#2ca02c"),
 }
@@ -48,7 +48,7 @@ def rank_intervals(ru: pd.DataFrame, path: Path, top: int = 40) -> Path:
     d = ru.head(top)
     fig, ax = plt.subplots(figsize=(9, 0.26 * top + 1.5))
     y = np.arange(len(d))
-    spec = [("pct", "percentile", -0.25), ("marg", "marginal_stepdown", 0.0),
+    spec = [("pct", "percentile", -0.25), ("marg", "marginal_single_step", 0.0),
             ("simul", "simultaneous_stepdown", 0.25)]
     for prefix, method, off in spec:
         label, color = METHOD_STYLE[method]
@@ -95,7 +95,8 @@ def leave_one_group_out(table: pd.DataFrame, path: Path, models: list[str]) -> P
 
 
 def sim_coverage_by_rank(per_model: dict[str, pd.DataFrame], path: Path,
-                         methods: tuple[str, ...] = ("percentile", "marginal_stepdown", "simultaneous_stepdown")) -> Path:
+                         methods: tuple[str, ...] = ("percentile", "marginal_single_step", "marginal_stepdown",
+                                                     "simultaneous_stepdown")) -> Path:
     names = list(per_model)
     fig, axes = plt.subplots(2, len(names), figsize=(4.2 * len(names), 7), sharex=True, squeeze=False)
     for col, name in enumerate(names):
@@ -132,10 +133,13 @@ def sim_summary(summary: pd.DataFrame, best: pd.DataFrame, path: Path) -> Path:
         ax.set(title=title, ylim=(0, 1.05))
         ax.set_xticks(x, scenarios, rotation=25, fontsize=8)
     b = best.set_index("scenario").loc[scenarios]
-    axes[3].bar(x - 0.2, b["best_set_coverage"], width=0.4, color="#1f77b4", label="Max-t best set")
-    axes[3].bar(x + 0.2, b["naive_best_set_coverage"], width=0.4, color="#d62728", label="Within 1.96 SE of #1")
+    axes[3].bar(x - 0.27, b["best_set_per_true_best"], width=0.27, color="#9ecae1",
+                label="Max-t best set, per true #1")
+    axes[3].bar(x, b["best_set_coverage"], width=0.27, color="#1f77b4", label="Max-t best set, all true #1s")
+    axes[3].bar(x + 0.27, b["naive_best_set_coverage"], width=0.27, color="#d62728",
+                label="Within 1.96 SE of #1, all true #1s")
     axes[3].axhline(0.95, color="grey", ls="--", lw=0.8)
-    axes[3].set(title="P(set contains every true #1)", ylim=(0, 1.05))
+    axes[3].set(title="Best-model set contains the true #1", ylim=(0, 1.05))
     axes[3].set_xticks(x, scenarios, rotation=25, fontsize=8)
     axes[3].legend(fontsize=7.5, loc="lower left")
     axes[0].legend(fontsize=7, loc="lower left")

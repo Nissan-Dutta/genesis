@@ -60,13 +60,25 @@ def bootstrap_scores(
     n_boot: int,
     rng: np.random.Generator,
     chunk: int = 2000,
+    small_sample_correction: bool = False,
 ) -> np.ndarray:
-    """Bootstrap replicates of the ProteinGym score for every model -> (n_boot, n_models)."""
+    """Bootstrap replicates of the ProteinGym score for every model -> (n_boot, n_models).
+
+    ``small_sample_correction`` rescales each group mean's bootstrap deviation by
+    sqrt(n_g / (n_g - 1)), removing the plain bootstrap's downward variance bias, which matters
+    here because the Binding and Expression groups have only 12 and 18 units.
+    """
+    centre = group_means(X, groups, n_groups)
+    sizes = np.bincount(groups, minlength=n_groups)
+    scale = np.sqrt(sizes / np.maximum(sizes - 1, 1))[None, :, None]
     reps = []
     for start in range(0, n_boot, chunk):
         counts = stratified_counts(groups, min(chunk, n_boot - start), rng)
+        gm = weighted_group_means(X, groups, n_groups, counts)
+        if small_sample_correction:
+            gm = centre[None] + scale * (gm - centre[None])
         with np.errstate(invalid="ignore"):
-            reps.append(np.nanmean(weighted_group_means(X, groups, n_groups, counts), axis=1))
+            reps.append(np.nanmean(gm, axis=1))
     return np.vstack(reps)
 
 

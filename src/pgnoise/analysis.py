@@ -70,10 +70,12 @@ def rank_uncertainty(units: UnitTable, n_boot: int = 10_000, seed: int = 1, alph
     boot = bootstrap_scores(units.X, units.groups, units.n_groups, n_boot, np.random.default_rng(seed))
     ms = ranks.max_statistics(theta, boot)
     pl, pu = ranks.percentile_rank_ci(boot, alpha)
-    ml, mu = ranks.pairwise_rank_ci(theta, boot, alpha, "marginal", ms)
+    # Headline: marginal single-step and simultaneous step-down (both hold coverage in every
+    # simulated scenario); marginal step-down under-covers when models are exactly tied.
+    ml, mu = ranks.pairwise_rank_ci(theta, boot, alpha, "marginal", ms, stepdown=False)
     sl, su = ranks.pairwise_rank_ci(theta, boot, alpha, "simultaneous", ms)
-    ml1, mu1 = ranks.pairwise_rank_ci(theta, boot, alpha, "marginal", ms, stepdown=False)
-    sl1, su1 = ranks.pairwise_rank_ci(theta, boot, alpha, "simultaneous", ms, stepdown=False)
+    msl, msu = ranks.pairwise_rank_ci(theta, boot, alpha, "marginal", ms)
+    ssl, ssu = ranks.pairwise_rank_ci(theta, boot, alpha, "simultaneous", ms, stepdown=False)
     best = ranks.best_confidence_set(theta, boot, alpha, ms)
     naive_best = ranks.naive_best_set(theta, boot, alpha)
     boot_ranks = ranks.ranks_desc(boot)
@@ -86,8 +88,8 @@ def rank_uncertainty(units: UnitTable, n_boot: int = 10_000, seed: int = 1, alph
             "pct_lo": pl, "pct_hi": pu,
             "marg_lo": ml, "marg_hi": mu,
             "simul_lo": sl, "simul_hi": su,
-            "marg_single_lo": ml1, "marg_single_hi": mu1,
-            "simul_single_lo": sl1, "simul_single_hi": su1,
+            "marg_stepdown_lo": msl, "marg_stepdown_hi": msu,
+            "simul_single_lo": ssl, "simul_single_hi": ssu,
             "in_best_set": best,
             "in_naive_best_set": naive_best,
         },
@@ -187,7 +189,7 @@ def assay_coverage(assays: AssayTable, units: UnitTable, ru: pd.DataFrame, n_boo
     su = to_units(sub)
     theta = proteingym_score(su.X, su.groups, su.n_groups)
     boot = bootstrap_scores(su.X, su.groups, su.n_groups, n_boot, np.random.default_rng(seed))
-    ml, mu = ranks.pairwise_rank_ci(theta, boot, ALPHA, "marginal")
+    ml, mu = ranks.pairwise_rank_ci(theta, boot, ALPHA, "marginal", stepdown=False)
     common_df = pd.DataFrame({"score_common": theta, "rank_common": ranks.ranks_desc(theta),
                               "marg_lo_common": ml, "marg_hi_common": mu}, index=su.models)
     common_df = ru[["score", "rank"]].join(common_df).sort_values("rank")
