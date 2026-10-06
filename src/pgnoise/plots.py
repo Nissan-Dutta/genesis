@@ -243,87 +243,82 @@ def _headline_label(model: str) -> str:
 
 def headline(ru: pd.DataFrame, neighbours: pd.DataFrame, per_pair: pd.DataFrame, required: pd.DataFrame,
              n_units: int, n_assays: int, incomplete: dict[str, int], paths: list[Path], top: int = 20,
-             rank_panel: int = 8) -> list[Path]:
+             rank_panel: int = 7) -> list[Path]:
     """Single-column figure: (a) power / minimum detectable difference; (b) compact rank-interval support."""
     assays_per_unit = n_assays / n_units
     d = ru.head(rank_panel)
     n_best = int(ru.in_best_set.sum())
-    sig = neighbours[neighbours.sig_holm & (neighbours.rank_hi < rank_panel)]
     with plt.rc_context(HEADLINE_RC):
-        fig = plt.figure(figsize=(3.45, 5.7))
-        bx = fig.add_axes((0.165, 0.38, 0.79, 0.56))
-        ax = fig.add_axes((0.375, 0.06, 0.605, 0.24))
+        fig = plt.figure(figsize=(3.45, 6.15))
+        # Fixed vertical bands: (a) power, gutter, (b) ranks + in-panel legend — no shared fig.legend.
+        bx = fig.add_axes((0.14, 0.48, 0.84, 0.44))
+        ax = fig.add_axes((0.22, 0.17, 0.74, 0.22))
+
+        grid = required.groupby("delta")["units_needed"]
+        lo, med, hi = (grid.min() * assays_per_unit, grid.median() * assays_per_unit, grid.max() * assays_per_unit)
+        bx.fill_between(med.index, lo, hi, color="0.86", lw=0, label="#1 vs #2–#11 (range)")
+        bx.plot(med.index, med, color="black", lw=1.2, label="median pair")
+        today_line = plt.Line2D([], [], color=POSSIBLE_TOP1, lw=0.9, ls=(0, (3, 1.5)),
+                                 label=f"today ({n_assays} assays)")
+        bx.axhline(n_assays, color=POSSIBLE_TOP1, lw=0.9, ls=(0, (3, 1.5)))
+        mdd_med = float(per_pair["mdd_now"].median())
+        mdd_min = float(per_pair["mdd_now"].min())
+        bx.plot([mdd_med], [n_assays], "o", ms=3.2, color=POSSIBLE_TOP1, zorder=4)
+        bx.annotate(f"median MDD ≈ {mdd_med:.3f}", (mdd_med, n_assays), xytext=(0.022, 280),
+                    fontsize=5.5, ha="right", va="bottom",
+                    arrowprops=dict(arrowstyle="-", lw=0.5, color="0.35", shrinkA=0, shrinkB=2))
+        bx.axvline(mdd_min, color="0.45", lw=0.7, ls=(0, (2, 2)))
+        bx.text(0.00235, 70, f"best pair\n{mdd_min:.3f}", fontsize=5.5, color="0.35", ha="left", va="bottom")
+        for delta in (0.005, 0.01):
+            need = float(per_pair[f"assays_for_{delta}"].median())
+            bx.plot([delta], [need], "o", ms=3.0, color="black", zorder=4)
+            bx.annotate(f"{delta:g} → {50 * round(need / 50):,.0f}",
+                        (delta, need), xytext=(0, 7), textcoords="offset points",
+                        fontsize=5.5, ha="center", va="bottom")
+        bx.set(xscale="log", yscale="log", xlim=(0.002, 0.03), ylim=(50, 5.5e4),
+               xlabel="True gain Δ over the current #1 (Spearman)", ylabel="Assays for 80% power")
+        bx.set_xticks([0.002, 0.005, 0.01, 0.02, 0.03], ["0.002", "0.005", "0.01", "0.02", "0.03"])
+        bx.set_yticks([1e2, 1e3, 1e4], ["100", "1,000", "10,000"])
+        bx.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+        bx.grid(which="major", lw=0.4, alpha=0.35)
+        power_handles, power_labels = bx.get_legend_handles_labels()
+        bx.legend(power_handles + [today_line], power_labels + [today_line.get_label()],
+                  loc="upper left", frameon=False, borderaxespad=0.2, fontsize=5.5)
+        fig.text(0.02, 0.935, "a", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.07, 0.935, "Does this gain support a decision? (80% power, paired test, α = 0.05)",
+                 fontsize=7, va="top")
 
         y = np.arange(len(d))
         for yi, (m, r) in zip(y, d.iterrows()):
             c = POSSIBLE_TOP1 if r.in_best_set else OTHER
             ax.hlines(yi, r.simul_lo - 0.4, r.simul_hi + 0.4, color=c, lw=1.0, alpha=0.4, capstyle="butt")
             ax.hlines(yi, r.marg_lo - 0.4, r.marg_hi + 0.4, color=c, lw=3.4, capstyle="butt")
-            ax.plot(r["rank"], yi, "o", ms=2.6, mfc="white", mec="black", mew=0.6, zorder=3)
+            ax.plot(r["rank"], yi, "o", ms=2.4, mfc="white", mec="black", mew=0.6, zorder=3)
         labels = [f"{int(r['rank'])}. {_headline_label(m)}{'†' if m in incomplete else ''}" for m, r in d.iterrows()]
-        ax.set_yticks(y, labels)
+        ax.set_yticks(y, labels, fontsize=6)
         for tick, best in zip(ax.get_yticklabels(), d.in_best_set):
             if best:
                 tick.set_color(POSSIBLE_TOP1)
                 tick.set_fontweight("bold")
-        x_max = int(d.simul_hi.max()) + 2
-        for r in sig.itertuples():
-            ax.axhline(r.rank_hi - 0.5, color="0.2", lw=0.5, ls=(0, (2, 2)))
-            ax.text(x_max - 0.5, r.rank_hi - 0.38, f"significant gap (z = {r.z:.1f})", ha="right", va="top",
-                    fontsize=5.5, color="0.2")
+        x_max = min(int(d.simul_hi.max()) + 1, 22)
         ax.set_xlim(0.3, x_max)
-        ax.set_ylim(len(d) - 0.4, -0.6)
-        ax.set_xticks([1] + list(range(5, x_max + 1, 5)))
-        ax.tick_params(axis="x", top=True, bottom=True, labeltop=False, labelbottom=True)
-        ax.tick_params(axis="y", length=0)
-        ax.set_xlabel("Rank of the benchmark aggregate (95% CI)", labelpad=2)
-        ax.grid(axis="x", lw=0.4, alpha=0.35)
-        handles = [plt.Line2D([], [], color=POSSIBLE_TOP1, lw=3.4, label="possible #1 (95%)"),
-                   plt.Line2D([], [], color=OTHER, lw=3.4, label="marginal CI"),
-                   plt.Line2D([], [], color=OTHER, lw=1.0, alpha=0.5, label="simultaneous CI"),
-                   plt.Line2D([], [], marker="o", ls="", ms=2.6, mfc="white", mec="black", mew=0.6,
-                              label="published rank")]
-        if incomplete:
-            handles.append(plt.Line2D([], [], ls="", label="† scored on " + ", ".join(
-                f"{n}/{n_assays}" for n in incomplete.values()) + " assays"))
-        fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.5, 0.355), ncol=3, frameon=False,
-                   handlelength=1.5, columnspacing=1.0, labelspacing=0.35)
-        fig.text(0.012, 0.335, "b", fontweight="bold", fontsize=8, va="top")
-        fig.text(0.06, 0.335, f"Supporting: top {rank_panel} rank CIs ({n_best} models not ruled out as #1)",
+        ax.set_ylim(len(d) - 0.35, -0.45)
+        ax.set_xticks([1, 5, 10, 15, 20] if x_max >= 20 else [1, 5, 10, 15])
+        ax.tick_params(axis="y", length=0, pad=1)
+        ax.set_xlabel("Rank (95% CI)", labelpad=1, fontsize=6.5)
+        ax.grid(axis="x", lw=0.35, alpha=0.35)
+        rank_handles = [
+            plt.Line2D([], [], color=POSSIBLE_TOP1, lw=3.0, label="possible #1"),
+            plt.Line2D([], [], color=OTHER, lw=3.0, label="marginal"),
+            plt.Line2D([], [], color=OTHER, lw=1.0, alpha=0.45, label="simultaneous"),
+            plt.Line2D([], [], marker="o", ls="", ms=2.4, mfc="white", mec="black", mew=0.6, label="published"),
+        ]
+        ax.legend(handles=rank_handles, loc="upper center", bbox_to_anchor=(0.5, -0.38),
+                  ncol=4, frameon=False, handlelength=1.2, columnspacing=0.8, fontsize=5.5)
+        fig.text(0.02, 0.415, "b", fontweight="bold", fontsize=8, va="top")
+        fig.text(0.07, 0.415, f"Supporting rank CIs (top {rank_panel}; {n_best} not ruled out as #1)",
                  fontsize=7, va="top")
 
-        grid = required.groupby("delta")["units_needed"]
-        lo, med, hi = (grid.min() * assays_per_unit, grid.median() * assays_per_unit, grid.max() * assays_per_unit)
-        bx.fill_between(med.index, lo, hi, color="0.86", lw=0, label="range over #1 vs each of #2–#11")
-        bx.plot(med.index, med, color="black", lw=1.2, label="median pair")
-        bx.axhline(n_assays, color=POSSIBLE_TOP1, lw=0.9, ls=(0, (3, 1.5)))
-        bx.text(0.00208, n_assays * 0.86, f"ProteinGym today: {n_assays} assays", color=POSSIBLE_TOP1,
-                fontsize=6, va="top")
-        mdd_med = float(per_pair["mdd_now"].median())
-        mdd_min = float(per_pair["mdd_now"].min())
-        bx.plot([mdd_med], [n_assays], "o", ms=3.2, color=POSSIBLE_TOP1, zorder=4)
-        bx.annotate(f"80% power today: Δ ≈ {mdd_med:.3f} (median pair)", (mdd_med, n_assays),
-                    xytext=(0.0068, 62), fontsize=6, ha="left", va="bottom",
-                    arrowprops=dict(arrowstyle="-", lw=0.5, color="0.3", shrinkA=0, shrinkB=2))
-        bx.axvline(mdd_min, color="0.45", lw=0.7, ls=(0, (2, 2)))
-        bx.text(mdd_min * 1.04, 55, f"best pair: {mdd_min:.3f}", fontsize=5.5, color="0.35", rotation=90, va="bottom")
-        for delta in (0.005, 0.01):
-            need = float(per_pair[f"assays_for_{delta}"].median())
-            bx.plot([delta], [need], "o", ms=3.0, color="black", zorder=4)
-            right = delta < 0.008
-            bx.annotate(f"Δ = {delta}: ≈ {50 * round(need / 50):,.0f} assays ({need / n_assays:.1f}× today)",
-                        (delta, need), xytext=(5, 2) if right else (-4, -3), textcoords="offset points",
-                        fontsize=6, ha="left" if right else "right", va="bottom" if right else "top")
-        bx.set(xscale="log", yscale="log", xlim=(0.002, 0.03), ylim=(45, 6e4),
-               xlabel="True gain Δ over the current #1 (Spearman)", ylabel="Assays for 80% power")
-        bx.set_xticks([0.002, 0.005, 0.01, 0.02, 0.03], ["0.002", "0.005", "0.01", "0.02", "0.03"])
-        bx.set_yticks([1e2, 1e3, 1e4], ["100", "1,000", "10,000"])
-        bx.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
-        bx.legend(loc="upper right", frameon=False, borderaxespad=0.3)
-        bx.grid(which="major", lw=0.4, alpha=0.35)
-        fig.text(0.012, 0.99, "a", fontweight="bold", fontsize=8, va="top")
-        fig.text(0.06, 0.99, "Does this gain support a decision? Assays for 80% power (paired test, α = 0.05)",
-                 fontsize=7, va="top")
         for path in paths:
             path.parent.mkdir(parents=True, exist_ok=True)
             fig.savefig(path, dpi=300, metadata={"CreationDate": None} if path.suffix == ".pdf" else None)
