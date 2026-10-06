@@ -17,6 +17,8 @@ METHOD_STYLE = {
     "marginal_stepdown": ("Pairwise max-t, marginal, step-down", "#9ecae1"),
     "simultaneous_single_step": ("Pairwise max-t, simultaneous, single-step", "#a1d99b"),
     "simultaneous_stepdown": ("Pairwise max-t, simultaneous, step-down", "#2ca02c"),
+    "marginal_stepdown_t": ("Bootstrap-t, marginal, step-down", "#9467bd"),
+    "simultaneous_stepdown_t": ("Bootstrap-t, simultaneous, step-down", "#8c564b"),
 }
 
 
@@ -96,7 +98,7 @@ def leave_one_group_out(table: pd.DataFrame, path: Path, models: list[str]) -> P
 
 def sim_coverage_by_rank(per_model: dict[str, pd.DataFrame], path: Path,
                          methods: tuple[str, ...] = ("percentile", "marginal_single_step", "marginal_stepdown",
-                                                     "simultaneous_stepdown")) -> Path:
+                                                     "marginal_stepdown_t", "simultaneous_stepdown")) -> Path:
     names = list(per_model)
     fig, axes = plt.subplots(2, len(names), figsize=(4.2 * len(names), 7), sharex=True, squeeze=False)
     for col, name in enumerate(names):
@@ -127,7 +129,7 @@ def sim_summary(summary: pd.DataFrame, best: pd.DataFrame, path: Path) -> Path:
         label, color = METHOD_STYLE[method]
         d = summary[summary.method == method].set_index("scenario").loc[scenarios]
         for ax, col in zip(axes[:3], ["mean_coverage", "min_model_coverage", "joint_coverage"]):
-            ax.bar(x + (k - 2) * w, d[col], width=w, color=color, label=label)
+            ax.bar(x + (k - (len(methods) - 1) / 2) * w, d[col], width=w, color=color, label=label)
     for ax, title in zip(axes[:3], ["Average per-model coverage", "Worst-model coverage", "Joint coverage (all models)"]):
         ax.axhline(0.95, color="grey", ls="--", lw=0.8)
         ax.set(title=title, ylim=(0, 1.05))
@@ -145,4 +147,82 @@ def sim_summary(summary: pd.DataFrame, best: pd.DataFrame, path: Path) -> Path:
     h3, l3 = axes[3].get_legend_handles_labels()
     fig.legend(h0 + h3, l0 + l3, loc="lower center", ncol=4, fontsize=8, bbox_to_anchor=(0.5, -0.16))
     fig.suptitle("Coverage simulation summary (nominal 95%)")
+    return _save(fig, path)
+
+
+def robustness_heatmap(long: pd.DataFrame, path: Path, combos: list[tuple[str, str]], top: int = 10) -> Path:
+    """Rank of each model (rows) under each leaderboard (columns); ★ = cannot be ruled out as #1."""
+    tables = {c: long[(long.metric == c[0]) & (long.scheme == c[1])].set_index("model") for c in combos}
+    base = tables[combos[0]]
+    models = []
+    for c in combos:
+        models += list(tables[c].sort_values("rank").index[:top])
+    models = sorted(set(models), key=lambda m: base.loc[m, "rank"])
+    R = np.array([[tables[c].loc[m, "rank"] for c in combos] for m in models], dtype=float)
+    best = np.array([[tables[c].loc[m, "in_best_set"] for c in combos] for m in models])
+    fig, ax = plt.subplots(figsize=(1.0 * len(combos) + 4, 0.32 * len(models) + 2))
+    im = ax.imshow(np.minimum(R, 40), cmap="viridis_r", vmin=1, vmax=40, aspect="auto")
+    for i in range(len(models)):
+        for j in range(len(combos)):
+            txt = f"{int(R[i, j])}{'★' if best[i, j] else ''}"
+            ax.text(j, i, txt, ha="center", va="center", fontsize=7,
+                    color="white" if R[i, j] > 18 else "black", fontweight="bold" if best[i, j] else None)
+    ax.set_xticks(range(len(combos)), [f"{m}\n{s}" for m, s in combos], fontsize=7.5, rotation=35, ha="right")
+    ax.set_yticks(range(len(models)), models, fontsize=7.5)
+    ax.axvline(len([c for c in combos if c[1] == combos[0][1]]) - 0.5, color="white", lw=2)
+    fig.colorbar(im, ax=ax, shrink=0.6, label="Rank (capped at 40)")
+    ax.set_title(f"Rank under other metrics and aggregation schemes (union of top {top}s; ★ = possible #1)")
+    return _save(fig, path)
+
+
+def _short(model: str) -> str:
+    return model.replace(" Protein-RAG (16B)", "-RAG")
+
+
+def robustness_grid(summary: pd.DataFrame, path: Path) -> Path:
+    metrics = list(dict.fromkeys(summary.metric))
+    schemes = list(dict.fromkeys(summary.scheme))
+    tau = summary.pivot(index="metric", columns="scheme", values="kendall_tau_vs_published").loc[metrics, schemes]
+    fig, ax = plt.subplots(figsize=(15, 6))
+    im = ax.imshow(tau.to_numpy(), cmap="magma", vmin=0.6, vmax=1.0, aspect="auto")
+    for i, m in enumerate(metrics):
+        for j, s in enumerate(schemes):
+            row = summary[(summary.metric == m) & (summary.scheme == s)].iloc[0]
+            ax.text(j, i, f"#1 {_short(row.top1)}\npossible #1: {row.best_set_size}\nτ = {row.kendall_tau_vs_published:.2f}",
+                    ha="center", va="center", fontsize=7, color="white" if row.kendall_tau_vs_published < 0.85 else "black")
+    ax.set_xticks(range(len(schemes)), schemes, fontsize=8)
+    ax.set_yticks(range(len(metrics)), metrics, fontsize=8)
+    fig.colorbar(im, ax=ax, shrink=0.8, label="Kendall τ vs published leaderboard")
+    ax.set_title("Leader, size of the possible-#1 set, and agreement with the published ranking")
+    return _save(fig, path)
+
+
+def power_curves(curves: pd.DataFrame, required: pd.DataFrame, current_units: int, path: Path) -> Path:
+    fig, axes = plt.subplots(1, 2, figsize=(13, 4.8))
+    ax = axes[0]
+    colors = {0.005: "#d62728", 0.01: "#1f77b4"}
+    for delta, color in colors.items():
+        d = curves[curves.delta == delta]
+        band = d.groupby("units")["analytic_power"]
+        ax.fill_between(band.min().index, band.min(), band.max(), color=color, alpha=0.15,
+                        label=f"Δ = {delta}: analytic, range over top-10 pairs")
+        med = d[d.pair == "median"]
+        ax.plot(med.units, med.analytic_power, color=color, lw=2, label=f"Δ = {delta}: analytic, median pair")
+        ax.scatter(med.units, med.simulated_power, color=color, s=18, zorder=3, label=f"Δ = {delta}: simulated")
+    ax.axhline(0.8, color="grey", ls="--", lw=0.8)
+    ax.axvline(current_units, color="black", ls=":", lw=1, label=f"today ({current_units} units)")
+    ax.set(xscale="log", xlabel="(UniProt, function) units in the benchmark  (assays ≈ 1.085 × units)",
+           ylabel="Power (two-sided, α = 0.05)", title="Power to detect a gain over the current #1", ylim=(0, 1.02))
+    ax.legend(fontsize=7, loc="upper left")
+    ax = axes[1]
+    for pair, d in required.groupby("pair"):
+        ax.plot(d.delta, d.units_needed, color="grey", lw=0.8, alpha=0.6)
+    med = required.groupby("delta")["units_needed"].median()
+    ax.plot(med.index, med.values, color="black", lw=2, label="median over top-10 pairs")
+    ax.axhline(current_units, color="black", ls=":", lw=1, label="today")
+    for delta in colors:
+        ax.axvline(delta, color=colors[delta], ls="--", lw=0.8)
+    ax.set(xscale="log", yscale="log", xlabel="True gain Δ (Spearman)", ylabel="Units needed for 80% power",
+           title="Benchmark size needed (grey: individual top-10 pairs)")
+    ax.legend(fontsize=8)
     return _save(fig, path)

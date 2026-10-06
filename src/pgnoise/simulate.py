@@ -26,6 +26,7 @@ import pandas as pd
 from . import ranks
 from .data import UnitTable
 from .stats import bootstrap_scores, group_means, proteingym_score
+from .studentized import studentized_rank_ci
 
 METHODS = (
     "percentile",
@@ -33,6 +34,8 @@ METHODS = (
     "marginal_stepdown",
     "simultaneous_single_step",
     "simultaneous_stepdown",
+    "marginal_stepdown_t",
+    "simultaneous_stepdown_t",
 )
 
 
@@ -163,6 +166,9 @@ def one_rep(cal: Calibration, mu: np.ndarray, noise: str, n_boot: int, alpha: fl
         "simultaneous_single_step": ranks.pairwise_rank_ci(est, boot, alpha, "simultaneous", ms, stepdown=False),
         "simultaneous_stepdown": ranks.pairwise_rank_ci(est, boot, alpha, "simultaneous", ms),
     }
+    student = studentized_rank_ci(X, groups, n_groups, n_boot, rng, alpha)
+    intervals["marginal_stepdown_t"] = student["marginal"]
+    intervals["simultaneous_stepdown_t"] = student["simultaneous"]
     res = RepResult()
     for name, (lo, hi) in intervals.items():
         res.covered_strict[name] = (lo <= rmin) & (hi >= rmax)
