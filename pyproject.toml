@@ -1,0 +1,32 @@
+[project]
+name = "pgnoise"
+version = "0.1.0"
+description = "Rank uncertainty and benchmark-design statistics for the ProteinGym DMS-substitution leaderboard"
+readme = "README.md"
+authors = [{ name = "Nissan Dutta" }]
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib==3.10.6",
+    "numpy==2.3.3",
+    "pandas==2.3.3",
+    "scipy==1.16.2",
+]
+
+[project.scripts]
+pgnoise = "pgnoise.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest==8.4.2",
+    "ruff==0.13.3",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

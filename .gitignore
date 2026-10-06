@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+
+# Downloaded ProteinGym inputs (fetch with `uv run pgnoise download`)
+data/
+
+# Large per-model simulation tables; summaries and figures are committed
+results/tables/sim_per_model_*.csv
