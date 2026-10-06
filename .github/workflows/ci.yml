@@ -33,6 +33,3 @@ jobs:
 
       - name: Pytest (no data download)
         run: uv run pytest -q
-        env:
-          # Committed results/ fixtures only; integration tests skip without data/.
-          PGNOISE_CI: "1"
