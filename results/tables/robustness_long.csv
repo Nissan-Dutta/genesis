@@ -1,0 +1,2426 @@
+metric,scheme,model,score,rank,p_rank1,marg_lo,marg_hi,simul_lo,simul_hi,in_best_set
+Spearman,proteingym,Site-Independent,0.35941555871212116,76,0.0,52,85,47,88,False
+Spearman,proteingym,EVmutation,0.3952846511994949,56,0.0,42,75,38,75,False
+Spearman,proteingym,DeepSequence (single),0.4072555003156566,46,0.0,29,72,27,76,False
+Spearman,proteingym,DeepSequence (ensemble),0.4189351530934344,42,0.0,25,63,20,68,False
+Spearman,proteingym,EVE (single),0.4324855602904041,35,0.0,19,53,16,56,False
+Spearman,proteingym,EVE (ensemble),0.4393106455176768,26,0.0,13,48,11,54,False
+Spearman,proteingym,Unirep,0.18979010416666667,94,0.0,93,95,93,95,False
+Spearman,proteingym,Unirep evotuned,0.3472770912247475,79,0.0,63,86,57,88,False
+Spearman,proteingym,MSA Transformer (single),0.4165775915404041,44,0.0,25,64,19,69,False
+Spearman,proteingym,MSA Transformer (ensemble),0.43170123421717166,36,0.0,14,53,11,58,False
+Spearman,proteingym,ESM-1b,0.3940886773989899,57,0.0,39,75,34,79,False
+Spearman,proteingym,ESM-1v (single),0.3737257039141414,69,0.0,49,81,43,83,False
+Spearman,proteingym,ESM-1v (ensemble),0.4065152982954546,47,0.0,25,69,23,73,False
+Spearman,proteingym,ESM2 (8M),0.2256940056818182,93,0.0,91,94,91,94,False
+Spearman,proteingym,ESM2 (35M),0.3208077951388889,84,0.0,74,89,67,89,False
+Spearman,proteingym,ESM2 (150M),0.3868099273989899,62,0.0,42,80,35,81,False
+Spearman,proteingym,ESM2 (650M),0.413767629419192,45,0.0,22,68,16,71,False
+Spearman,proteingym,ESM2 (3B),0.40563601483585854,50,0.0,31,69,25,75,False
+Spearman,proteingym,ESM2 (15B),0.40034884154040407,52,0.0,35,74,32,76,False
+Spearman,proteingym,Wavenet,0.3731489851641414,70,0.0,45,84,41,86,False
+Spearman,proteingym,RITA S,0.3045020202020202,87,0.0,83,90,80,91,False
+Spearman,proteingym,RITA M,0.3504045375631312,77,0.0,65,85,58,86,False
+Spearman,proteingym,RITA L,0.3660476799242424,73,0.0,52,82,45,84,False
+Spearman,proteingym,RITA XL,0.3728998626893939,71,0.0,45,81,44,83,False
+Spearman,proteingym,Progen2 S,0.3357055160984848,82,0.0,73,86,66,86,False
+Spearman,proteingym,Progen2 M,0.37974415088383834,65,0.0,44,77,42,77,False
+Spearman,proteingym,Progen2 Base,0.3781608775252525,67,0.0,44,77,42,79,False
+Spearman,proteingym,Progen2 L,0.3803383112373737,64,0.0,44,76,42,80,False
+Spearman,proteingym,Progen2 XL,0.39065444128787885,60,0.0,41,75,38,76,False
+Spearman,proteingym,GEMME,0.4546858175505051,20,0.0,8,38,6,43,False
+Spearman,proteingym,VESPA,0.4354624779040404,32,0.0,18,50,15,53,False
+Spearman,proteingym,VESPAl,0.39326272411616164,58,0.0,41,76,37,79,False
+Spearman,proteingym,VespaG,0.4579054356060606,16,0.0,8,29,7,33,False
+Spearman,proteingym,ProtGPT2,0.18835556029040404,95,0.0,93,95,92,95,False
+Spearman,proteingym,Tranception S no retrieval,0.30283003472222225,88,0.0,83,91,81,91,False
+Spearman,proteingym,Tranception M no retrieval,0.34892011994949496,78,0.0,66,85,64,86,False
+Spearman,proteingym,Tranception L no retrieval,0.3741309864267676,68,0.0,45,78,44,83,False
+Spearman,proteingym,Tranception S,0.41843320075757573,43,0.0,26,62,25,66,False
+Spearman,proteingym,Tranception M,0.42766652462121213,38,0.0,23,55,20,58,False
+Spearman,proteingym,Tranception L,0.4340742266414142,33,0.0,18,52,16,54,False
+Spearman,proteingym,TranceptEVE S,0.45184725694444444,22,0.0,10,38,8,41,False
+Spearman,proteingym,TranceptEVE M,0.45468028566919194,21,0.0,8,33,7,39,False
+Spearman,proteingym,TranceptEVE L,0.4557866887626263,18,0.0,8,33,7,36,False
+Spearman,proteingym,CARP (38M),0.27955184659090904,90,0.0,87,91,85,92,False
+Spearman,proteingym,CARP (600K),0.10609842013888889,96,0.0,96,97,96,97,False
+Spearman,proteingym,CARP (640M),0.36857334280303033,72,0.0,53,82,48,84,False
+Spearman,proteingym,CARP (76M),0.3279135953282828,83,0.0,72,88,69,89,False
+Spearman,proteingym,MIF,0.3830504434974747,63,0.0,43,80,37,84,False
+Spearman,proteingym,MIF-ST,0.3999182275883838,53,0.0,34,75,29,76,False
+Spearman,proteingym,ESM-IF1,0.4223889188762627,40,0.0,20,63,14,71,False
+Spearman,proteingym,ProteinMPNN,0.25729855429292925,91,0.0,89,93,87,93,False
+Spearman,proteingym,"ProtSSN (k=10, h=512)",0.429500956439394,37,0.0,27,53,21,55,False
+Spearman,proteingym,"ProtSSN (k=10, h=768)",0.4223165293560607,41,0.0,31,56,30,62,False
+Spearman,proteingym,"ProtSSN (k=10, h=1280)",0.43273435290404033,34,0.0,22,48,16,52,False
+Spearman,proteingym,"ProtSSN (k=20, h=512)",0.44017277304292934,25,0.0,15,47,14,50,False
+Spearman,proteingym,"ProtSSN (k=20, h=768)",0.4392028140782829,27,0.0,15,45,14,50,False
+Spearman,proteingym,"ProtSSN (k=20, h=1280)",0.4420448958333334,24,0.0,14,43,11,46,False
+Spearman,proteingym,"ProtSSN (k=30, h=512)",0.4377972080176768,29,0.0,18,47,15,50,False
+Spearman,proteingym,"ProtSSN (k=30, h=768)",0.4376573027146464,30,0.0,18,48,15,50,False
+Spearman,proteingym,"ProtSSN (k=30, h=1280)",0.4372742092803031,31,0.0,16,48,15,50,False
+Spearman,proteingym,ProtSSN (ensemble),0.44885818655303034,23,0.0,12,34,9,36,False
+Spearman,proteingym,SaProt (650M),0.4565896764520202,17,0.0,7,36,5,40,False
+Spearman,proteingym,SaProt (35M),0.4065058285984849,48,0.0,32,70,30,74,False
+Spearman,proteingym,PoET (200M),0.4701064362373737,12,0.0,6,22,5,24,False
+Spearman,proteingym,MULAN,0.317423492739899,86,0.0,77,88,74,90,False
+Spearman,proteingym,ProSST (K=20),0.4382528061868687,28,0.0,12,55,9,64,False
+Spearman,proteingym,ProSST (K=128),0.46905642045454543,13,0.0,6,33,6,44,False
+Spearman,proteingym,ProSST (K=512),0.4711761205808081,10,0.0,6,28,6,41,False
+Spearman,proteingym,ProSST (K=1024),0.48467041824494944,7,0.0,4,20,2,25,False
+Spearman,proteingym,ProSST (K=2048),0.5069258396464646,3,0.0,2,7,2,9,False
+Spearman,proteingym,ProSST (K=4096),0.4983184990530303,4,0.00325,1,13,1,18,True
+Spearman,proteingym,ESCOTT,0.4758983285984849,9,0.0,5,19,3,19,False
+Spearman,proteingym,VenusREM,0.5181946180555556,2,0.4885,1,4,1,5,True
+Spearman,proteingym,RSALOR,0.46457289299242427,15,0.0,6,30,6,37,False
+Spearman,proteingym,S2F,0.4556086474116162,19,0.0,8,32,8,36,False
+Spearman,proteingym,S2F-MSA,0.488256526199495,6,0.0,4,12,3,16,False
+Spearman,proteingym,S3F,0.4702016051136363,11,0.0,6,22,5,22,False
+Spearman,proteingym,S3F-MSA,0.49587695549242417,5,0.00075,2,9,1,10,False
+Spearman,proteingym,SiteRM,0.4235005539772727,39,0.0,22,63,20,68,False
+Spearman,proteingym,ESM3 open (1.4B),0.4657334595959596,14,0.0,5,25,5,27,False
+Spearman,proteingym,ESM-C (300M),0.40623382102272726,49,0.0,27,71,20,74,False
+Spearman,proteingym,ESM-C (600M),0.4052043386994949,51,0.0,29,72,19,75,False
+Spearman,proteingym,xTrimoPGLM-1B-MLM,0.3792727493686869,66,0.0,48,81,42,82,False
+Spearman,proteingym,xTrimoPGLM-3B-MLM,0.3987562373737374,54,0.0,34,74,26,78,False
+Spearman,proteingym,xTrimoPGLM-10B-MLM,0.3956222364267677,55,0.0,38,75,34,79,False
+Spearman,proteingym,xTrimoPGLM-1B-CLM,0.34260812184343437,81,0.0,70,86,67,87,False
+Spearman,proteingym,xTrimoPGLM-3B-CLM,0.23307894728535355,92,0.0,91,94,90,95,False
+Spearman,proteingym,xTrimoPGLM-7B-CLM,0.1017437279040404,97,0.0,96,97,96,97,False
+Spearman,proteingym,xTrimoPGLM-100B-int4,0.3643381313131313,74,0.0,58,84,45,86,False
+Spearman,proteingym,Progen3 112m,0.28198171401515154,89,0.0,86,91,84,91,False
+Spearman,proteingym,Progen3 219m,0.3181304955808081,85,0.0,79,89,73,89,False
+Spearman,proteingym,Progen3 339m,0.346577132260101,80,0.0,67,85,59,85,False
+Spearman,proteingym,Progen3 762m,0.3635052604166667,75,0.0,54,82,49,84,False
+Spearman,proteingym,Progen3 1B,0.3888057433712121,61,0.0,41,74,39,76,False
+Spearman,proteingym,Progen3 3B,0.3924185779671717,59,0.0,40,74,38,75,False
+Spearman,proteingym,AIDO Protein-RAG (16B),0.5182383585858586,1,0.5075,1,4,1,6,True
+Spearman,proteingym,Protriever,0.47889712550607283,8,0.0,3,21,3,24,False
+Spearman,function_group_mean,Site-Independent,0.35794759504061824,76,0.0,56,86,48,88,False
+Spearman,function_group_mean,EVmutation,0.3961268942943362,58,0.0,40,75,39,75,False
+Spearman,function_group_mean,DeepSequence (single),0.4051117685931639,51,0.0,32,72,28,76,False
+Spearman,function_group_mean,DeepSequence (ensemble),0.41684040249156523,44,0.0,25,64,21,71,False
+Spearman,function_group_mean,EVE (single),0.43175070226930695,37,0.0,21,56,17,56,False
+Spearman,function_group_mean,EVE (ensemble),0.4386059942641339,32,0.0,14,49,12,55,False
+Spearman,function_group_mean,Unirep,0.1870780095873119,95,0.0,93,95,93,95,False
+Spearman,function_group_mean,Unirep evotuned,0.34416517797448026,79,0.0,65,86,60,88,False
+Spearman,function_group_mean,MSA Transformer (single),0.4155752397473328,45,0.0,25,65,21,69,False
+Spearman,function_group_mean,MSA Transformer (ensemble),0.4324353775423543,36,0.0,15,56,12,57,False
+Spearman,function_group_mean,ESM-1b,0.3982353496632566,55,0.0,37,74,33,78,False
+Spearman,function_group_mean,ESM-1v (single),0.37670816599421253,68,0.0,46,81,43,82,False
+Spearman,function_group_mean,ESM-1v (ensemble),0.4087868991473643,49,0.0,27,68,22,73,False
+Spearman,function_group_mean,ESM2 (8M),0.2243832516320888,93,0.0,91,94,91,94,False
+Spearman,function_group_mean,ESM2 (35M),0.31964109869458707,84,0.0,74,89,69,89,False
+Spearman,function_group_mean,ESM2 (150M),0.38953750332354986,60,0.0,40,78,34,81,False
+Spearman,function_group_mean,ESM2 (650M),0.41844490883793206,42,0.0,21,64,16,68,False
+Spearman,function_group_mean,ESM2 (3B),0.409501692364483,48,0.0,31,67,26,72,False
+Spearman,function_group_mean,ESM2 (15B),0.40451325367139324,52,0.0,33,71,31,75,False
+Spearman,function_group_mean,Wavenet,0.3715431077965962,70,0.0,46,83,40,85,False
+Spearman,function_group_mean,RITA S,0.30446938849264427,87,0.0,83,90,81,91,False
+Spearman,function_group_mean,RITA M,0.3504061189456539,77,0.0,65,85,59,86,False
+Spearman,function_group_mean,RITA L,0.365076888228051,73,0.0,54,82,48,84,False
+Spearman,function_group_mean,RITA XL,0.3710982211586863,71,0.0,48,80,44,84,False
+Spearman,function_group_mean,Progen2 S,0.33559106939572053,82,0.0,73,86,66,86,False
+Spearman,function_group_mean,Progen2 M,0.3801095251002228,65,0.0,44,77,42,77,False
+Spearman,function_group_mean,Progen2 Base,0.3786990430757873,67,0.0,45,77,42,79,False
+Spearman,function_group_mean,Progen2 L,0.3797768791931583,66,0.0,43,76,42,79,False
+Spearman,function_group_mean,Progen2 XL,0.38939811738648944,61,0.0,40,76,40,76,False
+Spearman,function_group_mean,GEMME,0.45333590027543524,21,0.0,8,40,6,43,False
+Spearman,function_group_mean,VESPA,0.43957919935361794,31,0.0,17,50,13,51,False
+Spearman,function_group_mean,VESPAl,0.39745273666901576,56,0.0,39,76,37,76,False
+Spearman,function_group_mean,VespaG,0.4609477197221382,17,0.0,7,28,6,33,False
+Spearman,function_group_mean,ProtGPT2,0.18754752560101395,94,0.0,93,95,92,95,False
+Spearman,function_group_mean,Tranception S no retrieval,0.3016043122252425,88,0.0,83,91,81,91,False
+Spearman,function_group_mean,Tranception M no retrieval,0.34784896679547844,78,0.0,66,85,65,86,False
+Spearman,function_group_mean,Tranception L no retrieval,0.372941262097076,69,0.0,47,78,43,84,False
+Spearman,function_group_mean,Tranception S,0.41694410628131556,43,0.0,26,64,25,66,False
+Spearman,function_group_mean,Tranception M,0.4260978765420626,38,0.0,24,58,20,60,False
+Spearman,function_group_mean,Tranception L,0.4333415682508706,35,0.0,20,53,17,57,False
+Spearman,function_group_mean,TranceptEVE S,0.45066398072212027,23,0.0,10,40,8,44,False
+Spearman,function_group_mean,TranceptEVE M,0.4534912508679951,20,0.0,9,38,6,40,False
+Spearman,function_group_mean,TranceptEVE L,0.4549803349105675,19,0.0,8,37,7,39,False
+Spearman,function_group_mean,CARP (38M),0.2754541133285319,90,0.0,87,91,85,92,False
+Spearman,function_group_mean,CARP (600K),0.1034967593130384,96,0.0,96,97,96,97,False
+Spearman,function_group_mean,CARP (640M),0.37100976000743435,72,0.0,53,82,46,83,False
+Spearman,function_group_mean,CARP (76M),0.32499979348816554,83,0.0,73,88,69,89,False
+Spearman,function_group_mean,MIF,0.382914050807074,63,0.0,42,80,39,84,False
+Spearman,function_group_mean,MIF-ST,0.40061912170516817,54,0.0,36,73,31,76,False
+Spearman,function_group_mean,ESM-IF1,0.4214701745283141,41,0.0,19,68,14,73,False
+Spearman,function_group_mean,ProteinMPNN,0.256450131005945,91,0.0,88,93,86,93,False
+Spearman,function_group_mean,"ProtSSN (k=10, h=512)",0.4335712132828412,34,0.0,25,51,18,54,False
+Spearman,function_group_mean,"ProtSSN (k=10, h=768)",0.425755022496883,39,0.0,29,56,28,58,False
+Spearman,function_group_mean,"ProtSSN (k=10, h=1280)",0.43613357443589995,33,0.0,21,49,16,53,False
+Spearman,function_group_mean,"ProtSSN (k=20, h=512)",0.44404802458523396,26,0.0,16,47,12,50,False
+Spearman,function_group_mean,"ProtSSN (k=20, h=768)",0.4435032195194986,27,0.0,14,45,11,48,False
+Spearman,function_group_mean,"ProtSSN (k=20, h=1280)",0.44546654818050174,24,0.0,13,43,12,46,False
+Spearman,function_group_mean,"ProtSSN (k=30, h=512)",0.4424370833301066,28,0.0,16,47,13,49,False
+Spearman,function_group_mean,"ProtSSN (k=30, h=768)",0.44225830009783496,29,0.0,17,48,14,50,False
+Spearman,function_group_mean,"ProtSSN (k=30, h=1280)",0.441895869247032,30,0.0,16,46,13,48,False
+Spearman,function_group_mean,ProtSSN (ensemble),0.45291528703854284,22,0.0,10,33,8,35,False
+Spearman,function_group_mean,SaProt (650M),0.4610175008454078,16,0.0,6,30,5,40,False
+Spearman,function_group_mean,SaProt (35M),0.40748790202046015,50,0.0,33,70,31,74,False
+Spearman,function_group_mean,PoET (200M),0.47036390379646187,13,0.0,6,23,5,26,False
+Spearman,function_group_mean,MULAN,0.3189870413823902,85,0.0,76,88,73,90,False
+Spearman,function_group_mean,ProSST (K=20),0.4450533525905619,25,0.0,10,54,8,59,False
+Spearman,function_group_mean,ProSST (K=128),0.4759889405168474,11,0.0,6,27,6,43,False
+Spearman,function_group_mean,ProSST (K=512),0.4782887118049909,9,0.0,6,25,6,40,False
+Spearman,function_group_mean,ProSST (K=1024),0.4921813019022322,6,0.0,4,20,2,22,False
+Spearman,function_group_mean,ProSST (K=2048),0.5119523277755835,3,0.0,2,7,2,8,False
+Spearman,function_group_mean,ProSST (K=4096),0.5048329863934515,4,0.009,1,10,1,17,True
+Spearman,function_group_mean,ESCOTT,0.47608615570476037,10,0.0,5,18,5,22,False
+Spearman,function_group_mean,VenusREM,0.5225267308918472,1,0.62675,1,4,1,5,True
+Spearman,function_group_mean,RSALOR,0.46521233417745045,15,0.0,7,31,6,37,False
+Spearman,function_group_mean,S2F,0.45795472228030365,18,0.0,8,32,8,36,False
+Spearman,function_group_mean,S2F-MSA,0.48880588197332386,7,0.0,4,15,3,17,False
+Spearman,function_group_mean,S3F,0.4721648676904492,12,0.0,5,22,5,22,False
+Spearman,function_group_mean,S3F-MSA,0.49631411534202224,5,0.00075,1,9,1,10,False
+Spearman,function_group_mean,SiteRM,0.4222785733646199,40,0.0,24,65,20,68,False
+Spearman,function_group_mean,ESM3 open (1.4B),0.46523105086128347,14,0.0,5,27,5,34,False
+Spearman,function_group_mean,ESM-C (300M),0.4107211904374696,46,0.0,27,68,19,73,False
+Spearman,function_group_mean,ESM-C (600M),0.4098988905151696,47,0.0,25,70,19,73,False
+Spearman,function_group_mean,xTrimoPGLM-1B-MLM,0.3818211282257794,64,0.0,45,80,43,82,False
+Spearman,function_group_mean,xTrimoPGLM-3B-MLM,0.401533386251991,53,0.0,34,73,28,77,False
+Spearman,function_group_mean,xTrimoPGLM-10B-MLM,0.39731838032768263,57,0.0,36,75,33,78,False
+Spearman,function_group_mean,xTrimoPGLM-1B-CLM,0.3430713784923087,80,0.0,71,86,65,86,False
+Spearman,function_group_mean,xTrimoPGLM-3B-CLM,0.230219484907857,92,0.0,91,94,89,95,False
+Spearman,function_group_mean,xTrimoPGLM-7B-CLM,0.09869053762774693,97,0.0,96,97,96,97,False
+Spearman,function_group_mean,xTrimoPGLM-100B-int4,0.3636420419373908,74,0.0,56,84,47,86,False
+Spearman,function_group_mean,Progen3 112m,0.27792856910531333,89,0.0,86,91,84,92,False
+Spearman,function_group_mean,Progen3 219m,0.31458133081388895,86,0.0,79,89,75,90,False
+Spearman,function_group_mean,Progen3 339m,0.3417962303846025,81,0.0,68,85,63,85,False
+Spearman,function_group_mean,Progen3 762m,0.361542995763926,75,0.0,56,82,50,85,False
+Spearman,function_group_mean,Progen3 1B,0.3888729224264108,62,0.0,41,74,40,75,False
+Spearman,function_group_mean,Progen3 3B,0.3916996164042676,59,0.0,40,73,40,74,False
+Spearman,function_group_mean,AIDO Protein-RAG (16B),0.5207127557197324,2,0.3635,1,6,1,6,True
+Spearman,function_group_mean,Protriever,0.4796984313725489,8,0.0,3,21,3,25,False
+Spearman,uniprot_weighted,Site-Independent,0.36631093189964165,76,0.0,61,84,59,85,False
+Spearman,uniprot_weighted,EVmutation,0.41556854838709684,58,0.0,40,73,37,75,False
+Spearman,uniprot_weighted,DeepSequence (single),0.42819399641577055,49,0.0,35,65,32,69,False
+Spearman,uniprot_weighted,DeepSequence (ensemble),0.4373113799283153,43,0.0,28,58,24,62,False
+Spearman,uniprot_weighted,EVE (single),0.45380331541218644,34,0.0,20,52,19,54,False
+Spearman,uniprot_weighted,EVE (ensemble),0.45925492831541215,31,0.0,17,46,14,49,False
+Spearman,uniprot_weighted,Unirep,0.18119354838709675,95,0.0,93,95,93,95,False
+Spearman,uniprot_weighted,Unirep evotuned,0.35352105734767036,78,0.0,69,85,63,88,False
+Spearman,uniprot_weighted,MSA Transformer (single),0.4381765232974911,41,0.0,26,59,24,62,False
+Spearman,uniprot_weighted,MSA Transformer (ensemble),0.4519121863799283,36,0.0,17,53,15,55,False
+Spearman,uniprot_weighted,ESM-1b,0.4195806451612905,54,0.0,38,70,34,74,False
+Spearman,uniprot_weighted,ESM-1v (single),0.39273387096774204,66,0.0,51,78,45,79,False
+Spearman,uniprot_weighted,ESM-1v (ensemble),0.4239932795698925,52,0.0,31,65,27,69,False
+Spearman,uniprot_weighted,ESM2 (8M),0.21030017921146957,93,0.0,92,94,92,94,False
+Spearman,uniprot_weighted,ESM2 (35M),0.3268051075268818,84,0.0,76,89,75,90,False
+Spearman,uniprot_weighted,ESM2 (150M),0.39850179211469544,62,0.0,47,77,41,80,False
+Spearman,uniprot_weighted,ESM2 (650M),0.43307347670250895,44,0.0,29,63,21,65,False
+Spearman,uniprot_weighted,ESM2 (3B),0.42993862007168454,47,0.0,30,63,29,69,False
+Spearman,uniprot_weighted,ESM2 (15B),0.42434318996415765,51,0.0,34,66,30,72,False
+Spearman,uniprot_weighted,Wavenet,0.3937818100358423,65,0.0,46,77,45,79,False
+Spearman,uniprot_weighted,RITA S,0.3056066308243727,87,0.0,83,91,80,91,False
+Spearman,uniprot_weighted,RITA M,0.3584009856630826,77,0.0,68,84,66,85,False
+Spearman,uniprot_weighted,RITA L,0.37594444444444447,74,0.0,61,78,57,81,False
+Spearman,uniprot_weighted,RITA XL,0.3845819892473118,73,0.0,58,76,55,78,False
+Spearman,uniprot_weighted,Progen2 S,0.3409359318996415,82,0.0,76,87,74,88,False
+Spearman,uniprot_weighted,Progen2 M,0.38860931899641576,69,0.0,54,77,50,78,False
+Spearman,uniprot_weighted,Progen2 Base,0.3855976702508962,70,0.0,54,78,47,79,False
+Spearman,uniprot_weighted,Progen2 L,0.3907347670250896,68,0.0,54,76,47,78,False
+Spearman,uniprot_weighted,Progen2 XL,0.4088960573476702,60,0.0,42,71,40,75,False
+Spearman,uniprot_weighted,GEMME,0.4775197132616487,17,0.0,8,34,7,38,False
+Spearman,uniprot_weighted,VESPA,0.45949731182795706,30,0.0,15,47,15,49,False
+Spearman,uniprot_weighted,VESPAl,0.4187087813620071,56,0.0,38,72,38,74,False
+Spearman,uniprot_weighted,VespaG,0.4787992831541218,16,0.0,8,30,7,33,False
+Spearman,uniprot_weighted,ProtGPT2,0.2022217741935484,94,0.0,92,95,92,95,False
+Spearman,uniprot_weighted,Tranception S no retrieval,0.2966353046594982,89,0.0,83,91,83,91,False
+Spearman,uniprot_weighted,Tranception M no retrieval,0.35210573476702506,79,0.0,75,85,67,86,False
+Spearman,uniprot_weighted,Tranception L no retrieval,0.38515277777777773,71,0.0,56,77,48,79,False
+Spearman,uniprot_weighted,Tranception S,0.42921057347670255,48,0.0,35,64,32,68,False
+Spearman,uniprot_weighted,Tranception M,0.4404363799283153,40,0.0,23,56,22,59,False
+Spearman,uniprot_weighted,Tranception L,0.45029749103942646,37,0.0,20,54,18,55,False
+Spearman,uniprot_weighted,TranceptEVE S,0.46735842293906815,23,0.0,11,40,10,42,False
+Spearman,uniprot_weighted,TranceptEVE M,0.47156854838709666,21,0.0,9,36,8,40,False
+Spearman,uniprot_weighted,TranceptEVE L,0.47399014336917566,19,0.0,9,35,7,39,False
+Spearman,uniprot_weighted,CARP (38M),0.27396594982078853,90,0.0,86,91,85,91,False
+Spearman,uniprot_weighted,CARP (600K),0.09449238351254481,96,0.0,96,97,96,97,False
+Spearman,uniprot_weighted,CARP (640M),0.38476164874551966,72,0.0,57,80,52,80,False
+Spearman,uniprot_weighted,CARP (76M),0.3289059139784946,83,0.0,76,89,76,90,False
+Spearman,uniprot_weighted,MIF,0.3954825268817205,63,0.0,44,77,41,80,False
+Spearman,uniprot_weighted,MIF-ST,0.416219982078853,57,0.0,38,72,34,75,False
+Spearman,uniprot_weighted,ESM-IF1,0.44687051971326186,38,0.0,16,59,13,64,False
+Spearman,uniprot_weighted,ProteinMPNN,0.31558602150537635,86,0.0,79,91,77,91,False
+Spearman,uniprot_weighted,"ProtSSN (k=10, h=512)",0.4541568100358423,33,0.0,21,50,20,52,False
+Spearman,uniprot_weighted,"ProtSSN (k=10, h=768)",0.44631406810035845,39,0.0,30,53,26,57,False
+Spearman,uniprot_weighted,"ProtSSN (k=10, h=1280)",0.4541594982078854,32,0.0,21,50,20,53,False
+Spearman,uniprot_weighted,"ProtSSN (k=20, h=512)",0.46426030465949814,24,0.0,14,40,13,43,False
+Spearman,uniprot_weighted,"ProtSSN (k=20, h=768)",0.4630497311827958,26,0.0,14,41,13,42,False
+Spearman,uniprot_weighted,"ProtSSN (k=20, h=1280)",0.4642204301075267,25,0.0,14,40,13,42,False
+Spearman,uniprot_weighted,"ProtSSN (k=30, h=512)",0.45976030465949813,29,0.0,16,44,14,48,False
+Spearman,uniprot_weighted,"ProtSSN (k=30, h=768)",0.46090277777777783,27,0.0,16,44,13,47,False
+Spearman,uniprot_weighted,"ProtSSN (k=30, h=1280)",0.4601572580645161,28,0.0,16,44,13,48,False
+Spearman,uniprot_weighted,ProtSSN (ensemble),0.4708723118279569,22,0.0,11,30,9,32,False
+Spearman,uniprot_weighted,SaProt (650M),0.4718463261648746,20,0.0,8,40,6,42,False
+Spearman,uniprot_weighted,SaProt (35M),0.41941353046594987,55,0.0,35,72,33,74,False
+Spearman,uniprot_weighted,PoET (200M),0.48993817204301077,12,0.0,6,22,5,29,False
+Spearman,uniprot_weighted,MULAN,0.3044574372759856,88,0.0,81,91,79,91,False
+Spearman,uniprot_weighted,ProSST (K=20),0.4537643369175627,35,0.0,15,56,11,61,False
+Spearman,uniprot_weighted,ProSST (K=128),0.4860663082437276,15,0.0,6,35,6,40,False
+Spearman,uniprot_weighted,ProSST (K=512),0.48955465949820787,14,0.0,6,32,6,37,False
+Spearman,uniprot_weighted,ProSST (K=1024),0.5045407706093191,7,0.0,3,19,3,22,False
+Spearman,uniprot_weighted,ProSST (K=2048),0.5249014336917561,3,0.0,2,9,2,10,False
+Spearman,uniprot_weighted,ProSST (K=4096),0.5139054659498208,5,0.00025,3,13,1,19,False
+Spearman,uniprot_weighted,ESCOTT,0.5011232078853046,8,0.0,4,16,3,17,False
+Spearman,uniprot_weighted,VenusREM,0.5378575268817205,2,0.075,1,4,1,4,True
+Spearman,uniprot_weighted,RSALOR,0.48963844086021496,13,0.0,6,24,4,30,False
+Spearman,uniprot_weighted,S2F,0.474209229390681,18,0.0,9,36,7,37,False
+Spearman,uniprot_weighted,S2F-MSA,0.5082513440860216,6,0.0,4,12,4,15,False
+Spearman,uniprot_weighted,S3F,0.49022356630824365,11,0.0,6,22,5,23,False
+Spearman,uniprot_weighted,S3F-MSA,0.516519265232975,4,0.0,2,9,2,10,False
+Spearman,uniprot_weighted,SiteRM,0.4379583333333333,42,0.0,24,60,22,65,False
+Spearman,uniprot_weighted,ESM3 open (1.4B),0.4927016129032258,10,0.0,5,22,5,24,False
+Spearman,uniprot_weighted,ESM-C (300M),0.43010439068100353,46,0.0,26,64,20,67,False
+Spearman,uniprot_weighted,ESM-C (600M),0.4313319892473118,45,0.0,27,63,19,67,False
+Spearman,uniprot_weighted,xTrimoPGLM-1B-MLM,0.39483602150537633,64,0.0,52,77,46,80,False
+Spearman,uniprot_weighted,xTrimoPGLM-3B-MLM,0.42602956989247315,50,0.0,34,64,31,68,False
+Spearman,uniprot_weighted,xTrimoPGLM-10B-MLM,0.42268772401433685,53,0.0,34,64,32,71,False
+Spearman,uniprot_weighted,xTrimoPGLM-1B-CLM,0.34152777777777776,81,0.0,76,87,75,88,False
+Spearman,uniprot_weighted,xTrimoPGLM-3B-CLM,0.22308019713261645,92,0.0,92,95,91,95,False
+Spearman,uniprot_weighted,xTrimoPGLM-7B-CLM,0.0896030465949821,97,0.0,96,97,96,97,False
+Spearman,uniprot_weighted,xTrimoPGLM-100B-int4,0.39215232974910397,67,0.0,52,78,44,81,False
+Spearman,uniprot_weighted,Progen3 112m,0.272834229390681,91,0.0,87,91,84,92,False
+Spearman,uniprot_weighted,Progen3 219m,0.3183512544802868,85,0.0,80,89,78,90,False
+Spearman,uniprot_weighted,Progen3 339m,0.3520398745519712,80,0.0,72,85,62,86,False
+Spearman,uniprot_weighted,Progen3 762m,0.37401836917562725,75,0.0,62,78,57,82,False
+Spearman,uniprot_weighted,Progen3 1B,0.3995551075268818,61,0.0,45,75,42,75,False
+Spearman,uniprot_weighted,Progen3 3B,0.41063306451612896,59,0.0,41,71,38,72,False
+Spearman,uniprot_weighted,AIDO Protein-RAG (16B),0.5462858422939068,1,0.92475,1,3,1,4,True
+Spearman,uniprot_weighted,Protriever,0.498514846743295,9,0.0,3,18,3,22,False
+Spearman,flat_mean,Site-Independent,0.36881105990783414,76,0.0,61,84,57,85,False
+Spearman,flat_mean,EVmutation,0.41841474654377875,56,0.0,40,71,38,74,False
+Spearman,flat_mean,DeepSequence (single),0.42764976958525347,50,0.0,38,64,34,70,False
+Spearman,flat_mean,DeepSequence (ensemble),0.43818894009216586,42,0.0,30,59,23,63,False
+Spearman,flat_mean,EVE (single),0.45419354838709675,34,0.0,20,49,19,53,False
+Spearman,flat_mean,EVE (ensemble),0.4599354838709677,31,0.0,16,44,13,47,False
+Spearman,flat_mean,Unirep,0.17738709677419356,95,0.0,93,95,92,95,False
+Spearman,flat_mean,Unirep evotuned,0.353405529953917,79,0.0,70,85,63,87,False
+Spearman,flat_mean,MSA Transformer (single),0.438073732718894,43,0.0,29,58,24,62,False
+Spearman,flat_mean,MSA Transformer (ensemble),0.4525714285714285,35,0.0,16,51,13,54,False
+Spearman,flat_mean,ESM-1b,0.41954838709677433,55,0.0,37,70,34,75,False
+Spearman,flat_mean,ESM-1v (single),0.3967557603686636,64,0.0,49,76,43,79,False
+Spearman,flat_mean,ESM-1v (ensemble),0.4280138248847927,49,0.0,31,64,26,67,False
+Spearman,flat_mean,ESM2 (8M),0.20559907834101385,93,0.0,92,94,92,95,False
+Spearman,flat_mean,ESM2 (35M),0.3188294930875576,84,0.0,76,89,75,90,False
+Spearman,flat_mean,ESM2 (150M),0.4005576036866359,62,0.0,46,77,41,80,False
+Spearman,flat_mean,ESM2 (650M),0.43821198156682023,41,0.0,29,60,19,63,False
+Spearman,flat_mean,ESM2 (3B),0.4321152073732719,47,0.0,32,61,29,66,False
+Spearman,flat_mean,ESM2 (15B),0.425258064516129,52,0.0,34,66,31,71,False
+Spearman,flat_mean,Wavenet,0.3895760368663594,67,0.0,50,78,44,82,False
+Spearman,flat_mean,RITA S,0.3101889400921658,86,0.0,83,89,80,91,False
+Spearman,flat_mean,RITA M,0.3619723502304148,77,0.0,66,84,65,85,False
+Spearman,flat_mean,RITA L,0.3765115207373272,74,0.0,60,80,57,82,False
+Spearman,flat_mean,RITA XL,0.383663594470046,73,0.0,57,77,56,79,False
+Spearman,flat_mean,Progen2 S,0.3442119815668202,82,0.0,74,85,71,87,False
+Spearman,flat_mean,Progen2 M,0.3918709677419354,66,0.0,53,76,49,78,False
+Spearman,flat_mean,Progen2 Base,0.38888018433179733,69,0.0,52,78,46,78,False
+Spearman,flat_mean,Progen2 L,0.3922764976958525,65,0.0,54,77,47,77,False
+Spearman,flat_mean,Progen2 XL,0.40561290322580645,60,0.0,43,73,40,76,False
+Spearman,flat_mean,GEMME,0.4742534562211981,19,0.0,9,39,8,40,False
+Spearman,flat_mean,VESPA,0.46303686635944713,28,0.0,13,43,12,48,False
+Spearman,flat_mean,VESPAl,0.4231658986175116,53,0.0,38,69,36,72,False
+Spearman,flat_mean,VespaG,0.4817557603686636,16,0.0,6,25,6,30,False
+Spearman,flat_mean,ProtGPT2,0.197778801843318,94,0.0,92,95,92,95,False
+Spearman,flat_mean,Tranception S no retrieval,0.30088018433179714,88,0.0,83,91,83,91,False
+Spearman,flat_mean,Tranception M no retrieval,0.356,78,0.0,71,84,67,85,False
+Spearman,flat_mean,Tranception L no retrieval,0.3853133640552995,71,0.0,57,78,50,81,False
+Spearman,flat_mean,Tranception S,0.42948847926267286,48,0.0,35,63,35,67,False
+Spearman,flat_mean,Tranception M,0.4412442396313364,39,0.0,24,56,22,58,False
+Spearman,flat_mean,Tranception L,0.4501981566820276,37,0.0,20,52,18,56,False
+Spearman,flat_mean,TranceptEVE S,0.46799999999999997,23,0.0,10,40,10,42,False
+Spearman,flat_mean,TranceptEVE M,0.472847926267281,20,0.0,9,37,8,39,False
+Spearman,flat_mean,TranceptEVE L,0.4744792626728111,17,0.0,9,34,8,39,False
+Spearman,flat_mean,CARP (38M),0.27015668202764975,91,0.0,87,91,86,92,False
+Spearman,flat_mean,CARP (600K),0.09166359447004607,96,0.0,96,97,96,97,False
+Spearman,flat_mean,CARP (640M),0.3895115207373272,68,0.0,54,80,50,80,False
+Spearman,flat_mean,CARP (76M),0.32634101382488473,83,0.0,76,89,74,89,False
+Spearman,flat_mean,MIF,0.3878709677419355,70,0.0,50,80,45,82,False
+Spearman,flat_mean,MIF-ST,0.4145668202764977,57,0.0,38,73,35,75,False
+Spearman,flat_mean,ESM-IF1,0.43656682027649774,44,0.0,21,65,15,71,False
+Spearman,flat_mean,ProteinMPNN,0.29504147465437797,89,0.0,83,91,80,91,False
+Spearman,flat_mean,"ProtSSN (k=10, h=512)",0.45571889400921656,32,0.0,23,47,18,52,False
+Spearman,flat_mean,"ProtSSN (k=10, h=768)",0.44743778801843315,38,0.0,31,53,25,57,False
+Spearman,flat_mean,"ProtSSN (k=10, h=1280)",0.4550599078341015,33,0.0,23,48,18,52,False
+Spearman,flat_mean,"ProtSSN (k=20, h=512)",0.46535023041474644,25,0.0,14,40,12,43,False
+Spearman,flat_mean,"ProtSSN (k=20, h=768)",0.4650322580645162,26,0.0,14,38,12,42,False
+Spearman,flat_mean,"ProtSSN (k=20, h=1280)",0.46553456221198153,24,0.0,13,39,11,43,False
+Spearman,flat_mean,"ProtSSN (k=30, h=512)",0.46179262672811056,30,0.0,14,42,14,46,False
+Spearman,flat_mean,"ProtSSN (k=30, h=768)",0.46310599078341014,27,0.0,14,42,14,46,False
+Spearman,flat_mean,"ProtSSN (k=30, h=1280)",0.4623179723502304,29,0.0,14,44,13,46,False
+Spearman,flat_mean,ProtSSN (ensemble),0.4728064516129032,22,0.0,10,30,7,30,False
+Spearman,flat_mean,SaProt (650M),0.47280645161290324,21,0.0,7,39,6,42,False
+Spearman,flat_mean,SaProt (35M),0.41296313364055304,58,0.0,38,74,35,76,False
+Spearman,flat_mean,PoET (200M),0.4898294930875577,10,0.0,6,22,4,26,False
+Spearman,flat_mean,MULAN,0.30395391705069125,87,0.0,83,91,79,91,False
+Spearman,flat_mean,ProSST (K=20),0.4515852534562211,36,0.0,14,57,12,63,False
+Spearman,flat_mean,ProSST (K=128),0.4848202764976959,14,0.0,6,36,6,43,False
+Spearman,flat_mean,ProSST (K=512),0.4887834101382488,11,0.0,6,33,6,37,False
+Spearman,flat_mean,ProSST (K=1024),0.5036912442396314,7,0.0,3,19,3,23,False
+Spearman,flat_mean,ProSST (K=2048),0.5225299539170506,3,0.0,2,9,2,10,False
+Spearman,flat_mean,ProSST (K=4096),0.5123364055299539,5,0.00025,3,13,1,19,False
+Spearman,flat_mean,ESCOTT,0.49850230414746544,9,0.0,4,17,4,19,False
+Spearman,flat_mean,VenusREM,0.5357327188940092,2,0.12425,1,3,1,4,True
+Spearman,flat_mean,RSALOR,0.48483410138248834,13,0.0,6,31,6,34,False
+Spearman,flat_mean,S2F,0.4743640552995392,18,0.0,9,35,7,36,False
+Spearman,flat_mean,S2F-MSA,0.5079400921658986,6,0.0,4,11,4,13,False
+Spearman,flat_mean,S3F,0.48853456221198155,12,0.0,6,21,6,25,False
+Spearman,flat_mean,S3F-MSA,0.5153824884792627,4,0.0,2,9,2,9,False
+Spearman,flat_mean,SiteRM,0.4397327188940092,40,0.0,25,59,23,63,False
+Spearman,flat_mean,ESM3 open (1.4B),0.4827004608294932,15,0.0,6,32,5,37,False
+Spearman,flat_mean,ESM-C (300M),0.4325437788018433,46,0.0,27,63,20,68,False
+Spearman,flat_mean,ESM-C (600M),0.4340460829493087,45,0.0,27,61,19,67,False
+Spearman,flat_mean,xTrimoPGLM-1B-MLM,0.3974976958525346,63,0.0,50,78,43,80,False
+Spearman,flat_mean,xTrimoPGLM-3B-MLM,0.4267880184331797,51,0.0,34,64,31,67,False
+Spearman,flat_mean,xTrimoPGLM-10B-MLM,0.4216497695852534,54,0.0,36,66,34,70,False
+Spearman,flat_mean,xTrimoPGLM-1B-CLM,0.344963133640553,81,0.0,75,85,72,88,False
+Spearman,flat_mean,xTrimoPGLM-3B-CLM,0.2245069124423963,92,0.0,92,95,90,95,False
+Spearman,flat_mean,xTrimoPGLM-7B-CLM,0.08768663594470047,97,0.0,96,97,96,97,False
+Spearman,flat_mean,xTrimoPGLM-100B-int4,0.3846958525345623,72,0.0,56,82,49,83,False
+Spearman,flat_mean,Progen3 112m,0.2722534562211982,90,0.0,87,91,85,92,False
+Spearman,flat_mean,Progen3 219m,0.31752073732718894,85,0.0,80,89,77,89,False
+Spearman,flat_mean,Progen3 339m,0.3485576036866359,80,0.0,70,84,62,87,False
+Spearman,flat_mean,Progen3 762m,0.37498156682027656,75,0.0,61,79,57,82,False
+Spearman,flat_mean,Progen3 1B,0.40233640552995387,61,0.0,45,74,42,75,False
+Spearman,flat_mean,Progen3 3B,0.4105898617511521,59,0.0,41,71,39,72,False
+Spearman,flat_mean,AIDO Protein-RAG (16B),0.5419262672811059,1,0.8755,1,4,1,4,True
+Spearman,flat_mean,Protriever,0.49892999999999993,8,0.0,3,18,3,19,False
+Spearman,median,Site-Independent,0.372,79,0.0,56,88,51,89,False
+Spearman,median,EVmutation,0.422,58,0.0,39,78,27,81,False
+Spearman,median,DeepSequence (single),0.435,54,0.0,23,76,14,81,False
+Spearman,median,DeepSequence (ensemble),0.44,52,0.0,19,74,13,79,False
+Spearman,median,EVE (single),0.463,38,0.0,10,62,8,69,False
+Spearman,median,EVE (ensemble),0.466,36,0.0,8,59,6,69,False
+Spearman,median,Unirep,0.159,95,0.0,92,95,91,95,False
+Spearman,median,Unirep evotuned,0.369,80,0.0,59,88,52,89,False
+Spearman,median,MSA Transformer (single),0.445,48,0.0,16,71,8,77,False
+Spearman,median,MSA Transformer (ensemble),0.462,39,0.0,9,65,6,72,False
+Spearman,median,ESM-1b,0.442,49,0.0,18,72,12,79,False
+Spearman,median,ESM-1v (single),0.418,60,0.0,36,81,25,83,False
+Spearman,median,ESM-1v (ensemble),0.46,40,0.0,9,64,4,71,False
+Spearman,median,ESM2 (8M),0.192,93,0.0,91,95,91,95,False
+Spearman,median,ESM2 (35M),0.349,84,0.0,57,89,33,92,False
+Spearman,median,ESM2 (150M),0.451,44,0.0,11,72,5,78,False
+Spearman,median,ESM2 (650M),0.484,24,0.0,3,54,2,60,False
+Spearman,median,ESM2 (3B),0.467,34,0.0,7,60,5,70,False
+Spearman,median,ESM2 (15B),0.438,53,0.0,17,75,6,83,False
+Spearman,median,Wavenet,0.405,69,0.0,41,84,37,88,False
+Spearman,median,RITA S,0.327,87,0.0,76,90,62,91,False
+Spearman,median,RITA M,0.385,74,0.0,52,85,43,88,False
+Spearman,median,RITA L,0.39,73,0.0,50,85,43,88,False
+Spearman,median,RITA XL,0.395,72,0.0,45,84,41,88,False
+Spearman,median,Progen2 S,0.365,81,0.0,59,88,53,89,False
+Spearman,median,Progen2 M,0.408,66,0.0,41,83,26,87,False
+Spearman,median,Progen2 Base,0.41,64,0.0,38,83,23,87,False
+Spearman,median,Progen2 L,0.406,68,0.0,41,83,26,88,False
+Spearman,median,Progen2 XL,0.418,60,0.0,38,82,23,84,False
+Spearman,median,GEMME,0.484,24,0.0,5,52,3,58,False
+Spearman,median,VESPA,0.465,37,0.0,9,62,5,71,False
+Spearman,median,VESPAl,0.414,63,0.0,39,84,28,88,False
+Spearman,median,VespaG,0.493,17,0.0,3,49,2,53,False
+Spearman,median,ProtGPT2,0.179,94,0.0,92,95,91,95,False
+Spearman,median,Tranception S no retrieval,0.328,86,0.0,76,90,60,91,False
+Spearman,median,Tranception M no retrieval,0.373,78,0.0,55,89,43,89,False
+Spearman,median,Tranception L no retrieval,0.398,70,0.0,43,84,38,88,False
+Spearman,median,Tranception S,0.431,55,0.0,31,73,19,78,False
+Spearman,median,Tranception M,0.448,46,0.0,14,71,8,74,False
+Spearman,median,Tranception L,0.449,45,0.0,15,70,9,72,False
+Spearman,median,TranceptEVE S,0.467,34,0.0,8,60,5,69,False
+Spearman,median,TranceptEVE M,0.476,30,0.0,5,57,3,67,False
+Spearman,median,TranceptEVE L,0.475,32,0.0,5,58,1,70,False
+Spearman,median,CARP (38M),0.284,90,0.0,85,92,83,92,False
+Spearman,median,CARP (600K),0.071,96,0.0,96,97,96,97,False
+Spearman,median,CARP (640M),0.421,59,0.0,25,81,14,88,False
+Spearman,median,CARP (76M),0.355,82,0.0,64,89,53,89,False
+Spearman,median,MIF,0.396,71,0.0,42,87,31,88,False
+Spearman,median,MIF-ST,0.427,56,0.0,30,79,20,83,False
+Spearman,median,ESM-IF1,0.458,41,0.0,11,70,3,78,False
+Spearman,median,ProteinMPNN,0.225,92,0.0,89,95,88,95,False
+Spearman,median,"ProtSSN (k=10, h=512)",0.487,20,0.0,3,59,1,68,False
+Spearman,median,"ProtSSN (k=10, h=768)",0.457,42,0.0,13,70,6,78,False
+Spearman,median,"ProtSSN (k=10, h=1280)",0.483,26,0.0,3,57,3,64,False
+Spearman,median,"ProtSSN (k=20, h=512)",0.483,26,0.0,3,57,1,67,False
+Spearman,median,"ProtSSN (k=20, h=768)",0.491,19,0.0,3,54,1,59,False
+Spearman,median,"ProtSSN (k=20, h=1280)",0.486,22,0.0,3,53,3,59,False
+Spearman,median,"ProtSSN (k=30, h=512)",0.477,29,0.0,6,59,3,68,False
+Spearman,median,"ProtSSN (k=30, h=768)",0.486,22,0.0,3,56,1,64,False
+Spearman,median,"ProtSSN (k=30, h=1280)",0.487,20,0.0,3,54,1,60,False
+Spearman,median,ProtSSN (ensemble),0.497,16,0.0,1,49,1,57,False
+Spearman,median,SaProt (650M),0.502,14,0.0,1,46,1,55,True
+Spearman,median,SaProt (35M),0.425,57,0.0,18,83,5,88,False
+Spearman,median,PoET (200M),0.498,15,0.0,3,45,1,50,False
+Spearman,median,MULAN,0.31,88,0.0,81,91,76,91,False
+Spearman,median,ProSST (K=20),0.455,43,0.0,8,75,4,84,False
+Spearman,median,ProSST (K=128),0.509,10,0.0,1,54,1,67,True
+Spearman,median,ProSST (K=512),0.507,13,0.0,1,50,1,57,False
+Spearman,median,ProSST (K=1024),0.535,4,0.06975,1,36,1,53,True
+Spearman,median,ProSST (K=2048),0.533,5,0.0255,1,30,1,41,True
+Spearman,median,ProSST (K=4096),0.541,3,0.1765,1,33,1,50,True
+Spearman,median,ESCOTT,0.509,10,0.0,1,39,1,46,False
+Spearman,median,VenusREM,0.547,1,0.6,1,14,1,26,True
+Spearman,median,RSALOR,0.492,18,0.0,3,51,2,56,False
+Spearman,median,S2F,0.508,12,0.0,1,42,1,52,True
+Spearman,median,S2F-MSA,0.521,7,0.00025,1,28,1,36,True
+Spearman,median,S3F,0.51,9,0.0,1,42,1,51,True
+Spearman,median,S3F-MSA,0.524,6,0.012,1,28,1,37,True
+Spearman,median,SiteRM,0.442,49,0.0,19,72,13,78,False
+Spearman,median,ESM3 open (1.4B),0.483,26,0.00025,3,57,1,68,False
+Spearman,median,ESM-C (300M),0.476,30,0.0,5,55,3,64,False
+Spearman,median,ESM-C (600M),0.472,33,0.0,5,60,3,71,False
+Spearman,median,xTrimoPGLM-1B-MLM,0.416,62,0.0,33,81,15,88,False
+Spearman,median,xTrimoPGLM-3B-MLM,0.447,47,0.0,14,72,5,81,False
+Spearman,median,xTrimoPGLM-10B-MLM,0.442,49,0.0,16,74,6,83,False
+Spearman,median,xTrimoPGLM-1B-CLM,0.355,82,0.0,66,89,58,90,False
+Spearman,median,xTrimoPGLM-3B-CLM,0.254,91,0.0,87,93,84,95,False
+Spearman,median,xTrimoPGLM-7B-CLM,0.05,97,0.0,96,97,96,97,False
+Spearman,median,xTrimoPGLM-100B-int4,0.38,76,0.0,55,88,42,89,False
+Spearman,median,Progen3 112m,0.302,89,0.0,77,92,60,92,False
+Spearman,median,Progen3 219m,0.343,85,0.0,71,89,60,91,False
+Spearman,median,Progen3 339m,0.374,77,0.0,57,87,49,89,False
+Spearman,median,Progen3 762m,0.382,75,0.0,53,85,44,88,False
+Spearman,median,Progen3 1B,0.407,67,0.0,41,83,28,88,False
+Spearman,median,Progen3 3B,0.41,64,0.0,39,83,19,88,False
+Spearman,median,AIDO Protein-RAG (16B),0.542,2,0.16675,1,15,1,24,True
+Spearman,median,Protriever,0.513,8,0.0,1,36,1,47,True
+AUC,proteingym,Site-Independent,0.6962858301767676,76,0.0,59,85,47,88,False
+AUC,proteingym,EVmutation,0.7157504277146465,61,0.0,42,75,40,76,False
+AUC,proteingym,DeepSequence (single),0.722957490530303,50,0.0,34,73,28,75,False
+AUC,proteingym,DeepSequence (ensemble),0.7293439094065656,42,0.0,25,64,21,68,False
+AUC,proteingym,EVE (single),0.7371035227272726,35,0.0,20,56,19,58,False
+AUC,proteingym,EVE (ensemble),0.7406911647727272,29,0.0,16,48,12,54,False
+AUC,proteingym,Unirep,0.6045062941919193,94,0.0,93,95,92,95,False
+AUC,proteingym,Unirep evotuned,0.6925415735479798,78,0.0,65,85,58,86,False
+AUC,proteingym,MSA Transformer (single),0.7288198595328282,43,0.0,25,64,21,71,False
+AUC,proteingym,MSA Transformer (ensemble),0.7367137279040404,37,0.0,14,57,12,58,False
+AUC,proteingym,ESM-1b,0.7188108980429294,56,0.0,35,74,34,77,False
+AUC,proteingym,ESM-1v (single),0.7073861095328283,68,0.0,45,82,41,82,False
+AUC,proteingym,ESM-1v (ensemble),0.7235469081439393,49,0.0,26,71,19,74,False
+AUC,proteingym,ESM2 (8M),0.6244315561868687,93,0.0,91,94,91,94,False
+AUC,proteingym,ESM2 (35M),0.676091617739899,84,0.0,75,89,69,89,False
+AUC,proteingym,ESM2 (150M),0.7137559090909091,62,0.0,39,78,34,81,False
+AUC,proteingym,ESM2 (650M),0.7285530918560605,45,0.0,20,68,15,70,False
+AUC,proteingym,ESM2 (3B),0.7237469018308081,48,0.0,32,70,25,75,False
+AUC,proteingym,ESM2 (15B),0.7202634122474747,54,0.0,35,73,32,76,False
+AUC,proteingym,Wavenet,0.707332288510101,69,0.0,45,82,38,84,False
+AUC,proteingym,RITA S,0.6675021338383837,87,0.0,83,90,82,91,False
+AUC,proteingym,RITA M,0.6937502604166668,77,0.0,66,84,60,85,False
+AUC,proteingym,RITA L,0.7036223358585858,72,0.0,48,77,44,81,False
+AUC,proteingym,RITA XL,0.7078235337752524,67,0.0,44,78,43,82,False
+AUC,proteingym,Progen2 S,0.6855675946969698,82,0.0,72,86,68,86,False
+AUC,proteingym,Progen2 M,0.7110710164141413,63,0.0,43,77,40,77,False
+AUC,proteingym,Progen2 Base,0.7089360779671716,66,0.0,44,77,42,78,False
+AUC,proteingym,Progen2 L,0.7106190009469697,64,0.0,44,76,42,77,False
+AUC,proteingym,Progen2 XL,0.7172798658459596,58,0.0,39,74,36,76,False
+AUC,proteingym,GEMME,0.7491176972853536,21,0.0,8,40,6,44,False
+AUC,proteingym,VESPA,0.7424263683712121,25,0.0,13,46,13,51,False
+AUC,proteingym,VESPAl,0.7205657844065657,53,0.0,36,75,36,76,False
+AUC,proteingym,VespaG,0.753514237689394,16,0.0,7,25,6,30,False
+AUC,proteingym,ProtGPT2,0.603072021780303,95,0.0,93,95,92,95,False
+AUC,proteingym,Tranception S no retrieval,0.6649824163510102,88,0.0,83,90,82,91,False
+AUC,proteingym,Tranception M no retrieval,0.6911141650883839,79,0.0,68,84,66,85,False
+AUC,proteingym,Tranception L no retrieval,0.7068028645833333,70,0.0,45,78,44,81,False
+AUC,proteingym,Tranception S,0.7286046480429293,44,0.0,28,64,26,67,False
+AUC,proteingym,Tranception M,0.7337964851641414,39,0.0,22,58,20,60,False
+AUC,proteingym,Tranception L,0.7389633159722222,32,0.0,16,50,15,54,False
+AUC,proteingym,TranceptEVE S,0.7479536284722222,22,0.0,10,40,8,43,False
+AUC,proteingym,TranceptEVE M,0.7494539330808081,20,0.0,8,38,7,38,False
+AUC,proteingym,TranceptEVE L,0.7509109122474747,17,0.0,8,34,7,39,False
+AUC,proteingym,CARP (38M),0.6529457417929292,90,0.0,86,91,85,91,False
+AUC,proteingym,CARP (600K),0.5567323106060607,96,0.0,96,97,96,97,False
+AUC,proteingym,CARP (640M),0.7014344775883838,74,0.0,56,82,51,84,False
+AUC,proteingym,CARP (76M),0.6783250157828282,83,0.0,74,88,69,89,False
+AUC,proteingym,MIF,0.7057014820075758,71,0.0,45,84,40,84,False
+AUC,proteingym,MIF-ST,0.7170425883838385,59,0.0,36,75,31,79,False
+AUC,proteingym,ESM-IF1,0.7295591698232323,41,0.0,20,68,13,76,False
+AUC,proteingym,ProteinMPNN,0.6392957402146464,91,0.0,89,93,87,94,False
+AUC,proteingym,"ProtSSN (k=10, h=512)",0.73698195864899,36,0.0,21,50,16,55,False
+AUC,proteingym,"ProtSSN (k=10, h=768)",0.7318480981691918,40,0.0,32,59,29,63,False
+AUC,proteingym,"ProtSSN (k=10, h=1280)",0.7387845028409091,34,0.0,17,49,16,52,False
+AUC,proteingym,"ProtSSN (k=20, h=512)",0.7416902114898989,26,0.0,15,47,13,50,False
+AUC,proteingym,"ProtSSN (k=20, h=768)",0.7409223611111112,27,0.0,15,49,14,50,False
+AUC,proteingym,"ProtSSN (k=20, h=1280)",0.743261993371212,24,0.0,13,44,11,46,False
+AUC,proteingym,"ProtSSN (k=30, h=512)",0.739895945391414,31,0.0,16,49,15,50,False
+AUC,proteingym,"ProtSSN (k=30, h=768)",0.740675634469697,30,0.0,16,49,15,50,False
+AUC,proteingym,"ProtSSN (k=30, h=1280)",0.7407674416035354,28,0.0,16,47,13,50,False
+AUC,proteingym,ProtSSN (ensemble),0.7466652651515152,23,0.0,11,33,8,38,False
+AUC,proteingym,SaProt (650M),0.7508958980429292,18,0.0,6,38,5,42,False
+AUC,proteingym,SaProt (35M),0.7222077825126263,51,0.0,34,73,31,75,False
+AUC,proteingym,PoET (200M),0.7591541208964647,10,0.0,5,21,4,24,False
+AUC,proteingym,MULAN,0.6718977982954545,86,0.0,79,90,76,90,False
+AUC,proteingym,ProSST (K=20),0.7388207922979797,33,0.0,13,58,10,66,False
+AUC,proteingym,ProSST (K=128),0.7566092250631313,13,0.0,5,34,5,45,False
+AUC,proteingym,ProSST (K=512),0.7570313825757575,11,0.0,6,34,6,44,False
+AUC,proteingym,ProSST (K=1024),0.7638503914141415,7,0.0,4,21,4,25,False
+AUC,proteingym,ProSST (K=2048),0.7770262941919193,3,0.0,2,7,2,9,False
+AUC,proteingym,ProSST (K=4096),0.7726958380681818,4,0.0035,1,13,1,18,True
+AUC,proteingym,ESCOTT,0.7613229482323233,9,0.0,5,18,3,21,False
+AUC,proteingym,VenusREM,0.782968970959596,2,0.333,1,4,1,5,True
+AUC,proteingym,RSALOR,0.7535597632575758,15,0.0,6,36,6,41,False
+AUC,proteingym,S2F,0.7496317297979798,19,0.0,8,32,8,39,False
+AUC,proteingym,S2F-MSA,0.7673191808712121,6,0.0,4,14,3,14,False
+AUC,proteingym,S3F,0.7569285195707071,12,0.0,6,22,6,22,False
+AUC,proteingym,S3F-MSA,0.7712146148989899,5,0.0005,2,9,1,10,False
+AUC,proteingym,SiteRM,0.7342111221590908,38,0.0,21,62,18,65,False
+AUC,proteingym,ESM3 open (1.4B),0.7554995328282829,14,0.0,5,27,5,32,False
+AUC,proteingym,ESM-C (300M),0.7268127509469696,46,0.0,20,69,15,73,False
+AUC,proteingym,ESM-C (600M),0.7257225678661616,47,0.0,20,69,15,74,False
+AUC,proteingym,xTrimoPGLM-1B-MLM,0.7105400789141415,65,0.0,46,81,41,82,False
+AUC,proteingym,xTrimoPGLM-3B-MLM,0.7215993939393939,52,0.0,33,73,25,76,False
+AUC,proteingym,xTrimoPGLM-10B-MLM,0.7188906360479799,55,0.0,35,74,33,77,False
+AUC,proteingym,xTrimoPGLM-1B-CLM,0.6894656660353535,80,0.0,69,85,67,86,False
+AUC,proteingym,xTrimoPGLM-3B-CLM,0.6253426341540403,92,0.0,91,94,91,95,False
+AUC,proteingym,xTrimoPGLM-7B-CLM,0.5564688304924242,97,0.0,96,97,96,97,False
+AUC,proteingym,xTrimoPGLM-100B-int4,0.7022730224116162,73,0.0,54,84,44,84,False
+AUC,proteingym,Progen3 112m,0.6540433017676767,89,0.0,85,91,84,91,False
+AUC,proteingym,Progen3 219m,0.6731723737373738,85,0.0,81,89,78,89,False
+AUC,proteingym,Progen3 339m,0.6890520896464646,81,0.0,70,85,67,85,False
+AUC,proteingym,Progen3 762m,0.7007870738636364,75,0.0,55,80,47,83,False
+AUC,proteingym,Progen3 1B,0.7159514614898991,60,0.0,41,74,38,75,False
+AUC,proteingym,Progen3 3B,0.7179810606060606,57,0.0,39,73,37,75,False
+AUC,proteingym,AIDO Protein-RAG (16B),0.7840375236742425,1,0.663,1,4,1,5,True
+AUC,proteingym,Protriever,0.7617305263157895,8,0.0,3,21,3,24,False
+AUC,function_group_mean,Site-Independent,0.6960695570579292,76,0.0,58,86,48,88,False
+AUC,function_group_mean,EVmutation,0.7171392470578517,60,0.0,41,75,40,76,False
+AUC,function_group_mean,DeepSequence (single),0.7228080864871563,54,0.0,35,74,28,76,False
+AUC,function_group_mean,DeepSequence (ensemble),0.7293609643586387,46,0.0,26,68,21,72,False
+AUC,function_group_mean,EVE (single),0.7376398175467942,37,0.0,21,57,17,61,False
+AUC,function_group_mean,EVE (ensemble),0.7413049175630572,33,0.0,17,51,12,56,False
+AUC,function_group_mean,Unirep,0.6036867189657887,94,0.0,93,95,92,95,False
+AUC,function_group_mean,Unirep evotuned,0.69195115995116,78,0.0,65,85,60,87,False
+AUC,function_group_mean,MSA Transformer (single),0.7296153500246524,44,0.0,26,64,22,71,False
+AUC,function_group_mean,MSA Transformer (ensemble),0.7383036136989624,36,0.0,15,57,13,57,False
+AUC,function_group_mean,ESM-1b,0.722285580053022,55,0.0,34,73,33,76,False
+AUC,function_group_mean,ESM-1v (single),0.7100391130832993,67,0.0,45,81,40,82,False
+AUC,function_group_mean,ESM-1v (ensemble),0.7259034709476568,49,0.0,27,70,19,74,False
+AUC,function_group_mean,ESM2 (8M),0.6244366452668778,92,0.0,91,94,91,94,False
+AUC,function_group_mean,ESM2 (35M),0.6764205218554056,84,0.0,75,89,68,89,False
+AUC,function_group_mean,ESM2 (150M),0.7164384654105584,62,0.0,40,78,35,81,False
+AUC,function_group_mean,ESM2 (650M),0.7325821488588931,41,0.0,19,64,13,68,False
+AUC,function_group_mean,ESM2 (3B),0.7276094476582848,48,0.0,32,69,22,72,False
+AUC,function_group_mean,ESM2 (15B),0.7245086453598082,50,0.0,33,72,29,76,False
+AUC,function_group_mean,Wavenet,0.7076220278429581,69,0.0,46,82,39,84,False
+AUC,function_group_mean,RITA S,0.6686889596191922,87,0.0,83,90,81,91,False
+AUC,function_group_mean,RITA M,0.69464910206073,77,0.0,65,85,62,85,False
+AUC,function_group_mean,RITA L,0.7038894882894884,73,0.0,54,79,45,82,False
+AUC,function_group_mean,RITA XL,0.7079730961544914,68,0.0,45,78,43,81,False
+AUC,function_group_mean,Progen2 S,0.6866040564087075,82,0.0,72,86,68,86,False
+AUC,function_group_mean,Progen2 M,0.7124417579836184,64,0.0,43,75,40,77,False
+AUC,function_group_mean,Progen2 Base,0.7103008012659174,66,0.0,44,77,42,77,False
+AUC,function_group_mean,Progen2 L,0.7112529733832058,65,0.0,43,76,42,77,False
+AUC,function_group_mean,Progen2 XL,0.7179519648310346,59,0.0,40,74,36,76,False
+AUC,function_group_mean,GEMME,0.7493133112365669,22,0.0,8,41,6,46,False
+AUC,function_group_mean,VESPA,0.7460774295471969,25,0.0,13,46,12,50,False
+AUC,function_group_mean,VESPAl,0.7239912457051991,52,0.0,35,74,33,76,False
+AUC,function_group_mean,VespaG,0.7566367825972478,14,0.0,7,24,5,29,False
+AUC,function_group_mean,ProtGPT2,0.6028223892386683,95,0.0,93,95,92,95,False
+AUC,function_group_mean,Tranception S no retrieval,0.6655877566877567,88,0.0,83,90,82,91,False
+AUC,function_group_mean,Tranception M no retrieval,0.6915538869399335,79,0.0,70,85,67,85,False
+AUC,function_group_mean,Tranception L no retrieval,0.707276344585647,70,0.0,46,78,43,84,False
+AUC,function_group_mean,Tranception S,0.7290366142901027,47,0.0,29,65,26,67,False
+AUC,function_group_mean,Tranception M,0.7340273909552979,40,0.0,24,58,20,63,False
+AUC,function_group_mean,Tranception L,0.739801679973773,35,0.0,17,51,14,57,False
+AUC,function_group_mean,TranceptEVE S,0.7486298099832982,23,0.0,10,41,8,44,False
+AUC,function_group_mean,TranceptEVE M,0.7499829392829394,21,0.0,9,39,7,43,False
+AUC,function_group_mean,TranceptEVE L,0.7517126336196103,19,0.0,8,38,6,39,False
+AUC,function_group_mean,CARP (38M),0.6514423395725721,90,0.0,87,91,85,92,False
+AUC,function_group_mean,CARP (600K),0.5556915905799626,96,0.0,96,97,96,97,False
+AUC,function_group_mean,CARP (640M),0.7041246812618907,72,0.0,54,82,49,83,False
+AUC,function_group_mean,CARP (76M),0.677663403521543,83,0.0,75,88,70,89,False
+AUC,function_group_mean,MIF,0.706114780568269,71,0.0,45,84,41,84,False
+AUC,function_group_mean,MIF-ST,0.718330371695488,58,0.0,37,75,32,77,False
+AUC,function_group_mean,ESM-IF1,0.7302344877344877,43,0.0,21,69,14,76,False
+AUC,function_group_mean,ProteinMPNN,0.6394738697994513,91,0.0,89,93,87,94,False
+AUC,function_group_mean,"ProtSSN (k=10, h=512)",0.7407268023965699,34,0.0,19,50,16,53,False
+AUC,function_group_mean,"ProtSSN (k=10, h=768)",0.7353232134790273,38,0.0,29,58,27,59,False
+AUC,function_group_mean,"ProtSSN (k=10, h=1280)",0.7420962192845914,32,0.0,18,49,15,50,False
+AUC,function_group_mean,"ProtSSN (k=20, h=512)",0.7453305846608173,26,0.0,14,47,10,50,False
+AUC,function_group_mean,"ProtSSN (k=20, h=768)",0.7446229907043861,29,0.0,14,48,12,50,False
+AUC,function_group_mean,"ProtSSN (k=20, h=1280)",0.7466117494908191,24,0.0,13,45,11,46,False
+AUC,function_group_mean,"ProtSSN (k=30, h=512)",0.7439916576963088,30,0.0,15,48,13,50,False
+AUC,function_group_mean,"ProtSSN (k=30, h=768)",0.7447462893695452,28,0.0,14,48,14,50,False
+AUC,function_group_mean,"ProtSSN (k=30, h=1280)",0.7449178121619983,27,0.0,14,46,12,48,False
+AUC,function_group_mean,ProtSSN (ensemble),0.7504132417969627,20,0.0,8,32,7,38,False
+AUC,function_group_mean,SaProt (650M),0.7549364230085159,16,0.0,6,35,4,41,False
+AUC,function_group_mean,SaProt (35M),0.7238357422938819,53,0.0,33,72,33,75,False
+AUC,function_group_mean,PoET (200M),0.7609504227039111,12,0.0,5,23,5,25,False
+AUC,function_group_mean,MULAN,0.6743113669276459,85,0.0,76,89,76,90,False
+AUC,function_group_mean,ProSST (K=20),0.743546614883824,31,0.0,10,55,9,64,False
+AUC,function_group_mean,ProSST (K=128),0.7615757725478656,11,0.0,6,30,5,44,False
+AUC,function_group_mean,ProSST (K=512),0.7621140464186975,10,0.0,6,28,6,44,False
+AUC,function_group_mean,ProSST (K=1024),0.7689303523350035,7,0.0,4,20,3,25,False
+AUC,function_group_mean,ProSST (K=2048),0.7809977420512304,3,0.0,2,6,2,9,False
+AUC,function_group_mean,ProSST (K=4096),0.7774961379705565,4,0.0095,1,10,1,18,True
+AUC,function_group_mean,ESCOTT,0.7622277053695659,9,0.0,5,20,4,26,False
+AUC,function_group_mean,VenusREM,0.7866302222325477,2,0.45475,1,4,1,5,True
+AUC,function_group_mean,RSALOR,0.7547142183397998,17,0.0,7,37,6,43,False
+AUC,function_group_mean,S2F,0.7522885450466845,18,0.0,8,33,8,40,False
+AUC,function_group_mean,S2F-MSA,0.7689756127593338,6,0.0,4,14,3,16,False
+AUC,function_group_mean,S3F,0.7592655819632563,13,0.0,6,22,6,24,False
+AUC,function_group_mean,S3F-MSA,0.7727679867935682,5,0.00025,2,9,1,10,False
+AUC,function_group_mean,SiteRM,0.7346685833546298,39,0.0,21,62,18,65,False
+AUC,function_group_mean,ESM3 open (1.4B),0.7560310149798521,15,0.0,5,32,5,40,False
+AUC,function_group_mean,ESM-C (300M),0.7305764444857469,42,0.0,19,68,14,71,False
+AUC,function_group_mean,ESM-C (600M),0.7294884281093583,45,0.0,19,68,15,73,False
+AUC,function_group_mean,xTrimoPGLM-1B-MLM,0.71310564990565,63,0.0,45,78,40,81,False
+AUC,function_group_mean,xTrimoPGLM-3B-MLM,0.7242771887027701,51,0.0,32,71,27,75,False
+AUC,function_group_mean,xTrimoPGLM-10B-MLM,0.7211377694656764,56,0.0,34,73,33,77,False
+AUC,function_group_mean,xTrimoPGLM-1B-CLM,0.6910975014649433,80,0.0,70,85,66,86,False
+AUC,function_group_mean,xTrimoPGLM-3B-CLM,0.6236862016536435,93,0.0,91,94,89,95,False
+AUC,function_group_mean,xTrimoPGLM-7B-CLM,0.5551742877277761,97,0.0,96,97,96,97,False
+AUC,function_group_mean,xTrimoPGLM-100B-int4,0.7033084964131476,74,0.0,56,84,44,84,False
+AUC,function_group_mean,Progen3 112m,0.6530277709370733,89,0.0,86,91,84,92,False
+AUC,function_group_mean,Progen3 219m,0.6722231979906399,86,0.0,81,89,79,89,False
+AUC,function_group_mean,Progen3 339m,0.6872426072635374,81,0.0,70,85,66,85,False
+AUC,function_group_mean,Progen3 762m,0.7005099667774086,75,0.0,59,81,50,83,False
+AUC,function_group_mean,Progen3 1B,0.7170102112357926,61,0.0,41,74,39,75,False
+AUC,function_group_mean,Progen3 3B,0.7185958150376754,57,0.0,40,73,37,75,False
+AUC,function_group_mean,AIDO Protein-RAG (16B),0.7868069945558318,1,0.5355,1,4,1,5,True
+AUC,function_group_mean,Protriever,0.7636075565610859,8,0.0,4,22,3,25,False
+AUC,uniprot_weighted,Site-Independent,0.7011801075268815,76,0.0,62,84,60,85,False
+AUC,uniprot_weighted,EVmutation,0.7289995519713262,58,0.0,41,74,39,75,False
+AUC,uniprot_weighted,DeepSequence (single),0.7377688172043012,50,0.0,36,65,31,69,False
+AUC,uniprot_weighted,DeepSequence (ensemble),0.742606182795699,41,0.0,28,58,23,63,False
+AUC,uniprot_weighted,EVE (single),0.7516236559139785,34,0.0,20,51,19,54,False
+AUC,uniprot_weighted,EVE (ensemble),0.7546227598566309,30,0.0,17,46,12,49,False
+AUC,uniprot_weighted,Unirep,0.598279569892473,95,0.0,93,95,93,95,False
+AUC,uniprot_weighted,Unirep evotuned,0.7000801971326166,78,0.0,65,84,61,85,False
+AUC,uniprot_weighted,MSA Transformer (single),0.7431886200716845,40,0.0,26,59,24,62,False
+AUC,uniprot_weighted,MSA Transformer (ensemble),0.7499310035842294,35,0.0,17,54,14,55,False
+AUC,uniprot_weighted,ESM-1b,0.7343839605734769,54,0.0,35,69,33,72,False
+AUC,uniprot_weighted,ESM-1v (single),0.7184251792114695,66,0.0,51,78,43,78,False
+AUC,uniprot_weighted,ESM-1v (ensemble),0.7342889784946236,55,0.0,31,68,26,72,False
+AUC,uniprot_weighted,ESM2 (8M),0.6144068100358423,93,0.0,92,94,92,94,False
+AUC,uniprot_weighted,ESM2 (35M),0.6784296594982078,83,0.0,77,89,75,90,False
+AUC,uniprot_weighted,ESM2 (150M),0.7206899641577061,65,0.0,47,78,41,80,False
+AUC,uniprot_weighted,ESM2 (650M),0.7396115591397849,46,0.0,30,63,18,70,False
+AUC,uniprot_weighted,ESM2 (3B),0.738682347670251,49,0.0,32,62,24,68,False
+AUC,uniprot_weighted,ESM2 (15B),0.7350761648745521,53,0.0,34,68,32,72,False
+AUC,uniprot_weighted,Wavenet,0.7215779569892473,62,0.0,45,77,42,78,False
+AUC,uniprot_weighted,RITA S,0.668328853046595,87,0.0,83,89,81,91,False
+AUC,uniprot_weighted,RITA M,0.700364247311828,77,0.0,68,82,65,84,False
+AUC,uniprot_weighted,RITA L,0.7109041218637994,73,0.0,58,78,56,78,False
+AUC,uniprot_weighted,RITA XL,0.7160568996415769,69,0.0,58,77,51,77,False
+AUC,uniprot_weighted,Progen2 S,0.6895412186379929,81,0.0,75,86,73,88,False
+AUC,uniprot_weighted,Progen2 M,0.7177732974910396,68,0.0,53,77,47,77,False
+AUC,uniprot_weighted,Progen2 Base,0.7137387992831541,70,0.0,56,77,48,79,False
+AUC,uniprot_weighted,Progen2 L,0.7182361111111111,67,0.0,52,76,46,77,False
+AUC,uniprot_weighted,Progen2 XL,0.7299977598566308,56,0.0,39,71,37,72,False
+AUC,uniprot_weighted,GEMME,0.7643006272401432,17,0.0,8,35,7,39,False
+AUC,uniprot_weighted,VESPA,0.7592782258064517,23,0.0,11,40,10,43,False
+AUC,uniprot_weighted,VESPAl,0.7389027777777779,48,0.0,35,64,32,68,False
+AUC,uniprot_weighted,VespaG,0.7680658602150539,14,0.0,6,23,6,27,False
+AUC,uniprot_weighted,ProtGPT2,0.6112719534050178,94,0.0,92,95,92,95,False
+AUC,uniprot_weighted,Tranception S no retrieval,0.6621590501792114,89,0.0,83,91,83,91,False
+AUC,uniprot_weighted,Tranception M no retrieval,0.6933140681003583,79,0.0,74,85,72,85,False
+AUC,uniprot_weighted,Tranception L no retrieval,0.7136913082437275,71,0.0,58,78,52,78,False
+AUC,uniprot_weighted,Tranception S,0.7361877240143369,52,0.0,37,66,34,70,False
+AUC,uniprot_weighted,Tranception M,0.7422181899641576,43,0.0,28,59,25,63,False
+AUC,uniprot_weighted,Tranception L,0.7494896953405017,36,0.0,19,52,18,55,False
+AUC,uniprot_weighted,TranceptEVE S,0.7589144265232977,24,0.0,10,40,10,44,False
+AUC,uniprot_weighted,TranceptEVE M,0.7608055555555556,20,0.0,10,37,8,41,False
+AUC,uniprot_weighted,TranceptEVE L,0.7633942652329747,18,0.0,8,36,7,38,False
+AUC,uniprot_weighted,CARP (38M),0.6484005376344087,91,0.0,86,91,86,92,False
+AUC,uniprot_weighted,CARP (600K),0.5481236559139786,97,0.0,96,97,96,97,False
+AUC,uniprot_weighted,CARP (640M),0.7104251792114695,74,0.0,57,80,54,82,False
+AUC,uniprot_weighted,CARP (76M),0.6781666666666667,84,0.0,77,89,76,90,False
+AUC,uniprot_weighted,MIF,0.7116671146953405,72,0.0,54,82,45,83,False
+AUC,uniprot_weighted,MIF-ST,0.7260071684587813,60,0.0,38,74,38,78,False
+AUC,uniprot_weighted,ESM-IF1,0.7423225806451611,42,0.0,18,67,15,73,False
+AUC,uniprot_weighted,ProteinMPNN,0.6715604838709677,86,0.0,79,91,79,91,False
+AUC,uniprot_weighted,"ProtSSN (k=10, h=512)",0.7522370071684589,33,0.0,19,49,18,53,False
+AUC,uniprot_weighted,"ProtSSN (k=10, h=768)",0.7470228494623655,37,0.0,32,54,26,57,False
+AUC,uniprot_weighted,"ProtSSN (k=10, h=1280)",0.7527271505376344,32,0.0,19,49,17,53,False
+AUC,uniprot_weighted,"ProtSSN (k=20, h=512)",0.7571173835125447,26,0.0,14,39,12,45,False
+AUC,uniprot_weighted,"ProtSSN (k=20, h=768)",0.7560331541218636,27,0.0,14,44,14,47,False
+AUC,uniprot_weighted,"ProtSSN (k=20, h=1280)",0.7574789426523298,25,0.0,14,40,12,42,False
+AUC,uniprot_weighted,"ProtSSN (k=30, h=512)",0.754195788530466,31,0.0,17,46,14,49,False
+AUC,uniprot_weighted,"ProtSSN (k=30, h=768)",0.7552948028673836,28,0.0,16,44,14,49,False
+AUC,uniprot_weighted,"ProtSSN (k=30, h=1280)",0.7549484767025089,29,0.0,16,44,14,49,False
+AUC,uniprot_weighted,ProtSSN (ensemble),0.7607759856630826,21,0.0,10,30,8,33,False
+AUC,uniprot_weighted,SaProt (650M),0.7597647849462367,22,0.0,8,41,6,47,False
+AUC,uniprot_weighted,SaProt (35M),0.7284798387096774,59,0.0,38,74,35,75,False
+AUC,uniprot_weighted,PoET (200M),0.7721904121863798,10,0.0,5,21,4,24,False
+AUC,uniprot_weighted,MULAN,0.6639870071684587,88,0.0,83,91,81,91,False
+AUC,uniprot_weighted,ProSST (K=20),0.7453503584229391,38,0.0,17,62,15,68,False
+AUC,uniprot_weighted,ProSST (K=128),0.7652020609318997,16,0.0,7,37,6,46,False
+AUC,uniprot_weighted,ProSST (K=512),0.7667437275985663,15,0.0,6,36,5,45,False
+AUC,uniprot_weighted,ProSST (K=1024),0.7737141577060932,9,0.0,5,25,4,32,False
+AUC,uniprot_weighted,ProSST (K=2048),0.7880232974910394,3,0.0,3,8,2,10,False
+AUC,uniprot_weighted,ProSST (K=4096),0.7813293010752689,5,0.0,3,15,2,19,False
+AUC,uniprot_weighted,ESCOTT,0.7772517921146954,7,0.0,3,16,3,17,False
+AUC,uniprot_weighted,VenusREM,0.7953145161290321,2,0.027,1,3,1,4,True
+AUC,uniprot_weighted,RSALOR,0.7704883512544803,12,0.0,6,27,4,31,False
+AUC,uniprot_weighted,S2F,0.7611263440860215,19,0.0,10,36,8,40,False
+AUC,uniprot_weighted,S2F-MSA,0.7806097670250896,6,0.0,4,13,4,14,False
+AUC,uniprot_weighted,S3F,0.7688709677419354,13,0.0,6,22,6,25,False
+AUC,uniprot_weighted,S3F-MSA,0.7846021505376343,4,0.0,2,9,2,10,False
+AUC,uniprot_weighted,SiteRM,0.7447853942652327,39,0.0,24,60,19,62,False
+AUC,uniprot_weighted,ESM3 open (1.4B),0.7714184587813621,11,0.0,5,24,5,25,False
+AUC,uniprot_weighted,ESM-C (300M),0.7407809139784948,45,0.0,22,63,15,66,False
+AUC,uniprot_weighted,ESM-C (600M),0.7414350358422939,44,0.0,22,62,16,65,False
+AUC,uniprot_weighted,xTrimoPGLM-1B-MLM,0.7213691756272401,63,0.0,49,77,41,78,False
+AUC,uniprot_weighted,xTrimoPGLM-3B-MLM,0.739037634408602,47,0.0,31,63,22,66,False
+AUC,uniprot_weighted,xTrimoPGLM-10B-MLM,0.7368230286738351,51,0.0,33,63,31,68,False
+AUC,uniprot_weighted,xTrimoPGLM-1B-CLM,0.6892410394265234,82,0.0,75,86,73,88,False
+AUC,uniprot_weighted,xTrimoPGLM-3B-CLM,0.6218033154121865,92,0.0,92,95,90,95,False
+AUC,uniprot_weighted,xTrimoPGLM-7B-CLM,0.5494646057347669,96,0.0,96,97,96,97,False
+AUC,uniprot_weighted,xTrimoPGLM-100B-int4,0.7209000896057348,64,0.0,48,77,42,79,False
+AUC,uniprot_weighted,Progen3 112m,0.6485824372759857,90,0.0,87,91,84,92,False
+AUC,uniprot_weighted,Progen3 219m,0.6733234767025089,85,0.0,81,89,79,89,False
+AUC,uniprot_weighted,Progen3 339m,0.6931066308243731,80,0.0,74,85,70,85,False
+AUC,uniprot_weighted,Progen3 762m,0.7075663082437277,75,0.0,61,78,59,81,False
+AUC,uniprot_weighted,Progen3 1B,0.7234973118279568,61,0.0,43,74,41,75,False
+AUC,uniprot_weighted,Progen3 3B,0.7296550179211468,57,0.0,38,71,37,72,False
+AUC,uniprot_weighted,AIDO Protein-RAG (16B),0.8009431003584231,1,0.973,1,2,1,3,True
+AUC,uniprot_weighted,Protriever,0.7755474137931035,8,0.0,3,17,3,21,False
+AUC,flat_mean,Site-Independent,0.7036820276497696,76,0.0,62,84,59,85,False
+AUC,flat_mean,EVmutation,0.7312165898617512,56,0.0,41,72,39,75,False
+AUC,flat_mean,DeepSequence (single),0.7378801843317973,49,0.0,37,65,34,70,False
+AUC,flat_mean,DeepSequence (ensemble),0.7436082949308755,42,0.0,30,59,23,63,False
+AUC,flat_mean,EVE (single),0.7522165898617512,34,0.0,19,51,18,53,False
+AUC,flat_mean,EVE (ensemble),0.7555207373271888,31,0.0,15,46,13,48,False
+AUC,flat_mean,Unirep,0.5966866359447004,95,0.0,93,95,92,95,False
+AUC,flat_mean,Unirep evotuned,0.7004331797235026,78,0.0,65,84,60,85,False
+AUC,flat_mean,MSA Transformer (single),0.7440460829493087,40,0.0,29,58,23,63,False
+AUC,flat_mean,MSA Transformer (ensemble),0.7512350230414746,35,0.0,15,53,12,54,False
+AUC,flat_mean,ESM-1b,0.7348433179723503,55,0.0,36,69,34,73,False
+AUC,flat_mean,ESM-1v (single),0.7211751152073733,64,0.0,51,78,42,79,False
+AUC,flat_mean,ESM-1v (ensemble),0.7372073732718893,52,0.0,31,65,24,71,False
+AUC,flat_mean,ESM2 (8M),0.6120506912442396,93,0.0,92,94,92,95,False
+AUC,flat_mean,ESM2 (35M),0.6748755760368664,84,0.0,77,89,75,90,False
+AUC,flat_mean,ESM2 (150M),0.7227373271889401,63,0.0,46,78,41,80,False
+AUC,flat_mean,ESM2 (650M),0.7435253456221197,43,0.0,26,61,15,63,False
+AUC,flat_mean,ESM2 (3B),0.7408663594470047,47,0.0,32,62,26,66,False
+AUC,flat_mean,ESM2 (15B),0.7369815668202766,53,0.0,34,65,31,73,False
+AUC,flat_mean,Wavenet,0.7197880184331799,66,0.0,46,77,42,82,False
+AUC,flat_mean,RITA S,0.671557603686636,86,0.0,82,89,81,91,False
+AUC,flat_mean,RITA M,0.7026036866359447,77,0.0,68,82,63,84,False
+AUC,flat_mean,RITA L,0.7112165898617511,73,0.0,59,78,55,79,False
+AUC,flat_mean,RITA XL,0.7161290322580645,70,0.0,56,77,53,78,False
+AUC,flat_mean,Progen2 S,0.6918479262672812,80,0.0,75,85,70,87,False
+AUC,flat_mean,Progen2 M,0.7198663594470045,65,0.0,52,76,48,78,False
+AUC,flat_mean,Progen2 Base,0.716221198156682,69,0.0,54,78,48,79,False
+AUC,flat_mean,Progen2 L,0.7191566820276498,67,0.0,53,76,47,78,False
+AUC,flat_mean,Progen2 XL,0.7288755760368663,58,0.0,41,72,38,73,False
+AUC,flat_mean,GEMME,0.7633087557603686,18,0.0,8,37,7,40,False
+AUC,flat_mean,VESPA,0.7615299539170507,22,0.0,11,37,8,42,False
+AUC,flat_mean,VESPAl,0.7414239631336406,46,0.0,34,62,32,65,False
+AUC,flat_mean,VespaG,0.7704285714285716,11,0.0,6,23,5,24,False
+AUC,flat_mean,ProtGPT2,0.6090276497695852,94,0.0,92,95,92,95,False
+AUC,flat_mean,Tranception S no retrieval,0.6655069124423965,87,0.0,83,91,83,91,False
+AUC,flat_mean,Tranception M no retrieval,0.6962534562211979,79,0.0,71,84,70,85,False
+AUC,flat_mean,Tranception L no retrieval,0.7146129032258063,71,0.0,57,78,54,80,False
+AUC,flat_mean,Tranception S,0.7374055299539172,50,0.0,38,65,35,69,False
+AUC,flat_mean,Tranception M,0.743695852534562,41,0.0,29,57,24,62,False
+AUC,flat_mean,Tranception L,0.7504193548387097,36,0.0,18,53,17,54,False
+AUC,flat_mean,TranceptEVE S,0.7599631336405531,24,0.0,10,40,9,42,False
+AUC,flat_mean,TranceptEVE M,0.7621889400921659,21,0.0,9,37,8,40,False
+AUC,flat_mean,TranceptEVE L,0.7643317972350231,17,0.0,8,35,7,39,False
+AUC,flat_mean,CARP (38M),0.6470645161290322,91,0.0,87,92,86,92,False
+AUC,flat_mean,CARP (600K),0.5470414746543779,97,0.0,96,97,96,97,False
+AUC,flat_mean,CARP (640M),0.7143548387096773,72,0.0,55,80,52,81,False
+AUC,flat_mean,CARP (76M),0.6777880184331798,83,0.0,77,89,75,90,False
+AUC,flat_mean,MIF,0.7080460829493089,75,0.0,59,82,54,84,False
+AUC,flat_mean,MIF-ST,0.7262304147465437,59,0.0,39,74,38,78,False
+AUC,flat_mean,ESM-IF1,0.7373502304147466,51,0.0,28,71,17,74,False
+AUC,flat_mean,ProteinMPNN,0.6604331797235022,89,0.0,83,91,81,91,False
+AUC,flat_mean,"ProtSSN (k=10, h=512)",0.7539078341013825,33,0.0,18,47,16,52,False
+AUC,flat_mean,"ProtSSN (k=10, h=768)",0.7484654377880183,37,0.0,31,54,25,55,False
+AUC,flat_mean,"ProtSSN (k=10, h=1280)",0.7540506912442396,32,0.0,17,48,14,52,False
+AUC,flat_mean,"ProtSSN (k=20, h=512)",0.758589861751152,26,0.0,13,39,13,45,False
+AUC,flat_mean,"ProtSSN (k=20, h=768)",0.7579216589861749,27,0.0,13,42,13,46,False
+AUC,flat_mean,"ProtSSN (k=20, h=1280)",0.7589493087557604,25,0.0,13,39,12,43,False
+AUC,flat_mean,"ProtSSN (k=30, h=512)",0.7562396313364055,30,0.0,14,45,13,48,False
+AUC,flat_mean,"ProtSSN (k=30, h=768)",0.7573410138248848,28,0.0,13,44,13,46,False
+AUC,flat_mean,"ProtSSN (k=30, h=1280)",0.757,29,0.0,13,44,13,46,False
+AUC,flat_mean,ProtSSN (ensemble),0.7627096774193549,19,0.0,9,29,6,33,False
+AUC,flat_mean,SaProt (650M),0.7614608294930874,23,0.0,7,38,6,46,False
+AUC,flat_mean,SaProt (35M),0.7259677419354839,60,0.0,39,76,38,78,False
+AUC,flat_mean,PoET (200M),0.7728940092165898,10,0.0,6,21,4,24,False
+AUC,flat_mean,MULAN,0.6650230414746544,88,0.0,83,91,80,91,False
+AUC,flat_mean,ProSST (K=20),0.7458341013824885,39,0.0,17,61,15,69,False
+AUC,flat_mean,ProSST (K=128),0.7659032258064515,16,0.0,7,39,6,47,False
+AUC,flat_mean,ProSST (K=512),0.7677327188940093,14,0.0,6,36,6,45,False
+AUC,flat_mean,ProSST (K=1024),0.7745990783410138,9,0.0,5,26,3,33,False
+AUC,flat_mean,ProSST (K=2048),0.7879539170506911,3,0.0,3,8,2,11,False
+AUC,flat_mean,ProSST (K=4096),0.7817788018433179,5,0.0,3,15,1,22,False
+AUC,flat_mean,ESCOTT,0.7766451612903224,7,0.0,4,17,3,19,False
+AUC,flat_mean,VenusREM,0.7953963133640551,2,0.05075,1,3,1,5,True
+AUC,flat_mean,RSALOR,0.7681428571428569,13,0.0,6,32,5,38,False
+AUC,flat_mean,S2F,0.7623456221198155,20,0.0,10,35,7,41,False
+AUC,flat_mean,S2F-MSA,0.7813963133640554,6,0.0,4,11,3,14,False
+AUC,flat_mean,S3F,0.7692442396313364,12,0.0,6,24,6,24,False
+AUC,flat_mean,S3F-MSA,0.7850184331797234,4,0.0,2,8,2,10,False
+AUC,flat_mean,SiteRM,0.7462580645161289,38,0.0,23,58,19,62,False
+AUC,flat_mean,ESM3 open (1.4B),0.7662995391705069,15,0.0,6,37,5,41,False
+AUC,flat_mean,ESM-C (300M),0.7427972350230415,45,0.0,22,62,13,64,False
+AUC,flat_mean,ESM-C (600M),0.7432949308755759,44,0.0,21,62,13,63,False
+AUC,flat_mean,xTrimoPGLM-1B-MLM,0.7231520737327191,62,0.0,50,76,42,79,False
+AUC,flat_mean,xTrimoPGLM-3B-MLM,0.7397096774193547,48,0.0,33,63,28,64,False
+AUC,flat_mean,xTrimoPGLM-10B-MLM,0.7366497695852535,54,0.0,34,64,33,68,False
+AUC,flat_mean,xTrimoPGLM-1B-CLM,0.6917741935483871,81,0.0,75,85,72,87,False
+AUC,flat_mean,xTrimoPGLM-3B-CLM,0.6230552995391705,92,0.0,90,95,90,95,False
+AUC,flat_mean,xTrimoPGLM-7B-CLM,0.548483870967742,96,0.0,96,97,96,97,False
+AUC,flat_mean,xTrimoPGLM-100B-int4,0.7172764976958527,68,0.0,53,80,46,82,False
+AUC,flat_mean,Progen3 112m,0.6490506912442396,90,0.0,87,92,84,92,False
+AUC,flat_mean,Progen3 219m,0.6737603686635945,85,0.0,81,89,78,89,False
+AUC,flat_mean,Progen3 339m,0.6917557603686638,82,0.0,72,84,61,87,False
+AUC,flat_mean,Progen3 762m,0.7084608294930875,74,0.0,60,79,58,82,False
+AUC,flat_mean,Progen3 1B,0.7255115207373273,61,0.0,42,73,41,75,False
+AUC,flat_mean,Progen3 3B,0.7301566820276497,57,0.0,39,71,38,71,False
+AUC,flat_mean,AIDO Protein-RAG (16B),0.7998110599078342,1,0.94925,1,2,1,4,True
+AUC,flat_mean,Protriever,0.776365,8,0.0,3,17,3,21,False
+AUC,median,Site-Independent,0.705,78,0.0,59,86,52,88,False
+AUC,median,EVmutation,0.738,58,0.0,23,79,11,84,False
+AUC,median,DeepSequence (single),0.734,64,0.0,34,80,18,84,False
+AUC,median,DeepSequence (ensemble),0.746,52,0.0,16,74,6,81,False
+AUC,median,EVE (single),0.76,38,0.0,4,68,2,74,False
+AUC,median,EVE (ensemble),0.762,36,0.0,5,64,2,73,False
+AUC,median,Unirep,0.588,95,0.0,92,95,91,95,False
+AUC,median,Unirep evotuned,0.711,76,0.0,53,85,47,87,False
+AUC,median,MSA Transformer (single),0.752,42,0.0,10,70,6,74,False
+AUC,median,MSA Transformer (ensemble),0.763,34,0.0,6,63,3,69,False
+AUC,median,ESM-1b,0.747,50,0.0,20,72,11,77,False
+AUC,median,ESM-1v (single),0.738,58,0.0,20,79,7,81,False
+AUC,median,ESM-1v (ensemble),0.749,47,0.0,7,74,4,78,False
+AUC,median,ESM2 (8M),0.603,93,0.0,91,95,91,95,False
+AUC,median,ESM2 (35M),0.687,84,0.0,67,90,52,92,False
+AUC,median,ESM2 (150M),0.739,57,0.0,22,80,7,83,False
+AUC,median,ESM2 (650M),0.761,37,0.0,7,66,3,70,False
+AUC,median,ESM2 (3B),0.758,39,0.0,7,66,5,70,False
+AUC,median,ESM2 (15B),0.751,46,0.0,7,74,3,80,False
+AUC,median,Wavenet,0.735,63,0.0,14,82,5,85,False
+AUC,median,RITA S,0.676,85,0.0,77,90,75,92,False
+AUC,median,RITA M,0.712,75,0.0,46,86,31,90,False
+AUC,median,RITA L,0.714,73,0.0,50,84,44,87,False
+AUC,median,RITA XL,0.719,71,0.0,46,84,39,86,False
+AUC,median,Progen2 S,0.705,78,0.0,58,88,43,89,False
+AUC,median,Progen2 M,0.734,64,0.0,30,80,14,84,False
+AUC,median,Progen2 Base,0.737,61,0.0,21,79,7,83,False
+AUC,median,Progen2 L,0.727,69,0.0,43,82,33,84,False
+AUC,median,Progen2 XL,0.731,67,0.0,39,82,25,84,False
+AUC,median,GEMME,0.769,22,0.0,3,60,2,65,False
+AUC,median,VESPA,0.765,30,0.0,3,64,2,71,False
+AUC,median,VESPAl,0.744,53,0.0,21,77,11,79,False
+AUC,median,VespaG,0.774,16,0.0,3,52,1,63,False
+AUC,median,ProtGPT2,0.592,94,0.0,92,95,91,95,False
+AUC,median,Tranception S no retrieval,0.675,86,0.0,77,91,70,92,False
+AUC,median,Tranception M no retrieval,0.702,80,0.0,59,88,45,90,False
+AUC,median,Tranception L no retrieval,0.728,68,0.0,40,83,26,84,False
+AUC,median,Tranception S,0.743,55,0.0,18,75,7,81,False
+AUC,median,Tranception M,0.752,42,0.0,10,69,6,73,False
+AUC,median,Tranception L,0.757,40,0.0,6,66,5,73,False
+AUC,median,TranceptEVE S,0.763,34,0.0,4,65,2,72,False
+AUC,median,TranceptEVE M,0.77,20,0.0,3,58,2,65,False
+AUC,median,TranceptEVE L,0.767,25,0.0,4,62,2,66,False
+AUC,median,CARP (38M),0.653,90,0.0,84,92,80,92,False
+AUC,median,CARP (600K),0.538,96,0.0,96,97,96,97,False
+AUC,median,CARP (640M),0.72,70,0.0,45,84,35,86,False
+AUC,median,CARP (76M),0.692,83,0.0,67,89,51,89,False
+AUC,median,MIF,0.715,72,0.0,46,86,38,88,False
+AUC,median,MIF-ST,0.738,58,0.0,27,79,15,84,False
+AUC,median,ESM-IF1,0.748,49,0.0,8,78,3,84,False
+AUC,median,ProteinMPNN,0.626,92,0.0,88,95,84,95,False
+AUC,median,"ProtSSN (k=10, h=512)",0.768,23,0.0,3,60,3,67,False
+AUC,median,"ProtSSN (k=10, h=768)",0.755,41,0.0,10,70,7,74,False
+AUC,median,"ProtSSN (k=10, h=1280)",0.764,32,0.0,5,65,3,70,False
+AUC,median,"ProtSSN (k=20, h=512)",0.767,25,0.0,3,62,3,67,False
+AUC,median,"ProtSSN (k=20, h=768)",0.767,25,0.0,3,61,3,69,False
+AUC,median,"ProtSSN (k=20, h=1280)",0.765,30,0.0,5,62,3,69,False
+AUC,median,"ProtSSN (k=30, h=512)",0.767,25,0.0,3,61,3,67,False
+AUC,median,"ProtSSN (k=30, h=768)",0.766,29,0.0,6,62,3,67,False
+AUC,median,"ProtSSN (k=30, h=1280)",0.768,23,0.0,3,59,3,67,False
+AUC,median,ProtSSN (ensemble),0.773,17,0.0,3,53,1,63,False
+AUC,median,SaProt (650M),0.777,9,0.0,1,52,1,62,False
+AUC,median,SaProt (35M),0.734,64,0.0,29,80,12,84,False
+AUC,median,PoET (200M),0.777,9,0.0,2,49,1,56,False
+AUC,median,MULAN,0.668,88,0.0,77,92,71,92,False
+AUC,median,ProSST (K=20),0.752,42,0.0,7,79,4,83,False
+AUC,median,ProSST (K=128),0.771,18,0.0,3,66,1,70,False
+AUC,median,ProSST (K=512),0.777,9,0.0,1,61,1,71,True
+AUC,median,ProSST (K=1024),0.789,5,0.003,1,45,1,57,True
+AUC,median,ProSST (K=2048),0.794,3,0.015,1,31,1,47,True
+AUC,median,ProSST (K=4096),0.791,4,0.01375,1,40,1,52,True
+AUC,median,ESCOTT,0.777,9,0.0,2,51,1,62,False
+AUC,median,VenusREM,0.803,2,0.24325,1,13,1,28,True
+AUC,median,RSALOR,0.775,13,0.0,3,53,1,62,False
+AUC,median,S2F,0.771,18,0.0,3,56,1,65,False
+AUC,median,S2F-MSA,0.785,7,0.0,1,40,1,46,True
+AUC,median,S3F,0.775,13,0.0,3,52,1,60,False
+AUC,median,S3F-MSA,0.789,5,0.0,1,30,1,44,True
+AUC,median,SiteRM,0.747,50,0.0,16,74,9,79,False
+AUC,median,ESM3 open (1.4B),0.775,13,0.0,1,61,1,73,True
+AUC,median,ESM-C (300M),0.764,32,0.0,3,66,1,72,False
+AUC,median,ESM-C (600M),0.77,20,0.0,3,59,1,67,False
+AUC,median,xTrimoPGLM-1B-MLM,0.742,56,0.0,6,80,3,85,False
+AUC,median,xTrimoPGLM-3B-MLM,0.752,42,0.0,7,71,3,79,False
+AUC,median,xTrimoPGLM-10B-MLM,0.749,47,0.0,6,76,3,83,False
+AUC,median,xTrimoPGLM-1B-CLM,0.699,81,0.0,68,88,57,90,False
+AUC,median,xTrimoPGLM-3B-CLM,0.639,91,0.0,87,93,83,95,False
+AUC,median,xTrimoPGLM-7B-CLM,0.532,97,0.0,96,97,96,97,False
+AUC,median,xTrimoPGLM-100B-int4,0.711,76,0.0,47,88,17,91,False
+AUC,median,Progen3 112m,0.662,89,0.0,81,92,78,92,False
+AUC,median,Progen3 219m,0.675,86,0.0,74,92,69,92,False
+AUC,median,Progen3 339m,0.697,82,0.0,67,88,55,88,False
+AUC,median,Progen3 762m,0.713,74,0.0,54,84,46,87,False
+AUC,median,Progen3 1B,0.736,62,0.0,29,77,16,82,False
+AUC,median,Progen3 3B,0.744,53,0.0,17,75,10,78,False
+AUC,median,AIDO Protein-RAG (16B),0.808,1,0.77075,1,10,1,22,True
+AUC,median,Protriever,0.778,8,0.0,2,49,1,56,False
+MCC,proteingym,Site-Independent,0.28658675347222223,73,0.0,48,84,45,85,False
+MCC,proteingym,EVmutation,0.30477474905303026,61,0.0,39,77,37,81,False
+MCC,proteingym,DeepSequence (single),0.3177734217171717,50,0.0,31,74,25,76,False
+MCC,proteingym,DeepSequence (ensemble),0.328056204229798,42,0.0,23,66,19,72,False
+MCC,proteingym,EVE (single),0.3349527051767677,37,0.0,19,58,17,62,False
+MCC,proteingym,EVE (ensemble),0.3422938794191919,31,0.0,12,55,12,58,False
+MCC,proteingym,Unirep,0.14660335858585857,95,0.0,93,95,91,95,False
+MCC,proteingym,Unirep evotuned,0.2738730334595959,78,0.0,64,84,58,86,False
+MCC,proteingym,MSA Transformer (single),0.32759338857323234,43,0.0,21,65,19,67,False
+MCC,proteingym,MSA Transformer (ensemble),0.3394482417929293,35,0.0,13,57,12,57,False
+MCC,proteingym,ESM-1b,0.310875625,56,0.0,36,75,32,78,False
+MCC,proteingym,ESM-1v (single),0.2961236789772727,68,0.0,44,81,40,82,False
+MCC,proteingym,ESM-1v (ensemble),0.320218125,48,0.0,26,70,17,73,False
+MCC,proteingym,ESM2 (8M),0.17144345959595958,93,0.0,91,94,91,95,False
+MCC,proteingym,ESM2 (35M),0.2501344633838384,84,0.0,74,88,68,89,False
+MCC,proteingym,ESM2 (150M),0.302720983270202,62,0.0,39,79,33,81,False
+MCC,proteingym,ESM2 (650M),0.3269380397727273,44,0.0,18,68,14,70,False
+MCC,proteingym,ESM2 (3B),0.3199371811868687,49,0.0,31,71,21,74,False
+MCC,proteingym,ESM2 (15B),0.31450184974747475,53,0.0,34,73,30,76,False
+MCC,proteingym,Wavenet,0.2943957686237374,69,0.0,44,82,37,84,False
+MCC,proteingym,RITA S,0.23628576704545456,87,0.0,83,90,83,91,False
+MCC,proteingym,RITA M,0.2745732070707071,77,0.0,66,84,55,85,False
+MCC,proteingym,RITA L,0.2912181960227273,72,0.0,47,77,43,81,False
+MCC,proteingym,RITA XL,0.29347197758838384,71,0.0,46,78,43,83,False
+MCC,proteingym,Progen2 S,0.2610167613636364,82,0.0,72,86,67,86,False
+MCC,proteingym,Progen2 M,0.299140192550505,64,0.0,42,77,40,77,False
+MCC,proteingym,Progen2 Base,0.2991628172348485,63,0.0,43,77,39,78,False
+MCC,proteingym,Progen2 L,0.2981564583333333,66,0.0,43,76,40,78,False
+MCC,proteingym,Progen2 XL,0.306264264520202,60,0.0,39,76,36,77,False
+MCC,proteingym,GEMME,0.3520284548611111,23,0.0,7,44,6,51,False
+MCC,proteingym,VESPA,0.34652578598484846,26,0.0,12,47,10,50,False
+MCC,proteingym,VESPAl,0.3124109801136363,55,0.0,36,76,36,77,False
+MCC,proteingym,VespaG,0.36203982323232325,15,0.0,6,31,6,36,False
+MCC,proteingym,ProtGPT2,0.1508011505681818,94,0.0,92,95,92,95,False
+MCC,proteingym,Tranception S no retrieval,0.23152796874999998,88,0.0,83,91,83,91,False
+MCC,proteingym,Tranception M no retrieval,0.26955915088383836,80,0.0,69,84,65,85,False
+MCC,proteingym,Tranception L no retrieval,0.29616216856060606,67,0.0,45,77,42,83,False
+MCC,proteingym,Tranception S,0.32237430397727274,46,0.0,30,67,27,71,False
+MCC,proteingym,Tranception M,0.33064841382575755,41,0.0,23,59,20,65,False
+MCC,proteingym,Tranception L,0.3407821875,34,0.0,16,51,13,56,False
+MCC,proteingym,TranceptEVE S,0.35269359217171714,22,0.0,9,43,7,45,False
+MCC,proteingym,TranceptEVE M,0.3532308822601011,21,0.0,9,40,7,44,False
+MCC,proteingym,TranceptEVE L,0.3562767234848485,19,0.0,6,39,6,40,False
+MCC,proteingym,CARP (38M),0.21331409090909093,90,0.0,86,91,85,92,False
+MCC,proteingym,CARP (600K),0.07584835069444444,97,0.0,96,97,96,97,False
+MCC,proteingym,CARP (640M),0.28571319602272727,74,0.0,55,82,48,84,False
+MCC,proteingym,CARP (76M),0.25147807133838385,83,0.0,74,88,69,89,False
+MCC,proteingym,MIF,0.2939617913510101,70,0.0,43,84,39,84,False
+MCC,proteingym,MIF-ST,0.3099421448863636,58,0.0,34,76,29,77,False
+MCC,proteingym,ESM-IF1,0.3311935179924242,39,0.0,16,66,12,74,False
+MCC,proteingym,ProteinMPNN,0.19576574337121216,91,0.0,88,93,87,94,False
+MCC,proteingym,"ProtSSN (k=10, h=512)",0.3412641145833334,33,0.0,16,50,15,53,False
+MCC,proteingym,"ProtSSN (k=10, h=768)",0.33179689393939393,38,0.0,29,58,26,62,False
+MCC,proteingym,"ProtSSN (k=10, h=1280)",0.3427599068813131,30,0.0,16,48,13,51,False
+MCC,proteingym,"ProtSSN (k=20, h=512)",0.34534362373737376,28,0.0,12,49,10,51,False
+MCC,proteingym,"ProtSSN (k=20, h=768)",0.3460669965277777,27,0.0,13,46,10,50,False
+MCC,proteingym,"ProtSSN (k=20, h=1280)",0.3514219933712121,24,0.0,8,42,7,46,False
+MCC,proteingym,"ProtSSN (k=30, h=512)",0.34184286458333335,32,0.0,16,50,12,53,False
+MCC,proteingym,"ProtSSN (k=30, h=768)",0.34433859217171714,29,0.0,14,50,11,51,False
+MCC,proteingym,"ProtSSN (k=30, h=1280)",0.34677493213383837,25,0.0,13,46,8,48,False
+MCC,proteingym,ProtSSN (ensemble),0.35384369633838386,20,0.0,8,34,7,36,False
+MCC,proteingym,SaProt (650M),0.35863099905303025,18,0.0,5,40,4,42,False
+MCC,proteingym,SaProt (35M),0.31631388415404044,52,0.0,33,74,32,74,False
+MCC,proteingym,PoET (200M),0.36750714172979804,11,0.0,5,24,5,30,False
+MCC,proteingym,MULAN,0.24049184816919195,86,0.0,80,90,77,90,False
+MCC,proteingym,ProSST (K=20),0.3364139898989899,36,0.0,15,63,11,69,False
+MCC,proteingym,ProSST (K=128),0.3634536063762626,14,0.0,5,39,5,49,False
+MCC,proteingym,ProSST (K=512),0.36038650094696967,17,0.0,6,46,6,52,False
+MCC,proteingym,ProSST (K=1024),0.37217344381313133,8,0.0,4,28,4,39,False
+MCC,proteingym,ProSST (K=2048),0.39766937026515153,3,0.00025,2,7,1,9,False
+MCC,proteingym,ProSST (K=4096),0.38471214646464647,5,0.00325,1,17,1,22,False
+MCC,proteingym,ESCOTT,0.37034980429292924,10,0.0,5,21,4,33,False
+MCC,proteingym,VenusREM,0.4040233648989899,2,0.38675,1,6,1,6,True
+MCC,proteingym,RSALOR,0.3664980587121212,13,0.0,5,34,4,39,False
+MCC,proteingym,S2F,0.3606778898358586,16,0.0,7,31,7,36,False
+MCC,proteingym,S2F-MSA,0.38133842013888886,6,0.0,3,16,3,16,False
+MCC,proteingym,S3F,0.3709284154040404,9,0.0,5,21,4,21,False
+MCC,proteingym,S3F-MSA,0.3874404640151516,4,0.003,1,10,1,12,False
+MCC,proteingym,SiteRM,0.3310535353535354,40,0.0,21,64,19,69,False
+MCC,proteingym,ESM3 open (1.4B),0.36731312342171724,12,0.0,4,26,4,31,False
+MCC,proteingym,ESM-C (300M),0.3223922048611111,45,0.0,20,70,16,73,False
+MCC,proteingym,ESM-C (600M),0.32100730271464645,47,0.0,19,72,13,75,False
+MCC,proteingym,xTrimoPGLM-1B-MLM,0.2985917061237374,65,0.0,43,81,40,82,False
+MCC,proteingym,xTrimoPGLM-3B-MLM,0.31686682607323235,51,0.0,29,73,23,77,False
+MCC,proteingym,xTrimoPGLM-10B-MLM,0.3124740577651515,54,0.0,35,74,28,78,False
+MCC,proteingym,xTrimoPGLM-1B-CLM,0.2704413162878788,79,0.0,68,85,67,86,False
+MCC,proteingym,xTrimoPGLM-3B-CLM,0.17751778409090907,92,0.0,91,95,89,95,False
+MCC,proteingym,xTrimoPGLM-7B-CLM,0.08493906881313132,96,0.0,96,97,96,97,False
+MCC,proteingym,xTrimoPGLM-100B-int4,0.2854308001893939,75,0.0,53,84,46,85,False
+MCC,proteingym,Progen3 112m,0.21555958017676766,89,0.0,85,91,84,92,False
+MCC,proteingym,Progen3 219m,0.24431277777777777,85,0.0,82,89,77,89,False
+MCC,proteingym,Progen3 339m,0.26745091224747475,81,0.0,70,85,64,85,False
+MCC,proteingym,Progen3 762m,0.28478730902777777,76,0.0,54,80,49,84,False
+MCC,proteingym,Progen3 1B,0.30690380208333334,59,0.0,39,75,38,75,False
+MCC,proteingym,Progen3 3B,0.3101456376262626,57,0.0,38,72,35,75,False
+MCC,proteingym,AIDO Protein-RAG (16B),0.4052464236111111,1,0.60675,1,5,1,5,True
+MCC,proteingym,Protriever,0.37365837381916334,7,0.0,3,21,3,26,False
+MCC,function_group_mean,Site-Independent,0.28619077847217383,74,0.0,51,84,44,86,False
+MCC,function_group_mean,EVmutation,0.30652836698185537,60,0.0,38,77,37,80,False
+MCC,function_group_mean,DeepSequence (single),0.31680271098410634,52,0.0,35,74,28,77,False
+MCC,function_group_mean,DeepSequence (ensemble),0.3274499224289922,44,0.0,25,67,18,73,False
+MCC,function_group_mean,EVE (single),0.3353010116498488,38,0.0,20,58,18,63,False
+MCC,function_group_mean,EVE (ensemble),0.34241224382852287,33,0.0,13,55,12,59,False
+MCC,function_group_mean,Unirep,0.1452381520288497,95,0.0,93,95,91,95,False
+MCC,function_group_mean,Unirep evotuned,0.27242622777739056,78,0.0,65,85,60,87,False
+MCC,function_group_mean,MSA Transformer (single),0.32751655373050725,43,0.0,25,65,20,68,False
+MCC,function_group_mean,MSA Transformer (ensemble),0.3403737995854275,36,0.0,15,57,12,57,False
+MCC,function_group_mean,ESM-1b,0.31453604457557943,55,0.0,35,74,32,78,False
+MCC,function_group_mean,ESM-1v (single),0.29865449976380204,66,0.0,45,79,40,82,False
+MCC,function_group_mean,ESM-1v (ensemble),0.3226178449457519,48,0.0,26,69,17,73,False
+MCC,function_group_mean,ESM2 (8M),0.17042066202531317,93,0.0,91,94,91,95,False
+MCC,function_group_mean,ESM2 (35M),0.24947486673533187,84,0.0,74,88,68,89,False
+MCC,function_group_mean,ESM2 (150M),0.30561348470650795,62,0.0,38,79,34,81,False
+MCC,function_group_mean,ESM2 (650M),0.33161385436269164,39,0.0,17,63,14,69,False
+MCC,function_group_mean,ESM2 (3B),0.32350065954717117,47,0.0,31,68,20,73,False
+MCC,function_group_mean,ESM2 (15B),0.3186179267760663,51,0.0,33,73,28,75,False
+MCC,function_group_mean,Wavenet,0.29361038831969066,69,0.0,44,82,38,84,False
+MCC,function_group_mean,RITA S,0.23723626063858627,87,0.0,83,90,81,91,False
+MCC,function_group_mean,RITA M,0.2753123537960747,77,0.0,66,84,57,85,False
+MCC,function_group_mean,RITA L,0.2914583300420509,72,0.0,50,77,44,81,False
+MCC,function_group_mean,RITA XL,0.29291502115455603,71,0.0,48,78,43,82,False
+MCC,function_group_mean,Progen2 S,0.2619570646407855,82,0.0,72,86,67,86,False
+MCC,function_group_mean,Progen2 M,0.3002393371486395,64,0.0,43,76,40,77,False
+MCC,function_group_mean,Progen2 Base,0.3001299320834205,65,0.0,44,76,39,78,False
+MCC,function_group_mean,Progen2 L,0.2981266183428974,67,0.0,43,76,41,78,False
+MCC,function_group_mean,Progen2 XL,0.3058354867354868,61,0.0,40,76,37,77,False
+MCC,function_group_mean,GEMME,0.35108586116725654,25,0.0,8,45,6,54,False
+MCC,function_group_mean,VESPA,0.3504375392049811,27,0.0,11,47,10,49,False
+MCC,function_group_mean,VESPAl,0.3158983690727877,54,0.0,36,75,34,76,False
+MCC,function_group_mean,VespaG,0.36500813579185676,16,0.0,6,30,5,35,False
+MCC,function_group_mean,ProtGPT2,0.1502025865607261,94,0.0,92,95,92,95,False
+MCC,function_group_mean,Tranception S no retrieval,0.23130191591354382,88,0.0,83,91,83,91,False
+MCC,function_group_mean,Tranception M no retrieval,0.26944926907717603,80,0.0,70,85,66,86,False
+MCC,function_group_mean,Tranception L no retrieval,0.29553187974815887,68,0.0,45,77,42,84,False
+MCC,function_group_mean,Tranception S,0.32240435301132975,49,0.0,33,68,29,71,False
+MCC,function_group_mean,Tranception M,0.33004815262257126,42,0.0,25,60,22,65,False
+MCC,function_group_mean,Tranception L,0.34092534132534136,35,0.0,17,52,13,57,False
+MCC,function_group_mean,TranceptEVE S,0.35307231037696146,22,0.0,10,42,7,47,False
+MCC,function_group_mean,TranceptEVE M,0.3530633206586695,23,0.0,10,43,7,45,False
+MCC,function_group_mean,TranceptEVE L,0.3566844481100294,20,0.0,8,39,6,42,False
+MCC,function_group_mean,CARP (38M),0.21121950452648125,90,0.0,86,91,85,92,False
+MCC,function_group_mean,CARP (600K),0.07439553521413987,97,0.0,96,97,96,97,False
+MCC,function_group_mean,CARP (640M),0.28896958855098387,73,0.0,55,82,45,84,False
+MCC,function_group_mean,CARP (76M),0.2501776035334175,83,0.0,74,88,70,89,False
+MCC,function_group_mean,MIF,0.2933067369323183,70,0.0,44,84,40,84,False
+MCC,function_group_mean,MIF-ST,0.31077625397857955,57,0.0,36,76,32,77,False
+MCC,function_group_mean,ESM-IF1,0.330649277853929,40,0.0,18,66,12,74,False
+MCC,function_group_mean,ProteinMPNN,0.1951866095145165,91,0.0,89,93,87,94,False
+MCC,function_group_mean,"ProtSSN (k=10, h=512)",0.345299333999334,32,0.0,16,49,13,51,False
+MCC,function_group_mean,"ProtSSN (k=10, h=768)",0.33567768045907576,37,0.0,29,57,25,59,False
+MCC,function_group_mean,"ProtSSN (k=10, h=1280)",0.3464401051145237,30,0.0,15,46,12,50,False
+MCC,function_group_mean,"ProtSSN (k=20, h=512)",0.34962692527111133,28,0.0,11,47,9,50,False
+MCC,function_group_mean,"ProtSSN (k=20, h=768)",0.3505333183612253,26,0.0,10,45,9,48,False
+MCC,function_group_mean,"ProtSSN (k=20, h=1280)",0.3553164757722897,21,0.0,8,41,8,45,False
+MCC,function_group_mean,"ProtSSN (k=30, h=512)",0.34616644363388555,31,0.0,13,50,10,51,False
+MCC,function_group_mean,"ProtSSN (k=30, h=768)",0.3486422884608931,29,0.0,12,48,9,50,False
+MCC,function_group_mean,"ProtSSN (k=30, h=1280)",0.3511599181180577,24,0.0,9,45,8,46,False
+MCC,function_group_mean,ProtSSN (ensemble),0.3582255393185626,19,0.0,7,33,6,36,False
+MCC,function_group_mean,SaProt (650M),0.3630627194510916,18,0.0,4,34,4,41,False
+MCC,function_group_mean,SaProt (35M),0.3167923079504475,53,0.0,33,74,32,75,False
+MCC,function_group_mean,PoET (200M),0.36903638325498794,11,0.0,5,28,5,31,False
+MCC,function_group_mean,MULAN,0.24291693448670193,85,0.0,78,89,77,90,False
+MCC,function_group_mean,ProSST (K=20),0.3416773557192162,34,0.0,12,59,10,67,False
+MCC,function_group_mean,ProSST (K=128),0.3689131633224656,12,0.0,5,37,5,48,False
+MCC,function_group_mean,ProSST (K=512),0.3663131674527024,14,0.0,6,40,6,49,False
+MCC,function_group_mean,ProSST (K=1024),0.3780094280396606,7,0.0,4,25,4,36,False
+MCC,function_group_mean,ProSST (K=2048),0.4020283685306941,3,0.00125,1,6,1,9,False
+MCC,function_group_mean,ProSST (K=4096),0.38999202141527717,4,0.0025,1,16,1,21,True
+MCC,function_group_mean,ESCOTT,0.37035785893692874,10,0.0,5,28,4,34,False
+MCC,function_group_mean,VenusREM,0.4080802551453714,1,0.574,1,5,1,6,True
+MCC,function_group_mean,RSALOR,0.36619736387643365,15,0.0,6,36,4,41,False
+MCC,function_group_mean,S2F,0.3632666498875801,17,0.0,7,32,7,36,False
+MCC,function_group_mean,S2F-MSA,0.382732011657593,6,0.0,3,16,1,17,False
+MCC,function_group_mean,S3F,0.3726648230322649,9,0.0,5,19,4,23,False
+MCC,function_group_mean,S3F-MSA,0.38807670856275506,5,0.0015,1,11,1,13,False
+MCC,function_group_mean,SiteRM,0.33061542617589124,41,0.0,24,64,20,70,False
+MCC,function_group_mean,ESM3 open (1.4B),0.3667409084455596,13,0.0,4,33,4,38,False
+MCC,function_group_mean,ESM-C (300M),0.3266228187832839,45,0.0,20,69,15,71,False
+MCC,function_group_mean,ESM-C (600M),0.32585814211628167,46,0.0,19,69,13,73,False
+MCC,function_group_mean,xTrimoPGLM-1B-MLM,0.3008725951051533,63,0.0,44,79,39,82,False
+MCC,function_group_mean,xTrimoPGLM-3B-MLM,0.3190539806446783,50,0.0,31,73,21,77,False
+MCC,function_group_mean,xTrimoPGLM-10B-MLM,0.3136057330266632,56,0.0,34,73,32,75,False
+MCC,function_group_mean,xTrimoPGLM-1B-CLM,0.2717325620116318,79,0.0,68,85,65,86,False
+MCC,function_group_mean,xTrimoPGLM-3B-CLM,0.1751154845154845,92,0.0,91,95,89,95,False
+MCC,function_group_mean,xTrimoPGLM-7B-CLM,0.08317265628428419,96,0.0,96,97,96,97,False
+MCC,function_group_mean,xTrimoPGLM-100B-int4,0.2853977386954131,75,0.0,56,84,47,85,False
+MCC,function_group_mean,Progen3 112m,0.21311271467550535,89,0.0,87,91,84,92,False
+MCC,function_group_mean,Progen3 219m,0.2424596803713083,86,0.0,82,89,76,89,False
+MCC,function_group_mean,Progen3 339m,0.2643257027210516,81,0.0,71,85,65,85,False
+MCC,function_group_mean,Progen3 762m,0.2834022269719944,76,0.0,56,82,52,84,False
+MCC,function_group_mean,Progen3 1B,0.3073668579482533,59,0.0,40,75,38,75,False
+MCC,function_group_mean,Progen3 3B,0.30962696037812315,58,0.0,38,72,36,75,False
+MCC,function_group_mean,AIDO Protein-RAG (16B),0.4071639691058295,2,0.42075,1,5,1,6,True
+MCC,function_group_mean,Protriever,0.37551815987933634,8,0.0,4,21,3,29,False
+MCC,uniprot_weighted,Site-Independent,0.29546281362007165,76,0.0,60,82,53,84,False
+MCC,uniprot_weighted,EVmutation,0.3260748207885304,58,0.0,41,75,38,75,False
+MCC,uniprot_weighted,DeepSequence (single),0.33858243727598564,50,0.0,36,65,33,72,False
+MCC,uniprot_weighted,DeepSequence (ensemble),0.346211917562724,43,0.0,28,58,24,64,False
+MCC,uniprot_weighted,EVE (single),0.3582464157706093,35,0.0,20,52,16,54,False
+MCC,uniprot_weighted,EVE (ensemble),0.3636792114695341,33,0.0,14,47,11,51,False
+MCC,uniprot_weighted,Unirep,0.14137634408602154,95,0.0,93,95,93,95,False
+MCC,uniprot_weighted,Unirep evotuned,0.28381362007168454,78,0.0,64,84,61,85,False
+MCC,uniprot_weighted,MSA Transformer (single),0.3491258960573477,40,0.0,26,58,20,62,False
+MCC,uniprot_weighted,MSA Transformer (ensemble),0.3587284946236559,34,0.0,15,52,13,55,False
+MCC,uniprot_weighted,ESM-1b,0.3341182795698925,54,0.0,36,70,33,74,False
+MCC,uniprot_weighted,ESM-1v (single),0.31333467741935483,66,0.0,50,77,41,79,False
+MCC,uniprot_weighted,ESM-1v (ensemble),0.33681810035842297,52,0.0,32,65,24,70,False
+MCC,uniprot_weighted,ESM2 (8M),0.16269265232974908,94,0.0,92,94,92,94,False
+MCC,uniprot_weighted,ESM2 (35M),0.25579480286738354,83,0.0,77,89,75,90,False
+MCC,uniprot_weighted,ESM2 (150M),0.3145936379928315,63,0.0,44,78,41,79,False
+MCC,uniprot_weighted,ESM2 (650M),0.34335125448028675,46,0.0,30,63,19,68,False
+MCC,uniprot_weighted,ESM2 (3B),0.34132078853046594,48,0.0,32,63,22,68,False
+MCC,uniprot_weighted,ESM2 (15B),0.3362679211469535,53,0.0,34,67,32,73,False
+MCC,uniprot_weighted,Wavenet,0.3137997311827957,65,0.0,47,77,41,80,False
+MCC,uniprot_weighted,RITA S,0.23927777777777784,87,0.0,83,89,82,91,False
+MCC,uniprot_weighted,RITA M,0.28493637992831533,77,0.0,69,83,64,84,False
+MCC,uniprot_weighted,RITA L,0.30116353046594985,73,0.0,58,78,55,79,False
+MCC,uniprot_weighted,RITA XL,0.3060613799283154,70,0.0,58,77,53,78,False
+MCC,uniprot_weighted,Progen2 S,0.2694677419354839,82,0.0,74,86,73,87,False
+MCC,uniprot_weighted,Progen2 M,0.30837096774193556,68,0.0,54,77,49,77,False
+MCC,uniprot_weighted,Progen2 Base,0.3047217741935484,71,0.0,55,78,48,79,False
+MCC,uniprot_weighted,Progen2 L,0.30921236559139786,67,0.0,55,77,48,78,False
+MCC,uniprot_weighted,Progen2 XL,0.3245528673835125,59,0.0,39,73,39,76,False
+MCC,uniprot_weighted,GEMME,0.3759502688172042,18,0.0,8,40,7,42,False
+MCC,uniprot_weighted,VESPA,0.3722867383512545,23,0.0,10,40,8,43,False
+MCC,uniprot_weighted,VESPAl,0.3403830645161291,49,0.0,35,65,33,71,False
+MCC,uniprot_weighted,VespaG,0.3819059139784946,14,0.0,6,31,6,36,False
+MCC,uniprot_weighted,ProtGPT2,0.16320206093189962,93,0.0,92,95,91,95,False
+MCC,uniprot_weighted,Tranception S no retrieval,0.2310667562724014,89,0.0,83,91,83,91,False
+MCC,uniprot_weighted,Tranception M no retrieval,0.2754220430107527,80,0.0,74,85,72,85,False
+MCC,uniprot_weighted,Tranception L no retrieval,0.306855734767025,69,0.0,56,78,47,79,False
+MCC,uniprot_weighted,Tranception S,0.3333328853046595,55,0.0,38,69,36,73,False
+MCC,uniprot_weighted,Tranception M,0.3439896953405018,45,0.0,32,61,25,65,False
+MCC,uniprot_weighted,Tranception L,0.3553817204301075,36,0.0,19,53,18,56,False
+MCC,uniprot_weighted,TranceptEVE S,0.36906093189964156,25,0.0,11,43,9,47,False
+MCC,uniprot_weighted,TranceptEVE M,0.37145833333333345,24,0.0,10,40,8,45,False
+MCC,uniprot_weighted,TranceptEVE L,0.3745313620071684,20,0.0,8,39,7,42,False
+MCC,uniprot_weighted,CARP (38M),0.20870788530465953,91,0.0,87,91,86,92,False
+MCC,uniprot_weighted,CARP (600K),0.06826120071684588,97,0.0,96,97,96,97,False
+MCC,uniprot_weighted,CARP (640M),0.29776299283154123,74,0.0,58,81,54,82,False
+MCC,uniprot_weighted,CARP (76M),0.2522007168458782,84,0.0,78,89,76,90,False
+MCC,uniprot_weighted,MIF,0.3021151433691756,72,0.0,53,82,44,83,False
+MCC,uniprot_weighted,MIF-ST,0.3206895161290323,60,0.0,39,76,37,78,False
+MCC,uniprot_weighted,ESM-IF1,0.3520237455197133,38,0.0,15,60,13,68,False
+MCC,uniprot_weighted,ProteinMPNN,0.24392876344086017,86,0.0,79,91,79,91,False
+MCC,uniprot_weighted,"ProtSSN (k=10, h=512)",0.3650452508960573,31,0.0,17,45,12,50,False
+MCC,uniprot_weighted,"ProtSSN (k=10, h=768)",0.3541505376344086,37,0.0,27,54,25,55,False
+MCC,uniprot_weighted,"ProtSSN (k=10, h=1280)",0.36381675627240145,32,0.0,17,48,13,52,False
+MCC,uniprot_weighted,"ProtSSN (k=20, h=512)",0.3687150537634409,26,0.0,12,42,12,47,False
+MCC,uniprot_weighted,"ProtSSN (k=20, h=768)",0.36726568100358425,29,0.0,13,43,12,48,False
+MCC,uniprot_weighted,"ProtSSN (k=20, h=1280)",0.3729502688172044,22,0.0,10,37,6,41,False
+MCC,uniprot_weighted,"ProtSSN (k=30, h=512)",0.3651751792114695,30,0.0,17,46,12,50,False
+MCC,uniprot_weighted,"ProtSSN (k=30, h=768)",0.3673216845878136,28,0.0,13,43,12,48,False
+MCC,uniprot_weighted,"ProtSSN (k=30, h=1280)",0.367711917562724,27,0.0,12,43,12,47,False
+MCC,uniprot_weighted,ProtSSN (ensemble),0.3753835125448029,19,0.0,6,31,6,33,False
+MCC,uniprot_weighted,SaProt (650M),0.37299775985663075,21,0.0,6,40,6,46,False
+MCC,uniprot_weighted,SaProt (35M),0.326959229390681,56,0.0,38,73,35,76,False
+MCC,uniprot_weighted,PoET (200M),0.38730062724014347,13,0.0,5,28,5,33,False
+MCC,uniprot_weighted,MULAN,0.23257034050179215,88,0.0,83,91,81,91,False
+MCC,uniprot_weighted,ProSST (K=20),0.35062007168458775,39,0.0,17,61,16,67,False
+MCC,uniprot_weighted,ProSST (K=128),0.3795963261648745,16,0.0,7,39,5,47,False
+MCC,uniprot_weighted,ProSST (K=512),0.3796500896057348,15,0.0,7,39,6,47,False
+MCC,uniprot_weighted,ProSST (K=1024),0.3927670250896057,9,0.0,4,28,4,34,False
+MCC,uniprot_weighted,ProSST (K=2048),0.4159905913978494,3,0.0,2,9,2,9,False
+MCC,uniprot_weighted,ProSST (K=4096),0.4020062724014336,5,0.0,3,18,1,23,False
+MCC,uniprot_weighted,ESCOTT,0.39516397849462365,7,0.0,3,19,3,20,False
+MCC,uniprot_weighted,VenusREM,0.4247508960573476,2,0.05375,1,3,1,4,True
+MCC,uniprot_weighted,RSALOR,0.3918225806451613,10,0.0,5,22,3,31,False
+MCC,uniprot_weighted,S2F,0.3777208781362008,17,0.0,7,38,7,38,False
+MCC,uniprot_weighted,S2F-MSA,0.40041353046594985,6,0.0,4,15,4,15,False
+MCC,uniprot_weighted,S3F,0.38842562724014335,12,0.0,5,23,5,25,False
+MCC,uniprot_weighted,S3F-MSA,0.4070940860215054,4,0.0,2,11,2,12,False
+MCC,uniprot_weighted,SiteRM,0.3465663082437276,42,0.0,26,62,22,65,False
+MCC,uniprot_weighted,ESM3 open (1.4B),0.3915819892473118,11,0.0,4,24,4,26,False
+MCC,uniprot_weighted,ESM-C (300M),0.3449959677419354,44,0.0,21,62,16,65,False
+MCC,uniprot_weighted,ESM-C (600M),0.3470846774193549,41,0.0,19,61,16,64,False
+MCC,uniprot_weighted,xTrimoPGLM-1B-MLM,0.3147737455197132,62,0.0,48,77,41,79,False
+MCC,uniprot_weighted,xTrimoPGLM-3B-MLM,0.34190367383512543,47,0.0,29,63,20,66,False
+MCC,uniprot_weighted,xTrimoPGLM-10B-MLM,0.33827643369175625,51,0.0,33,64,26,71,False
+MCC,uniprot_weighted,xTrimoPGLM-1B-CLM,0.27097132616487457,81,0.0,74,86,73,88,False
+MCC,uniprot_weighted,xTrimoPGLM-3B-CLM,0.17388709677419356,92,0.0,91,95,90,95,False
+MCC,uniprot_weighted,xTrimoPGLM-7B-CLM,0.07571953405017921,96,0.0,96,97,96,97,False
+MCC,uniprot_weighted,xTrimoPGLM-100B-int4,0.3144762544802867,64,0.0,49,77,39,79,False
+MCC,uniprot_weighted,Progen3 112m,0.21060483870967742,90,0.0,87,92,84,93,False
+MCC,uniprot_weighted,Progen3 219m,0.24719265232974916,85,0.0,81,89,80,89,False
+MCC,uniprot_weighted,Progen3 339m,0.2779193548387096,79,0.0,72,85,64,85,False
+MCC,uniprot_weighted,Progen3 762m,0.29725313620071686,75,0.0,60,78,58,81,False
+MCC,uniprot_weighted,Progen3 1B,0.317122311827957,61,0.0,44,75,40,75,False
+MCC,uniprot_weighted,Progen3 3B,0.32638530465949817,57,0.0,39,72,38,74,False
+MCC,uniprot_weighted,AIDO Protein-RAG (16B),0.43259050179211467,1,0.94625,1,3,1,4,True
+MCC,uniprot_weighted,Protriever,0.39478639846743296,8,0.0,3,19,3,22,False
+MCC,flat_mean,Site-Independent,0.2969032258064517,74,0.0,57,82,55,84,False
+MCC,flat_mean,EVmutation,0.32870506912442393,56,0.0,39,73,38,75,False
+MCC,flat_mean,DeepSequence (single),0.3382073732718894,51,0.0,37,64,35,70,False
+MCC,flat_mean,DeepSequence (ensemble),0.34713824884792616,42,0.0,30,57,24,63,False
+MCC,flat_mean,EVE (single),0.3580645161290323,35,0.0,20,53,17,53,False
+MCC,flat_mean,EVE (ensemble),0.36373271889400915,33,0.0,14,46,11,48,False
+MCC,flat_mean,Unirep,0.13808755760368663,95,0.0,93,95,92,95,False
+MCC,flat_mean,Unirep evotuned,0.28288018433179724,78,0.0,65,84,61,85,False
+MCC,flat_mean,MSA Transformer (single),0.3489677419354838,38,0.0,25,58,22,62,False
+MCC,flat_mean,MSA Transformer (ensemble),0.35915668202764983,34,0.0,14,51,13,54,False
+MCC,flat_mean,ESM-1b,0.3331520737327189,55,0.0,37,71,34,75,False
+MCC,flat_mean,ESM-1v (single),0.31547926267281107,63,0.0,46,77,42,79,False
+MCC,flat_mean,ESM-1v (ensemble),0.33921198156682025,50,0.0,32,63,21,68,False
+MCC,flat_mean,ESM2 (8M),0.1576958525345622,94,0.0,92,94,92,95,False
+MCC,flat_mean,ESM2 (35M),0.2491981566820277,84,0.0,78,89,75,90,False
+MCC,flat_mean,ESM2 (150M),0.3157096774193548,62,0.0,45,78,41,80,False
+MCC,flat_mean,ESM2 (650M),0.34770506912442395,41,0.0,24,59,16,63,False
+MCC,flat_mean,ESM2 (3B),0.3417096774193548,48,0.0,33,62,24,65,False
+MCC,flat_mean,ESM2 (15B),0.3368433179723503,52,0.0,33,65,29,72,False
+MCC,flat_mean,Wavenet,0.31012442396313367,66,0.0,49,79,42,82,False
+MCC,flat_mean,RITA S,0.24247004608294934,86,0.0,83,89,81,91,False
+MCC,flat_mean,RITA M,0.28726728110599076,77,0.0,67,82,61,84,False
+MCC,flat_mean,RITA L,0.30120276497695847,73,0.0,57,78,54,79,False
+MCC,flat_mean,RITA XL,0.30506912442396306,71,0.0,56,78,55,79,False
+MCC,flat_mean,Progen2 S,0.2715023041474654,82,0.0,74,85,71,86,False
+MCC,flat_mean,Progen2 M,0.3104884792626728,65,0.0,54,77,49,78,False
+MCC,flat_mean,Progen2 Base,0.3071382488479263,68,0.0,54,78,48,79,False
+MCC,flat_mean,Progen2 L,0.30921198156682034,67,0.0,55,77,48,79,False
+MCC,flat_mean,Progen2 XL,0.32096313364055307,58,0.0,42,75,39,76,False
+MCC,flat_mean,GEMME,0.37262672811059905,23,0.0,8,40,7,43,False
+MCC,flat_mean,VESPA,0.3739953917050691,20,0.0,8,39,7,42,False
+MCC,flat_mean,VESPAl,0.3425852534562211,47,0.0,34,64,33,67,False
+MCC,flat_mean,VespaG,0.38330875576036866,13,0.0,6,26,6,30,False
+MCC,flat_mean,ProtGPT2,0.15912903225806452,93,0.0,92,95,92,95,False
+MCC,flat_mean,Tranception S no retrieval,0.23380184331797235,87,0.0,83,91,83,91,False
+MCC,flat_mean,Tranception M no retrieval,0.27763133640552995,79,0.0,71,84,70,85,False
+MCC,flat_mean,Tranception L no retrieval,0.30590322580645146,70,0.0,56,77,50,80,False
+MCC,flat_mean,Tranception S,0.3341290322580645,54,0.0,38,66,36,71,False
+MCC,flat_mean,Tranception M,0.34419815668202763,45,0.0,34,59,25,63,False
+MCC,flat_mean,Tranception L,0.355294930875576,36,0.0,19,53,17,54,False
+MCC,flat_mean,TranceptEVE S,0.36972811059907823,26,0.0,10,40,8,46,False
+MCC,flat_mean,TranceptEVE M,0.3720967741935484,24,0.0,8,40,8,42,False
+MCC,flat_mean,TranceptEVE L,0.37477419354838715,19,0.0,8,37,7,41,False
+MCC,flat_mean,CARP (38M),0.20640092165898621,91,0.0,87,92,86,92,False
+MCC,flat_mean,CARP (600K),0.06607834101382488,97,0.0,96,97,96,97,False
+MCC,flat_mean,CARP (640M),0.3024147465437787,72,0.0,56,80,51,82,False
+MCC,flat_mean,CARP (76M),0.25078801843317977,83,0.0,78,89,75,90,False
+MCC,flat_mean,MIF,0.2958110599078341,76,0.0,58,82,53,84,False
+MCC,flat_mean,MIF-ST,0.32044700460829495,60,0.0,39,75,38,78,False
+MCC,flat_mean,ESM-IF1,0.3430552995391706,46,0.0,25,66,15,73,False
+MCC,flat_mean,ProteinMPNN,0.2267926267281106,89,0.0,83,91,81,91,False
+MCC,flat_mean,"ProtSSN (k=10, h=512)",0.36594930875576037,31,0.0,14,44,12,48,False
+MCC,flat_mean,"ProtSSN (k=10, h=768)",0.35507834101382485,37,0.0,28,54,24,55,False
+MCC,flat_mean,"ProtSSN (k=10, h=1280)",0.364557603686636,32,0.0,16,46,13,51,False
+MCC,flat_mean,"ProtSSN (k=20, h=512)",0.37019354838709684,25,0.0,11,40,8,45,False
+MCC,flat_mean,"ProtSSN (k=20, h=768)",0.3691428571428572,27,0.0,11,42,9,46,False
+MCC,flat_mean,"ProtSSN (k=20, h=1280)",0.37388479262672814,21,0.0,7,35,6,39,False
+MCC,flat_mean,"ProtSSN (k=30, h=512)",0.366331797235023,30,0.0,14,44,13,48,False
+MCC,flat_mean,"ProtSSN (k=30, h=768)",0.3684239631336405,29,0.0,12,42,10,46,False
+MCC,flat_mean,"ProtSSN (k=30, h=1280)",0.3689723502304148,28,0.0,12,42,8,46,False
+MCC,flat_mean,ProtSSN (ensemble),0.37705990783410137,18,0.0,6,29,6,33,False
+MCC,flat_mean,SaProt (650M),0.37384331797235015,22,0.0,6,40,6,45,False
+MCC,flat_mean,SaProt (35M),0.3205391705069124,59,0.0,41,76,38,77,False
+MCC,flat_mean,PoET (200M),0.38700460829493094,10,0.0,5,28,4,32,False
+MCC,flat_mean,MULAN,0.23322580645161298,88,0.0,83,91,83,91,False
+MCC,flat_mean,ProSST (K=20),0.34876036866359444,39,0.0,19,64,15,70,False
+MCC,flat_mean,ProSST (K=128),0.37805529953917055,16,0.0,7,41,6,50,False
+MCC,flat_mean,ProSST (K=512),0.37886635944700464,15,0.0,7,40,6,50,False
+MCC,flat_mean,ProSST (K=1024),0.39172350230414743,9,0.0,4,28,3,33,False
+MCC,flat_mean,ProSST (K=2048),0.41379723502304144,3,0.0,2,8,2,11,False
+MCC,flat_mean,ProSST (K=4096),0.40019815668202763,6,0.0,3,19,1,26,False
+MCC,flat_mean,ESCOTT,0.39220276497695855,8,0.0,4,20,3,25,False
+MCC,flat_mean,VenusREM,0.42294930875576037,2,0.1185,1,3,1,4,True
+MCC,flat_mean,RSALOR,0.38684792626728115,11,0.0,5,32,3,36,False
+MCC,flat_mean,S2F,0.3778156682027651,17,0.0,7,35,7,39,False
+MCC,flat_mean,S2F-MSA,0.4003364055299539,5,0.0,4,14,3,15,False
+MCC,flat_mean,S3F,0.3868479262672811,12,0.0,6,24,5,25,False
+MCC,flat_mean,S3F-MSA,0.40581105990783406,4,0.0,2,8,2,13,False
+MCC,flat_mean,SiteRM,0.3469124423963133,43,0.0,26,61,23,64,False
+MCC,flat_mean,ESM3 open (1.4B),0.3825483870967743,14,0.0,5,34,4,41,False
+MCC,flat_mean,ESM-C (300M),0.34597695852534566,44,0.0,20,62,15,64,False
+MCC,flat_mean,ESM-C (600M),0.34851612903225804,40,0.0,20,59,13,63,False
+MCC,flat_mean,xTrimoPGLM-1B-MLM,0.31543778801843314,64,0.0,49,77,41,79,False
+MCC,flat_mean,xTrimoPGLM-3B-MLM,0.3402396313364055,49,0.0,33,63,27,66,False
+MCC,flat_mean,xTrimoPGLM-10B-MLM,0.33489400921658985,53,0.0,34,65,31,71,False
+MCC,flat_mean,xTrimoPGLM-1B-CLM,0.2735529953917051,81,0.0,73,85,70,86,False
+MCC,flat_mean,xTrimoPGLM-3B-CLM,0.17491705069124425,92,0.0,90,95,90,95,False
+MCC,flat_mean,xTrimoPGLM-7B-CLM,0.0743963133640553,96,0.0,96,97,96,97,False
+MCC,flat_mean,xTrimoPGLM-100B-int4,0.30673271889400916,69,0.0,54,81,44,82,False
+MCC,flat_mean,Progen3 112m,0.20991244239631335,90,0.0,87,92,84,92,False
+MCC,flat_mean,Progen3 219m,0.24649308755760374,85,0.0,81,89,79,89,False
+MCC,flat_mean,Progen3 339m,0.2742258064516129,80,0.0,70,84,61,86,False
+MCC,flat_mean,Progen3 762m,0.2958986175115208,75,0.0,60,80,57,82,False
+MCC,flat_mean,Progen3 1B,0.3184792626728111,61,0.0,44,75,40,75,False
+MCC,flat_mean,Progen3 3B,0.32516129032258057,57,0.0,38,72,38,73,False
+MCC,flat_mean,AIDO Protein-RAG (16B),0.42834101382488476,1,0.8815,1,3,1,4,True
+MCC,flat_mean,Protriever,0.3951050000000001,7,0.0,3,19,3,24,False
+MCC,median,Site-Independent,0.298,76,0.0,52,86,45,87,False
+MCC,median,EVmutation,0.332,60,0.0,31,81,14,84,False
+MCC,median,DeepSequence (single),0.348,49,0.0,14,75,9,80,False
+MCC,median,DeepSequence (ensemble),0.351,46,0.0,13,73,9,79,False
+MCC,median,EVE (single),0.365,38,0.0,8,64,5,71,False
+MCC,median,EVE (ensemble),0.367,37,0.0,8,63,5,71,False
+MCC,median,Unirep,0.112,95,0.0,93,95,92,95,False
+MCC,median,Unirep evotuned,0.298,76,0.0,55,84,48,87,False
+MCC,median,MSA Transformer (single),0.346,50,0.0,12,76,6,82,False
+MCC,median,MSA Transformer (ensemble),0.369,35,0.0,5,64,3,70,False
+MCC,median,ESM-1b,0.355,44,0.0,14,69,7,73,False
+MCC,median,ESM-1v (single),0.333,58,0.0,28,80,14,84,False
+MCC,median,ESM-1v (ensemble),0.363,39,0.0,5,63,2,74,False
+MCC,median,ESM2 (8M),0.137,94,0.0,92,95,91,95,False
+MCC,median,ESM2 (35M),0.255,84,0.0,66,91,45,92,False
+MCC,median,ESM2 (150M),0.349,47,0.0,12,77,4,82,False
+MCC,median,ESM2 (650M),0.382,21,0.0,3,58,1,65,False
+MCC,median,ESM2 (3B),0.371,32,0.0,3,64,1,72,False
+MCC,median,ESM2 (15B),0.34,56,0.0,16,80,5,84,False
+MCC,median,Wavenet,0.318,67,0.0,35,84,11,87,False
+MCC,median,RITA S,0.241,87,0.0,82,91,76,91,False
+MCC,median,RITA M,0.304,74,0.0,48,84,44,85,False
+MCC,median,RITA L,0.31,71,0.0,44,84,30,87,False
+MCC,median,RITA XL,0.308,73,0.0,47,84,41,85,False
+MCC,median,Progen2 S,0.291,79,0.0,57,85,44,88,False
+MCC,median,Progen2 M,0.323,64,0.0,36,84,18,85,False
+MCC,median,Progen2 Base,0.32,66,0.0,41,84,25,85,False
+MCC,median,Progen2 L,0.317,68,0.0,43,84,32,84,False
+MCC,median,Progen2 XL,0.321,65,0.0,38,84,22,84,False
+MCC,median,GEMME,0.379,27,0.0,4,56,2,63,False
+MCC,median,VESPA,0.371,32,0.0,4,64,2,71,False
+MCC,median,VESPAl,0.342,52,0.0,21,77,11,83,False
+MCC,median,VespaG,0.398,10,0.0,1,43,1,51,True
+MCC,median,ProtGPT2,0.138,93,0.0,92,95,90,95,False
+MCC,median,Tranception S no retrieval,0.248,86,0.0,80,90,72,91,False
+MCC,median,Tranception M no retrieval,0.29,80,0.0,55,86,44,89,False
+MCC,median,Tranception L no retrieval,0.313,70,0.0,43,84,36,84,False
+MCC,median,Tranception S,0.335,57,0.0,25,77,15,84,False
+MCC,median,Tranception M,0.345,51,0.0,18,74,10,77,False
+MCC,median,Tranception L,0.361,42,0.0,9,65,5,70,False
+MCC,median,TranceptEVE S,0.363,39,0.0,7,67,5,74,False
+MCC,median,TranceptEVE M,0.37,34,0.0,5,61,3,69,False
+MCC,median,TranceptEVE L,0.379,27,0.0,3,58,1,64,False
+MCC,median,CARP (38M),0.209,90,0.0,84,92,80,93,False
+MCC,median,CARP (600K),0.047,96,0.0,96,97,96,97,False
+MCC,median,CARP (640M),0.317,68,0.0,41,83,27,86,False
+MCC,median,CARP (76M),0.264,83,0.0,68,89,55,91,False
+MCC,median,MIF,0.295,78,0.0,50,86,42,90,False
+MCC,median,MIF-ST,0.342,52,0.0,18,77,12,82,False
+MCC,median,ESM-IF1,0.36,43,0.0,5,73,3,81,False
+MCC,median,ProteinMPNN,0.169,92,0.0,89,95,87,95,False
+MCC,median,"ProtSSN (k=10, h=512)",0.382,21,0.0,3,55,3,64,False
+MCC,median,"ProtSSN (k=10, h=768)",0.363,39,0.0,5,69,3,79,False
+MCC,median,"ProtSSN (k=10, h=1280)",0.369,35,0.0,5,66,3,73,False
+MCC,median,"ProtSSN (k=20, h=512)",0.377,31,0.0,3,63,1,68,False
+MCC,median,"ProtSSN (k=20, h=768)",0.379,27,0.0,3,63,1,68,False
+MCC,median,"ProtSSN (k=20, h=1280)",0.388,16,0.0,2,54,1,63,False
+MCC,median,"ProtSSN (k=30, h=512)",0.379,27,0.0,3,61,1,66,False
+MCC,median,"ProtSSN (k=30, h=768)",0.382,21,0.0,3,58,1,65,False
+MCC,median,"ProtSSN (k=30, h=1280)",0.385,18,0.0,3,54,1,63,False
+MCC,median,ProtSSN (ensemble),0.383,20,0.0,3,58,1,66,False
+MCC,median,SaProt (650M),0.399,9,0.0,1,44,1,57,True
+MCC,median,SaProt (35M),0.333,58,0.0,23,82,11,83,False
+MCC,median,PoET (200M),0.396,12,0.0,1,45,1,50,False
+MCC,median,MULAN,0.234,88,0.0,82,91,74,92,False
+MCC,median,ProSST (K=20),0.33,63,0.0,22,83,10,85,False
+MCC,median,ProSST (K=128),0.385,18,0.0,2,63,1,73,False
+MCC,median,ProSST (K=512),0.381,26,0.0,2,65,1,73,False
+MCC,median,ProSST (K=1024),0.402,8,0.00125,1,53,1,66,True
+MCC,median,ProSST (K=2048),0.416,3,0.04225,1,41,1,54,True
+MCC,median,ProSST (K=4096),0.405,6,0.00525,1,46,1,62,True
+MCC,median,ESCOTT,0.398,10,0.0,1,42,1,52,True
+MCC,median,VenusREM,0.433,1,0.676,1,17,1,35,True
+MCC,median,RSALOR,0.394,13,0.0,2,47,1,56,False
+MCC,median,S2F,0.39,15,0.0,2,50,1,60,False
+MCC,median,S2F-MSA,0.41,5,0.00225,1,31,1,41,True
+MCC,median,S3F,0.394,13,0.0,1,45,1,56,False
+MCC,median,S3F-MSA,0.411,4,0.00825,1,31,1,42,True
+MCC,median,SiteRM,0.349,47,0.0,16,72,10,79,False
+MCC,median,ESM3 open (1.4B),0.387,17,0.0,1,58,1,71,False
+MCC,median,ESM-C (300M),0.382,21,0.0,1,59,1,67,False
+MCC,median,ESM-C (600M),0.382,21,0.00025,2,59,1,65,False
+MCC,median,xTrimoPGLM-1B-MLM,0.341,54,0.0,11,81,2,85,False
+MCC,median,xTrimoPGLM-3B-MLM,0.353,45,0.0,6,77,2,82,False
+MCC,median,xTrimoPGLM-10B-MLM,0.341,54,0.0,17,80,6,83,False
+MCC,median,xTrimoPGLM-1B-CLM,0.284,82,0.0,61,88,52,90,False
+MCC,median,xTrimoPGLM-3B-CLM,0.195,91,0.0,87,92,83,94,False
+MCC,median,xTrimoPGLM-7B-CLM,0.042,97,0.0,96,97,96,97,False
+MCC,median,xTrimoPGLM-100B-int4,0.303,75,0.0,45,86,31,90,False
+MCC,median,Progen3 112m,0.222,89,0.0,83,92,79,92,False
+MCC,median,Progen3 219m,0.249,85,0.0,78,90,66,91,False
+MCC,median,Progen3 339m,0.287,81,0.0,58,85,49,88,False
+MCC,median,Progen3 762m,0.309,72,0.0,43,84,35,84,False
+MCC,median,Progen3 1B,0.332,60,0.0,29,78,19,84,False
+MCC,median,Progen3 3B,0.331,62,0.0,27,82,14,84,False
+MCC,median,AIDO Protein-RAG (16B),0.426,2,0.31425,1,18,1,30,True
+MCC,median,Protriever,0.404,7,0.00075,1,40,1,48,True
+NDCG,proteingym,Site-Independent,0.7475040451388889,64,0.0,33,82,26,83,False
+NDCG,proteingym,EVmutation,0.7765725789141413,17,0.0,4,44,4,51,False
+NDCG,proteingym,DeepSequence (single),0.7741751452020204,23,0.0,7,55,3,64,False
+NDCG,proteingym,DeepSequence (ensemble),0.7757407149621213,20,0.0,7,54,4,62,False
+NDCG,proteingym,EVE (single),0.7806857859848485,10,0.0,6,33,5,46,False
+NDCG,proteingym,EVE (ensemble),0.7824707749368687,9,0.0,4,26,2,39,False
+NDCG,proteingym,Unirep,0.6480377225378787,95,0.0,94,97,93,97,False
+NDCG,proteingym,Unirep evotuned,0.738857564709596,73,0.0,44,85,31,88,False
+NDCG,proteingym,MSA Transformer (single),0.7661026830808081,30,0.0,13,69,9,73,False
+NDCG,proteingym,MSA Transformer (ensemble),0.7774770707070706,13,0.0,2,44,1,52,False
+NDCG,proteingym,ESM-1b,0.7467469049873737,67,0.0,25,80,12,87,False
+NDCG,proteingym,ESM-1v (single),0.7322149494949495,76,0.0,56,88,37,89,False
+NDCG,proteingym,ESM-1v (ensemble),0.7494928330176769,60,0.0,25,80,20,83,False
+NDCG,proteingym,ESM2 (8M),0.66743954229798,93,0.0,92,94,92,96,False
+NDCG,proteingym,ESM2 (35M),0.7038203929924242,89,0.0,83,92,80,92,False
+NDCG,proteingym,ESM2 (150M),0.7285505287247476,79,0.0,64,88,54,89,False
+NDCG,proteingym,ESM2 (650M),0.747131636679293,66,0.0,31,80,24,82,False
+NDCG,proteingym,ESM2 (3B),0.7549676862373736,52,0.0,24,75,12,77,False
+NDCG,proteingym,ESM2 (15B),0.7589228882575758,46,0.0,14,73,10,77,False
+NDCG,proteingym,Wavenet,0.7606046212121212,41,0.0,20,71,14,76,False
+NDCG,proteingym,RITA S,0.7129045612373737,87,0.0,78,91,71,91,False
+NDCG,proteingym,RITA M,0.7319485716540404,77,0.0,55,86,42,87,False
+NDCG,proteingym,RITA L,0.7472609548611112,65,0.0,29,77,26,81,False
+NDCG,proteingym,RITA XL,0.752362178030303,54,0.0,26,76,23,79,False
+NDCG,proteingym,Progen2 S,0.7186313462752525,84,0.0,71,91,60,91,False
+NDCG,proteingym,Progen2 M,0.751635634469697,55,0.0,25,76,22,79,False
+NDCG,proteingym,Progen2 Base,0.7483503645833333,63,0.0,27,79,24,81,False
+NDCG,proteingym,Progen2 L,0.7550775568181818,51,0.0,21,74,17,77,False
+NDCG,proteingym,Progen2 XL,0.7672799242424241,28,0.0,10,63,8,65,False
+NDCG,proteingym,GEMME,0.7767389725378788,16,0.0,5,45,4,59,False
+NDCG,proteingym,VESPA,0.7750436931818182,21,0.0,4,40,2,50,False
+NDCG,proteingym,VESPAl,0.7586501467803031,48,0.0,20,73,16,77,False
+NDCG,proteingym,VespaG,0.7759578361742425,19,0.0,3,40,1,52,False
+NDCG,proteingym,ProtGPT2,0.6538445770202019,94,0.0,93,97,92,97,False
+NDCG,proteingym,Tranception S no retrieval,0.7140617550505051,85,0.0,76,91,70,91,False
+NDCG,proteingym,Tranception M no retrieval,0.7269523595328282,81,0.0,58,88,48,91,False
+NDCG,proteingym,Tranception L no retrieval,0.7515963368055555,56,0.0,25,76,22,79,False
+NDCG,proteingym,Tranception S,0.7670076136363636,29,0.0,13,66,12,71,False
+NDCG,proteingym,Tranception M,0.768854550189394,26,0.0,12,64,8,68,False
+NDCG,proteingym,Tranception L,0.7791421938131313,11,0.0,3,35,2,52,False
+NDCG,proteingym,TranceptEVE S,0.7839678519570707,7,0.0,2,22,1,31,False
+NDCG,proteingym,TranceptEVE M,0.7839884643308082,6,0.0,2,23,1,31,False
+NDCG,proteingym,TranceptEVE L,0.7861617313762628,5,0.0025,1,18,1,24,True
+NDCG,proteingym,CARP (38M),0.7012831502525252,90,0.0,83,91,82,92,False
+NDCG,proteingym,CARP (600K),0.6365680176767677,96,0.0,94,97,94,97,False
+NDCG,proteingym,CARP (640M),0.7485187626262626,61,0.0,33,79,24,82,False
+NDCG,proteingym,CARP (76M),0.7204995328282828,82,0.0,71,89,67,90,False
+NDCG,proteingym,MIF,0.7439137168560606,71,0.0,39,83,29,85,False
+NDCG,proteingym,MIF-ST,0.7653153140782829,32,0.0,11,68,9,70,False
+NDCG,proteingym,ESM-IF1,0.7485090135732323,62,0.0,29,81,21,83,False
+NDCG,proteingym,ProteinMPNN,0.7135877178030303,86,0.0,74,91,69,91,False
+NDCG,proteingym,"ProtSSN (k=10, h=512)",0.7579873484848485,49,0.0,21,72,12,74,False
+NDCG,proteingym,"ProtSSN (k=10, h=768)",0.7593119128787879,45,0.0,22,72,18,77,False
+NDCG,proteingym,"ProtSSN (k=10, h=1280)",0.7611954434974748,39,0.0,15,71,9,75,False
+NDCG,proteingym,"ProtSSN (k=20, h=512)",0.7636577288510102,34,0.0,13,70,9,73,False
+NDCG,proteingym,"ProtSSN (k=20, h=768)",0.7612093087121211,38,0.0,15,71,9,73,False
+NDCG,proteingym,"ProtSSN (k=20, h=1280)",0.7621932496843435,37,0.0,16,70,9,72,False
+NDCG,proteingym,"ProtSSN (k=30, h=512)",0.7632974021464646,35,0.0,13,69,9,72,False
+NDCG,proteingym,"ProtSSN (k=30, h=768)",0.764966232638889,33,0.0,10,65,9,71,False
+NDCG,proteingym,"ProtSSN (k=30, h=1280)",0.7599999526515152,43,0.0,17,72,10,76,False
+NDCG,proteingym,ProtSSN (ensemble),0.765656002209596,31,0.0,10,65,7,69,False
+NDCG,proteingym,SaProt (650M),0.7681217771464647,27,0.0,5,63,4,70,False
+NDCG,proteingym,SaProt (35M),0.7352211284722222,74,0.0,50,86,39,88,False
+NDCG,proteingym,PoET (200M),0.7835259453914142,8,0.0,2,25,2,32,False
+NDCG,proteingym,MULAN,0.7104394034090908,88,0.0,74,91,68,92,False
+NDCG,proteingym,ProSST (K=20),0.7453426515151514,70,0.0,30,83,23,87,False
+NDCG,proteingym,ProSST (K=128),0.7537263936237374,53,0.0,23,80,13,82,False
+NDCG,proteingym,ProSST (K=512),0.759371856060606,44,0.0,12,77,5,82,False
+NDCG,proteingym,ProSST (K=1024),0.7607496385732323,40,0.0,10,72,4,78,False
+NDCG,proteingym,ProSST (K=2048),0.7569249005681818,50,0.0,13,73,5,80,False
+NDCG,proteingym,ProSST (K=4096),0.7742311916035353,22,0.00675,1,65,1,75,True
+NDCG,proteingym,ESCOTT,0.7788500773358585,12,0.0,3,42,1,52,False
+NDCG,proteingym,VenusREM,0.7700721559343434,24,0.0,4,63,3,70,False
+NDCG,proteingym,RSALOR,0.776885560290404,15,0.0,6,45,4,58,False
+NDCG,proteingym,S2F,0.7631377635732324,36,0.0,13,68,10,71,False
+NDCG,proteingym,S2F-MSA,0.790404595959596,2,0.06775,1,10,1,16,True
+NDCG,proteingym,S3F,0.7690244381313132,25,0.0,7,54,4,66,False
+NDCG,proteingym,S3F-MSA,0.7918503929924243,1,0.603,1,7,1,11,True
+NDCG,proteingym,SiteRM,0.7762832812499999,18,0.0,3,42,3,58,False
+NDCG,proteingym,ESM3 open (1.4B),0.7769184343434342,14,0.0,3,44,3,56,False
+NDCG,proteingym,ESM-C (300M),0.7456489662247475,69,0.0,30,79,23,82,False
+NDCG,proteingym,ESM-C (600M),0.7458767376893939,68,0.0,27,80,12,86,False
+NDCG,proteingym,xTrimoPGLM-1B-MLM,0.7351288652146464,75,0.0,55,88,46,88,False
+NDCG,proteingym,xTrimoPGLM-3B-MLM,0.7503098832070706,58,0.0,24,77,17,79,False
+NDCG,proteingym,xTrimoPGLM-10B-MLM,0.750481029040404,57,0.0,23,75,15,80,False
+NDCG,proteingym,xTrimoPGLM-1B-CLM,0.7291351436237374,78,0.0,59,88,56,89,False
+NDCG,proteingym,xTrimoPGLM-3B-CLM,0.6806121638257576,92,0.0,90,93,88,94,False
+NDCG,proteingym,xTrimoPGLM-7B-CLM,0.635392113320707,97,0.0,94,97,93,97,False
+NDCG,proteingym,xTrimoPGLM-100B-int4,0.7603182544191919,42,0.0,20,71,16,75,False
+NDCG,proteingym,Progen3 112m,0.7006677635732323,91,0.0,83,92,80,92,False
+NDCG,proteingym,Progen3 219m,0.719318418560606,83,0.0,70,90,63,90,False
+NDCG,proteingym,Progen3 339m,0.728279430239899,80,0.0,62,86,54,88,False
+NDCG,proteingym,Progen3 762m,0.7388798737373736,72,0.0,47,83,37,85,False
+NDCG,proteingym,Progen3 1B,0.7500588762626264,59,0.0,20,78,7,83,False
+NDCG,proteingym,Progen3 3B,0.7588633396464647,47,0.0,19,71,12,75,False
+NDCG,proteingym,AIDO Protein-RAG (16B),0.7890568876262626,3,0.19375,1,22,1,23,True
+NDCG,proteingym,Protriever,0.7879049280251912,4,0.12625,1,25,1,30,True
+NDCG,function_group_mean,Site-Independent,0.7435191710098688,70,0.0,36,82,25,83,False
+NDCG,function_group_mean,EVmutation,0.77389698182954,18,0.0,4,47,4,57,False
+NDCG,function_group_mean,DeepSequence (single),0.769943086887273,23,0.0,4,64,1,71,False
+NDCG,function_group_mean,DeepSequence (ensemble),0.7718074111934576,22,0.0,4,59,1,68,False
+NDCG,function_group_mean,EVE (single),0.777740924192087,10,0.0,5,42,5,55,False
+NDCG,function_group_mean,EVE (ensemble),0.779614393874859,9,0.0,4,36,1,49,False
+NDCG,function_group_mean,Unirep,0.6442784959226819,95,0.0,94,97,92,97,False
+NDCG,function_group_mean,Unirep evotuned,0.7349277789394069,73,0.0,45,86,32,89,False
+NDCG,function_group_mean,MSA Transformer (single),0.7623314760175226,37,0.0,15,68,8,74,False
+NDCG,function_group_mean,MSA Transformer (ensemble),0.7750363638945034,15,0.0,2,48,1,57,False
+NDCG,function_group_mean,ESM-1b,0.7471151169244192,61,0.0,22,80,9,84,False
+NDCG,function_group_mean,ESM-1v (single),0.7314896873152688,76,0.0,55,88,35,89,False
+NDCG,function_group_mean,ESM-1v (ensemble),0.7481273357133823,60,0.0,25,78,18,82,False
+NDCG,function_group_mean,ESM2 (8M),0.6657813220371361,93,0.0,92,94,92,95,False
+NDCG,function_group_mean,ESM2 (35M),0.7020950777904267,89,0.0,82,92,79,92,False
+NDCG,function_group_mean,ESM2 (150M),0.7273224617759502,78,0.0,65,88,56,88,False
+NDCG,function_group_mean,ESM2 (650M),0.7466950047368652,63,0.0,30,79,21,81,False
+NDCG,function_group_mean,ESM2 (3B),0.7544703709726964,52,0.0,18,74,10,77,False
+NDCG,function_group_mean,ESM2 (15B),0.7586325736279225,45,0.0,10,72,7,76,False
+NDCG,function_group_mean,Wavenet,0.7575663623198506,48,0.0,20,73,15,76,False
+NDCG,function_group_mean,RITA S,0.7103961157705344,87,0.0,77,91,73,91,False
+NDCG,function_group_mean,RITA M,0.7300262948937367,77,0.0,58,86,46,87,False
+NDCG,function_group_mean,RITA L,0.7445116299720951,69,0.0,32,77,24,81,False
+NDCG,function_group_mean,RITA XL,0.7494225812946744,57,0.0,24,76,22,79,False
+NDCG,function_group_mean,Progen2 S,0.7165121679354237,82,0.0,71,91,62,91,False
+NDCG,function_group_mean,Progen2 M,0.7493958212330305,58,0.0,23,75,22,78,False
+NDCG,function_group_mean,Progen2 Base,0.7466363225921365,64,0.0,26,79,23,79,False
+NDCG,function_group_mean,Progen2 L,0.7532183204392507,53,0.0,21,75,17,76,False
+NDCG,function_group_mean,Progen2 XL,0.7650124937078425,30,0.0,9,63,6,65,False
+NDCG,function_group_mean,GEMME,0.7733956012979268,21,0.0,6,55,4,63,False
+NDCG,function_group_mean,VESPA,0.774530274376786,16,0.0,4,41,2,48,False
+NDCG,function_group_mean,VESPAl,0.7581838270256875,46,0.0,16,72,9,76,False
+NDCG,function_group_mean,VespaG,0.7745034717220763,17,0.0,3,42,1,52,False
+NDCG,function_group_mean,ProtGPT2,0.6498292317501619,94,0.0,93,97,92,97,False
+NDCG,function_group_mean,Tranception S no retrieval,0.7111354859610672,85,0.0,78,91,72,91,False
+NDCG,function_group_mean,Tranception M no retrieval,0.7249517090144997,81,0.0,61,88,50,90,False
+NDCG,function_group_mean,Tranception L no retrieval,0.7494784326784326,56,0.0,25,77,22,79,False
+NDCG,function_group_mean,Tranception S,0.7631650605208745,33,0.0,13,67,12,73,False
+NDCG,function_group_mean,Tranception M,0.765425352941632,27,0.0,12,66,6,71,False
+NDCG,function_group_mean,Tranception L,0.7762312751847634,11,0.0,3,45,2,57,False
+NDCG,function_group_mean,TranceptEVE S,0.7808647440414883,8,0.0,2,32,1,46,False
+NDCG,function_group_mean,TranceptEVE M,0.781026275791392,7,0.0,1,31,1,46,False
+NDCG,function_group_mean,TranceptEVE L,0.7835669049296957,5,0.0045,1,22,1,30,True
+NDCG,function_group_mean,CARP (38M),0.6969928059021082,91,0.0,83,91,82,92,False
+NDCG,function_group_mean,CARP (600K),0.6327048512211302,96,0.0,94,97,94,97,False
+NDCG,function_group_mean,CARP (640M),0.746345238224308,66,0.0,33,79,25,82,False
+NDCG,function_group_mean,CARP (76M),0.7159139235441561,84,0.0,71,90,66,90,False
+NDCG,function_group_mean,MIF,0.7407283785981461,71,0.0,42,84,31,85,False
+NDCG,function_group_mean,MIF-ST,0.7630720018999089,34,0.0,11,68,9,71,False
+NDCG,function_group_mean,ESM-IF1,0.7463920464548373,65,0.0,29,81,19,83,False
+NDCG,function_group_mean,ProteinMPNN,0.7104456458270412,86,0.0,75,91,71,91,False
+NDCG,function_group_mean,"ProtSSN (k=10, h=512)",0.7579124828659711,47,0.0,12,72,8,74,False
+NDCG,function_group_mean,"ProtSSN (k=10, h=768)",0.7592904320485716,43,0.0,18,71,12,75,False
+NDCG,function_group_mean,"ProtSSN (k=10, h=1280)",0.7606578302834117,41,0.0,10,71,7,74,False
+NDCG,function_group_mean,"ProtSSN (k=20, h=512)",0.7635766460929252,31,0.0,7,68,6,71,False
+NDCG,function_group_mean,"ProtSSN (k=20, h=768)",0.7609773257750001,39,0.0,11,71,6,72,False
+NDCG,function_group_mean,"ProtSSN (k=20, h=1280)",0.7617375657933799,38,0.0,11,70,7,72,False
+NDCG,function_group_mean,"ProtSSN (k=30, h=512)",0.7632064674343744,32,0.0,7,68,6,71,False
+NDCG,function_group_mean,"ProtSSN (k=30, h=768)",0.7651758515386422,29,0.0,7,63,5,69,False
+NDCG,function_group_mean,"ProtSSN (k=30, h=1280)",0.760546127515895,42,0.0,11,72,7,75,False
+NDCG,function_group_mean,ProtSSN (ensemble),0.765326238619262,28,0.0,7,62,5,69,False
+NDCG,function_group_mean,SaProt (650M),0.7683135518228541,25,0.0,4,59,3,67,False
+NDCG,function_group_mean,SaProt (35M),0.7341104820244355,75,0.0,51,86,38,88,False
+NDCG,function_group_mean,PoET (200M),0.7810929718859951,6,0.0,2,29,2,34,False
+NDCG,function_group_mean,MULAN,0.7091020258810957,88,0.0,73,91,68,92,False
+NDCG,function_group_mean,ProSST (K=20),0.7468776061148155,62,0.0,26,83,14,87,False
+NDCG,function_group_mean,ProSST (K=128),0.7551219775056984,51,0.0,13,78,8,83,False
+NDCG,function_group_mean,ProSST (K=512),0.7608341820969728,40,0.0,6,76,4,81,False
+NDCG,function_group_mean,ProSST (K=1024),0.762465371579325,35,0.0,4,72,3,78,False
+NDCG,function_group_mean,ProSST (K=2048),0.756964464992372,49,0.0,8,73,5,79,False
+NDCG,function_group_mean,ProSST (K=4096),0.7753790865465283,13,0.01625,1,62,1,76,True
+NDCG,function_group_mean,ESCOTT,0.7758203543226798,12,0.00025,3,47,1,57,False
+NDCG,function_group_mean,VenusREM,0.7691357497799358,24,0.0,4,63,2,71,False
+NDCG,function_group_mean,RSALOR,0.7734424624471137,20,0.0,6,55,4,63,False
+NDCG,function_group_mean,S2F,0.7623883803534965,36,0.0,10,66,7,71,False
+NDCG,function_group_mean,S2F-MSA,0.7879626301347232,3,0.059,1,11,1,20,True
+NDCG,function_group_mean,S3F,0.7681057116010604,26,0.0,4,56,4,64,False
+NDCG,function_group_mean,S3F-MSA,0.7895244608105074,1,0.469,1,6,1,15,True
+NDCG,function_group_mean,SiteRM,0.7735211083490152,19,0.0,3,52,2,62,False
+NDCG,function_group_mean,ESM3 open (1.4B),0.775086999305604,14,0.0,3,51,3,58,False
+NDCG,function_group_mean,ESM-C (300M),0.7453700583654073,68,0.0,28,79,19,81,False
+NDCG,function_group_mean,ESM-C (600M),0.7459553074832145,67,0.0,24,80,12,83,False
+NDCG,function_group_mean,xTrimoPGLM-1B-MLM,0.7344412930738512,74,0.0,54,86,44,88,False
+NDCG,function_group_mean,xTrimoPGLM-3B-MLM,0.7503061243665895,55,0.0,23,75,13,79,False
+NDCG,function_group_mean,xTrimoPGLM-10B-MLM,0.7503793612072682,54,0.0,17,74,8,79,False
+NDCG,function_group_mean,xTrimoPGLM-1B-CLM,0.7269895750244588,79,0.0,64,87,56,89,False
+NDCG,function_group_mean,xTrimoPGLM-3B-CLM,0.6749783379411285,92,0.0,91,93,88,95,False
+NDCG,function_group_mean,xTrimoPGLM-7B-CLM,0.6311627855348785,97,0.0,94,97,94,97,False
+NDCG,function_group_mean,xTrimoPGLM-100B-int4,0.7588398061886433,44,0.0,17,71,12,74,False
+NDCG,function_group_mean,Progen3 112m,0.6982106147082892,90,0.0,83,92,82,92,False
+NDCG,function_group_mean,Progen3 219m,0.7161266415754788,83,0.0,71,90,64,90,False
+NDCG,function_group_mean,Progen3 339m,0.7250727665099758,80,0.0,65,86,56,88,False
+NDCG,function_group_mean,Progen3 762m,0.736014721970536,72,0.0,50,83,41,85,False
+NDCG,function_group_mean,Progen3 1B,0.7486968075851796,59,0.0,17,77,8,81,False
+NDCG,function_group_mean,Progen3 3B,0.7569601037205689,50,0.0,17,72,11,75,False
+NDCG,function_group_mean,AIDO Protein-RAG (16B),0.7883550973574229,2,0.33375,1,22,1,26,True
+NDCG,function_group_mean,Protriever,0.7852666365007541,4,0.11725,1,27,1,30,True
+NDCG,uniprot_weighted,Site-Independent,0.7559628136200716,64,0.0,31,78,28,80,False
+NDCG,uniprot_weighted,EVmutation,0.7885412186379929,12,0.0,6,30,5,41,False
+NDCG,uniprot_weighted,DeepSequence (single),0.7860707885304656,19,0.0,9,36,8,49,False
+NDCG,uniprot_weighted,DeepSequence (ensemble),0.7869879032258063,15,0.0,9,35,6,47,False
+NDCG,uniprot_weighted,EVE (single),0.7904345878136201,10,0.0,7,25,6,34,False
+NDCG,uniprot_weighted,EVE (ensemble),0.7924144265232975,9,0.0,5,21,3,26,False
+NDCG,uniprot_weighted,Unirep,0.6451850358422939,95,0.0,94,97,93,97,False
+NDCG,uniprot_weighted,Unirep evotuned,0.7424036738351255,73,0.0,52,84,46,85,False
+NDCG,uniprot_weighted,MSA Transformer (single),0.7776182795698925,25,0.0,14,56,11,66,False
+NDCG,uniprot_weighted,MSA Transformer (ensemble),0.7869991039426525,14,0.0,4,36,4,49,False
+NDCG,uniprot_weighted,ESM-1b,0.7596948924731183,56,0.0,35,74,25,77,False
+NDCG,uniprot_weighted,ESM-1v (single),0.7407813620071686,74,0.0,58,82,51,86,False
+NDCG,uniprot_weighted,ESM-1v (ensemble),0.7561850358422939,63,0.0,30,77,25,77,False
+NDCG,uniprot_weighted,ESM2 (8M),0.6577096774193548,94,0.0,92,95,92,96,False
+NDCG,uniprot_weighted,ESM2 (35M),0.7054852150537634,88,0.0,83,91,82,92,False
+NDCG,uniprot_weighted,ESM2 (150M),0.7338293010752689,79,0.0,66,86,61,87,False
+NDCG,uniprot_weighted,ESM2 (650M),0.7536294802867384,67,0.0,43,79,33,80,False
+NDCG,uniprot_weighted,ESM2 (3B),0.7623503584229391,52,0.0,24,71,18,76,False
+NDCG,uniprot_weighted,ESM2 (15B),0.7666998207885305,46,0.0,23,70,12,72,False
+NDCG,uniprot_weighted,Wavenet,0.772084229390681,36,0.0,22,68,17,69,False
+NDCG,uniprot_weighted,RITA S,0.7119489247311828,86,0.0,81,90,75,91,False
+NDCG,uniprot_weighted,RITA M,0.7384556451612904,76,0.0,59,83,51,84,False
+NDCG,uniprot_weighted,RITA L,0.7532316308243727,68,0.0,34,78,27,79,False
+NDCG,uniprot_weighted,RITA XL,0.7579937275985662,57,0.0,28,75,24,78,False
+NDCG,uniprot_weighted,Progen2 S,0.7221357526881721,84,0.0,75,88,70,90,False
+NDCG,uniprot_weighted,Progen2 M,0.7567069892473118,61,0.0,28,77,24,78,False
+NDCG,uniprot_weighted,Progen2 Base,0.7514386200716846,69,0.0,37,79,28,81,False
+NDCG,uniprot_weighted,Progen2 L,0.7611917562724015,53,0.0,26,72,23,75,False
+NDCG,uniprot_weighted,Progen2 XL,0.7790232974910393,24,0.0,11,52,8,56,False
+NDCG,uniprot_weighted,GEMME,0.7867101254480287,16,0.0,7,38,5,50,False
+NDCG,uniprot_weighted,VESPA,0.7860501792114695,20,0.0,6,32,4,42,False
+NDCG,uniprot_weighted,VESPAl,0.7696402329749105,43,0.0,22,69,22,70,False
+NDCG,uniprot_weighted,VespaG,0.7863490143369174,17,0.0,4,33,4,47,False
+NDCG,uniprot_weighted,ProtGPT2,0.6592025089605734,93,0.0,92,96,92,97,False
+NDCG,uniprot_weighted,Tranception S no retrieval,0.7080564516129032,87,0.0,82,91,79,91,False
+NDCG,uniprot_weighted,Tranception M no retrieval,0.7309036738351254,80,0.0,68,84,61,85,False
+NDCG,uniprot_weighted,Tranception L no retrieval,0.7577558243727598,58,0.0,27,75,24,78,False
+NDCG,uniprot_weighted,Tranception S,0.7722491039426522,35,0.0,20,66,14,68,False
+NDCG,uniprot_weighted,Tranception M,0.7768015232974909,26,0.0,13,57,10,65,False
+NDCG,uniprot_weighted,Tranception L,0.7877768817204301,13,0.0,5,32,4,42,False
+NDCG,uniprot_weighted,TranceptEVE S,0.7928525985663081,8,0.0,4,22,3,25,False
+NDCG,uniprot_weighted,TranceptEVE M,0.79378270609319,7,0.0,3,20,3,23,False
+NDCG,uniprot_weighted,TranceptEVE L,0.795880376344086,5,0.0,2,14,1,19,False
+NDCG,uniprot_weighted,CARP (38M),0.7035725806451614,89,0.0,85,91,83,91,False
+NDCG,uniprot_weighted,CARP (600K),0.6389301075268817,96,0.0,94,97,94,97,False
+NDCG,uniprot_weighted,CARP (640M),0.7569094982078851,60,0.0,34,74,28,78,False
+NDCG,uniprot_weighted,CARP (76M),0.7232150537634409,82,0.0,74,87,72,88,False
+NDCG,uniprot_weighted,MIF,0.7498194444444444,70,0.0,47,79,42,82,False
+NDCG,uniprot_weighted,MIF-ST,0.7738113799283155,31,0.0,16,61,11,68,False
+NDCG,uniprot_weighted,ESM-IF1,0.7606653225806451,54,0.0,25,76,23,79,False
+NDCG,uniprot_weighted,ProteinMPNN,0.7354507168458781,78,0.0,66,86,57,87,False
+NDCG,uniprot_weighted,"ProtSSN (k=10, h=512)",0.7678010752688174,45,0.0,26,69,18,71,False
+NDCG,uniprot_weighted,"ProtSSN (k=10, h=768)",0.7706863799283156,42,0.0,24,67,15,69,False
+NDCG,uniprot_weighted,"ProtSSN (k=10, h=1280)",0.7716635304659498,39,0.0,17,66,11,69,False
+NDCG,uniprot_weighted,"ProtSSN (k=20, h=512)",0.7738669354838709,30,0.0,13,63,10,67,False
+NDCG,uniprot_weighted,"ProtSSN (k=20, h=768)",0.7718225806451614,38,0.0,17,66,10,69,False
+NDCG,uniprot_weighted,"ProtSSN (k=20, h=1280)",0.7724879032258063,34,0.0,15,65,10,68,False
+NDCG,uniprot_weighted,"ProtSSN (k=30, h=512)",0.7719112903225805,37,0.0,19,65,12,68,False
+NDCG,uniprot_weighted,"ProtSSN (k=30, h=768)",0.7733239247311827,32,0.0,14,63,10,67,False
+NDCG,uniprot_weighted,"ProtSSN (k=30, h=1280)",0.7691603942652329,44,0.0,24,68,14,70,False
+NDCG,uniprot_weighted,ProtSSN (ensemble),0.7751196236559138,29,0.0,11,55,9,64,False
+NDCG,uniprot_weighted,SaProt (650M),0.7728387096774193,33,0.0,11,64,7,68,False
+NDCG,uniprot_weighted,SaProt (35M),0.7383597670250895,77,0.0,59,83,53,86,False
+NDCG,uniprot_weighted,PoET (200M),0.7948015232974908,6,0.0,2,23,1,25,False
+NDCG,uniprot_weighted,MULAN,0.6978646953405021,90,0.0,85,92,82,92,False
+NDCG,uniprot_weighted,ProSST (K=20),0.7443387096774193,71,0.0,51,84,48,86,False
+NDCG,uniprot_weighted,ProSST (K=128),0.7546993727598567,65,0.0,41,79,29,82,False
+NDCG,uniprot_weighted,ProSST (K=512),0.7605000000000001,55,0.0,25,75,20,79,False
+NDCG,uniprot_weighted,ProSST (K=1024),0.765646505376344,49,0.0,23,69,11,75,False
+NDCG,uniprot_weighted,ProSST (K=2048),0.7664807347670249,47,0.0,23,70,13,76,False
+NDCG,uniprot_weighted,ProSST (K=4096),0.7762029569892471,27,0.0,5,67,4,67,False
+NDCG,uniprot_weighted,ESCOTT,0.7897289426523296,11,0.0,4,28,4,40,False
+NDCG,uniprot_weighted,VenusREM,0.7810519713261652,23,0.0,5,51,4,59,False
+NDCG,uniprot_weighted,RSALOR,0.7858436379928316,21,0.0,7,36,4,51,False
+NDCG,uniprot_weighted,S2F,0.7706886200716846,41,0.0,21,66,11,68,False
+NDCG,uniprot_weighted,S2F-MSA,0.801010752688172,3,0.012,1,6,1,6,True
+NDCG,uniprot_weighted,S3F,0.7754283154121864,28,0.0,10,55,8,65,False
+NDCG,uniprot_weighted,S3F-MSA,0.8025425627240146,1,0.53675,1,4,1,6,True
+NDCG,uniprot_weighted,SiteRM,0.7861671146953406,18,0.0,6,39,4,52,False
+NDCG,uniprot_weighted,ESM3 open (1.4B),0.783405017921147,22,0.0,5,41,4,52,False
+NDCG,uniprot_weighted,ESM-C (300M),0.7542665770609317,66,0.0,38,77,26,80,False
+NDCG,uniprot_weighted,ESM-C (600M),0.7573687275985662,59,0.0,28,74,22,79,False
+NDCG,uniprot_weighted,xTrimoPGLM-1B-MLM,0.7432262544802867,72,0.0,57,81,50,82,False
+NDCG,uniprot_weighted,xTrimoPGLM-3B-MLM,0.7632948028673836,51,0.0,24,72,19,74,False
+NDCG,uniprot_weighted,xTrimoPGLM-10B-MLM,0.7643360215053763,50,0.0,23,72,15,73,False
+NDCG,uniprot_weighted,xTrimoPGLM-1B-CLM,0.7224923835125447,83,0.0,73,88,71,90,False
+NDCG,uniprot_weighted,xTrimoPGLM-3B-CLM,0.6775362903225807,92,0.0,90,94,89,94,False
+NDCG,uniprot_weighted,xTrimoPGLM-7B-CLM,0.6361975806451612,97,0.0,94,97,93,97,False
+NDCG,uniprot_weighted,xTrimoPGLM-100B-int4,0.771573476702509,40,0.0,22,67,16,70,False
+NDCG,uniprot_weighted,Progen3 112m,0.6941751792114694,91,0.0,87,92,86,92,False
+NDCG,uniprot_weighted,Progen3 219m,0.7139462365591398,85,0.0,80,90,75,90,False
+NDCG,uniprot_weighted,Progen3 339m,0.7272262544802865,81,0.0,72,84,65,88,False
+NDCG,uniprot_weighted,Progen3 762m,0.7406980286738352,75,0.0,57,81,51,84,False
+NDCG,uniprot_weighted,Progen3 1B,0.7564507168458781,62,0.0,28,75,24,78,False
+NDCG,uniprot_weighted,Progen3 3B,0.766347670250896,48,0.0,24,71,19,72,False
+NDCG,uniprot_weighted,AIDO Protein-RAG (16B),0.8021630824372761,2,0.39275,1,6,1,9,True
+NDCG,uniprot_weighted,Protriever,0.7986776819923372,4,0.0585,1,14,1,24,True
+NDCG,flat_mean,Site-Independent,0.7545023041474653,67,0.0,36,79,29,80,False
+NDCG,flat_mean,EVmutation,0.7889447004608294,12,0.0,5,30,5,40,False
+NDCG,flat_mean,DeepSequence (single),0.7856497695852532,20,0.0,8,41,7,52,False
+NDCG,flat_mean,DeepSequence (ensemble),0.7872211981566819,16,0.0,7,38,4,47,False
+NDCG,flat_mean,EVE (single),0.7906774193548388,10,0.0,6,25,5,35,False
+NDCG,flat_mean,EVE (ensemble),0.7925714285714287,9,0.0,4,21,4,26,False
+NDCG,flat_mean,Unirep,0.6455990783410139,95,0.0,93,97,93,97,False
+NDCG,flat_mean,Unirep evotuned,0.7432304147465438,75,0.0,52,84,48,87,False
+NDCG,flat_mean,MSA Transformer (single),0.7769170506912443,26,0.0,14,63,11,68,False
+NDCG,flat_mean,MSA Transformer (ensemble),0.787147465437788,17,0.0,4,38,4,50,False
+NDCG,flat_mean,ESM-1b,0.7612811059907835,55,0.0,31,74,24,78,False
+NDCG,flat_mean,ESM-1v (single),0.7436313364055299,74,0.0,56,82,51,84,False
+NDCG,flat_mean,ESM-1v (ensemble),0.7583686635944702,61,0.0,27,75,24,77,False
+NDCG,flat_mean,ESM2 (8M),0.6597511520737328,93,0.0,92,95,92,96,False
+NDCG,flat_mean,ESM2 (35M),0.7051520737327189,88,0.0,85,91,81,92,False
+NDCG,flat_mean,ESM2 (150M),0.7342857142857143,79,0.0,68,86,64,87,False
+NDCG,flat_mean,ESM2 (650M),0.7560046082949308,66,0.0,43,77,33,78,False
+NDCG,flat_mean,ESM2 (3B),0.7645161290322581,51,0.0,24,71,18,76,False
+NDCG,flat_mean,ESM2 (15B),0.7690184331797235,46,0.0,21,68,13,71,False
+NDCG,flat_mean,Wavenet,0.7708110599078339,44,0.0,22,69,20,69,False
+NDCG,flat_mean,RITA S,0.7147834101382488,86,0.0,80,90,76,91,False
+NDCG,flat_mean,RITA M,0.7403087557603686,76,0.0,59,83,53,84,False
+NDCG,flat_mean,RITA L,0.7537834101382487,69,0.0,33,76,26,80,False
+NDCG,flat_mean,RITA XL,0.7586267281105988,60,0.0,28,75,23,76,False
+NDCG,flat_mean,Progen2 S,0.7245437788018432,83,0.0,74,87,70,89,False
+NDCG,flat_mean,Progen2 M,0.7589447004608295,59,0.0,28,75,23,76,False
+NDCG,flat_mean,Progen2 Base,0.7540460829493086,68,0.0,32,77,25,81,False
+NDCG,flat_mean,Progen2 L,0.7634976958525346,52,0.0,24,71,22,74,False
+NDCG,flat_mean,Progen2 XL,0.7795207373271889,23,0.0,11,53,10,57,False
+NDCG,flat_mean,GEMME,0.7862119815668203,19,0.0,5,44,4,52,False
+NDCG,flat_mean,VESPA,0.7880230414746545,14,0.0,5,30,4,36,False
+NDCG,flat_mean,VESPAl,0.7723732718894012,39,0.0,21,68,18,69,False
+NDCG,flat_mean,VespaG,0.7875023041474656,15,0.0,4,31,3,43,False
+NDCG,flat_mean,ProtGPT2,0.6585253456221198,94,0.0,93,96,92,97,False
+NDCG,flat_mean,Tranception S no retrieval,0.7116589861751152,87,0.0,81,91,78,91,False
+NDCG,flat_mean,Tranception M no retrieval,0.7350092165898618,78,0.0,65,84,58,85,False
+NDCG,flat_mean,Tranception L no retrieval,0.7608801843317972,56,0.0,24,75,23,77,False
+NDCG,flat_mean,Tranception S,0.7713963133640553,43,0.0,20,66,13,70,False
+NDCG,flat_mean,Tranception M,0.7764976958525343,28,0.0,11,60,9,65,False
+NDCG,flat_mean,Tranception L,0.7881336405529955,13,0.0,5,34,4,42,False
+NDCG,flat_mean,TranceptEVE S,0.7925852534562212,8,0.0,3,22,3,27,False
+NDCG,flat_mean,TranceptEVE M,0.7938341013824887,7,0.0,3,20,3,23,False
+NDCG,flat_mean,TranceptEVE L,0.7963133640552995,5,0.00125,1,12,1,18,False
+NDCG,flat_mean,CARP (38M),0.7028617511520739,89,0.0,85,91,85,91,False
+NDCG,flat_mean,CARP (600K),0.6379493087557603,96,0.0,94,97,94,97,False
+NDCG,flat_mean,CARP (640M),0.7576543778801842,62,0.0,38,76,30,78,False
+NDCG,flat_mean,CARP (76M),0.7220875576036867,84,0.0,76,87,72,90,False
+NDCG,flat_mean,MIF,0.7455622119815668,72,0.0,50,81,46,83,False
+NDCG,flat_mean,MIF-ST,0.7737741935483871,35,0.0,17,64,12,68,False
+NDCG,flat_mean,ESM-IF1,0.757110599078341,63,0.0,36,77,23,80,False
+NDCG,flat_mean,ProteinMPNN,0.7294147465437789,81,0.0,71,87,68,89,False
+NDCG,flat_mean,"ProtSSN (k=10, h=512)",0.7696589861751154,45,0.0,22,68,17,69,False
+NDCG,flat_mean,"ProtSSN (k=10, h=768)",0.7724976958525346,38,0.0,20,66,14,69,False
+NDCG,flat_mean,"ProtSSN (k=10, h=1280)",0.772705069124424,37,0.0,17,67,13,69,False
+NDCG,flat_mean,"ProtSSN (k=20, h=512)",0.7756036866359446,30,0.0,13,61,10,67,False
+NDCG,flat_mean,"ProtSSN (k=20, h=768)",0.7738709677419355,34,0.0,15,64,11,68,False
+NDCG,flat_mean,"ProtSSN (k=20, h=1280)",0.7745253456221196,32,0.0,14,64,10,68,False
+NDCG,flat_mean,"ProtSSN (k=30, h=512)",0.7736267281105991,36,0.0,17,64,14,68,False
+NDCG,flat_mean,"ProtSSN (k=30, h=768)",0.775373271889401,31,0.0,14,62,10,67,False
+NDCG,flat_mean,"ProtSSN (k=30, h=1280)",0.7716774193548386,41,0.0,18,68,13,69,False
+NDCG,flat_mean,ProtSSN (ensemble),0.7767373271889401,27,0.0,12,54,8,63,False
+NDCG,flat_mean,SaProt (650M),0.774479262672811,33,0.0,11,62,8,66,False
+NDCG,flat_mean,SaProt (35M),0.7381428571428572,77,0.0,65,83,55,86,False
+NDCG,flat_mean,PoET (200M),0.794520737327189,6,0.0,2,22,1,24,False
+NDCG,flat_mean,MULAN,0.7011059907834103,90,0.0,85,91,83,92,False
+NDCG,flat_mean,ProSST (K=20),0.7469308755760369,70,0.0,50,83,47,86,False
+NDCG,flat_mean,ProSST (K=128),0.7570645161290323,64,0.0,39,78,27,81,False
+NDCG,flat_mean,ProSST (K=512),0.7630138248847925,54,0.0,24,75,16,78,False
+NDCG,flat_mean,ProSST (K=1024),0.7672903225806452,48,0.0,19,68,11,75,False
+NDCG,flat_mean,ProSST (K=2048),0.7634976958525345,53,0.0,24,75,15,76,False
+NDCG,flat_mean,ProSST (K=4096),0.7777511520737327,25,0.00025,5,66,2,67,False
+NDCG,flat_mean,ESCOTT,0.7894562211981566,11,0.0,4,32,2,44,False
+NDCG,flat_mean,VenusREM,0.7778156682027653,24,0.0,8,58,4,66,False
+NDCG,flat_mean,RSALOR,0.7836405529953917,21,0.0,9,50,4,55,False
+NDCG,flat_mean,S2F,0.7716451612903227,42,0.0,16,66,11,68,False
+NDCG,flat_mean,S2F-MSA,0.8003963133640553,3,0.01,1,6,1,8,True
+NDCG,flat_mean,S3F,0.7756589861751154,29,0.0,10,59,8,65,False
+NDCG,flat_mean,S3F-MSA,0.8018294930875578,1,0.593,1,5,1,6,True
+NDCG,flat_mean,SiteRM,0.7869677419354839,18,0.0,5,38,4,51,False
+NDCG,flat_mean,ESM3 open (1.4B),0.781377880184332,22,0.0,6,51,4,59,False
+NDCG,flat_mean,ESM-C (300M),0.756705069124424,65,0.0,35,76,25,80,False
+NDCG,flat_mean,ESM-C (600M),0.7596082949308756,58,0.0,28,74,20,79,False
+NDCG,flat_mean,xTrimoPGLM-1B-MLM,0.7458064516129033,71,0.0,56,81,49,83,False
+NDCG,flat_mean,xTrimoPGLM-3B-MLM,0.7660875576036869,50,0.0,21,71,16,73,False
+NDCG,flat_mean,xTrimoPGLM-10B-MLM,0.766852534562212,49,0.0,21,71,16,73,False
+NDCG,flat_mean,xTrimoPGLM-1B-CLM,0.725769585253456,82,0.0,73,87,70,88,False
+NDCG,flat_mean,xTrimoPGLM-3B-CLM,0.6780460829493086,92,0.0,91,93,89,94,False
+NDCG,flat_mean,xTrimoPGLM-7B-CLM,0.6370599078341014,97,0.0,95,97,93,97,False
+NDCG,flat_mean,xTrimoPGLM-100B-int4,0.7720460829493089,40,0.0,21,69,16,69,False
+NDCG,flat_mean,Progen3 112m,0.6982764976958528,91,0.0,87,92,84,92,False
+NDCG,flat_mean,Progen3 219m,0.7174562211981568,85,0.0,80,90,73,90,False
+NDCG,flat_mean,Progen3 339m,0.7299493087557604,80,0.0,71,84,62,87,False
+NDCG,flat_mean,Progen3 762m,0.7437419354838709,73,0.0,55,80,51,84,False
+NDCG,flat_mean,Progen3 1B,0.7598755760368664,57,0.0,25,74,23,76,False
+NDCG,flat_mean,Progen3 3B,0.7688663594470045,47,0.0,21,69,18,71,False
+NDCG,flat_mean,AIDO Protein-RAG (16B),0.8008110599078343,2,0.27425,1,8,1,15,True
+NDCG,flat_mean,Protriever,0.79838,4,0.12125,1,19,1,24,True
+NDCG,median,Site-Independent,0.785,72,0.0,48,87,27,88,False
+NDCG,median,EVmutation,0.82,16,0.00025,1,71,1,79,True
+NDCG,median,DeepSequence (single),0.815,31,0.0,1,74,1,81,True
+NDCG,median,DeepSequence (ensemble),0.816,29,0.0,1,74,1,80,True
+NDCG,median,EVE (single),0.819,19,0.0,1,72,1,77,True
+NDCG,median,EVE (ensemble),0.821,13,0.0,1,71,1,76,True
+NDCG,median,Unirep,0.669,96,0.0,93,97,91,97,False
+NDCG,median,Unirep evotuned,0.778,74,0.0,50,87,22,91,False
+NDCG,median,MSA Transformer (single),0.815,31,0.0,1,73,1,81,True
+NDCG,median,MSA Transformer (ensemble),0.819,19,0.0,1,73,1,77,True
+NDCG,median,ESM-1b,0.812,40,0.0,1,75,1,83,True
+NDCG,median,ESM-1v (single),0.79,68,0.0,9,83,1,87,False
+NDCG,median,ESM-1v (ensemble),0.804,55,0.0,4,81,1,83,False
+NDCG,median,ESM2 (8M),0.7,93,0.0,90,97,84,97,False
+NDCG,median,ESM2 (35M),0.75,86,0.0,73,91,60,93,False
+NDCG,median,ESM2 (150M),0.788,71,0.0,25,84,1,88,False
+NDCG,median,ESM2 (650M),0.803,57,0.0,4,82,1,86,False
+NDCG,median,ESM2 (3B),0.814,33,0.0,1,74,1,82,True
+NDCG,median,ESM2 (15B),0.809,48,0.0,2,79,1,84,False
+NDCG,median,Wavenet,0.807,49,0.0,5,78,2,84,False
+NDCG,median,RITA S,0.752,84,0.0,70,91,53,94,False
+NDCG,median,RITA M,0.778,74,0.0,47,87,5,90,False
+NDCG,median,RITA L,0.792,67,0.0,5,85,1,88,False
+NDCG,median,RITA XL,0.798,62,0.0,6,82,1,86,False
+NDCG,median,Progen2 S,0.764,82,0.0,48,90,1,94,False
+NDCG,median,Progen2 M,0.798,62,0.0,5,82,1,87,False
+NDCG,median,Progen2 Base,0.796,65,0.0,5,82,1,87,False
+NDCG,median,Progen2 L,0.8,61,0.0,6,82,2,87,False
+NDCG,median,Progen2 XL,0.816,29,0.00025,1,72,1,82,True
+NDCG,median,GEMME,0.82,16,0.0005,1,71,1,77,True
+NDCG,median,VESPA,0.822,9,0.0035,1,71,1,76,True
+NDCG,median,VESPAl,0.805,52,0.0,6,81,1,86,False
+NDCG,median,VespaG,0.823,7,0.00025,1,69,1,76,True
+NDCG,median,ProtGPT2,0.693,94,0.0,89,97,80,97,False
+NDCG,median,Tranception S no retrieval,0.733,90,0.0,80,94,69,95,False
+NDCG,median,Tranception M no retrieval,0.775,77,0.0,40,88,2,91,False
+NDCG,median,Tranception L no retrieval,0.797,64,0.0,6,82,2,87,False
+NDCG,median,Tranception S,0.804,55,0.0,5,82,1,84,False
+NDCG,median,Tranception M,0.812,40,0.0,1,72,1,82,False
+NDCG,median,Tranception L,0.821,13,0.0,1,70,1,77,True
+NDCG,median,TranceptEVE S,0.82,16,0.0,1,70,1,77,True
+NDCG,median,TranceptEVE M,0.818,22,0.00025,1,73,1,77,True
+NDCG,median,TranceptEVE L,0.824,5,0.0085,1,68,1,76,True
+NDCG,median,CARP (38M),0.735,89,0.0,80,93,75,95,False
+NDCG,median,CARP (600K),0.671,95,0.0,92,97,89,97,False
+NDCG,median,CARP (640M),0.805,52,0.0,1,82,1,84,False
+NDCG,median,CARP (76M),0.752,84,0.0,69,92,46,94,False
+NDCG,median,MIF,0.781,73,0.0,44,87,6,90,False
+NDCG,median,MIF-ST,0.817,25,0.0,1,71,1,81,True
+NDCG,median,ESM-IF1,0.801,60,0.0,3,81,1,87,False
+NDCG,median,ProteinMPNN,0.77,80,0.0,56,90,29,92,False
+NDCG,median,"ProtSSN (k=10, h=512)",0.814,33,0.00025,1,74,1,82,True
+NDCG,median,"ProtSSN (k=10, h=768)",0.811,43,0.0,1,76,1,84,False
+NDCG,median,"ProtSSN (k=10, h=1280)",0.813,36,0.0,1,75,1,82,False
+NDCG,median,"ProtSSN (k=20, h=512)",0.817,25,0.0,1,72,1,80,True
+NDCG,median,"ProtSSN (k=20, h=768)",0.813,36,0.00025,1,78,1,82,False
+NDCG,median,"ProtSSN (k=20, h=1280)",0.817,25,0.0,1,72,1,80,True
+NDCG,median,"ProtSSN (k=30, h=512)",0.813,36,0.0,1,76,1,82,False
+NDCG,median,"ProtSSN (k=30, h=768)",0.818,22,0.0,1,71,1,77,True
+NDCG,median,"ProtSSN (k=30, h=1280)",0.812,40,0.0,1,77,1,84,False
+NDCG,median,ProtSSN (ensemble),0.817,25,0.00125,1,72,1,79,True
+NDCG,median,SaProt (650M),0.823,7,0.01,1,69,1,76,True
+NDCG,median,SaProt (35M),0.777,76,0.0,49,87,26,88,False
+NDCG,median,PoET (200M),0.829,3,0.07775,1,53,1,72,True
+NDCG,median,MULAN,0.741,88,0.0,78,93,73,94,False
+NDCG,median,ProSST (K=20),0.77,80,0.0,53,90,17,93,False
+NDCG,median,ProSST (K=128),0.789,70,0.0,30,86,4,88,False
+NDCG,median,ProSST (K=512),0.794,66,0.0,7,83,1,88,False
+NDCG,median,ProSST (K=1024),0.803,57,0.0,2,81,1,86,False
+NDCG,median,ProSST (K=2048),0.811,43,0.0015,1,79,1,86,True
+NDCG,median,ProSST (K=4096),0.814,33,0.00025,1,75,1,84,True
+NDCG,median,ESCOTT,0.821,13,0.0,1,71,1,76,True
+NDCG,median,VenusREM,0.822,9,0.012,1,69,1,77,True
+NDCG,median,RSALOR,0.818,22,0.0,1,71,1,79,True
+NDCG,median,S2F,0.81,47,0.0,1,78,1,84,False
+NDCG,median,S2F-MSA,0.824,5,0.066,1,72,1,76,True
+NDCG,median,S3F,0.819,19,0.00075,1,69,1,78,True
+NDCG,median,S3F-MSA,0.828,4,0.07025,1,60,1,73,True
+NDCG,median,SiteRM,0.822,9,0.002,1,70,1,76,True
+NDCG,median,ESM3 open (1.4B),0.822,9,0.00525,1,69,1,77,True
+NDCG,median,ESM-C (300M),0.811,43,0.0,1,75,1,83,False
+NDCG,median,ESM-C (600M),0.813,36,0.0,1,74,1,82,True
+NDCG,median,xTrimoPGLM-1B-MLM,0.79,68,0.0,10,83,1,87,False
+NDCG,median,xTrimoPGLM-3B-MLM,0.811,43,0.0,1,74,1,82,True
+NDCG,median,xTrimoPGLM-10B-MLM,0.805,52,0.0,4,82,1,86,False
+NDCG,median,xTrimoPGLM-1B-CLM,0.775,77,0.0,49,88,5,90,False
+NDCG,median,xTrimoPGLM-3B-CLM,0.71,92,0.0,89,96,81,97,False
+NDCG,median,xTrimoPGLM-7B-CLM,0.668,97,0.0,93,97,91,97,False
+NDCG,median,xTrimoPGLM-100B-int4,0.807,49,0.0,3,81,1,85,False
+NDCG,median,Progen3 112m,0.72,91,0.0,84,95,78,97,False
+NDCG,median,Progen3 219m,0.749,87,0.0,72,90,55,94,False
+NDCG,median,Progen3 339m,0.76,83,0.0,66,90,42,93,False
+NDCG,median,Progen3 762m,0.775,77,0.0,53,87,23,89,False
+NDCG,median,Progen3 1B,0.806,51,0.0,2,80,1,82,False
+NDCG,median,Progen3 3B,0.803,57,0.0,5,81,1,85,False
+NDCG,median,AIDO Protein-RAG (16B),0.834,1,0.437,1,46,1,69,True
+NDCG,median,Protriever,0.8325,2,0.3985,1,51,1,71,True
+Top_recall,proteingym,Site-Independent,0.20120742266414143,61,0.0,39,86,24,91,False
+Top_recall,proteingym,EVmutation,0.22107590909090907,37,0.0,4,55,4,66,False
+Top_recall,proteingym,DeepSequence (single),0.22492679292929293,25,0.0,3,52,2,62,False
+Top_recall,proteingym,DeepSequence (ensemble),0.22532215277777778,22,0.0,3,51,3,58,False
+Top_recall,proteingym,EVE (single),0.22966095801767678,13,0.0,2,46,2,51,False
+Top_recall,proteingym,EVE (ensemble),0.22919863794191916,15,0.0,3,47,2,51,False
+Top_recall,proteingym,Unirep,0.1391736379419192,94,0.0,92,97,92,97,False
+Top_recall,proteingym,Unirep evotuned,0.1802795880681818,86,0.0,66,91,53,93,False
+Top_recall,proteingym,MSA Transformer (single),0.21215034248737377,46,0.0,15,75,9,85,False
+Top_recall,proteingym,MSA Transformer (ensemble),0.22345314551767678,30,0.0,4,54,2,64,False
+Top_recall,proteingym,ESM-1b,0.20212747474747478,58,0.0,33,87,15,90,False
+Top_recall,proteingym,ESM-1v (single),0.1938388478535354,73,0.0,44,91,35,91,False
+Top_recall,proteingym,ESM-1v (ensemble),0.2101906502525252,50,0.0,13,80,6,84,False
+Top_recall,proteingym,ESM2 (8M),0.15315982481060603,92,0.0,92,95,88,95,False
+Top_recall,proteingym,ESM2 (35M),0.18560594223484847,81,0.0,55,91,48,91,False
+Top_recall,proteingym,ESM2 (150M),0.20400458333333332,56,0.0,33,84,17,88,False
+Top_recall,proteingym,ESM2 (650M),0.21621859059343435,42,0.0,7,70,4,79,False
+Top_recall,proteingym,ESM2 (3B),0.21300022885101014,45,0.0,13,72,7,81,False
+Top_recall,proteingym,ESM2 (15B),0.20734672348484845,52,0.0,21,84,8,88,False
+Top_recall,proteingym,Wavenet,0.20282115372474746,57,0.0,31,86,20,90,False
+Top_recall,proteingym,RITA S,0.17788705018939394,88,0.0,70,91,56,92,False
+Top_recall,proteingym,RITA M,0.1875254861111111,79,0.0,51,91,38,91,False
+Top_recall,proteingym,RITA L,0.19477102588383838,72,0.0,39,89,36,91,False
+Top_recall,proteingym,RITA XL,0.19289263888888888,75,0.0,47,91,39,91,False
+Top_recall,proteingym,Progen2 S,0.18327256944444442,85,0.0,56,91,45,91,False
+Top_recall,proteingym,Progen2 M,0.20194473169191918,59,0.0,32,84,15,89,False
+Top_recall,proteingym,Progen2 Base,0.19770545928030303,69,0.0,39,87,30,90,False
+Top_recall,proteingym,Progen2 L,0.20141745107323233,60,0.0,34,84,14,89,False
+Top_recall,proteingym,Progen2 XL,0.19835999053030304,67,0.0,40,90,34,91,False
+Top_recall,proteingym,GEMME,0.21076085542929293,48,0.0,15,77,10,84,False
+Top_recall,proteingym,VESPA,0.20039853219696968,62,0.0,39,89,34,90,False
+Top_recall,proteingym,VESPAl,0.18384517676767678,84,0.0,56,91,51,93,False
+Top_recall,proteingym,VespaG,0.20491187184343435,55,0.0,32,85,18,89,False
+Top_recall,proteingym,ProtGPT2,0.1332888904671717,95,0.0,92,97,92,97,False
+Top_recall,proteingym,Tranception S no retrieval,0.17722654987373737,91,0.0,70,91,58,91,False
+Top_recall,proteingym,Tranception M no retrieval,0.18477365372474747,83,0.0,54,91,41,91,False
+Top_recall,proteingym,Tranception L no retrieval,0.19662901357323231,71,0.0,39,91,34,91,False
+Top_recall,proteingym,Tranception S,0.216734540719697,40,0.0,11,65,7,73,False
+Top_recall,proteingym,Tranception M,0.21800507102272731,39,0.0,8,63,5,72,False
+Top_recall,proteingym,Tranception L,0.21964312657828283,38,0.0,7,61,4,65,False
+Top_recall,proteingym,TranceptEVE S,0.2315440798611111,10,0.0,2,41,1,46,False
+Top_recall,proteingym,TranceptEVE M,0.22982062026515152,12,0.0,3,44,2,48,False
+Top_recall,proteingym,TranceptEVE L,0.22934382417929294,14,0.0,3,46,2,50,False
+Top_recall,proteingym,CARP (38M),0.17730801452020206,90,0.0,66,91,56,91,False
+Top_recall,proteingym,CARP (600K),0.13085675189393936,96,0.0,94,97,93,97,False
+Top_recall,proteingym,CARP (640M),0.2073247095959596,53,0.0,21,82,12,85,False
+Top_recall,proteingym,CARP (76M),0.18833252367424244,77,0.0,51,90,45,91,False
+Top_recall,proteingym,MIF,0.21630781881313127,41,0.0,4,73,3,80,False
+Top_recall,proteingym,MIF-ST,0.2252188667929293,23,0.0,3,54,1,64,False
+Top_recall,proteingym,ESM-IF1,0.22237206755050504,33,0.0,4,61,1,71,False
+Top_recall,proteingym,ProteinMPNN,0.18584949652777777,80,0.0,52,91,46,91,False
+Top_recall,proteingym,"ProtSSN (k=10, h=512)",0.22187790246212122,35,0.0,3,59,2,68,False
+Top_recall,proteingym,"ProtSSN (k=10, h=768)",0.2244068465909091,27,0.0,4,53,3,64,False
+Top_recall,proteingym,"ProtSSN (k=10, h=1280)",0.2246004356060606,26,0.0,3,52,2,63,False
+Top_recall,proteingym,"ProtSSN (k=20, h=512)",0.22384440656565657,28,0.0,4,53,3,63,False
+Top_recall,proteingym,"ProtSSN (k=20, h=768)",0.2232133254419192,31,0.0,3,54,2,66,False
+Top_recall,proteingym,"ProtSSN (k=20, h=1280)",0.2250646701388889,24,0.0,3,52,2,58,False
+Top_recall,proteingym,"ProtSSN (k=30, h=512)",0.22275075441919193,32,0.0,5,54,3,63,False
+Top_recall,proteingym,"ProtSSN (k=30, h=768)",0.22634020675505048,20,0.0,3,50,2,60,False
+Top_recall,proteingym,"ProtSSN (k=30, h=1280)",0.22215739741161616,34,0.0,6,57,3,66,False
+Top_recall,proteingym,ProtSSN (ensemble),0.2264910211489899,19,0.0,3,51,2,59,False
+Top_recall,proteingym,SaProt (650M),0.23221012941919192,8,0.00075,1,46,1,54,True
+Top_recall,proteingym,SaProt (35M),0.21106132260101013,47,0.0,9,74,7,82,False
+Top_recall,proteingym,PoET (200M),0.22625243055555555,21,0.0,3,49,2,60,False
+Top_recall,proteingym,MULAN,0.17989044981060606,87,0.0,54,92,45,93,False
+Top_recall,proteingym,ProSST (K=20),0.20954878156565657,51,0.0,12,82,10,89,False
+Top_recall,proteingym,ProSST (K=128),0.22661054135101008,18,0.0,2,64,1,79,False
+Top_recall,proteingym,ProSST (K=512),0.22169386205808078,36,0.0,3,72,2,80,False
+Top_recall,proteingym,ProSST (K=1024),0.23007908775252525,11,0.0025,1,52,1,68,True
+Top_recall,proteingym,ProSST (K=2048),0.23600521306818179,6,0.00175,1,44,1,56,True
+Top_recall,proteingym,ProSST (K=4096),0.23199865688131313,9,0.00225,1,55,1,75,True
+Top_recall,proteingym,ESCOTT,0.21331793087121215,43,0.0,11,71,8,84,False
+Top_recall,proteingym,VenusREM,0.24415370422979796,1,0.461,1,37,1,44,True
+Top_recall,proteingym,RSALOR,0.22362509469696973,29,0.0,4,53,2,61,False
+Top_recall,proteingym,S2F,0.22770976167929297,17,0.0,4,50,1,59,False
+Top_recall,proteingym,S2F-MSA,0.24036806029040406,4,0.00025,1,17,1,32,True
+Top_recall,proteingym,S3F,0.2334271638257576,7,0.0005,1,41,1,47,True
+Top_recall,proteingym,S3F-MSA,0.24330722537878788,2,0.32775,1,13,1,17,True
+Top_recall,proteingym,SiteRM,0.20576951073232325,54,0.0,29,84,14,87,False
+Top_recall,proteingym,ESM3 open (1.4B),0.24171471275252526,3,0.18475,1,28,1,42,True
+Top_recall,proteingym,ESM-C (300M),0.21314130208333332,44,0.0,10,71,7,78,False
+Top_recall,proteingym,ESM-C (600M),0.21039801452020201,49,0.0,12,76,6,84,False
+Top_recall,proteingym,xTrimoPGLM-1B-MLM,0.19870732638888888,66,0.0,41,88,33,90,False
+Top_recall,proteingym,xTrimoPGLM-3B-MLM,0.2000687831439394,63,0.0,36,89,21,91,False
+Top_recall,proteingym,xTrimoPGLM-10B-MLM,0.2000374431818182,64,0.0,36,88,22,91,False
+Top_recall,proteingym,xTrimoPGLM-1B-CLM,0.18790400883838387,78,0.0,51,91,43,91,False
+Top_recall,proteingym,xTrimoPGLM-3B-CLM,0.15288006786616162,93,0.0,91,95,88,96,False
+Top_recall,proteingym,xTrimoPGLM-7B-CLM,0.12010390151515152,97,0.0,94,97,94,97,False
+Top_recall,proteingym,xTrimoPGLM-100B-int4,0.19799142992424243,68,0.0,40,91,32,91,False
+Top_recall,proteingym,Progen3 112m,0.1775529577020202,89,0.0,62,91,53,92,False
+Top_recall,proteingym,Progen3 219m,0.18545453598484848,82,0.0,53,91,45,91,False
+Top_recall,proteingym,Progen3 339m,0.19061994160353538,76,0.0,47,89,38,91,False
+Top_recall,proteingym,Progen3 762m,0.19291928819444443,74,0.0,45,89,38,91,False
+Top_recall,proteingym,Progen3 1B,0.19939552398989902,65,0.0,36,87,13,91,False
+Top_recall,proteingym,Progen3 3B,0.19770111111111113,70,0.0,39,88,32,91,False
+Top_recall,proteingym,AIDO Protein-RAG (16B),0.23906424873737375,5,0.01775,1,33,1,37,True
+Top_recall,proteingym,Protriever,0.22868225820962662,16,0.00075,1,50,1,58,True
+Top_recall,function_group_mean,Site-Independent,0.2003394471161913,64,0.0,40,88,27,91,False
+Top_recall,function_group_mean,EVmutation,0.2210149284823703,37,0.0,4,57,3,69,False
+Top_recall,function_group_mean,DeepSequence (single),0.22384347332254312,34,0.0,3,59,2,70,False
+Top_recall,function_group_mean,DeepSequence (ensemble),0.22483232090906508,31,0.0,3,54,2,63,False
+Top_recall,function_group_mean,EVE (single),0.2295221525244781,16,0.0,2,48,2,52,False
+Top_recall,function_group_mean,EVE (ensemble),0.2291359983685565,18,0.0,3,47,2,51,False
+Top_recall,function_group_mean,Unirep,0.1394948240390101,94,0.0,92,97,92,97,False
+Top_recall,function_group_mean,Unirep evotuned,0.178538695413114,87,0.0,70,92,57,93,False
+Top_recall,function_group_mean,MSA Transformer (single),0.21166009365311692,49,0.0,15,75,10,85,False
+Top_recall,function_group_mean,MSA Transformer (ensemble),0.22444964596127387,33,0.0,3,54,1,66,False
+Top_recall,function_group_mean,ESM-1b,0.20415807267667732,57,0.0,29,84,13,90,False
+Top_recall,function_group_mean,ESM-1v (single),0.19522224338968525,73,0.0,45,91,31,91,False
+Top_recall,function_group_mean,ESM-1v (ensemble),0.21111362771595327,50,0.0,12,78,6,84,False
+Top_recall,function_group_mean,ESM2 (8M),0.1550004778167569,92,0.0,91,94,87,95,False
+Top_recall,function_group_mean,ESM2 (35M),0.18714004987260804,80,0.0,54,91,48,91,False
+Top_recall,function_group_mean,ESM2 (150M),0.20594805659456822,55,0.0,30,82,15,86,False
+Top_recall,function_group_mean,ESM2 (650M),0.21876810347275466,39,0.0,7,63,3,74,False
+Top_recall,function_group_mean,ESM2 (3B),0.21398713173131778,45,0.0,10,72,7,80,False
+Top_recall,function_group_mean,ESM2 (15B),0.2093665086851133,52,0.0,20,81,7,87,False
+Top_recall,function_group_mean,Wavenet,0.20240808235691957,61,0.0,35,86,23,90,False
+Top_recall,function_group_mean,RITA S,0.1784046953046953,88,0.0,69,91,57,92,False
+Top_recall,function_group_mean,RITA M,0.1882846701102515,78,0.0,51,91,40,91,False
+Top_recall,function_group_mean,RITA L,0.19537394285301263,72,0.0,41,89,37,91,False
+Top_recall,function_group_mean,RITA XL,0.19230473041170718,74,0.0,48,91,41,91,False
+Top_recall,function_group_mean,Progen2 S,0.18351929207743162,85,0.0,58,91,48,91,False
+Top_recall,function_group_mean,Progen2 M,0.2022251975414766,62,0.0,34,84,20,88,False
+Top_recall,function_group_mean,Progen2 Base,0.1988597108318039,67,0.0,40,87,30,89,False
+Top_recall,function_group_mean,Progen2 L,0.20282029649936625,58,0.0,32,83,16,89,False
+Top_recall,function_group_mean,Progen2 XL,0.1982928513347118,69,0.0,40,90,36,91,False
+Top_recall,function_group_mean,GEMME,0.21047436491157426,51,0.0,18,77,11,85,False
+Top_recall,function_group_mean,VESPA,0.20246662639685895,60,0.0,37,87,30,90,False
+Top_recall,function_group_mean,VESPAl,0.18540094350094355,82,0.0,56,91,50,93,False
+Top_recall,function_group_mean,VespaG,0.20599934432492573,54,0.0,33,84,22,87,False
+Top_recall,function_group_mean,ProtGPT2,0.13217706995846532,95,0.0,93,97,92,97,False
+Top_recall,function_group_mean,Tranception S no retrieval,0.1771805747224352,90,0.0,71,91,60,92,False
+Top_recall,function_group_mean,Tranception M no retrieval,0.18512232935023634,83,0.0,53,91,45,91,False
+Top_recall,function_group_mean,Tranception L no retrieval,0.19635282753422287,71,0.0,40,91,34,91,False
+Top_recall,function_group_mean,Tranception S,0.21625503488759304,42,0.0,11,71,8,73,False
+Top_recall,function_group_mean,Tranception M,0.21768227431483247,40,0.0,8,66,5,73,False
+Top_recall,function_group_mean,Tranception L,0.219527224971411,38,0.0,8,62,3,69,False
+Top_recall,function_group_mean,TranceptEVE S,0.23124407427198124,11,0.0,2,44,1,47,False
+Top_recall,function_group_mean,TranceptEVE M,0.2296783030922566,13,0.0,3,44,2,50,False
+Top_recall,function_group_mean,TranceptEVE L,0.22947149413893603,17,0.0,3,46,2,50,False
+Top_recall,function_group_mean,CARP (38M),0.17692959185517326,91,0.0,66,91,56,91,False
+Top_recall,function_group_mean,CARP (600K),0.13142101077217355,96,0.0,93,97,93,97,False
+Top_recall,function_group_mean,CARP (640M),0.20721214031446591,53,0.0,23,83,14,86,False
+Top_recall,function_group_mean,CARP (76M),0.18736085852132361,79,0.0,53,90,46,91,False
+Top_recall,function_group_mean,MIF,0.2171150967895154,41,0.0,5,72,3,80,False
+Top_recall,function_group_mean,MIF-ST,0.22515345094182307,29,0.0,3,57,1,68,False
+Top_recall,function_group_mean,ESM-IF1,0.22308881325392954,36,0.0,3,62,1,71,False
+Top_recall,function_group_mean,ProteinMPNN,0.18607031547264102,81,0.0,55,91,47,91,False
+Top_recall,function_group_mean,"ProtSSN (k=10, h=512)",0.22452343470483008,32,0.0,3,54,2,65,False
+Top_recall,function_group_mean,"ProtSSN (k=10, h=768)",0.22671648971183855,22,0.0,3,53,2,59,False
+Top_recall,function_group_mean,"ProtSSN (k=10, h=1280)",0.22665916331730288,23,0.0,3,52,1,58,False
+Top_recall,function_group_mean,"ProtSSN (k=20, h=512)",0.22649968300433415,24,0.0,3,53,2,59,False
+Top_recall,function_group_mean,"ProtSSN (k=20, h=768)",0.2253920485199555,27,0.0,2,54,1,64,False
+Top_recall,function_group_mean,"ProtSSN (k=20, h=1280)",0.22722277748091702,21,0.0,2,51,2,55,False
+Top_recall,function_group_mean,"ProtSSN (k=30, h=512)",0.22521326761094201,28,0.0,4,54,2,63,False
+Top_recall,function_group_mean,"ProtSSN (k=30, h=768)",0.22879016616458475,20,0.0,2,50,1,55,False
+Top_recall,function_group_mean,"ProtSSN (k=30, h=1280)",0.2249958880912369,30,0.0,3,53,2,62,False
+Top_recall,function_group_mean,ProtSSN (ensemble),0.22903058078872035,19,0.0,2,51,1,55,False
+Top_recall,function_group_mean,SaProt (650M),0.2342217227217227,10,0.00075,1,45,1,53,True
+Top_recall,function_group_mean,SaProt (35M),0.2128448600495112,47,0.0,11,72,6,79,False
+Top_recall,function_group_mean,PoET (200M),0.22587663525105386,25,0.0,3,51,2,61,False
+Top_recall,function_group_mean,MULAN,0.18080969495620658,86,0.0,55,92,46,93,False
+Top_recall,function_group_mean,ProSST (K=20),0.21440042722135746,44,0.0,10,81,6,89,False
+Top_recall,function_group_mean,ProSST (K=128),0.23066625261043866,12,0.0,1,62,1,75,False
+Top_recall,function_group_mean,ProSST (K=512),0.2257620322829625,26,0.0,2,66,2,79,False
+Top_recall,function_group_mean,ProSST (K=1024),0.23426971349064374,9,0.00675,1,51,1,63,True
+Top_recall,function_group_mean,ProSST (K=2048),0.2386907023209349,6,0.0055,1,43,1,53,True
+Top_recall,function_group_mean,ProSST (K=4096),0.2360751530123623,7,0.017,1,49,1,65,True
+Top_recall,function_group_mean,ESCOTT,0.2130505548714851,46,0.0,12,73,10,81,False
+Top_recall,function_group_mean,VenusREM,0.24558548609013725,1,0.4635,1,37,1,44,True
+Top_recall,function_group_mean,RSALOR,0.2235629432582921,35,0.0,3,54,3,64,False
+Top_recall,function_group_mean,S2F,0.22964951301928047,15,0.0,2,50,1,55,False
+Top_recall,function_group_mean,S2F-MSA,0.24078940697545342,4,0.00025,1,24,1,37,True
+Top_recall,function_group_mean,S3F,0.23468395480488505,8,0.00025,1,42,1,46,True
+Top_recall,function_group_mean,S3F-MSA,0.24376644518272422,2,0.284,1,14,1,23,True
+Top_recall,function_group_mean,SiteRM,0.20591519772217443,56,0.0,33,85,14,89,False
+Top_recall,function_group_mean,ESM3 open (1.4B),0.24284836971813717,3,0.19725,1,28,1,40,True
+Top_recall,function_group_mean,ESM-C (300M),0.21452999016487384,43,0.0,9,71,7,77,False
+Top_recall,function_group_mean,ESM-C (600M),0.21253843882215975,48,0.0,11,72,6,79,False
+Top_recall,function_group_mean,xTrimoPGLM-1B-MLM,0.19989297085343596,65,0.0,41,88,31,90,False
+Top_recall,function_group_mean,xTrimoPGLM-3B-MLM,0.20252804946990993,59,0.0,34,87,20,91,False
+Top_recall,function_group_mean,xTrimoPGLM-10B-MLM,0.20178510481766293,63,0.0,34,88,25,91,False
+Top_recall,function_group_mean,xTrimoPGLM-1B-CLM,0.188853438551113,77,0.0,52,91,43,91,False
+Top_recall,function_group_mean,xTrimoPGLM-3B-CLM,0.15227683427683428,93,0.0,91,96,88,96,False
+Top_recall,function_group_mean,xTrimoPGLM-7B-CLM,0.12013717909996979,97,0.0,94,97,94,97,False
+Top_recall,function_group_mean,xTrimoPGLM-100B-int4,0.1983096167398493,68,0.0,41,90,34,91,False
+Top_recall,function_group_mean,Progen3 112m,0.17778995707135242,89,0.0,65,91,54,92,False
+Top_recall,function_group_mean,Progen3 219m,0.18467275902392183,84,0.0,55,91,47,91,False
+Top_recall,function_group_mean,Progen3 339m,0.18993367536855912,76,0.0,48,91,40,91,False
+Top_recall,function_group_mean,Progen3 762m,0.19211726697075532,75,0.0,47,90,40,91,False
+Top_recall,function_group_mean,Progen3 1B,0.1992937416588579,66,0.0,36,89,20,91,False
+Top_recall,function_group_mean,Progen3 3B,0.1979071375652771,70,0.0,39,88,34,91,False
+Top_recall,function_group_mean,AIDO Protein-RAG (16B),0.23983842849656806,5,0.02375,1,36,1,43,True
+Top_recall,function_group_mean,Protriever,0.22966464555052793,14,0.001,1,48,1,58,True
+Top_recall,uniprot_weighted,Site-Independent,0.21468862007168463,58,0.0,38,79,26,83,False
+Top_recall,uniprot_weighted,EVmutation,0.23554838709677423,34,0.0,6,54,4,58,False
+Top_recall,uniprot_weighted,DeepSequence (single),0.23774283154121867,32,0.0,5,52,3,56,False
+Top_recall,uniprot_weighted,DeepSequence (ensemble),0.2382983870967742,28,0.0,4,49,3,56,False
+Top_recall,uniprot_weighted,EVE (single),0.24294668458781365,13,0.0,3,44,3,47,False
+Top_recall,uniprot_weighted,EVE (ensemble),0.24234184587813618,15,0.0,3,43,3,47,False
+Top_recall,uniprot_weighted,Unirep,0.14383019713261647,94,0.0,92,96,92,97,False
+Top_recall,uniprot_weighted,Unirep evotuned,0.1849861111111111,85,0.0,74,91,68,91,False
+Top_recall,uniprot_weighted,MSA Transformer (single),0.2263705197132616,42,0.0,16,69,12,75,False
+Top_recall,uniprot_weighted,MSA Transformer (ensemble),0.23700044802867382,33,0.0,5,53,3,60,False
+Top_recall,uniprot_weighted,ESM-1b,0.21662365591397853,53,0.0,34,78,27,81,False
+Top_recall,uniprot_weighted,ESM-1v (single),0.20262544802867383,74,0.0,47,87,42,89,False
+Top_recall,uniprot_weighted,ESM-1v (ensemble),0.21784946236559138,52,0.0,32,74,12,79,False
+Top_recall,uniprot_weighted,ESM2 (8M),0.14883378136200717,93,0.0,92,95,92,96,False
+Top_recall,uniprot_weighted,ESM2 (35M),0.189793458781362,82,0.0,60,91,51,91,False
+Top_recall,uniprot_weighted,ESM2 (150M),0.21362813620071686,61,0.0,35,80,26,82,False
+Top_recall,uniprot_weighted,ESM2 (650M),0.22557213261648743,43,0.0,15,69,8,77,False
+Top_recall,uniprot_weighted,ESM2 (3B),0.2229278673835125,47,0.0,24,74,11,76,False
+Top_recall,uniprot_weighted,ESM2 (15B),0.21958512544802866,50,0.0,31,76,21,80,False
+Top_recall,uniprot_weighted,Wavenet,0.21382750896057348,60,0.0,38,80,36,84,False
+Top_recall,uniprot_weighted,RITA S,0.18078091397849466,87,0.0,77,91,70,91,False
+Top_recall,uniprot_weighted,RITA M,0.19649193548387098,77,0.0,53,88,46,91,False
+Top_recall,uniprot_weighted,RITA L,0.20283960573476703,73,0.0,47,85,40,89,False
+Top_recall,uniprot_weighted,RITA XL,0.2019014336917563,75,0.0,48,86,42,89,False
+Top_recall,uniprot_weighted,Progen2 S,0.18779659498207887,83,0.0,71,91,59,91,False
+Top_recall,uniprot_weighted,Progen2 M,0.20689068100358424,70,0.0,42,82,38,87,False
+Top_recall,uniprot_weighted,Progen2 Base,0.204614247311828,72,0.0,46,85,39,88,False
+Top_recall,uniprot_weighted,Progen2 L,0.20801926523297493,68,0.0,40,82,38,85,False
+Top_recall,uniprot_weighted,Progen2 XL,0.21302598566308248,62,0.0,37,80,35,86,False
+Top_recall,uniprot_weighted,GEMME,0.22249103942652335,48,0.0,24,73,13,79,False
+Top_recall,uniprot_weighted,VESPA,0.2127347670250896,63,0.0,39,81,37,86,False
+Top_recall,uniprot_weighted,VESPAl,0.19455465949820785,79,0.0,61,91,52,91,False
+Top_recall,uniprot_weighted,VespaG,0.21662186379928314,54,0.0,36,80,31,84,False
+Top_recall,uniprot_weighted,ProtGPT2,0.13816890681003588,95,0.0,92,97,92,97,False
+Top_recall,uniprot_weighted,Tranception S no retrieval,0.17739336917562726,89,0.0,80,91,76,91,False
+Top_recall,uniprot_weighted,Tranception M no retrieval,0.19071012544802865,81,0.0,64,90,53,91,False
+Top_recall,uniprot_weighted,Tranception L no retrieval,0.20610887096774197,71,0.0,44,84,38,88,False
+Top_recall,uniprot_weighted,Tranception S,0.22730958781362007,41,0.0,13,66,10,72,False
+Top_recall,uniprot_weighted,Tranception M,0.23047715053763443,39,0.0,8,63,6,67,False
+Top_recall,uniprot_weighted,Tranception L,0.2327576164874552,36,0.0,10,57,6,63,False
+Top_recall,uniprot_weighted,TranceptEVE S,0.24390725806451616,10,0.0,3,42,3,44,False
+Top_recall,uniprot_weighted,TranceptEVE M,0.24211693548387103,16,0.0,3,43,3,48,False
+Top_recall,uniprot_weighted,TranceptEVE L,0.24146012544802867,20,0.0,4,45,3,49,False
+Top_recall,uniprot_weighted,CARP (38M),0.1804838709677419,88,0.0,76,91,69,91,False
+Top_recall,uniprot_weighted,CARP (600K),0.13586469534050177,96,0.0,93,97,92,97,False
+Top_recall,uniprot_weighted,CARP (640M),0.21431182795698922,59,0.0,36,79,29,81,False
+Top_recall,uniprot_weighted,CARP (76M),0.19460528673835126,78,0.0,58,89,52,90,False
+Top_recall,uniprot_weighted,MIF,0.23015322580645162,40,0.0,7,65,5,72,False
+Top_recall,uniprot_weighted,MIF-ST,0.2353019713261649,35,0.0,6,55,3,59,False
+Top_recall,uniprot_weighted,ESM-IF1,0.2400089605734767,25,0.0,3,48,1,57,False
+Top_recall,uniprot_weighted,ProteinMPNN,0.21534722222222227,56,0.0,36,78,26,83,False
+Top_recall,uniprot_weighted,"ProtSSN (k=10, h=512)",0.23828360215053765,29,0.0,5,52,1,55,False
+Top_recall,uniprot_weighted,"ProtSSN (k=10, h=768)",0.24192473118279573,17,0.0,2,44,1,52,False
+Top_recall,uniprot_weighted,"ProtSSN (k=10, h=1280)",0.2426290322580646,14,0.0,1,43,1,48,False
+Top_recall,uniprot_weighted,"ProtSSN (k=20, h=512)",0.241671146953405,19,0.0,2,45,1,53,False
+Top_recall,uniprot_weighted,"ProtSSN (k=20, h=768)",0.24126299283154118,22,0.0,2,46,1,52,False
+Top_recall,uniprot_weighted,"ProtSSN (k=20, h=1280)",0.24311066308243728,11,0.0,1,43,1,50,False
+Top_recall,uniprot_weighted,"ProtSSN (k=30, h=512)",0.23863799283154125,27,0.0,6,49,3,54,False
+Top_recall,uniprot_weighted,"ProtSSN (k=30, h=768)",0.2414090501792115,21,0.0,2,45,1,52,False
+Top_recall,uniprot_weighted,"ProtSSN (k=30, h=1280)",0.2381061827956989,30,0.0,7,50,3,54,False
+Top_recall,uniprot_weighted,ProtSSN (ensemble),0.24500224014336924,9,0.0,1,38,1,43,True
+Top_recall,uniprot_weighted,SaProt (650M),0.2404767025089605,24,0.0,1,48,1,56,False
+Top_recall,uniprot_weighted,SaProt (35M),0.22025896057347671,49,0.0,23,74,9,78,False
+Top_recall,uniprot_weighted,PoET (200M),0.24048028673835123,23,0.0,5,47,2,56,False
+Top_recall,uniprot_weighted,MULAN,0.17261155913978496,91,0.0,78,92,72,92,False
+Top_recall,uniprot_weighted,ProSST (K=20),0.21607168458781362,55,0.0,30,80,11,84,False
+Top_recall,uniprot_weighted,ProSST (K=128),0.23228091397849462,37,0.0,7,66,2,74,False
+Top_recall,uniprot_weighted,ProSST (K=512),0.23087499999999997,38,0.0,8,66,3,74,False
+Top_recall,uniprot_weighted,ProSST (K=1024),0.24297401433691754,12,0.00125,1,48,1,59,True
+Top_recall,uniprot_weighted,ProSST (K=2048),0.25184632616487457,6,0.00125,1,37,1,47,True
+Top_recall,uniprot_weighted,ProSST (K=4096),0.24526836917562725,7,0.00125,1,46,1,52,True
+Top_recall,uniprot_weighted,ESCOTT,0.22553270609318993,44,0.0,16,70,11,77,False
+Top_recall,uniprot_weighted,VenusREM,0.259961917562724,1,0.56675,1,21,1,35,True
+Top_recall,uniprot_weighted,RSALOR,0.2377956989247312,31,0.0,5,51,3,59,False
+Top_recall,uniprot_weighted,S2F,0.23869130824372758,26,0.0,4,49,2,55,False
+Top_recall,uniprot_weighted,S2F-MSA,0.2542405913978495,4,0.0,1,21,1,27,False
+Top_recall,uniprot_weighted,S3F,0.2450613799283154,8,0.00025,1,42,1,47,True
+Top_recall,uniprot_weighted,S3F-MSA,0.25778853046594985,2,0.31175,1,14,1,22,True
+Top_recall,uniprot_weighted,SiteRM,0.2194569892473118,51,0.0,31,77,19,80,False
+Top_recall,uniprot_weighted,ESM3 open (1.4B),0.254926523297491,3,0.096,1,28,1,37,True
+Top_recall,uniprot_weighted,ESM-C (300M),0.22329345878136198,46,0.0,15,73,7,77,False
+Top_recall,uniprot_weighted,ESM-C (600M),0.22428136200716844,45,0.0,15,72,6,75,False
+Top_recall,uniprot_weighted,xTrimoPGLM-1B-MLM,0.20747849462365595,69,0.0,45,82,37,86,False
+Top_recall,uniprot_weighted,xTrimoPGLM-3B-MLM,0.21191621863799284,65,0.0,37,82,32,84,False
+Top_recall,uniprot_weighted,xTrimoPGLM-10B-MLM,0.2148826164874552,57,0.0,37,78,29,83,False
+Top_recall,uniprot_weighted,xTrimoPGLM-1B-CLM,0.1870008960573477,84,0.0,71,91,60,91,False
+Top_recall,uniprot_weighted,xTrimoPGLM-3B-CLM,0.1520237455197133,92,0.0,91,96,90,96,False
+Top_recall,uniprot_weighted,xTrimoPGLM-7B-CLM,0.12235752688172044,97,0.0,95,97,94,97,False
+Top_recall,uniprot_weighted,xTrimoPGLM-100B-int4,0.21228763440860213,64,0.0,38,82,37,86,False
+Top_recall,uniprot_weighted,Progen3 112m,0.17520609318996413,90,0.0,79,91,76,92,False
+Top_recall,uniprot_weighted,Progen3 219m,0.18406989247311825,86,0.0,74,91,60,91,False
+Top_recall,uniprot_weighted,Progen3 339m,0.19338037634408597,80,0.0,53,89,49,91,False
+Top_recall,uniprot_weighted,Progen3 762m,0.2003561827956989,76,0.0,50,85,42,89,False
+Top_recall,uniprot_weighted,Progen3 1B,0.20875,67,0.0,39,81,37,84,False
+Top_recall,uniprot_weighted,Progen3 3B,0.21077777777777776,66,0.0,38,81,37,84,False
+Top_recall,uniprot_weighted,AIDO Protein-RAG (16B),0.25411021505376347,5,0.0215,1,26,1,37,True
+Top_recall,uniprot_weighted,Protriever,0.24190421455938704,18,0.0,2,48,1,55,False
+Top_recall,flat_mean,Site-Independent,0.2083087557603687,62,0.0,39,80,30,84,False
+Top_recall,flat_mean,EVmutation,0.22970506912442393,34,0.0,6,54,4,59,False
+Top_recall,flat_mean,DeepSequence (single),0.23148847926267282,32,0.0,4,52,3,56,False
+Top_recall,flat_mean,DeepSequence (ensemble),0.23293087557603684,29,0.0,3,50,3,54,False
+Top_recall,flat_mean,EVE (single),0.23693548387096777,14,0.0,3,44,3,49,False
+Top_recall,flat_mean,EVE (ensemble),0.23656682027649767,16,0.0,3,45,3,49,False
+Top_recall,flat_mean,Unirep,0.14080645161290323,94,0.0,92,96,92,97,False
+Top_recall,flat_mean,Unirep evotuned,0.1810414746543779,86,0.0,75,91,70,91,False
+Top_recall,flat_mean,MSA Transformer (single),0.22044700460829492,43,0.0,18,72,12,74,False
+Top_recall,flat_mean,MSA Transformer (ensemble),0.23200460829493083,30,0.0,4,51,3,58,False
+Top_recall,flat_mean,ESM-1b,0.21207373271889401,55,0.0,34,78,28,80,False
+Top_recall,flat_mean,ESM-1v (single),0.19959447004608297,74,0.0,47,86,41,87,False
+Top_recall,flat_mean,ESM-1v (ensemble),0.21400460829493084,52,0.0,30,74,11,78,False
+Top_recall,flat_mean,ESM2 (8M),0.14740552995391704,93,0.0,92,95,92,96,False
+Top_recall,flat_mean,ESM2 (35M),0.18614285714285714,82,0.0,62,91,54,91,False
+Top_recall,flat_mean,ESM2 (150M),0.20912442396313363,59,0.0,35,80,26,81,False
+Top_recall,flat_mean,ESM2 (650M),0.2218940092165898,41,0.0,12,68,7,73,False
+Top_recall,flat_mean,ESM2 (3B),0.21770506912442394,47,0.0,24,73,10,76,False
+Top_recall,flat_mean,ESM2 (15B),0.21566820276497695,49,0.0,29,74,12,80,False
+Top_recall,flat_mean,Wavenet,0.20843317972350225,61,0.0,37,81,36,85,False
+Top_recall,flat_mean,RITA S,0.17925806451612902,87,0.0,78,91,69,91,False
+Top_recall,flat_mean,RITA M,0.1935714285714286,77,0.0,53,88,46,91,False
+Top_recall,flat_mean,RITA L,0.1997557603686636,73,0.0,45,85,39,88,False
+Top_recall,flat_mean,RITA XL,0.1965990783410138,75,0.0,51,86,44,90,False
+Top_recall,flat_mean,Progen2 S,0.18504608294930872,83,0.0,70,91,59,91,False
+Top_recall,flat_mean,Progen2 M,0.20352534562211985,70,0.0,40,82,38,85,False
+Top_recall,flat_mean,Progen2 Base,0.20205069124423966,71,0.0,40,82,37,88,False
+Top_recall,flat_mean,Progen2 L,0.20569124423963125,66,0.0,39,80,36,83,False
+Top_recall,flat_mean,Progen2 XL,0.2073686635944701,63,0.0,38,83,35,87,False
+Top_recall,flat_mean,GEMME,0.21756682027649774,48,0.0,25,74,13,79,False
+Top_recall,flat_mean,VESPA,0.20997695852534562,57,0.0,37,81,34,84,False
+Top_recall,flat_mean,VESPAl,0.19210138248847927,78,0.0,57,91,52,91,False
+Top_recall,flat_mean,VespaG,0.2127834101382488,54,0.0,35,79,28,84,False
+Top_recall,flat_mean,ProtGPT2,0.13373271889400923,95,0.0,92,97,92,97,False
+Top_recall,flat_mean,Tranception S no retrieval,0.175594470046083,89,0.0,80,91,77,91,False
+Top_recall,flat_mean,Tranception M no retrieval,0.18873271889400922,81,0.0,63,90,53,91,False
+Top_recall,flat_mean,Tranception L no retrieval,0.2018847926267281,72,0.0,44,84,38,88,False
+Top_recall,flat_mean,Tranception S,0.2209769585253456,42,0.0,13,66,8,73,False
+Top_recall,flat_mean,Tranception M,0.22441013824884798,39,0.0,8,62,6,69,False
+Top_recall,flat_mean,Tranception L,0.2269723502304148,38,0.0,11,57,5,64,False
+Top_recall,flat_mean,TranceptEVE S,0.23771428571428568,11,0.0,3,42,3,44,False
+Top_recall,flat_mean,TranceptEVE M,0.23641474654377884,18,0.0,3,43,3,48,False
+Top_recall,flat_mean,TranceptEVE L,0.23613364055299543,21,0.0,3,45,3,50,False
+Top_recall,flat_mean,CARP (38M),0.17637788018433176,88,0.0,77,91,71,91,False
+Top_recall,flat_mean,CARP (600K),0.13296774193548389,96,0.0,93,97,92,97,False
+Top_recall,flat_mean,CARP (640M),0.20911981566820276,60,0.0,36,79,32,81,False
+Top_recall,flat_mean,CARP (76M),0.18929493087557606,80,0.0,58,89,52,90,False
+Top_recall,flat_mean,MIF,0.2226635944700461,40,0.0,7,71,5,73,False
+Top_recall,flat_mean,MIF-ST,0.22882949308755762,35,0.0,6,55,3,64,False
+Top_recall,flat_mean,ESM-IF1,0.23174654377880188,31,0.0,3,52,1,66,False
+Top_recall,flat_mean,ProteinMPNN,0.2043456221198157,67,0.0,41,84,35,87,False
+Top_recall,flat_mean,"ProtSSN (k=10, h=512)",0.2329677419354839,28,0.0,3,50,1,54,False
+Top_recall,flat_mean,"ProtSSN (k=10, h=768)",0.2361658986175115,20,0.0,1,45,1,53,False
+Top_recall,flat_mean,"ProtSSN (k=10, h=1280)",0.23652995391705073,17,0.0,1,43,1,49,False
+Top_recall,flat_mean,"ProtSSN (k=20, h=512)",0.23658525345622117,15,0.0,1,43,1,52,False
+Top_recall,flat_mean,"ProtSSN (k=20, h=768)",0.23627649769585246,19,0.0,1,45,1,53,False
+Top_recall,flat_mean,"ProtSSN (k=20, h=1280)",0.2375253456221198,12,0.0,1,42,1,50,True
+Top_recall,flat_mean,"ProtSSN (k=30, h=512)",0.23324884792626735,27,0.0,4,49,2,54,False
+Top_recall,flat_mean,"ProtSSN (k=30, h=768)",0.23579262672811055,22,0.0,1,45,1,53,False
+Top_recall,flat_mean,"ProtSSN (k=30, h=1280)",0.23347004608294933,25,0.0,3,48,1,54,False
+Top_recall,flat_mean,ProtSSN (ensemble),0.23940552995391712,8,0.0,1,38,1,45,True
+Top_recall,flat_mean,SaProt (650M),0.23539631336405528,23,0.0,1,47,1,55,True
+Top_recall,flat_mean,SaProt (35M),0.21464976958525345,50,0.0,23,78,10,78,False
+Top_recall,flat_mean,PoET (200M),0.23477880184331795,24,0.0,3,47,2,54,False
+Top_recall,flat_mean,MULAN,0.171036866359447,91,0.0,78,91,72,92,False
+Top_recall,flat_mean,ProSST (K=20),0.2133778801843318,53,0.0,22,79,9,83,False
+Top_recall,flat_mean,ProSST (K=128),0.22853456221198154,36,0.0,5,66,1,74,False
+Top_recall,flat_mean,ProSST (K=512),0.22712442396313365,37,0.0,5,68,1,74,False
+Top_recall,flat_mean,ProSST (K=1024),0.23744700460829496,13,0.00325,1,49,1,56,True
+Top_recall,flat_mean,ProSST (K=2048),0.24281566820276498,6,0.003,1,42,1,51,True
+Top_recall,flat_mean,ProSST (K=4096),0.24051612903225805,7,0.014,1,43,1,52,True
+Top_recall,flat_mean,ESCOTT,0.22028571428571425,44,0.0,16,72,12,77,False
+Top_recall,flat_mean,VenusREM,0.24990322580645163,2,0.368,1,32,1,38,True
+Top_recall,flat_mean,RSALOR,0.23079262672811057,33,0.0,5,52,3,59,False
+Top_recall,flat_mean,S2F,0.23330875576036864,26,0.0,3,48,2,54,False
+Top_recall,flat_mean,S2F-MSA,0.247589861751152,3,0.0,1,24,1,27,False
+Top_recall,flat_mean,S3F,0.23841474654377878,10,0.0,1,42,1,48,True
+Top_recall,flat_mean,S3F-MSA,0.2508986175115207,1,0.50325,1,18,1,24,True
+Top_recall,flat_mean,SiteRM,0.21462672811059905,51,0.0,30,75,18,81,False
+Top_recall,flat_mean,ESM3 open (1.4B),0.2469447004608295,4,0.09175,1,30,1,38,True
+Top_recall,flat_mean,ESM-C (300M),0.21844700460829497,46,0.0,17,72,7,76,False
+Top_recall,flat_mean,ESM-C (600M),0.21988479262672814,45,0.0,14,72,6,75,False
+Top_recall,flat_mean,xTrimoPGLM-1B-MLM,0.2037327188940092,69,0.0,43,81,38,86,False
+Top_recall,flat_mean,xTrimoPGLM-3B-MLM,0.2095714285714286,58,0.0,36,80,29,83,False
+Top_recall,flat_mean,xTrimoPGLM-10B-MLM,0.2106175115207373,56,0.0,35,78,29,83,False
+Top_recall,flat_mean,xTrimoPGLM-1B-CLM,0.18472350230414747,84,0.0,70,91,58,91,False
+Top_recall,flat_mean,xTrimoPGLM-3B-CLM,0.14923502304147473,92,0.0,92,96,90,96,False
+Top_recall,flat_mean,xTrimoPGLM-7B-CLM,0.12041935483870969,97,0.0,95,97,94,97,False
+Top_recall,flat_mean,xTrimoPGLM-100B-int4,0.2060783410138249,65,0.0,39,84,35,87,False
+Top_recall,flat_mean,Progen3 112m,0.17353917050691245,90,0.0,79,91,76,92,False
+Top_recall,flat_mean,Progen3 219m,0.1811336405529954,85,0.0,74,91,60,91,False
+Top_recall,flat_mean,Progen3 339m,0.19017972350230414,79,0.0,53,89,49,91,False
+Top_recall,flat_mean,Progen3 762m,0.19628110599078338,76,0.0,51,85,44,89,False
+Top_recall,flat_mean,Progen3 1B,0.20418894009216595,68,0.0,39,81,36,84,False
+Top_recall,flat_mean,Progen3 3B,0.20614746543778803,64,0.0,38,81,35,84,False
+Top_recall,flat_mean,AIDO Protein-RAG (16B),0.24611520737327194,5,0.01525,1,33,1,37,True
+Top_recall,flat_mean,Protriever,0.23862000000000003,9,0.0015,1,44,1,51,True
+Top_recall,median,Site-Independent,0.184,68,0.0,10,91,4,91,False
+Top_recall,median,EVmutation,0.211,16,0.00175,1,72,1,81,True
+Top_recall,median,DeepSequence (single),0.209,19,0.001,1,75,1,86,True
+Top_recall,median,DeepSequence (ensemble),0.209,19,0.001,1,73,1,81,True
+Top_recall,median,EVE (single),0.217,4,0.006,1,56,1,72,True
+Top_recall,median,EVE (ensemble),0.216,6,0.00075,1,58,1,71,True
+Top_recall,median,Unirep,0.119,94,0.0,92,97,90,97,False
+Top_recall,median,Unirep evotuned,0.159,86,0.0,60,92,42,92,False
+Top_recall,median,MSA Transformer (single),0.202,35,0.0,1,80,1,90,False
+Top_recall,median,MSA Transformer (ensemble),0.207,25,0.008,1,79,1,90,True
+Top_recall,median,ESM-1b,0.193,45,0.0,3,84,1,91,False
+Top_recall,median,ESM-1v (single),0.178,74,0.0,19,91,7,91,False
+Top_recall,median,ESM-1v (ensemble),0.196,40,0.0,3,83,1,91,False
+Top_recall,median,ESM2 (8M),0.123,93,0.0,92,97,90,97,False
+Top_recall,median,ESM2 (35M),0.155,91,0.0,61,92,35,94,False
+Top_recall,median,ESM2 (150M),0.186,61,0.0,4,88,1,90,False
+Top_recall,median,ESM2 (650M),0.193,45,0.0,4,83,1,90,False
+Top_recall,median,ESM2 (3B),0.188,56,0.0,5,90,1,91,False
+Top_recall,median,ESM2 (15B),0.187,58,0.0,8,90,3,91,False
+Top_recall,median,Wavenet,0.188,56,0.0,9,89,3,91,False
+Top_recall,median,RITA S,0.164,83,0.0,34,92,10,96,False
+Top_recall,median,RITA M,0.175,76,0.0,22,91,10,91,False
+Top_recall,median,RITA L,0.186,61,0.0,10,87,3,91,False
+Top_recall,median,RITA XL,0.175,76,0.0,24,91,10,91,False
+Top_recall,median,Progen2 S,0.173,79,0.0,19,91,3,92,False
+Top_recall,median,Progen2 M,0.185,66,0.0,10,89,4,91,False
+Top_recall,median,Progen2 Base,0.183,69,0.0,10,91,4,91,False
+Top_recall,median,Progen2 L,0.191,50,0.0,5,83,2,89,False
+Top_recall,median,Progen2 XL,0.187,58,0.0,9,88,3,91,False
+Top_recall,median,GEMME,0.197,39,0.0,3,82,1,87,False
+Top_recall,median,VESPA,0.191,50,0.0,8,86,3,90,False
+Top_recall,median,VESPAl,0.174,78,0.0,27,91,10,92,False
+Top_recall,median,VespaG,0.183,69,0.0,14,90,6,91,False
+Top_recall,median,ProtGPT2,0.118,95,0.0,92,97,90,97,False
+Top_recall,median,Tranception S no retrieval,0.162,84,0.0,49,91,24,92,False
+Top_recall,median,Tranception M no retrieval,0.173,79,0.0,25,91,10,91,False
+Top_recall,median,Tranception L no retrieval,0.183,69,0.0,12,91,3,91,False
+Top_recall,median,Tranception S,0.196,40,0.0,3,83,1,90,False
+Top_recall,median,Tranception M,0.203,31,0.0005,1,79,1,90,False
+Top_recall,median,Tranception L,0.203,31,0.002,2,79,1,87,False
+Top_recall,median,TranceptEVE S,0.214,11,0.00325,1,60,1,75,True
+Top_recall,median,TranceptEVE M,0.214,11,0.00175,1,60,1,75,True
+Top_recall,median,TranceptEVE L,0.215,8,0.00025,1,60,1,74,True
+Top_recall,median,CARP (38M),0.159,86,0.0,56,92,24,92,False
+Top_recall,median,CARP (600K),0.113,96,0.0,92,97,91,97,False
+Top_recall,median,CARP (640M),0.19,53,0.0,6,82,2,89,False
+Top_recall,median,CARP (76M),0.17,81,0.0,32,91,12,91,False
+Top_recall,median,MIF,0.195,44,0.0,3,83,1,90,False
+Top_recall,median,MIF-ST,0.215,8,0.04875,1,68,1,83,True
+Top_recall,median,ESM-IF1,0.2,36,0.0,1,81,1,87,False
+Top_recall,median,ProteinMPNN,0.159,86,0.0,57,91,38,92,False
+Top_recall,median,"ProtSSN (k=10, h=512)",0.198,37,0.0,4,82,1,87,False
+Top_recall,median,"ProtSSN (k=10, h=768)",0.206,26,0.00025,1,76,1,83,True
+Top_recall,median,"ProtSSN (k=10, h=1280)",0.216,6,0.00775,1,66,1,76,True
+Top_recall,median,"ProtSSN (k=20, h=512)",0.208,24,0.0,1,77,1,83,True
+Top_recall,median,"ProtSSN (k=20, h=768)",0.213,13,0.003,1,72,1,82,True
+Top_recall,median,"ProtSSN (k=20, h=1280)",0.209,19,0.0005,1,74,1,82,True
+Top_recall,median,"ProtSSN (k=30, h=512)",0.213,13,0.0015,1,74,1,83,True
+Top_recall,median,"ProtSSN (k=30, h=768)",0.203,31,0.0,1,83,1,91,True
+Top_recall,median,"ProtSSN (k=30, h=1280)",0.209,19,0.00125,1,76,1,85,True
+Top_recall,median,ProtSSN (ensemble),0.212,15,0.00025,1,74,1,82,True
+Top_recall,median,SaProt (650M),0.203,31,0.0,1,79,1,83,True
+Top_recall,median,SaProt (35M),0.185,66,0.0,7,88,2,91,False
+Top_recall,median,PoET (200M),0.209,19,0.00375,1,75,1,88,True
+Top_recall,median,MULAN,0.158,89,0.0,54,92,26,92,False
+Top_recall,median,ProSST (K=20),0.18,72,0.0,10,91,1,92,False
+Top_recall,median,ProSST (K=128),0.193,45,0.0,3,83,1,90,False
+Top_recall,median,ProSST (K=512),0.192,48,0.0,3,84,1,91,False
+Top_recall,median,ProSST (K=1024),0.204,28,0.002,1,80,1,84,True
+Top_recall,median,ProSST (K=2048),0.198,37,0.00075,1,83,1,90,True
+Top_recall,median,ProSST (K=4096),0.206,26,0.02025,1,83,1,91,True
+Top_recall,median,ESCOTT,0.196,40,0.0,3,83,1,90,False
+Top_recall,median,VenusREM,0.204,28,0.00075,1,77,1,83,True
+Top_recall,median,RSALOR,0.204,28,0.0,2,77,1,86,False
+Top_recall,median,S2F,0.211,16,0.001,1,74,1,81,True
+Top_recall,median,S2F-MSA,0.225,1,0.22,1,37,1,59,True
+Top_recall,median,S3F,0.218,3,0.03125,1,59,1,74,True
+Top_recall,median,S3F-MSA,0.225,1,0.43625,1,37,1,54,True
+Top_recall,median,SiteRM,0.189,55,0.0,8,87,3,91,False
+Top_recall,median,ESM3 open (1.4B),0.215,8,0.14075,1,72,1,90,True
+Top_recall,median,ESM-C (300M),0.191,50,0.0,3,84,1,91,False
+Top_recall,median,ESM-C (600M),0.187,58,0.0,4,90,1,91,False
+Top_recall,median,xTrimoPGLM-1B-MLM,0.18,72,0.0,15,91,3,91,False
+Top_recall,median,xTrimoPGLM-3B-MLM,0.186,61,0.0,10,89,3,91,False
+Top_recall,median,xTrimoPGLM-10B-MLM,0.196,40,0.0,3,82,1,88,False
+Top_recall,median,xTrimoPGLM-1B-CLM,0.17,81,0.0,36,91,17,91,False
+Top_recall,median,xTrimoPGLM-3B-CLM,0.135,92,0.0,86,96,80,97,False
+Top_recall,median,xTrimoPGLM-7B-CLM,0.111,97,0.0,93,97,92,97,False
+Top_recall,median,xTrimoPGLM-100B-int4,0.186,61,0.0,9,91,3,91,False
+Top_recall,median,Progen3 112m,0.156,90,0.0,62,92,33,93,False
+Top_recall,median,Progen3 219m,0.161,85,0.0,55,91,30,92,False
+Top_recall,median,Progen3 339m,0.177,75,0.0,19,91,9,91,False
+Top_recall,median,Progen3 762m,0.186,61,0.0,7,89,2,91,False
+Top_recall,median,Progen3 1B,0.19,53,0.0,3,88,1,91,False
+Top_recall,median,Progen3 3B,0.192,48,0.0,4,83,2,89,False
+Top_recall,median,AIDO Protein-RAG (16B),0.217,4,0.15275,1,69,1,82,True
+Top_recall,median,Protriever,0.21,18,0.0335,1,75,1,86,True

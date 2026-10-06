@@ -554,6 +554,26 @@
         "mean_width_top10": 13.7518
       },
       {
+        "scenario": "calibrated",
+        "method": "marginal_stepdown_t",
+        "mean_coverage": 0.99853125,
+        "min_model_coverage": 0.982,
+        "mean_coverage_lenient": 0.99853125,
+        "joint_coverage": 0.917,
+        "mean_width": 26.902572916666667,
+        "mean_width_top10": 9.83
+      },
+      {
+        "scenario": "calibrated",
+        "method": "simultaneous_stepdown_t",
+        "mean_coverage": 1.0,
+        "min_model_coverage": 1.0,
+        "mean_coverage_lenient": 1.0,
+        "joint_coverage": 1.0,
+        "mean_width": 42.1595,
+        "mean_width_top10": 23.3741
+      },
+      {
         "scenario": "calibrated_gaussian",
         "method": "percentile",
         "mean_coverage": 0.9610520833333334,
@@ -602,6 +622,26 @@
         "joint_coverage": 0.998,
         "mean_width": 30.563854166666665,
         "mean_width_top10": 14.0933
+      },
+      {
+        "scenario": "calibrated_gaussian",
+        "method": "marginal_stepdown_t",
+        "mean_coverage": 0.9986458333333333,
+        "min_model_coverage": 0.977,
+        "mean_coverage_lenient": 0.9986458333333333,
+        "joint_coverage": 0.918,
+        "mean_width": 25.382458333333332,
+        "mean_width_top10": 9.3332
+      },
+      {
+        "scenario": "calibrated_gaussian",
+        "method": "simultaneous_stepdown_t",
+        "mean_coverage": 0.9999895833333333,
+        "min_model_coverage": 0.999,
+        "mean_coverage_lenient": 0.9999895833333333,
+        "joint_coverage": 0.999,
+        "mean_width": 35.72891666666667,
+        "mean_width_top10": 17.8484
       },
       {
         "scenario": "exact_ties",
@@ -654,6 +694,26 @@
         "mean_width_top10": 13.816
       },
       {
+        "scenario": "exact_ties",
+        "method": "marginal_stepdown_t",
+        "mean_coverage": 0.99475,
+        "min_model_coverage": 0.94,
+        "mean_coverage_lenient": 0.99846875,
+        "joint_coverage": 0.788,
+        "mean_width": 25.855864583333332,
+        "mean_width_top10": 10.1907
+      },
+      {
+        "scenario": "exact_ties",
+        "method": "simultaneous_stepdown_t",
+        "mean_coverage": 1.0,
+        "min_model_coverage": 1.0,
+        "mean_coverage_lenient": 1.0,
+        "joint_coverage": 1.0,
+        "mean_width": 40.127291666666665,
+        "mean_width_top10": 21.7807
+      },
+      {
         "scenario": "near_ties",
         "method": "percentile",
         "mean_coverage": 0.9576458333333333,
@@ -704,6 +764,26 @@
         "mean_width_top10": 13.3879
       },
       {
+        "scenario": "near_ties",
+        "method": "marginal_stepdown_t",
+        "mean_coverage": 0.9986875,
+        "min_model_coverage": 0.975,
+        "mean_coverage_lenient": 0.9986875,
+        "joint_coverage": 0.918,
+        "mean_width": 26.200375,
+        "mean_width_top10": 9.5986
+      },
+      {
+        "scenario": "near_ties",
+        "method": "simultaneous_stepdown_t",
+        "mean_coverage": 1.0,
+        "min_model_coverage": 1.0,
+        "mean_coverage_lenient": 1.0,
+        "joint_coverage": 1.0,
+        "mean_width": 40.9695,
+        "mean_width_top10": 22.2262
+      },
+      {
         "scenario": "separated",
         "method": "percentile",
         "mean_coverage": 0.976125,
@@ -752,6 +832,26 @@
         "joint_coverage": 0.99,
         "mean_width": 9.204083333333333,
         "mean_width_top10": 3.2957
+      },
+      {
+        "scenario": "separated",
+        "method": "marginal_stepdown_t",
+        "mean_coverage": 0.9976041666666666,
+        "min_model_coverage": 0.98,
+        "mean_coverage_lenient": 0.9976041666666666,
+        "joint_coverage": 0.861,
+        "mean_width": 7.575166666666667,
+        "mean_width_top10": 2.1625
+      },
+      {
+        "scenario": "separated",
+        "method": "simultaneous_stepdown_t",
+        "mean_coverage": 1.0,
+        "min_model_coverage": 1.0,
+        "mean_coverage_lenient": 1.0,
+        "joint_coverage": 1.0,
+        "mean_width": 12.557541666666667,
+        "mean_width_top10": 4.5493
       }
     ],
     "best_set": [
@@ -809,6 +909,566 @@
         "naive_best_set_coverage": 0.977,
         "naive_best_set_mean_size": 1.944,
         "mean_se_top_gap": 0.005234336621732432
+      }
+    ]
+  },
+  "power": {
+    "median_pair": "AIDO Protein-RAG (16B) vs PoET (200M)",
+    "size_at_delta0": {
+      "0.25x": 0.0935,
+      "0.5x": 0.0678,
+      "1x": 0.0595,
+      "2x": 0.0548,
+      "4x": 0.049
+    },
+    "max_abs_sim_minus_analytic": 0.051907122833274505,
+    "units_for_0.005": {
+      "median": 3118.9297780747443,
+      "min": 1808.1673079716065,
+      "max": 5829.890258901215
+    },
+    "units_for_0.01": {
+      "median": 779.7324445186861,
+      "min": 452.04182699290163,
+      "max": 1457.4725647253038
+    },
+    "assays_for_0.005_median": 3384.0388092110975,
+    "assays_for_0.01_median": 846.0097023027744,
+    "mdd_now": {
+      "median": 0.01974503024245876,
+      "min": 0.01503399193482725,
+      "max": 0.026995115898300046
+    },
+    "per_pair": [
+      {
+        "pair": "AIDO Protein-RAG (16B) vs VenusREM",
+        "se": 0.0053662447380249684,
+        "units_now": 200,
+        "mdd_now": 0.01503399193482725,
+        "units_for_0.005": 1808.1673079716065,
+        "assays_for_0.005": 1961.861529149193,
+        "x_today_for_0.005": 9.040836539858033,
+        "units_for_0.01": 452.04182699290163,
+        "assays_for_0.01": 490.46538228729827,
+        "x_today_for_0.01": 2.260209134964508
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs ProSST (K=2048)",
+        "se": 0.006475134870958553,
+        "units_now": 200,
+        "mdd_now": 0.018140642139765305,
+        "units_for_0.005": 2632.66317794423,
+        "assays_for_0.005": 2856.4395480694893,
+        "x_today_for_0.005": 13.16331588972115,
+        "units_for_0.01": 658.1657944860575,
+        "assays_for_0.01": 714.1098870173723,
+        "x_today_for_0.01": 3.2908289724302877
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs ProSST (K=4096)",
+        "se": 0.009635657599765191,
+        "units_now": 200,
+        "mdd_now": 0.026995115898300046,
+        "units_for_0.005": 5829.890258901215,
+        "assays_for_0.005": 6325.430930907818,
+        "x_today_for_0.005": 29.149451294506076,
+        "units_for_0.01": 1457.4725647253038,
+        "assays_for_0.01": 1581.3577327269545,
+        "x_today_for_0.01": 7.287362823626519
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs S3F-MSA",
+        "se": 0.007047189843297039,
+        "units_now": 200,
+        "mdd_now": 0.01974330289421683,
+        "units_for_0.005": 3118.3840733823254,
+        "assays_for_0.005": 3383.446719619823,
+        "x_today_for_0.005": 15.591920366911626,
+        "units_for_0.01": 779.5960183455813,
+        "assays_for_0.01": 845.8616799049557,
+        "x_today_for_0.01": 3.8979800917279066
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs S2F-MSA",
+        "se": 0.007598036306433886,
+        "units_now": 200,
+        "mdd_now": 0.02128654620279083,
+        "units_for_0.005": 3624.936393948389,
+        "assays_for_0.005": 3933.055987434002,
+        "x_today_for_0.005": 18.124681969741946,
+        "units_for_0.01": 906.2340984870973,
+        "assays_for_0.01": 983.2639968585005,
+        "x_today_for_0.01": 4.5311704924354865
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs ProSST (K=1024)",
+        "se": 0.009336091012192441,
+        "units_now": 200,
+        "mdd_now": 0.026155854574715684,
+        "units_for_0.005": 5473.029828269403,
+        "assays_for_0.005": 5938.237363672302,
+        "x_today_for_0.005": 27.365149141347015,
+        "units_for_0.01": 1368.2574570673507,
+        "assays_for_0.01": 1484.5593409180756,
+        "x_today_for_0.01": 6.841287285336754
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs ESCOTT",
+        "se": 0.005387470935977801,
+        "units_now": 200,
+        "mdd_now": 0.015093458937248644,
+        "units_for_0.005": 1822.5000215232874,
+        "assays_for_0.005": 1977.4125233527668,
+        "x_today_for_0.005": 9.112500107616437,
+        "units_for_0.01": 455.62500538082185,
+        "assays_for_0.01": 494.3531308381917,
+        "x_today_for_0.01": 2.2781250269041093
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs ProSST (K=512)",
+        "se": 0.008821567296400948,
+        "units_now": 200,
+        "mdd_now": 0.02471437253818568,
+        "units_for_0.005": 4886.401679649812,
+        "assays_for_0.005": 5301.745822420045,
+        "x_today_for_0.005": 24.43200839824906,
+        "units_for_0.01": 1221.600419912453,
+        "assays_for_0.01": 1325.4364556050114,
+        "x_today_for_0.01": 6.108002099562265
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs S3F",
+        "se": 0.005794849895280447,
+        "units_now": 200,
+        "mdd_now": 0.016234765807801185,
+        "units_for_0.005": 2108.540966673204,
+        "assays_for_0.005": 2287.7669488404263,
+        "x_today_for_0.005": 10.54270483336602,
+        "units_for_0.01": 527.135241668301,
+        "assays_for_0.01": 571.9417372101066,
+        "x_today_for_0.01": 2.635676208341505
+      },
+      {
+        "pair": "AIDO Protein-RAG (16B) vs PoET (200M)",
+        "se": 0.007048422965338634,
+        "units_now": 200,
+        "mdd_now": 0.019746757590700693,
+        "units_for_0.005": 3119.475482767163,
+        "assays_for_0.005": 3384.630898802372,
+        "x_today_for_0.005": 15.597377413835815,
+        "units_for_0.01": 779.8688706917908,
+        "assays_for_0.01": 846.157724700593,
+        "x_today_for_0.01": 3.899344353458954
+      }
+    ]
+  },
+  "robustness": {
+    "n_boot": 4000,
+    "reproduction_other_metrics": [
+      {
+        "metric": "Spearman",
+        "average_exact": 97,
+        "rank_exact": 97,
+        "n_models": 97
+      },
+      {
+        "metric": "AUC",
+        "average_exact": 97,
+        "rank_exact": 97,
+        "n_models": 97
+      },
+      {
+        "metric": "MCC",
+        "average_exact": 97,
+        "rank_exact": 97,
+        "n_models": 97
+      },
+      {
+        "metric": "NDCG",
+        "average_exact": 97,
+        "rank_exact": 97,
+        "n_models": 97
+      },
+      {
+        "metric": "Top_recall",
+        "average_exact": 97,
+        "rank_exact": 97,
+        "n_models": 97
+      }
+    ],
+    "uniprot_level_average_quirk": {
+      "published_matches_duplicated_merge": 97,
+      "published_matches_equal_protein_weights": 9,
+      "max_abs_diff_vs_equal_weights": 0.023604121052887617
+    },
+    "possible_top1_union_mean_schemes": [
+      "AIDO Protein-RAG (16B)",
+      "ESM3 open (1.4B)",
+      "ProSST (K=1024)",
+      "ProSST (K=2048)",
+      "ProSST (K=4096)",
+      "ProtSSN (ensemble)",
+      "ProtSSN (k=20, h=1280)",
+      "Protriever",
+      "S2F-MSA",
+      "S3F",
+      "S3F-MSA",
+      "SaProt (650M)",
+      "TranceptEVE L",
+      "VenusREM"
+    ],
+    "leaders": {
+      "Spearman/proteingym": "AIDO Protein-RAG (16B)",
+      "Spearman/function_group_mean": "VenusREM",
+      "Spearman/uniprot_weighted": "AIDO Protein-RAG (16B)",
+      "Spearman/flat_mean": "AIDO Protein-RAG (16B)",
+      "Spearman/median": "VenusREM",
+      "AUC/proteingym": "AIDO Protein-RAG (16B)",
+      "AUC/function_group_mean": "AIDO Protein-RAG (16B)",
+      "AUC/uniprot_weighted": "AIDO Protein-RAG (16B)",
+      "AUC/flat_mean": "AIDO Protein-RAG (16B)",
+      "AUC/median": "AIDO Protein-RAG (16B)",
+      "MCC/proteingym": "AIDO Protein-RAG (16B)",
+      "MCC/function_group_mean": "VenusREM",
+      "MCC/uniprot_weighted": "AIDO Protein-RAG (16B)",
+      "MCC/flat_mean": "AIDO Protein-RAG (16B)",
+      "MCC/median": "VenusREM",
+      "NDCG/proteingym": "S3F-MSA",
+      "NDCG/function_group_mean": "S3F-MSA",
+      "NDCG/uniprot_weighted": "S3F-MSA",
+      "NDCG/flat_mean": "S3F-MSA",
+      "NDCG/median": "AIDO Protein-RAG (16B)",
+      "Top_recall/proteingym": "VenusREM",
+      "Top_recall/function_group_mean": "VenusREM",
+      "Top_recall/uniprot_weighted": "VenusREM",
+      "Top_recall/flat_mean": "S3F-MSA",
+      "Top_recall/median": "S2F-MSA"
+    },
+    "summary": [
+      {
+        "metric": "Spearman",
+        "scheme": "proteingym",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.5075,
+        "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 3,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); ProSST (K=4096); S3F-MSA; S2F-MSA; ProSST (K=1024); Protriever; ESCOTT; ProSST (K=512)",
+        "overlap_with_published_top10": 10,
+        "kendall_tau_vs_published": 1.0,
+        "max_rank_shift_published_top10": 0,
+        "mean_marginal_width_top10": 10.8
+      },
+      {
+        "metric": "Spearman",
+        "scheme": "function_group_mean",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.62675,
+        "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 3,
+        "top10": "VenusREM; AIDO Protein-RAG (16B); ProSST (K=2048); ProSST (K=4096); S3F-MSA; ProSST (K=1024); S2F-MSA; Protriever; ProSST (K=512); ESCOTT",
+        "overlap_with_published_top10": 10,
+        "kendall_tau_vs_published": 0.9768041237113404,
+        "max_rank_shift_published_top10": 1,
+        "mean_marginal_width_top10": 10.7
+      },
+      {
+        "metric": "Spearman",
+        "scheme": "uniprot_weighted",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.92475,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; ProSST (K=4096); S2F-MSA; ProSST (K=1024); ESCOTT; Protriever; ESM3 open (1.4B)",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9566151202749144,
+        "max_rank_shift_published_top10": 4,
+        "mean_marginal_width_top10": 9.7
+      },
+      {
+        "metric": "Spearman",
+        "scheme": "flat_mean",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.8755,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; ProSST (K=4096); S2F-MSA; ProSST (K=1024); Protriever; ESCOTT; PoET (200M)",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9570446735395192,
+        "max_rank_shift_published_top10": 1,
+        "mean_marginal_width_top10": 9.6
+      },
+      {
+        "metric": "Spearman",
+        "scheme": "median",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.6,
+        "best_set": "SaProt (650M); ProSST (K=128); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S2F; S2F-MSA; S3F; S3F-MSA; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 12,
+        "top10": "VenusREM; AIDO Protein-RAG (16B); ProSST (K=4096); ProSST (K=1024); ProSST (K=2048); S3F-MSA; S2F-MSA; Protriever; S3F; ProSST (K=128)",
+        "overlap_with_published_top10": 8,
+        "kendall_tau_vs_published": 0.8714650473619957,
+        "max_rank_shift_published_top10": 3,
+        "mean_marginal_width_top10": 30.6
+      },
+      {
+        "metric": "AUC",
+        "scheme": "proteingym",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.663,
+        "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 3,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); ProSST (K=4096); S3F-MSA; S2F-MSA; ProSST (K=1024); Protriever; ESCOTT; PoET (200M)",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9707903780068731,
+        "max_rank_shift_published_top10": 1,
+        "mean_marginal_width_top10": 10.4
+      },
+      {
+        "metric": "AUC",
+        "scheme": "function_group_mean",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.5355,
+        "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 3,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); ProSST (K=4096); S3F-MSA; S2F-MSA; ProSST (K=1024); Protriever; ESCOTT; ProSST (K=512)",
+        "overlap_with_published_top10": 10,
+        "kendall_tau_vs_published": 0.9561855670103095,
+        "max_rank_shift_published_top10": 0,
+        "mean_marginal_width_top10": 10.7
+      },
+      {
+        "metric": "AUC",
+        "scheme": "uniprot_weighted",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.973,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; ProSST (K=4096); S2F-MSA; ESCOTT; Protriever; ProSST (K=1024); PoET (200M)",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9295532646048111,
+        "max_rank_shift_published_top10": 5,
+        "mean_marginal_width_top10": 9.9
+      },
+      {
+        "metric": "AUC",
+        "scheme": "flat_mean",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.94925,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; ProSST (K=4096); S2F-MSA; ESCOTT; Protriever; ProSST (K=1024); PoET (200M)",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9317010309278352,
+        "max_rank_shift_published_top10": 4,
+        "mean_marginal_width_top10": 9.6
+      },
+      {
+        "metric": "AUC",
+        "scheme": "median",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.77075,
+        "best_set": "ProSST (K=512); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S2F-MSA; S3F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B)",
+        "best_set_size": 9,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); ProSST (K=4096); ProSST (K=1024); S3F-MSA; S2F-MSA; Protriever; SaProt (650M); PoET (200M)",
+        "overlap_with_published_top10": 8,
+        "kendall_tau_vs_published": 0.8826656770789579,
+        "max_rank_shift_published_top10": 2,
+        "mean_marginal_width_top10": 34.7
+      },
+      {
+        "metric": "MCC",
+        "scheme": "proteingym",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.60675,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; ProSST (K=4096); S2F-MSA; Protriever; ProSST (K=1024); S3F; ESCOTT",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9561855670103095,
+        "max_rank_shift_published_top10": 7,
+        "mean_marginal_width_top10": 12.6
+      },
+      {
+        "metric": "MCC",
+        "scheme": "function_group_mean",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.574,
+        "best_set": "ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 3,
+        "top10": "VenusREM; AIDO Protein-RAG (16B); ProSST (K=2048); ProSST (K=4096); S3F-MSA; S2F-MSA; ProSST (K=1024); Protriever; S3F; ESCOTT",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9501718213058422,
+        "max_rank_shift_published_top10": 4,
+        "mean_marginal_width_top10": 12.6
+      },
+      {
+        "metric": "MCC",
+        "scheme": "uniprot_weighted",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.94625,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; ProSST (K=4096); S2F-MSA; ESCOTT; Protriever; ProSST (K=1024); RSALOR",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9243986254295534,
+        "max_rank_shift_published_top10": 5,
+        "mean_marginal_width_top10": 11.9
+      },
+      {
+        "metric": "MCC",
+        "scheme": "flat_mean",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.8815,
+        "best_set": "VenusREM; AIDO Protein-RAG (16B)",
+        "best_set_size": 2,
+        "top10": "AIDO Protein-RAG (16B); VenusREM; ProSST (K=2048); S3F-MSA; S2F-MSA; ProSST (K=4096); Protriever; ESCOTT; ProSST (K=1024); PoET (200M)",
+        "overlap_with_published_top10": 9,
+        "kendall_tau_vs_published": 0.9239690721649486,
+        "max_rank_shift_published_top10": 5,
+        "mean_marginal_width_top10": 12.1
+      },
+      {
+        "metric": "MCC",
+        "scheme": "median",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.676,
+        "best_set": "VespaG; SaProt (650M); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); ESCOTT; VenusREM; S2F-MSA; S3F-MSA; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 11,
+        "top10": "VenusREM; AIDO Protein-RAG (16B); ProSST (K=2048); S3F-MSA; S2F-MSA; ProSST (K=4096); Protriever; ProSST (K=1024); SaProt (650M); VespaG",
+        "overlap_with_published_top10": 8,
+        "kendall_tau_vs_published": 0.846680727814677,
+        "max_rank_shift_published_top10": 16,
+        "mean_marginal_width_top10": 35.4
+      },
+      {
+        "metric": "NDCG",
+        "scheme": "proteingym",
+        "top1": "S3F-MSA",
+        "top1_p_rank1": 0.603,
+        "best_set": "TranceptEVE L; ProSST (K=4096); S2F-MSA; S3F-MSA; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 6,
+        "top10": "S3F-MSA; S2F-MSA; AIDO Protein-RAG (16B); Protriever; TranceptEVE L; TranceptEVE M; TranceptEVE S; PoET (200M); EVE (ensemble); EVE (single)",
+        "overlap_with_published_top10": 4,
+        "kendall_tau_vs_published": 0.6696735395189005,
+        "max_rank_shift_published_top10": 47,
+        "mean_marginal_width_top10": 19.0
+      },
+      {
+        "metric": "NDCG",
+        "scheme": "function_group_mean",
+        "top1": "S3F-MSA",
+        "top1_p_rank1": 0.469,
+        "best_set": "TranceptEVE L; ProSST (K=4096); S2F-MSA; S3F-MSA; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 6,
+        "top10": "S3F-MSA; AIDO Protein-RAG (16B); S2F-MSA; Protriever; TranceptEVE L; PoET (200M); TranceptEVE M; TranceptEVE S; EVE (ensemble); EVE (single)",
+        "overlap_with_published_top10": 4,
+        "kendall_tau_vs_published": 0.7006013745704469,
+        "max_rank_shift_published_top10": 46,
+        "mean_marginal_width_top10": 23.9
+      },
+      {
+        "metric": "NDCG",
+        "scheme": "uniprot_weighted",
+        "top1": "S3F-MSA",
+        "top1_p_rank1": 0.53675,
+        "best_set": "S2F-MSA; S3F-MSA; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 4,
+        "top10": "S3F-MSA; AIDO Protein-RAG (16B); S2F-MSA; Protriever; TranceptEVE L; PoET (200M); TranceptEVE M; TranceptEVE S; EVE (ensemble); EVE (single)",
+        "overlap_with_published_top10": 4,
+        "kendall_tau_vs_published": 0.6494845360824743,
+        "max_rank_shift_published_top10": 45,
+        "mean_marginal_width_top10": 12.8
+      },
+      {
+        "metric": "NDCG",
+        "scheme": "flat_mean",
+        "top1": "S3F-MSA",
+        "top1_p_rank1": 0.593,
+        "best_set": "S2F-MSA; S3F-MSA; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 4,
+        "top10": "S3F-MSA; AIDO Protein-RAG (16B); S2F-MSA; Protriever; TranceptEVE L; PoET (200M); TranceptEVE M; TranceptEVE S; EVE (ensemble); EVE (single)",
+        "overlap_with_published_top10": 4,
+        "kendall_tau_vs_published": 0.6585051546391754,
+        "max_rank_shift_published_top10": 50,
+        "mean_marginal_width_top10": 13.7
+      },
+      {
+        "metric": "NDCG",
+        "scheme": "median",
+        "top1": "AIDO Protein-RAG (16B)",
+        "top1_p_rank1": 0.437,
+        "best_set": "EVmutation; DeepSequence (single); DeepSequence (ensemble); EVE (single); EVE (ensemble); MSA Transformer (single); MSA Transformer (ensemble); ESM-1b; ESM2 (3B); Progen2 XL; GEMME; VESPA; VespaG; Tranception L; TranceptEVE S; TranceptEVE M; TranceptEVE L; MIF-ST; ProtSSN (k=10, h=512); ProtSSN (k=20, h=512); ProtSSN (k=20, h=1280); ProtSSN (k=30, h=768); ProtSSN (ensemble); SaProt (650M); PoET (200M); ProSST (K=2048); ProSST (K=4096); ESCOTT; VenusREM; RSALOR; S2F-MSA; S3F; S3F-MSA; SiteRM; ESM3 open (1.4B); ESM-C (600M); xTrimoPGLM-3B-MLM; AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 39,
+        "top10": "AIDO Protein-RAG (16B); Protriever; PoET (200M); S3F-MSA; TranceptEVE L; S2F-MSA; VespaG; SaProt (650M); VESPA; VenusREM",
+        "overlap_with_published_top10": 5,
+        "kendall_tau_vs_published": 0.6819612650901197,
+        "max_rank_shift_published_top10": 56,
+        "mean_marginal_width_top10": 61.8
+      },
+      {
+        "metric": "Top_recall",
+        "scheme": "proteingym",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.461,
+        "best_set": "SaProt (650M); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S2F-MSA; S3F; S3F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 11,
+        "top10": "VenusREM; S3F-MSA; ESM3 open (1.4B); S2F-MSA; AIDO Protein-RAG (16B); ProSST (K=2048); S3F; SaProt (650M); ProSST (K=4096); TranceptEVE S",
+        "overlap_with_published_top10": 6,
+        "kendall_tau_vs_published": 0.7744845360824744,
+        "max_rank_shift_published_top10": 34,
+        "mean_marginal_width_top10": 34.4
+      },
+      {
+        "metric": "Top_recall",
+        "scheme": "function_group_mean",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.4635,
+        "best_set": "SaProt (650M); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S2F-MSA; S3F; S3F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 11,
+        "top10": "VenusREM; S3F-MSA; ESM3 open (1.4B); S2F-MSA; AIDO Protein-RAG (16B); ProSST (K=2048); ProSST (K=4096); S3F; ProSST (K=1024); SaProt (650M)",
+        "overlap_with_published_top10": 7,
+        "kendall_tau_vs_published": 0.7938144329896908,
+        "max_rank_shift_published_top10": 37,
+        "mean_marginal_width_top10": 35.9
+      },
+      {
+        "metric": "Top_recall",
+        "scheme": "uniprot_weighted",
+        "top1": "VenusREM",
+        "top1_p_rank1": 0.56675,
+        "best_set": "ProtSSN (ensemble); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S3F; S3F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B)",
+        "best_set_size": 9,
+        "top10": "VenusREM; S3F-MSA; ESM3 open (1.4B); S2F-MSA; AIDO Protein-RAG (16B); ProSST (K=2048); ProSST (K=4096); S3F; ProtSSN (ensemble); TranceptEVE S",
+        "overlap_with_published_top10": 6,
+        "kendall_tau_vs_published": 0.7564432989690723,
+        "max_rank_shift_published_top10": 35,
+        "mean_marginal_width_top10": 30.3
+      },
+      {
+        "metric": "Top_recall",
+        "scheme": "flat_mean",
+        "top1": "S3F-MSA",
+        "top1_p_rank1": 0.50325,
+        "best_set": "ProtSSN (k=20, h=1280); ProtSSN (ensemble); SaProt (650M); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S3F; S3F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 12,
+        "top10": "S3F-MSA; VenusREM; S2F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B); ProSST (K=2048); ProSST (K=4096); ProtSSN (ensemble); Protriever; S3F",
+        "overlap_with_published_top10": 7,
+        "kendall_tau_vs_published": 0.7744845360824744,
+        "max_rank_shift_published_top10": 35,
+        "mean_marginal_width_top10": 33.6
+      },
+      {
+        "metric": "Top_recall",
+        "scheme": "median",
+        "top1": "S2F-MSA",
+        "top1_p_rank1": 0.22,
+        "best_set": "EVmutation; DeepSequence (single); DeepSequence (ensemble); EVE (single); EVE (ensemble); MSA Transformer (ensemble); TranceptEVE S; TranceptEVE M; TranceptEVE L; MIF-ST; ProtSSN (k=10, h=768); ProtSSN (k=10, h=1280); ProtSSN (k=20, h=512); ProtSSN (k=20, h=768); ProtSSN (k=20, h=1280); ProtSSN (k=30, h=512); ProtSSN (k=30, h=768); ProtSSN (k=30, h=1280); ProtSSN (ensemble); SaProt (650M); PoET (200M); ProSST (K=1024); ProSST (K=2048); ProSST (K=4096); VenusREM; S2F; S2F-MSA; S3F; S3F-MSA; ESM3 open (1.4B); AIDO Protein-RAG (16B); Protriever",
+        "best_set_size": 32,
+        "top10": "S2F-MSA; S3F-MSA; S3F; EVE (single); AIDO Protein-RAG (16B); EVE (ensemble); ProtSSN (k=10, h=1280); TranceptEVE L; MIF-ST; ESM3 open (1.4B)",
+        "overlap_with_published_top10": 3,
+        "kendall_tau_vs_published": 0.6818322628789171,
+        "max_rank_shift_published_top10": 38,
+        "mean_marginal_width_top10": 57.2
       }
     ]
   }
