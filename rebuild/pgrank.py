@@ -11,14 +11,16 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
-DMS_FILE = "DMS_substitutions_Spearman_DMS_level.csv"
-SUMMARY_FILE = "Summary_performance_DMS_substitutions_Spearman.csv"
+METRICS = ["Spearman", "AUC", "MCC", "NDCG", "Top_recall"]
 
 
-def load(data_dir):
-    """Return (assay-level scores, published summary, model names in published order)."""
-    d = pd.read_csv(f"{data_dir}/{DMS_FILE}")
-    s = pd.read_csv(f"{data_dir}/{SUMMARY_FILE}")
+def load(data_dir, metric="Spearman"):
+    """Return (assay-level scores, published summary, model names in published order).
+
+    The published leaderboard score for `metric` is the summary's `Average_{metric}` column.
+    """
+    d = pd.read_csv(f"{data_dir}/DMS_substitutions_{metric}_DMS_level.csv")
+    s = pd.read_csv(f"{data_dir}/Summary_performance_DMS_substitutions_{metric}.csv")
     return d, s, list(s.Model_name)
 
 
