@@ -48,7 +48,7 @@ Smoke test, about 3 minutes and no download. It rebuilds the headline figure and
 uv sync && uv run pgnoise figure && uv run pgnoise numbers && uv run ruff check . && uv run pytest -q
 ```
 
-`pytest` skips the tests that need `data/` or torch. CI runs the same ruff and pytest steps on pushes and pull requests.
+`pytest` skips the tests that need `data/` or torch. CI runs the same ruff and pytest steps on pushes to `main` or `cursor/**` branches, and on pull requests to `main`.
 
 ### Full pipeline (downloads ProteinGym data)
 
