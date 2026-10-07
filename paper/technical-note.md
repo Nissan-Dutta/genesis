@@ -3,7 +3,7 @@
 **Power, rank uncertainty and assay-design sensitivity on the zero-shot DMS substitution benchmark**
 
 Nissan Dutta. Technical note, draft of October 2026. Code and data provenance:
-<https://cursor.com/codebase/nissandutta/genesis>.
+<https://github.com/Nissan-Dutta/genesis>.
 The LaTeX version (`paper/technical-note.tex`) compiles to the 2-page PDF. Every number below is generated from
 `results/summary.json`; [`numbers.md`](numbers.md) maps each one to its source.
 
