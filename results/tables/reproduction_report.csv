@@ -1,0 +1,16 @@
+column,n_models,n_exact_3dp,max_abs_diff
+Average_Spearman,97,97,0.0
+Bootstrap_standard_error_Spearman,97,91,0.0010000000000000009
+Function_Activity,97,97,0.0
+Function_Binding,97,95,0.0010000000000000009
+Function_Expression,97,96,0.0009999999999999454
+Function_OrganismalFitness,97,97,0.0
+Function_Stability,97,96,0.0010000000000000009
+High_MSA_depth,97,97,0.0
+Low_MSA_depth,97,97,0.0
+Medium_MSA_depth,97,97,0.0
+Taxa_Human,97,97,0.0
+Taxa_Other_Eukaryote,97,97,0.0
+Taxa_Prokaryote,97,97,0.0
+Taxa_Virus,97,97,0.0
+rank,97,97,0.0

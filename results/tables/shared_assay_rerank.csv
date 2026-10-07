@@ -1,0 +1,4 @@
+subset,n_assays,top1,best_set,n_possible_1
+published (all assays),217,AIDO Protein-RAG (16B),AIDO Protein-RAG (16B); VenusREM; ProSST (K=4096),3
+all 200 assays scored by every model,200,VenusREM,ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B),3
+200 assays scored by published top 10,200,VenusREM,ProSST (K=4096); VenusREM; AIDO Protein-RAG (16B),3

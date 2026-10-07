@@ -1,0 +1,150 @@
+\documentclass[9pt,twocolumn]{extarticle}
+\usepackage[a4paper,margin=1.55cm,columnsep=0.55cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[font=footnotesize,labelfont=bf,skip=3pt]{caption}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{5pt plus 2pt}{2pt}
+\setlist{nosep,leftmargin=*}
+\setlength{\bibsep}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\bibfont}{\scriptsize}
+
+\input{numbers.tex}
+
+\title{\vspace{-1.2cm}\bfseries\large Can ProteinGym scores support a model decision?\\
+\normalsize Power, rank uncertainty and assay-design sensitivity on the zero-shot DMS benchmark}
+\author{Nissan Dutta\\\small Technical note, draft of October 2026. Code and data provenance:
+\url{https://cursor.com/codebase/nissandutta/genesis}}
+\date{\vspace{-0.9cm}}
+
+\begin{document}
+\maketitle
+
+\noindent Decisions about AI models in biology rest on evaluation scores. On the field's main public protein benchmark,
+the smallest gain reliably detectable at the top is about \mddAtTop{} (80\% power), larger than the gap between the
+published \#1 and \#2 and comparable to the gap to \#3. Which model ranks \#1 also depends on which kinds of lab tests
+are counted---a design choice, not a property of the models. We ask how large an evaluation must be before its numbers
+can support a decision.
+
+\noindent\textbf{Summary.} At commit \pgCommit{}, \nModels{} models and \nAssays{} assays, today's benchmark could
+support claims about gains of roughly \mddMed{} Spearman or more over the leader (\mddMin--\mddMax{} across ten pairs);
+$\Delta=0.01$ would need about \assaysTenMed{} assays (\timesTenMed$\times$ today). Rank intervals leave \nBestSet{}
+models not ruled out as \#1; only \nNeighbourSig{} of 19 adjacent top-20 pairs differ significantly. Shared-assay
+re-ranking makes \topAllCommon{} \#1 on \nCommonAssays{} assays (vs \topPublished{} on all assays). We treat leaderboard
+scores as a \emph{hypothesis} of preferability for mutation-effect prediction, not evidence of dangerous capability.
+
+\section{Question}
+ProteinGym~\cite{notin2023proteingym} reports bootstrap SEs of each model's gap to \#1, not rank uncertainty.
+Neuhof and Benjamini~\cite{neuhof2026rank} give rank intervals for TabArena and MMLU; we apply that style of max-$t$
+inference and power analysis to ProteinGym's nested structure. Woolley et al.~\cite{woolley2026overestimating} warn
+that aggregates hide dataset-level variance; Livesey and Marsh~\cite{livesey2023updated,livesey2025variant} bootstrap
+rank significance on their own DMS benchmarks. To our knowledge, this is the first simultaneous rank-interval and
+power analysis of the ProteinGym DMS leaderboard with assay-subset sensitivity; we do not claim the first rank
+intervals ever~\cite{neuhof2026rank,chiang2024chatbot}.
+
+\section{Data and version}
+We use ProteinGym GitHub commit \pgCommit{} (25 March 2026): release v1.3 plus AIDO Protein-RAG and Protriever,
+\nModels{} models and \nAssays{} assays. As in ProteinGym's script, assay scores are averaged within
+(UniProt ID, function) units (\nUnits{} units), units within five function groups (Activity, Binding, Expression,
+OrganismalFitness, Stability), and the score is the mean of the five group means. We reproduce \nExactAverage{}/\nModels{} averages and \nExactRank{}/\nModels{} ranks; \nExactSE{}/\nModels{} SEs match
+at 3\,dp. We report overall statistics only and do not stratify by organism or viral proteins, as a
+biosecurity-adjacent judgment rather than a data limitation.
+
+\section{Methods}
+\textbf{Estimand.} Let $\theta_m$ be model $m$'s ProteinGym aggregate in the limit of infinitely many units per
+function group, treating the benchmark's units as a sample from each group. Its rank is
+$r_m = 1 + \#\{k:\theta_k>\theta_m\}$. Our intervals quantify the uncertainty due to which proteins happen to be in
+the benchmark. They are not prediction intervals for a model's rank on a \emph{new} assay, which is Neuhof and
+Benjamini's target and is much wider.
+
+\textbf{Bootstrap.} Exactly as for ProteinGym's error bars, units are resampled with replacement within function
+groups ($B=\nBoot$), a stratified bootstrap in the sense of~\cite{agarwal2021deep}. Missing scores are skipped, as in
+ProteinGym.
+
+\textbf{Rank intervals.} Following Mogstad et al.~\cite{mogstad2024inference}, let
+$T_{jk}=(\hat\theta_j-\hat\theta_k-\theta_j+\theta_k)/\widehat{\mathrm{se}}_{jk}$. The \emph{marginal} interval
+for model $j$ takes $c_j$, the 95\% bootstrap quantile of $\max_k|T^*_{jk}|$, and sets the lower bound to
+$1+\#\{k:\hat\theta_k-\hat\theta_j>c_j\widehat{\mathrm{se}}_{jk}\}$ and the upper bound to
+$p-\#\{k:\hat\theta_j-\hat\theta_k>c_j\widehat{\mathrm{se}}_{jk}\}$; it covers $r_j$ with probability at least 95\%
+for each $j$. The \emph{simultaneous} interval uses one critical value from $\max_{j,k}|T^*_{jk}|$ and covers all
+ranks jointly; its step-down version~\cite{romano2005exact} recomputes the critical value over the comparisons not
+yet rejected. The 95\% best-model set keeps $j$ unless some model beats it at a one-sided max-$t$ critical value, so
+it contains the true \#1 with probability at least 95\%. We report marginal single-step and simultaneous step-down
+intervals. The percentile interval of bootstrap ranks is shown for contrast; it has no guarantee and fails near
+ties~\cite{hall2009bootstrap,almohamad2022simultaneous}. Adjacent pairs in the top 20 get paired bootstrap $z$-tests
+with Holm's correction~\cite{holm1979simple}.
+
+\textbf{Power.} For \#1 and each of the next ten complete-coverage models we compute the per-unit paired
+differences and the standard error $\widehat{\mathrm{se}}_0$ of their group-balanced mean. A true gain $\Delta$ is
+detected with 80\% power by a two-sided test at $\alpha=0.05$ with
+$n=n_0\,[(z_{0.975}+z_{0.8})\,\widehat{\mathrm{se}}_0/\Delta]^2$ units, assuming new assays arrive as new units in
+today's function mix (\nAssays/\nUnits{} assays per unit)~\cite{card2020little,miller2024adding}. We check the
+formula by resampling the real paired differences re-centred at $\Delta$.
+
+\textbf{Coverage simulation.} Five scenarios, \simReps{} synthetic leaderboards each (\simBoot{} bootstrap replicates),
+as in the repository; tied ranks require set coverage~\cite{neuhof2026rank}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../results/figures/headline.pdf}
+\caption{\textbf{(a)} Assays for 80\% power to detect gain $\Delta$ over the current \#1 (band: \#1 vs next ten).
+Today: \nAssays{} assays; median MDD $\approx$\mddMed{}; best pair $\approx$\mddAtTop{}. \textbf{(b)} Supporting rank
+CIs for top eight (marginal thick, simultaneous thin); orange = not ruled out as \#1.}
+\label{fig:headline}
+\end{figure}
+
+\section{Results}
+\textbf{Power (Fig.~\ref{fig:headline}a).} With 80\% power at today's \nUnits{} units, the median MDD over \#1 vs the
+next ten is \mddMed{} (\mddMin--\mddMax{}); the best pair is \mddAtTop{}, above the \gapOneTwo{} gap between \topOne{}
+and \topTwo{} and near the \gapOneThree{} gap to \#3. $\Delta=0.01$ needs $\approx$\assaysTenMed{} assays
+(\timesTenMed$\times$); $\Delta=0.005$ needs $\approx$\assaysFiveMed{} (\timesFiveMed$\times$). We phrase ``this gap
+supports a decision'' as a hypothesis at stated $\Delta$, not a \#1 verdict.
+
+\textbf{(A) Statistical uncertainty (Fig.~\ref{fig:headline}b).} \topOne{} and \topTwo{} each lead in $\approx$\pRankOneTop\%
+and \pRankOneSecond\% of bootstrap draws; the 95\% best-model set is \bestSet{}. Only \nNeighbourSig{} adjacent top-20
+pairs differ significantly. Marginal intervals keep worst-model coverage $\ge$\minMargWorst{} in simulation;
+simultaneous step-down $\ge$\minSimulWorst{}; naive percentile ranks drop to \covPctTies{} under exact ties.
+
+\textbf{(B) Assay mix and averaging (design).} Dropping \logoFlipGroups{} makes \logoFlipLeader{} \#1. On all
+\nCommonAssays{} assays scored by every model, \topAllCommon{} leads (vs \topPublished{} on all \nAssays{}); the
+possible-\#1 set is \bestSetAllCommon{} (Table~\ref{tab:shared}). The published top-$K{=}10$ share the same
+\nTopTenCommonAssays{} assays here. NDCG reorders sharply (\ndcgOverlap{}/10 of the published top 10 remain).
+Protriever (\#\protRank{}) falls to \#\protRankCommon{} on shared assays; its missing assays average \othersOnMissing{}
+vs \othersOnCommon{} for others.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Shared-assay re-ranking (\texttt{shared\_assay\_rerank.csv}).}
+\label{tab:shared}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrl@{}}
+\toprule
+Subset & $n$ assays & \#1 / possible \#1s \\
+\midrule
+All assays & \nAssays{} & \topPublished{} / \bestSet{} \\
+All models scored & \nCommonAssays{} & \topAllCommon{} / \bestSetAllCommon{} \\
+Top 10 scored & \nTopTenCommonAssays{} & \topTopTenCommon{} / \bestSetTopTenCommon{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Limitations}
+Intervals omit mutant-level noise; power assumes future assays resemble today's mix. High mutation-effect scores are
+not evidence of misuse potential. Literature search 6 October 2026.
+
+{\footnotesize
+\bibliographystyle{abbrvnat}
+\bibliography{refs}}
+
+\end{document}

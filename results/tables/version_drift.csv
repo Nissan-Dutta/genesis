@@ -1,0 +1,5 @@
+from,to,n_models_from,n_models_to,n_common,median_change,max_abs_change,largest_changes,top_model_to
+PG_v1.0,PG_v1.1,50,62,50,-0.0020000000000000018,0.158,Wavenet +0.158; ESM-1v (single) -0.011; ESM-1v (ensemble) -0.010,SaProt (650M)
+PG_v1.1,PG_v1.2,62,79,53,0.0,0.0010000000000000009,SaProt (650M) +0.001; GEMME +0.001; TranceptEVE M +0.001,VenusREM
+PG_v1.2,PG_v1.3,79,95,79,0.0,0.0,VenusREM +0.000; ProSST (K=2048) +0.000; ProSST (K=4096) +0.000,VenusREM
+PG_v1.3,pinned@144fe22,95,97,95,0.0,0.0,VenusREM +0.000; ProSST (K=2048) +0.000; ProSST (K=4096) +0.000,AIDO Protein-RAG (16B)

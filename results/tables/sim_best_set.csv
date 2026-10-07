@@ -1,0 +1,6 @@
+scenario,n_true_best,best_set_coverage,best_set_any_true_best,best_set_per_true_best,best_set_mean_size,naive_best_set_coverage,naive_best_set_mean_size,mean_se_top_gap
+calibrated,1,0.997,0.997,0.997,2.865,0.978,2.481,0.005203605219636687
+calibrated_gaussian,1,0.998,0.998,0.998,2.922,0.979,2.492,0.005258384693912098
+exact_ties,5,0.931,1.0,0.9814,4.907,0.756,4.589,0.007868653671859282
+near_ties,1,1.0,1.0,1.0,4.808,0.986,4.4,0.00521224486443435
+separated,1,0.998,0.998,0.998,1.992,0.977,1.944,0.005234336621732432
