@@ -21,7 +21,7 @@ alt="Top-20 rank intervals with the possible-#1 set highlighted, and assays need
 
 **(a)** Assays needed for 80% power to detect a true gain Δ over the current #1 (band: #1 vs each of the next ten).
 Today's 217 assays support detecting about 0.020 Spearman at the median pair (about 0.015 for the tightest pair).
-**(b)** Supporting rank intervals for the top eight models (marginal thick, simultaneous thin); orange = not ruled
+**(b)** Supporting rank intervals for the top seven models (marginal thick, simultaneous thin); orange = not ruled
 out as #1.
 
 The two-page technical note is in [`paper/technical-note.pdf`](paper/technical-note.pdf), with a Markdown version
