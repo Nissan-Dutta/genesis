@@ -4,6 +4,8 @@ version = "0.1.0"
 description = "Rank uncertainty and benchmark-design statistics for the ProteinGym DMS-substitution leaderboard"
 readme = "README.md"
 authors = [{ name = "Nissan Dutta" }]
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "matplotlib==3.10.6",
@@ -17,6 +19,10 @@ esm = [
     "fair-esm==2.0.0",
     "torch==2.8.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Nissan-Dutta/genesis"
+Repository = "https://github.com/Nissan-Dutta/genesis"
 
 [project.scripts]
 pgnoise = "pgnoise.cli:main"
