@@ -177,7 +177,7 @@ tests/           unit tests on toy data, plus integration tests on the real file
 
 ## License
 
-The code, generated results and technical note in this repository are released under the [MIT License](LICENSE). Third-party data keep their own licences, as described below.
+The code, technical note and repository-authored portions of generated results in this repository are released under the [MIT License](LICENSE). Third-party data included in generated results keep their own licences, as described below.
 
 ## Data licence and attribution
 
