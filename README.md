@@ -1,20 +1,10 @@
 # pgnoise: can ProteinGym scores support a model decision?
 
-Decisions about AI models in biology rest on evaluation scores. On the field's main public protein benchmark, the
-smallest gain the leaderboard can reliably detect at the top is about 0.015 (80% power), larger than the gap between
-the published #1 and #2 and comparable to the gap to #3. Which model ranks #1 also depends on which kinds of lab
-tests are counted—a design choice, not a property of the models. This repository asks how large an evaluation must be
-before its numbers can support a decision.
+Decisions about AI models in biology rest on evaluation scores. On the field's main public protein benchmark, the smallest gain the leaderboard can reliably detect at the top is about 0.015 (80% power), larger than the gap between the published #1 and #2 and comparable to the gap to #3. Which model ranks #1 also depends on which kinds of lab tests are counted—a design choice, not a property of the models. [ProteinGym](https://github.com/OATML-Markslab/ProteinGym) ranks 97 zero-shot protein fitness models on 217 deep mutational scanning assays but reports no uncertainty for the ranks. `pgnoise` reproduces the published leaderboard exactly, puts 95% confidence intervals on every model's rank, and estimates how many assays the benchmark would need to detect realistic gains. Everything runs on a laptop from about 0.7 MB of pinned public CSVs.
 
-[ProteinGym](https://github.com/OATML-Markslab/ProteinGym) ranks 97 zero-shot protein fitness models on 217 deep
-mutational scanning assays, but it reports no uncertainty for the ranks themselves. `pgnoise` reproduces the
-published leaderboard exactly and puts statistically valid 95% confidence intervals on every model's rank: marginal
-and simultaneous pairwise max-t intervals with a stratified bootstrap over proteins, checked by a coverage
-simulation with known true ranks. It then asks how many assays the benchmark would need to detect realistic gains,
-and how far the top ranks move with the metric, the aggregation and assay coverage. Three models cannot be ruled out
-as #1. Only 2 of the 19 adjacent pairs in the top 20 are statistically distinguishable. Detecting a 0.01 Spearman
-gain over the current leader with 80% power would take about 850 assays, 3.9× today's benchmark. Everything runs on
-a laptop from about 0.7 MB of pinned public CSVs.
+**Headline (as stated in the note).** Today's benchmark could support claims only about gains of roughly 0.020 Spearman or more over the leader (0.015–0.027 across the top ten pairs); a 0.01 gain would need about 850 assays (3.9× today). Three models cannot be ruled out as #1, and only 2 of 19 adjacent top-20 pairs differ significantly.
+
+**Read:** [technical note (PDF, 2 pages)](paper/technical-note.pdf) · [Markdown version](paper/technical-note.md) · [headline figure](results/figures/headline.png) · [MIT License](LICENSE)
 
 <p align="center"><img src="results/figures/headline.png" width="420"
 alt="Top-20 rank intervals with the possible-#1 set highlighted, and assays needed for 80% power versus true gain"></p>
@@ -23,9 +13,6 @@ alt="Top-20 rank intervals with the possible-#1 set highlighted, and assays need
 Today's 217 assays support detecting about 0.020 Spearman at the median pair (about 0.015 for the tightest pair).
 **(b)** Supporting rank intervals for the top seven models (marginal thick, simultaneous thin); orange = not ruled
 out as #1.
-
-The two-page technical note is in [`paper/technical-note.pdf`](paper/technical-note.pdf), with a Markdown version
-in [`paper/technical-note.md`](paper/technical-note.md).
 
 ## Key results
 
@@ -52,10 +39,20 @@ All numbers come from `results/summary.json`, using ProteinGym commit `144fe22` 
 - **Replication.** Re-scoring five assays with ESM-2 (8M–650M) on CPU reproduces all 20 published Spearman values
   at 3 dp.
 
-## Quickstart
+## Reproduce
+
+Smoke test, about 3 minutes and no download. It rebuilds the headline figure and the note's numbers from the committed `results/`, then runs the linter and the fast test suite.
 
 ```bash
 # needs uv (https://docs.astral.sh/uv/); Python 3.12 and every pinned dependency come from uv.lock
+uv sync && uv run pgnoise figure && uv run pgnoise numbers && uv run ruff check . && uv run pytest -q
+```
+
+`pytest` skips the tests that need `data/` or torch. CI runs the same ruff and pytest steps on pushes and pull requests.
+
+### Full pipeline (downloads ProteinGym data)
+
+```bash
 uv sync
 uv run pgnoise download   # ~0.7 MB of CSVs into data/raw/ (git-ignored); SHA-256 checksums verified
 uv run pgnoise ranks      # rank intervals, best-model set, neighbour tests, Protriever coverage (~15 s)
@@ -66,21 +63,6 @@ uv run pytest             # unit and integration tests
 `uv run pgnoise all` runs every analysis except the ESM-2 replication (about 25 minutes on 4 cores, mostly the
 simulation). Without uv, `pip install -r requirements.txt && pip install -e .` works too; the requirements file is
 exported from the lock file.
-
-### Quick smoke demo (≤ 3 minutes, no download)
-
-Use the committed `results/` tables to rebuild the headline figure and paper numbers, then run the fast test suite.
-No `pgnoise download`, no ESM-2 weights, and no `pgnoise all`.
-
-```bash
-uv sync
-uv run pgnoise numbers    # refresh paper/numbers.tex and paper/numbers.md from results/summary.json
-uv run pgnoise figure     # rebuild results/figures/headline.png and headline.pdf
-uv run ruff check .
-uv run pytest -q          # unit tests + figure/numbers smoke; skips tests that need data/ or torch
-```
-
-CI runs the same `ruff check` and `pytest` path on every push and pull request.
 
 ## Reproducing each result
 
@@ -192,6 +174,10 @@ paper/           technical note (LaTeX + Markdown), bibliography, generated numb
 results/         summary.json, tables/, figures/
 tests/           unit tests on toy data, plus integration tests on the real files
 ```
+
+## License
+
+The code, generated results and technical note in this repository are released under the [MIT License](LICENSE). Third-party data keep their own licences, as described below.
 
 ## Data licence and attribution
 
