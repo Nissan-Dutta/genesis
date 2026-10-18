@@ -173,6 +173,7 @@ src/pgnoise/
 paper/           technical note (LaTeX + Markdown), bibliography, generated numbers, Makefile
 results/         summary.json, tables/, figures/
 tests/           unit tests on toy data, plus integration tests on the real files
+rebuild/         independent reimplementation of the pilot, with a rank-interval coverage check (see rebuild/README.md)
 ```
 
 ## License
