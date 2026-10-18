@@ -59,8 +59,8 @@ top20 = order[:20]
 print(f"mean width, top 20: per-model {(hi - lo + 1)[top20].mean():.1f}, all at once "
       f"{(shi - slo + 1)[top20].mean():.1f}, no correction {(nhi - nlo + 1)[top20].mean():.1f} ranks")
 
-for name, l in [("per-model", lo), ("all at once", slo), ("no correction", nlo)]:
-    print(f"Not ruled out as #1 ({name}): {[models[j] for j in range(M) if l[j] == 1]}")
+for name, low in [("per-model", lo), ("all at once", slo), ("no correction", nlo)]:
+    print(f"Not ruled out as #1 ({name}): {[models[j] for j in range(M) if low[j] == 1]}")
 
 # 4. Adjacent pairs and minimum detectable effect (unchanged from the pilot)
 sep = sum(np.quantile(boot[:, a] - boot[:, b], 0.025) > 0 for a, b in zip(order[:19], order[1:20]))

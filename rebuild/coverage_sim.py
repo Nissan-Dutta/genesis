@@ -103,7 +103,6 @@ def main():
     shift = -(1 - a.shrink) * (theta_obs - theta_obs.mean())
     U = {c: u + shift for c, u in U.items()}
     theta_true = pg.leaderboard_score(U)
-    M = len(models)
     r_true = true_ranks(theta_true)
     top20 = np.argsort(-theta_true)[:20]
     best = np.argmax(theta_true)

@@ -1,7 +1,7 @@
 # How much of the ProteinGym leaderboard is noise?
 
 [ProteinGym](https://github.com/OATML-Markslab/ProteinGym) ranks 97 models that predict the effects of
-mutations, using 217 deep mutational scanning assays. This repo asks which of the differences on that
+mutations, using 217 deep mutational scanning assays. This folder asks which of the differences on that
 leaderboard are real. It covers how uncertain each model's rank is, how large a gain the benchmark can
 detect, and which parts of the benchmark the uncertainty comes from.
 
@@ -10,13 +10,18 @@ Scope so far: the zero-shot substitution leaderboard (Spearman), at ProteinGym c
 stratified cluster bootstrap that ProteinGym uses for its own published standard errors. Noise inside
 each assay is not modelled yet.
 
+It is an independent reimplementation of the pilot, written separately from the `pgnoise` package at the
+repository root. `crosscheck.py` uses it to recompute `pgnoise`'s robustness and power tables from the raw data.
+
 ## Reproduce
 
 ```bash
+cd rebuild
 uv sync
 uv run python replicate.py                     # about 2 s: every number in "Results"
 uv run python coverage_sim.py                  # about 100 s on 8 cores
 uv run python coverage_sim.py --shrink 0.5     # stress test with all true gaps halved
+uv run python crosscheck.py ../data/raw ../results   # after `uv run pgnoise download` at the root
 ```
 
 `data/fetch.sh` re-downloads the two input tables from the pinned commit and checks their SHA-256.
@@ -26,6 +31,7 @@ uv run python coverage_sim.py --shrink 0.5     # stress test with all true gaps 
 | `pgrank.py` | the whole method: aggregation, bootstrap, rank intervals |
 | `replicate.py` | reproduces the published leaderboard and the pilot, then prints the results below |
 | `coverage_sim.py` | checks whether the intervals contain the true rank as often as they claim |
+| `crosscheck.py` | recomputes `pgnoise`'s robustness and power tables with `pgrank.py` and asserts they match |
 | `results/` | `rank_intervals.csv` (all 97 models), `coverage*.md`, `coverage_per_model*.csv` |
 
 ## Results
